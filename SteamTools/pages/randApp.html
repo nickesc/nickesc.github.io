@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<script src="../js/logQueries.js"></script>
+<script src="../js/setPages.js"></script>
+<script>
+    
+    let url=`https://steam-tools-nickesc.herokuapp.com/apps/rand`
+    
+    console.log(url)
+    fetch(url, options)
+            .then(data=>{return data.json()})
+            .then(res=>console.log(res))
+
+
+</script>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <div class="toolResultHolder">
+            <h1 class="appTitle"></h1>
+            <p class="appTitle"></p>
+        </div>
+    </body>
+</html>

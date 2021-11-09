@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+        
+        <title>Nickesc</title>
+        
+        <meta charset="UTF-8">
+        <meta name="description" content="content">
+        <meta name="keywords" content="content">
+        <meta name="author" content="Nick Escobar">
+        
+        <link rel="stylesheet" href="../css/globalStyles.css">
+        <script src="js/homeScript.js"></script>
+    
+    
+    </head>
+    <body>
+        
+        <h1>Steam Tools</h1>
+        <form action="pages/ping.html" method="get" class="tool" id="serverPing">
+            <button type="submit">ping</button>
+        </form>
+        <form action="pages/apps.html" method="get" class="tool" id="apps">
+            
+            <button type="submit">apps</button>
+        </form>
+        <form action="pages/randApp.html" method="get" class="tool" id="randApp">
+            
+            <button type="submit">random app</button>
+        </form>
+        
+        
+        <form action="pages/appInfo.html" method="get" class="tool" id="appInfo">
+            
+            <div class="field">
+                <label for="appInfoId">Name:</label>
+                <input type="text" id="appInfoId" name="appid" placeholder="Enter appID" />
+                <small></small>
+            </div>
+            
+            <button type="submit">app info</button>
+        </form>
+        <form action="pages/appNews.html" method="get" class="tool" id="appNews">
+    
+            <div class="field">
+                <label for="appNewsId">Name:</label>
+                <input type="text" id="appNewsId" name="appid" placeholder="Enter appID" />
+                <small></small>
+            </div>
+            
+            <button type="submit">app news</button>
+        </form>
+        <form action="pages/appCurrentUsers.html" method="get" class="tool" id="appCurrentUsers">
+    
+            <div class="field">
+                <label for="appCurrentUsersId">Name:</label>
+                <input type="text" id="appCurrentUsersId" name="appid" placeholder="Enter appID" />
+                <small></small>
+            </div>
+            
+            <button type="submit">current active users</button>
+        </form>
+        <form action="pages/appSchema.html" method="get" class="tool" id="appSchema">
+    
+            <div class="field">
+                <label for="appSchemaId">Name:</label>
+                <input type="text" id="appSchemaId" name="appid" placeholder="Enter appID" />
+                <small></small>
+            </div>
+            
+            <button type="submit">app schema</button>
+        </form>
+        <form action="pages/appAchiev.html" method="get" class="tool" id="appAchiev">
+    
+            <div class="field">
+                <label for="appAchievId">Name:</label>
+                <input type="text" id="appAchievId" name="appid" placeholder="Enter appID" />
+                <small></small>
+            </div>
+            
+            <button type="submit">app achievements</button>
+        </form>
+        
+        
+        <div id = "result">
+        
+        </div>
+    
+    </body>
+</html>
