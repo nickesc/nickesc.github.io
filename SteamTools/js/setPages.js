@@ -13,14 +13,6 @@ function replaceClassInnerHtml(className, innerHtml){
     }
 }
 
-function setAppInfoResQueries(res, queries){
-    let appid=queries.get('appid')
-    let info=res[appid].data
-
-    setAppInfo(info, appid)
-}
-
-
 function setUndefined(){
     $.get("undefined.html", function( data ) {
         $(".toolResultHolder:first").html(data);
@@ -28,9 +20,27 @@ function setUndefined(){
 
 }
 
-function setAppInfo(info){
+function setAppInfo(res, urlParams){
+    console.log(res);
 
-    info.appid=info.steam_appid
+    let appid=urlParams.appid
+    let info=res.info[appid].data;
+    let news=res.news.appnews.newsitems;
+    let schema=res.schema.game;
+    let achiev=res.achiev.achievementpercentages.achievements;
+    let current=res.current.player_count;
+    /*
+    let app = new App();
+
+    app.appid=info.steam_appid
+    app.name=info.name;
+    app.requiredAge=info.requiredAge;
+    app.type=info.type;
+    app.isFree=info.is_free;
+
+*/
+
+
 
     let categories=[];
     try {
@@ -44,7 +54,7 @@ function setAppInfo(info){
     let achievs=[];
     try {
         for (const ach of info.achievements.highlighted) {
-            achievs.push([ach.name,ach.path])
+            achievs.push({"name":ach.name,"path":ach.path})
         }
     } catch(err){
         console.log(err)
@@ -152,6 +162,7 @@ function setAppInfo(info){
 //    for (const titleElement of titleElements){
   //      //let node = detailedDescriptionDom.cloneNode()
     //    titleElement.innerHTML=detailedDescriptionDom
+
 
 
 }

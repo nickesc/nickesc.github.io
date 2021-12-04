@@ -25,8 +25,16 @@ var options = {
     //window: window // null
 }
 
-fetch(url, options)
-.then(data=>{return data.json()})
-.then(res=>console.log(res))
+fetch(domain, options)
+    .then(data=>{return data.json()})
+    .then(res=>{
+        let timeObject=res
+        fetch(url, options)
+            .then(data=>{return data.json()})
+            .then(res=>{
+                console.log(res, timeObject)
+            })
+    })
+
 
 const appInfoForm = document.querySelector("#appInfo");

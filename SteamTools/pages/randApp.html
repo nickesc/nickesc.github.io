@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<script src="../js/logQueries.js"></script>
+<script src="../js/getQueries.js"></script>
 <script src="../js/setPages.js"></script>
 <script>
     
-    let url=`https://steam-tools-nickesc.herokuapp.com/apps/rand`
+    let url=`https://steam-tools-nickesc.herokuapp.com/apps/rand${Strings.includeKey("?")}`
     
     console.log(url)
     fetch(url, options)
