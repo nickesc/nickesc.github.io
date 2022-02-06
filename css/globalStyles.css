@@ -12,10 +12,15 @@ h1{
 }
 
 #workInProgress{
-    background-color: #ffe0b9;
+    background-color: #fff3b9;
+    color: #9f9137;
     padding: 3vw;
 }
 #workInProgress p1{
     font-weight: bold;
-    font-size: ;
+    font-size: 3vw;
+}
+
+#workInProgress p2{
+    font-size: 1.5em;
 }
