@@ -1,34 +1,21 @@
-@font-face {
-    font-family: 'Courier Prime', monospace;
-    src: url(/fonts/Courier_Prime/CourierPrime-Regular.ttf);
-
-}
-
-@font-face {
-    font-family: 'Courier Prime', monospace;
-    src: url(/fonts/Courier_Prime/CourierPrime-Italic.ttf);
-    font-style: italic;
-
-}
-
-@font-face {
-    font-family: 'Courier Prime', monospace;
-    src: url(/fonts/Courier_Prime/CourierPrime-Bold.ttf);
-    font-weight: bold;
-}
-
-@font-face {
-    font-family: 'Courier Prime', monospace;
-    src: url(/fonts/Courier_Prime/CourierPrime-BoldItalic.ttf);
-    font-style: italic;
-    font-weight: bold;
-
-}
-
 body{
-    font-family: "Courier Prime", monospace;
+    font-family: "IBM Courier", monospace;
+}
+.wrapper{
+    width:80%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 h1{
     font-style: italic;
+}
+
+#workInProgress{
+    background-color: #ffe0b9;
+    padding: 3vw;
+}
+#workInProgress p1{
+    font-weight: bold;
+    font-size: ;
 }
