@@ -17,10 +17,10 @@ class Reply {
         replyContent.innerHTML = this.content
         replyTime.className = "replyTime"
         if (this.updated!==this.published){
-            replyTime.innerHTML = this.published +"; updated: "+this.updated
+            replyTime.innerHTML = "<i>updated: "+this.updated+"</i>"
         }
         else{
-            replyTime.innerHTML = this.published
+            replyTime.innerHTML = "published: "+this.published
         }
 
         //replyDiv.appendChild(replyImg)
@@ -36,8 +36,8 @@ class Reply {
         this.author = reply.author.displayName
         this.img = reply.author.image.url
         this.content = reply.content
-        this.published = reply.published
-        this.updated = reply.updated
+        this.published = new Date(Date.parse(reply.published)).toLocaleString()
+        this.updated = new Date(Date.parse(reply.updated)).toLocaleString()
         this.selfLink = reply.selfLink
     }
 
@@ -63,10 +63,10 @@ class Post {
         postAuthor.innerHTML = this.author
         postTime.className = "postTime"
         if (this.updated!==this.published){
-            postTime.innerHTML = this.published +"; updated: "+this.updated
+            postTime.innerHTML = "published: "+this.published +"; <i>updated: "+this.updated+"</i>"
         }
         else{
-            postTime.innerHTML = this.published
+            postTime.innerHTML = "published: "+this.published
         }
         postContent.className = "postContent"
         postContent.innerHTML = this.content
@@ -113,8 +113,8 @@ class Post {
         this.title = post.title
         this.content = post.content
         this.labels = post.labels
-        this.published = post.published
-        this.updated = post.updated
+        this.published = new Date(Date.parse(post.published)).toLocaleString()
+        this.updated = new Date(Date.parse(post.updated)).toLocaleString()
         this.author = post.author.displayName
         this.replies = this.getReplyArray(post.replies)
         this.count = this.replies.length
