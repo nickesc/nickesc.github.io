@@ -24,12 +24,12 @@ function setAppInfo(res, urlParams){
     console.log(res);
 
     let appid=urlParams.appid
-    let info=res.info[appid].data;
-    let news=res.news.appnews.newsitems;
+    let info=res.info;
+    /*let news=res.news.appnews.newsitems;
     let schema=res.schema.game;
     let achiev=res.achiev.achievementpercentages.achievements;
     let current=res.current.player_count;
-    /*
+    /!*
     let app = new App();
 
     app.appid=info.steam_appid
@@ -38,7 +38,7 @@ function setAppInfo(res, urlParams){
     app.type=info.type;
     app.isFree=info.is_free;
 
-*/
+*!/
 
 
 
@@ -154,10 +154,10 @@ function setAppInfo(res, urlParams){
     let requiredAge=info.requiredAge
     let isFree=info.is_free
     let detailedDescription=info.detailed_description
-    let aboutTheGame=info.about_the_game
+    let aboutTheGame=info.about_the_game*/
 
 
-    replaceClassInnerHtml("appTitle",info.detailed_description)
+    replaceClassInnerHtml("appTitle",info.description.detailed_description)
 
 //    for (const titleElement of titleElements){
   //      //let node = detailedDescriptionDom.cloneNode()

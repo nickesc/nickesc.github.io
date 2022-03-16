@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        
+        <h1>Spiral</h1>
+        
+        <div id="content"></div>
+        <script>let blog = {info:{}, posts:{}}</script>
+        <script>
+            
+            //let blog = {info:{}, posts:{}}
+            function handlePosts(response) {
+                console.log("help")
+                blog["posts"] = response["items"]
+                
+                document.getElementById("content").innerHTML = response;
+                console.log(response);
+            }
+            
+            function handleResponse(response) {
+                //console.log(response);
+                blog["info"]=response;
+                console.log(response)
+            }
+        </script>
+        <script src="https://www.googleapis.com/blogger/v3/blogs/3333201081983185753?callback=handleResponse&key=AIzaSyBBHliycteWigA8ujZw9QlXB-UFJXw3T-s&fields=name,posts(totalItems),published,updated,url"></script>
+        <script src="https://www.googleapis.com/blogger/v3/blogs/3333201081983185753/posts?callback=handleResponse&key=AIzaSyBBHliycteWigA8ujZw9QlXB-UFJXw3T-s&fields=items(author(displayName),content,id,labels,published,replies,selfLink,title,updated,url)"></script>
+    
+    
+    
+    </body>
+</html>

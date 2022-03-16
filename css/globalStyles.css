@@ -24,3 +24,14 @@ h1{
 #workInProgress p2{
     font-size: 1.5em;
 }
+
+.aboutText{
+    width: 100%;
+    max-height: fit-content;
+}
+
+.aboutText img{
+    float: right;
+    max-width: 25%;
+
+}

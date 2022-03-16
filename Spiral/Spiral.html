@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-M8PBQNWMVB"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+        
+            gtag('config', 'G-M8PBQNWMVB');
+        </script>
+        <title>Spiral</title>
+    
+        <meta charset="UTF-8">
+        <meta name="description" content="A collection of thoughts, ideas and updates for absolutely no one">
+        <meta name="keywords" content="blog, website, art, computer science, coding, design, video games, portfolio">
+        <meta name="author" content="Nick Escobar">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <link rel="stylesheet" href="/css/globalStyles.css">
+        <link rel="stylesheet" href="/fonts/ibm-courier/fonts/IBM-Courier.css">
+        
+        <script>
+            const sprialAPIKey = "AIzaSyBBHliycteWigA8ujZw9QlXB-UFJXw3T-s"
+            const spiralBlogID = "3333201081983185753"
+            const spiralBlogURL = "https://nescobarmedia.blogspot.com/"
+            let url = "https://www.googleapis.com/blogger/v3/blogs/" + spiralBlogID + "?key=" + sprialAPIKey
+            
+        </script>
+        
+        <script>let blog = {info:{}, posts:{}}</script>
+        
+    
+        
+    </head>
+    <body>
+        
+        <h1>Spiral</h1>
+    
+        <div id="content"></div>
+        <script>let blog = {info:{}, posts:{}}</script>
+        <script>
+        
+            //let blog = {info:{}, posts:{}}
+            function handlePosts(response) {
+                console.log("help")
+                blog["posts"] = response["items"]
+    
+                document.getElementById("content").innerHTML = response;
+                console.log(response);
+            }
+        
+            function handleResponse(response) {
+                //console.log(response);
+                blog["info"]=response;
+                console.log(response)
+            }
+        </script>
+        <script src="https://www.googleapis.com/blogger/v3/blogs/3333201081983185753?callback=handleResponse&key=AIzaSyBBHliycteWigA8ujZw9QlXB-UFJXw3T-s&fields=name,posts(totalItems),published,updated,url"></script>
+        <script src="https://www.googleapis.com/blogger/v3/blogs/3333201081983185753/posts?callback=handleResponse&key=AIzaSyBBHliycteWigA8ujZw9QlXB-UFJXw3T-s&fields=items(author(displayName),content,id,labels,published,replies,selfLink,title,updated,url)"></script>
+
+        
+    
+    </body>
+</html>
