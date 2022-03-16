@@ -20,6 +20,8 @@
         <link rel="stylesheet" href="/css/globalStyles.css">
         <link rel="stylesheet" href="/fonts/ibm-courier/fonts/IBM-Courier.css">
         
+        <script src = "Blog.js"></script>
+        
         <script>
             const sprialAPIKey = "AIzaSyBBHliycteWigA8ujZw9QlXB-UFJXw3T-s"
             const spiralBlogID = "3333201081983185753"
@@ -28,25 +30,16 @@
             
         </script>
         
-        <script>let blog = {info:{}, posts:{}}</script>
         <script>
-        
-            //let blog = {info:{}, posts:{}}
-            function handlePosts(response) {
-                console.log("help")
-                blog["posts"] = response["items"]
-            
-                document.getElementById("content").innerHTML = response;
-                console.log(response);
-            }
-        
+            let spiral = {info:{}, posts:{}}
             function handleResponse(response) {
                 //console.log(response);
-                blog["info"]=response;
-                console.log(response)
+                spiral["info"]=response;
+                
+                //console.log(response)
             }
         </script>
-        <script src="https://www.googleapis.com/blogger/v3/blogs/3333201081983185753?callback=handleResponse&key=AIzaSyBBHliycteWigA8ujZw9QlXB-UFJXw3T-s&fields=name,posts(totalItems),published,updated,url"></script>
+        <script src="https://www.googleapis.com/blogger/v3/blogs/3333201081983185753?callback=handleResponse&key=AIzaSyBBHliycteWigA8ujZw9QlXB-UFJXw3T-s&fields=name,posts,published,updated,url,selfLink"></script>
 
 
 
@@ -57,26 +50,59 @@
         <h1>Spiral</h1>
     
         <div id="content"></div>
+        <script>
+            
+            
+            
+
+            fetch(spiral["info"]["posts"]["selfLink"]+'?key='+sprialAPIKey+'&fields=items(author(displayName),content,id,labels,published,replies,selfLink,title,updated,url)')
+                    .then(response => response.json())
+                    .then(data => {
+                        spiral["posts"] = data["items"]
+                        async function getReplies(blog){
+    
+                            for (let i = 0; i<blog["posts"].length;i++){
+                                const response = await fetch(blog["posts"][i]["replies"]["selfLink"]+'?key='+sprialAPIKey+'&fields=items(author(displayName,image),content,id,published,selfLink,updated)')
+                                const replies = await response.json()
+                                blog["posts"][i]["replies"] = await replies["items"]
+                                //console.log(replies)
+                            }
+    
+                            
+                            
+                            return blog
+                        }
+                        
+                        getReplies(spiral).then(blog => {
+                            let Spiral = new Blog(blog)
+                            //console.log(Spiral)
+                            let spiralPosts = Spiral.createElementList()
+                            for (let i = 0; i<spiralPosts.length; i++){
+                                document.getElementById("content").appendChild(spiralPosts[i])
+                            }
+                        })
+                        //
+                        
+                        //spiral = getReplies(spiral)
+                        //console.log(spiral)
+                        
+                        //for (let i = 0; i<spiral["posts"].length;i++){
+                            //console.log(spiral["posts"][i])
+                        //}
+                        
+                        //let Spiral = new Blog(spiral)
+                        //console.log(Spiral)
+                        
+                        
+                        //console.log(spiral)
+                    });
+            //document.getElementById("content").innerHTML = spiral["info"]["name"];</script>
+        
         
         <script>
         
-            //let blog = {info:{}, posts:{}}
-            function handlePosts(response) {
-                console.log("help")
-                blog["posts"] = response["items"]
             
-                document.getElementById("content").innerHTML = response;
-                console.log(response);
-            }
-        
-            function handleResponse(response) {
-                //console.log(response);
-                blog["info"]=response;
-                console.log(response)
-            }
         </script>
-        <script src="https://www.googleapis.com/blogger/v3/blogs/3333201081983185753/posts?callback=handlePosts&key=AIzaSyBBHliycteWigA8ujZw9QlXB-UFJXw3T-s&fields=items(author(displayName),content,id,labels,published,replies,selfLink,title,updated,url)"></script>
-
         
     
     </body>
