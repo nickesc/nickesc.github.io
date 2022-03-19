@@ -10,7 +10,7 @@
 > 
 > 1. make ordered 
 >    - and unoredered lists
->    - [x] checklists
+>    - [x] and checklists
 > 
 > | Make    | Tables |
 > |---------|--------|
