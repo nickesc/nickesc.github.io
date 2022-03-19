@@ -1,4 +1,4 @@
-# This is a `Markdown` test
+# This is a `Markdown` demo
 
 ###### By [nickesc](https://github.com/nickesc) / [N. Escobar](https://nickesc.com)
 
