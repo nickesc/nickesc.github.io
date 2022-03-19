@@ -118,7 +118,7 @@ class Post {
         this.author = post.author.displayName
         this.replies = this.getReplyArray(post.replies)
         this.count = this.replies.length
-        this.self = post.selfLink
+        this.selfLink = post.selfLink
         this.url = post.url
 
     }

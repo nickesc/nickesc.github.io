@@ -41,20 +41,16 @@
         </script>
         <script src="https://www.googleapis.com/blogger/v3/blogs/3333201081983185753?callback=handleResponse&key=AIzaSyBBHliycteWigA8ujZw9QlXB-UFJXw3T-s&fields=name,posts,published,updated,url,selfLink"></script>
 
-
-
-
+        
     </head>
     <body>
         
         <h1>Spiral</h1>
     
         <div id="content"></div>
+        
         <script>
             
-            
-            
-
             fetch(spiral["info"]["posts"]["selfLink"]+'?key='+sprialAPIKey+'&fields=items(author(displayName),content,id,labels,published,replies,selfLink,title,updated,url)')
                     .then(response => response.json())
                     .then(data => {
@@ -67,8 +63,6 @@
                                 blog["posts"][i]["replies"] = await replies["items"]
                                 //console.log(replies)
                             }
-    
-                            
                             
                             return blog
                         }
@@ -81,26 +75,8 @@
                                 document.getElementById("content").appendChild(spiralPosts[i])
                             }
                         })
-                        //
                         
-                        //spiral = getReplies(spiral)
-                        //console.log(spiral)
-                        
-                        //for (let i = 0; i<spiral["posts"].length;i++){
-                            //console.log(spiral["posts"][i])
-                        //}
-                        
-                        //let Spiral = new Blog(spiral)
-                        //console.log(Spiral)
-                        
-                        
-                        //console.log(spiral)
                     });
-            //document.getElementById("content").innerHTML = spiral["info"]["name"];</script>
-        
-        
-        <script>
-        
             
         </script>
         
