@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-M8PBQNWMVB"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            
+            gtag('config', 'G-M8PBQNWMVB');
+        </script>
+        <title>Spiral</title>
+        
+        <meta charset="UTF-8">
+        <meta name="description" content="My current spotify song">
+        <meta name="keywords" content="work, projects, website, art, computer science, coding, design, video games, portfolio, spotify, music">
+        <meta name="author" content="Nick Escobar">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="/css/globalStyles.css">
+        <link rel="stylesheet" href="/fonts/ibm-courier/fonts/IBM-Courier.css">
+        
+    </head>
+    <body>
+        <div id ="text"></div>
+        <script>
+            const x = atob("QXV0aG9yaXphdGlvbg==")
+            const y = atob("QmVhcmVyIEJRQTNWdHFTMmNMc0FzRGs1b3h2UUZCUDJPT1lsSmZIcjVKTlFVakU0Mk9fUGRsQ2lNbXV3ZlFSTnQ3ZlJmRlF0c01EMFdoOHFlek5ta2lJQUlROUdOeEhVSjVrOG9JeTdMQm9kS2VjUVJ3dG01OGw5WTZfNlhmZ24yYkJPeUFVZEtMUl9xMERTajRTQnVjU2pVOVNvOHM=")
+            const z = atob("aHR0cHM6Ly9hcGkuc3BvdGlmeS5jb20vdjEvbWUvcGxheWVyL2N1cnJlbnRseS1wbGF5aW5n")
+            const myHeaders = new Headers();
+            myHeaders.append(x, y);
+    
+            const myInit = {
+                method: 'GET',
+                headers: myHeaders,
+                mode: 'cors',
+                cache: 'default',
+            };
+    
+            const myRequest = new Request(z);
+    
+            fetch(myRequest, myInit)
+                    .then(response => response.json())
+                    .then(data=>{
+                        console.log(data)
+                        try {
+                            window.location.replace(data.item.external_urls.spotify)
+                        }
+                        catch{
+                            document.getElementById("text").innerHTML = "no song playing"
+                        }
+                        //console.log(btoa("https://api.spotify.com/v1/me/player/currently-playing"))
+            });
+        </script>
+    </body>
+</html>
