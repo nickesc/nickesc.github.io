@@ -25,29 +25,7 @@
         <div id ="text"></div>
         <script>
 
-            const myHeaders = new Headers();
-            myHeaders.append(x, y);
-    
-            const myInit = {
-                method: 'GET',
-                headers: myHeaders,
-                mode: 'cors',
-                cache: 'default',
-            };
-    
-            const myRequest = new Request(z);
-    
-            fetch(myRequest, myInit)
-                    .then(response => response.json())
-                    .then(data=>{
-                        console.log(data)
-                        try {
-                            window.location.replace(data.item.external_urls.spotify)
-                        }
-                        catch{
-                            document.getElementById("text").innerHTML = "no song playing"
-                        }
-            });
+
         </script>
     </body>
 </html>
