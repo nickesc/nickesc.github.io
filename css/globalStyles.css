@@ -1,14 +1,33 @@
 body{
     font-family: "IBM Courier", monospace;
+    margin:0;
+    background-color: #232326;
+    color: #FFF9F2;
 }
-.wrapper{
-    width:80%;
-    margin-left: auto;
-    margin-right: auto;
+
+.terminalBlock {
+    border: 1px solid #FFF9F2;
+    display: block;
+    position:absolute;
+    height:auto;
+    bottom:0;
+    top:0;
+    left:0;
+    right:0;
+    padding: 2vmin;
+    margin: 5vmin;
+    overflow: scroll;
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; /* for Firefox */
+    scroll-snap-stop: always;
+}
+.terminalBlock::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
 }
 
 h1{
-    font-style: italic;
+    margin: 0;
+    padding: 0;
 }
 
 #workInProgress{
@@ -25,13 +44,21 @@ h1{
     font-size: 1.5em;
 }
 
-.aboutText{
-    width: 100%;
-    max-height: fit-content;
+a:link {
+    color: #FFF9F2;
 }
 
-.aboutText img{
-    float: right;
-    max-width: 25%;
+/* visited link */
+a:visited {
+    color: #FFF9F2;
+}
 
+/* mouse over link */
+a:hover {
+    text-decoration: underline dotted;
+}
+
+/* selected link */
+a:active {
+    color: #232326;
 }
