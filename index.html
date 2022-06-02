@@ -20,21 +20,50 @@
         <link rel="stylesheet" href="/css/terminalDisplay.css">
         <link rel="stylesheet" href="/fonts/ibm-courier/fonts/IBM-Courier.css">
 
+        <link rel="stylesheet" href="/css/Spiral.css">
+        <script src = "scripts/Blog.js"></script>
+
+        <script>
+            const sprialAPIKey = "AIzaSyBBHliycteWigA8ujZw9QlXB-UFJXw3T-s"
+            const spiralBlogID = "3333201081983185753"
+            const spiralBlogURL = "https://nescobarmedia.blogspot.com/"
+            let url = "https://www.googleapis.com/blogger/v3/blogs/" + spiralBlogID + "?key=" + sprialAPIKey
+
+        </script>
+
+        <script>
+            let spiral = {info:{}, posts:{}}
+            function handleResponse(response) {
+                //console.log(response);
+                spiral["info"]=response;
+
+                //console.log(response)
+            }
+        </script>
+        <script src="https://www.googleapis.com/blogger/v3/blogs/3333201081983185753?callback=handleResponse&key=AIzaSyBBHliycteWigA8ujZw9QlXB-UFJXw3T-s&fields=name,posts,published,updated,url,selfLink"></script>
+        <script src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@2/dist/zero-md.min.js" type="module"></script>
+
+        <script src="scripts/terminalDisplay.js"></script>
+
+
+
 
     </head>
     <body>
 
+
+
         <div class="terminalBlock">
 
                 <div class="terminalDisplay">
-                    <div class="mainHeader">
+                    <div class="terminalHeader">
                         <img class = "mainLogo logo nescobar-square opaque-logo" src = "https://raw.githubusercontent.com/nickesc/N.-Escobar-Media-Branding/main/Logos/nescobar/nescobar-square-opaque.png" alt = "nescobar-square-opaque">
                         <div class="mainTitle"><div class="n">N.</div><div class="escobar">Escobar</div></div>
                     </div>
 
 
-                    <div class="blocker menu">
-                        <div class="menuButton" id="homeButton">HOME</div>
+                    <div class="blocker terminalMenu">
+                        <div class="menuButton" id="homeButton" onclick="">HOME</div>
                         <div class="menuButton" id="projectsButton">PROJECTS</div>
                         <div class="menuButton" id="spiralButton">SPIRAL</div>
                         <div class="menuButton" id="portfolioButton">PORTFOLIO</div>
@@ -43,16 +72,107 @@
                     <div class="terminalMain">
                         <div id="homePage" style="display: none">
                             <div class="projectHolder" id="spiral">
-                                > <a href="Spiral/Spiral.html">Spiral</a>
+                                > <a href="pages/Spiral.html">Spiral</a>
                             </div>
                             <div class="projectHolder" id="projects">
                                 > <a href="pages/Projects.html">Projects</a>
                             </div>
                         </div>
 
+                        <div id="spiralBlog" style="display: none">
+
+
+                            <h1>Spiral</h1>
+
+                            <div id="content"></div>
+
+                            <script>
+
+                                fetch(spiral["info"]["posts"]["selfLink"]+'?key='+sprialAPIKey+'&fields=items(author(displayName),content,id,labels,published,replies,selfLink,title,updated,url)')
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        spiral["posts"] = data["items"]
+                                        async function getReplies(blog){
+
+                                            for (let i = 0; i<blog["posts"].length;i++){
+                                                const response = await fetch(blog["posts"][i]["replies"]["selfLink"]+'?key='+sprialAPIKey+'&fields=items(author(displayName,image),content,id,published,selfLink,updated)')
+                                                const replies = await response.json()
+                                                blog["posts"][i]["replies"] = await replies["items"]
+                                                //console.log(replies)
+                                            }
+
+                                            return blog
+                                        }
+
+                                        getReplies(spiral).then(blog => {
+                                            let Spiral = new Blog(blog)
+                                            //console.log(Spiral)
+                                            let spiralPosts = Spiral.createElementList()
+                                            for (let i = 0; i<spiralPosts.length; i++){
+                                                document.getElementById("content").appendChild(spiralPosts[i])
+                                            }
+                                        })
+
+                                    });
+
+                            </script>
+                        </div>
+
+                        <div id="projectsPage" style="display: none">
+                            <div class="projectHolder" id="photogrammetryHolder">
+                                <a href="https://nickesc.github.io/PhotogrammetryVideoInstructions/">Photogrammetry Video Instructions</a><br>
+                            </div><br>
+
+                            <div class="projectHolder" id="steamToolsHolder">
+                                <a href="../SteamTools/steamToolsHome.html">Steam Tools</a><br>
+                                <a href="https://github.com/nickesc/SteamToolsAPI">Steam Tools API</a>(<a href="https://steam-tools-nickesc.herokuapp.com/">endpoint</a>)<br>
+                            </div><br>
+
+                            <div class="projectHolder" id="Branding">
+                                <a href="https://nickesc.github.io/N.-Escobar-Media-Branding/">N. Escobar Media Branding Document</a><br>
+                                <a href="https://github.com/nickesc/N.-Escobar-Media-Branding/">N. Escobar Media Branding Reference</a><br>
+                                <a href="https://github.com/nickesc/N.-Escobar-Media-Branding/archive/main.zip">N. Escobar Media Branding Download</a><br>
+                            </div><br>
+
+                            <div class = "projectHolder" id = "branches">
+                                <a href="https://github.com/nickesc/BranchesGame">Branches: A Game of Choice and Agency</a><br>
+                                <a href="https://nickesc.github.io/Branches-Script/">Branches-Script</a><br>
+                                <a href="https://main.d3m0i5w2x6m5nl.amplifyapp.com/">Branches-Script (backup)</a><br>
+                            </div><br>
+
+                            <div class = "projectHolder" id="gmailExplorer">
+                                <a href = "https://nickesc.github.io/Gmail-Explorer-Reader/">Gmail Explorer Reader</a><br>
+                                <a href = "https://nickesc.github.io/Gmail-Explorer-Imputer/">Gmail Explorer Imputer</a><br>
+                                <a href = "https://nickesc.github.io/Gmail-Explorer-Visualizer/">Gmail Explorer Visualizer</a><br>
+                            </div><br>
+
+                            <div class = "projectHolder" id="wildlife">
+                                <a href = "https://nickesc.github.io/Wildlife/">Wildlife: Speculative Explorations of Southern California's Animal Ecology</a><br>
+                            </div><br>
+
+                            <div class = "projectHolder" id="HomeBakedPiArithmetic">
+                                <a href = "https://github.com/nickesc/HomebakedPiArithmetic">Home Baked Pi: Arithmetic</a><br>
+                            </div><br>
+
+                            <!--<div class = "projectHolder" id="nuggClubScraper">
+                                <a href = "https://github.com/nickesc/NuggClubScraper">Nugg Club Scraper</a><br>
+                            </div><br>-->
+
+                            <div class = "projectHolder" id="licenseTemplates">
+                                <a href = "https://github.com/nickesc/license-templates">Lice License Templates</a><br>
+                            </div><br>
+
+                            <div class = "projectHolder" id="valor">
+                                <a href = ""></a>Valor (no link yet)<br>
+                            </div><br>
+                        </div>
 
                     </div>
+
+
                 </div>
+
+
 
 
             <spotify style="position: fixed;">
@@ -183,6 +303,7 @@
                                             this.style.backgroundColor = "#d01616";
                                         }
                                         listenOnText.innerHTML = "UNABLE TO CONNECT";
+                                        listenOnContainer.removeAttribute("href");
                                         trackName.innerHTML = "no track available";
                                         trackName.removeAttribute("href");
                                         trackContext.style.display = "none";
@@ -287,6 +408,13 @@
 
 
         </div>
+
+        <script>
+
+            let terminalDisplay = new TerminalDisplay()
+
+
+        </script>
 
         <!--<webTerminal>
             <div style="font-size: 3em">N. Escobar</div>

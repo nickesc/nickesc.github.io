@@ -1,9 +1,16 @@
 .terminalDisplay{
     padding: 0 4vmin 4vmin;
     max-width: 1200px;
+
 }
 
-.mainHeader{
+.terminalMain{
+    max-height: 70%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.terminalHeader{
     margin:4vmin 0;
     display: flex;
     align-items: center;
@@ -11,15 +18,15 @@
     max-width: 900px;
     font-size: 2.4em;
 }
-.mainHeader .mainLogo{
+.terminalHeader .mainLogo{
     height: 1.4em;
 }
 
-.mainHeader .mainTitle{
+.terminalHeader .mainTitle{
     display: flex;
     font-weight: bold;
 }
-.mainHeader .mainTitle .n{
+.terminalHeader .mainTitle .n{
     margin-left: .6em;
     margin-right: .4em;
 }
@@ -31,7 +38,7 @@
 
 }
 
-.menu {
+.terminalMenu {
     color: #232326;
     padding: 0 .5em;
     font-size: .8em;
@@ -48,21 +55,30 @@
 }
 
 
-@media (hover: hover) {
-    .menuButton:hover{
-        background-color: #232326;
-        color: #FFF9F2;
-    }
-    .menuButton:active{
-        background-color: #232326;
-        color: #232326;
-    }
+.menuButton:hover{
+    background-color: #232326;
+    color: #FFF9F2;
 }
-@media (hover: none) {
-    .menuButton:active {
-        background-color: #232326;
-        color: #FFF9F2;
-    }
+.menuButton:active{
+    background-color: #232326;
+    color: #232326;
 }
 
+::-webkit-scrollbar {
+    width: 10px;
+}
 
+/* Track */
+::-webkit-scrollbar-track {
+    background: #232326;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #FFF9F2;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #D6D6D6;
+}
