@@ -5,25 +5,7 @@ body{
     color: #FFF9F2;
 }
 
-.terminalBlock {
-    border: 1px solid #FFF9F2;
-    display: block;
-    position:absolute;
-    height:auto;
-    bottom:0;
-    top:0;
-    left:0;
-    right:0;
-    padding: 2vmin;
-    margin: 5vmin;
-    overflow: scroll;
-    -ms-overflow-style: none; /* for Internet Explorer, Edge */
-    scrollbar-width: none; /* for Firefox */
-    scroll-snap-stop: always;
-}
-.terminalBlock::-webkit-scrollbar {
-    display: none; /* for Chrome, Safari, and Opera */
-}
+
 
 h1{
     margin: 0;

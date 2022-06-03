@@ -1,11 +1,77 @@
+.terminalBlock {
+    border: 1px solid #FFF9F2;
+    display: block;
+    position:absolute;
+    height:auto;
+    bottom:0;
+    top:0;
+    left:0;
+    right:0;
+    padding: calc(2vmin + 23px) 2vmin 2vmin 2vmin;
+    margin: 5vmin;
+    overflow: scroll;
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; /* for Firefox */
+
+}
+.terminalBlock::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
+}
+
+
+
+.blocker{
+    height: 20px;
+    background-color: #FFF9F2;
+    font-size: .8em;
+    color: #232326;
+    font-weight: bold;
+    align-items: stretch;
+    display: flex;
+}
+
+
+
+.toolbar{
+    position: absolute;
+    margin-bottom: 20px;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+
+
+}
+
+#toolApp{
+    padding-left: 1vw;
+}
+#toolTime{
+    padding-right: 1vw;
+}
+
+
+
+@media screen and (max-width: 500px) {
+    .toolbar{
+        justify-content: flex-start;
+    }
+    #toolTime{
+        display: none;
+    }
+
+}
+
 .terminalDisplay{
-    padding: 0 4vmin 4vmin;
+    padding: 0 4vmin 4vmin 4vmin;
     max-width: 1200px;
+    height: auto;
 
 }
 
 .terminalMain{
-    max-height: 70%;
+    max-height: calc(70% - 40px);
     overflow-y: scroll;
     overflow-x: hidden;
 }
@@ -14,9 +80,7 @@
     margin:4vmin 0;
     display: flex;
     align-items: center;
-    width:90%;
-    max-width: 900px;
-    font-size: 2.4em;
+    font-size: min(max(8vmin,20px),70px)
 }
 .terminalHeader .mainLogo{
     height: 1.4em;
@@ -31,19 +95,11 @@
     margin-right: .4em;
 }
 
-.blocker{
-    height: 20px;
-    background-color: #FFF9F2;
-    margin: 4vmin 0;
 
-}
 
 .terminalMenu {
-    color: #232326;
+    margin: 4vmin 0;
     padding: 0 .5em;
-    font-size: .8em;
-    align-items: stretch;
-    display: flex;
 }
 
 .menuButton{

@@ -1,0 +1,11 @@
+.helpList{
+    display: flex;
+    flex-direction: column;
+}
+.hint{
+    display: flex;
+    flex-direction: row;
+}
+.hintCommand {
+    margin-right: 5vw;
+}
