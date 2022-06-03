@@ -59,7 +59,7 @@ class Terminal{
         if(this.active === false) {
             this.terminalDisplay.setDisplay(this.terminalDisplay.home)
             this.terminalDisplay.toolTitle.style.color = "#232326"
-            this.terminal.placeholder="Type 'open help' for help."
+            this.terminal.placeholder="Type 'help' for help."
         }
         this.active = true
     }
@@ -78,7 +78,7 @@ class Terminal{
         this.promptUnknown.style.display = "none"
 
         if(this.active || command === "start"){
-            switch (command) {
+            switch (command.toLowerCase()) {
                 case "help":
                     this.terminalDisplay.setDisplay(this.terminalDisplay.help)
                     break;
