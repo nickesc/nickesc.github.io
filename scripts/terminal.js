@@ -72,7 +72,7 @@ class Terminal {
             this.commandIndex -= 1
             this.terminal.value = this.lastCommands[this.commandIndex]
         }
-        this.displayError(this.commandIndex)
+        //this.displayError(this.commandIndex)
     }
 
     attachListeners() {
