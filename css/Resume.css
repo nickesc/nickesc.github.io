@@ -674,12 +674,12 @@ table td, table th {
 
 .c33 {
     background-color: #fff9f2;
-    width: 468pt;
+    max-width: 468pt;
     height: fit-content;
     margin: 2vmin auto;
     padding: 4vmin;
+    width: 100%;
 
-;
 
 }
 
