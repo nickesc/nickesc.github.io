@@ -20,7 +20,6 @@
 
 #terminal, #terminalLabel, #terminalLabel2{
     position: absolute;
-
     padding: 0;
     font-size: 16px;
 
@@ -47,7 +46,7 @@
 
 #terminalLabel{
     left:2vmin;
-    bottom: calc(2vmin + 1.2em);
+    bottom: calc(2vmin + 1.5em);
     color: #232326;
     background-color: #FFF9F2;
 }
