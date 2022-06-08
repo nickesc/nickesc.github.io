@@ -17,7 +17,7 @@ class Terminal {
     powerButton = document.getElementById("close")
     status = document.getElementById("status")
 
-    static errorMessages = {"stopped": "Stopped. Type 'start'.", "unknown": "Unknown command. Click for help."}
+    static errorMessages = {"stopped": "Stopped. Type 'start'.", "unknown": "Unknown command. Click for help.", "badPage":"Unknown page. Click for help."}
 
     constructor(terminalDisplay) {
 
@@ -88,14 +88,6 @@ class Terminal {
             if (this.terminal.placeholder === "Started. Type 'help' for help.") {
                 this.terminal.placeholder = "Type 'help' for help."
             }
-        })
-
-        // listener for any keydown
-        this.terminal.addEventListener('keydown', (event) => {
-            // clear console on ctrl+c
-            if ((event.ctrlKey) && (event.keyCode === 67 || event.code === 'KeyC')) {
-                this.terminal.value = ""
-            }
 
             // send command on enter
             if (event.keyCode === 13 || event.code === "Enter") {
@@ -111,6 +103,16 @@ class Terminal {
 
                 this.commandInput(this.command)
             }
+        })
+
+        // listener for any keydown
+        this.terminal.addEventListener('keydown', (event) => {
+            // clear console on ctrl+c
+            if ((event.ctrlKey) && (event.keyCode === 67 || event.code === 'KeyC')) {
+                this.terminal.value = ""
+            }
+
+
 
             // next command on down arrow
             if (event.keyCode === 40 || event.code === "ArrowDown") {
@@ -168,12 +170,53 @@ class Terminal {
         this.active = false
     }
 
-    // interperests commands given to the terminal
+    // intercept commands given to the terminal
     commandInput(command) {
+
+        command = command.toLowerCase().split(" ")
         this.prompt = Terminal.promptDefault
 
-        if (this.active || command === "start") {
-            switch (command.toLowerCase()) {
+        if (this.active || command[0] === "start" || command[0] === "power") {
+
+            switch (true) {
+                case (command[0] === "help"):
+                    this.terminalDisplay.setDisplay(this.terminalDisplay.help)
+                    break;
+                case (command[0] === "open"):
+                    let found = false;
+                    for(let i = 0; i<this.terminalDisplay.displayList.length; i++){
+                        if (command[1] === this.terminalDisplay.displayList[i].name){
+                            this.terminalDisplay.setDisplay(this.terminalDisplay.displayList[i])
+                            found = true
+                            break;
+                        } else if (command[1] === "portfolio"){
+                            this.terminalDisplay.redirectToPortfolio()
+                            found = true
+                            break;
+                        }
+                    }
+                    if(!found){
+                        this.displayError(Terminal.errorMessages.badPage)
+                    }
+                    break;
+                case (command[0] === "start"):
+                    this.start()
+                    break;
+                case (command[0] === "stop"):
+                    this.stop()
+                    break;
+                case (command[0] === "power"):
+                    this.powerToggle()
+                    break;
+
+                case (command[0] === ""):
+                    break;
+                default:
+                    this.displayError(Terminal.errorMessages.unknown)
+                    break;
+            }
+
+            /*switch (command.toLowerCase()) {
                 case "help":
                     this.terminalDisplay.setDisplay(this.terminalDisplay.help)
                     break;
@@ -204,7 +247,7 @@ class Terminal {
                 default:
                     this.displayError(Terminal.errorMessages.unknown)
                     break;
-            }
+            }*/
         } else {
             this.displayError(Terminal.errorMessages.stopped)
         }

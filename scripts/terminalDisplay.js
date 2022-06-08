@@ -24,6 +24,8 @@ class TerminalDisplay {
     projects = {page:this.projectsPage, button:this.projectsButton, name:"projects"}
     help = {page:this.helpPage, button:this.helpButton, name:"help"}
 
+    displayList = [this.home,this.spiral,this.projects,this.help]
+
     display = {}
 
     setTime(){

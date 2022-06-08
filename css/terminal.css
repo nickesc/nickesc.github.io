@@ -26,11 +26,14 @@
 }
 
 
+
+
 #terminal{
     left:calc(2vmin + 1em);
     color: #FFF9F2;
     background-color: #232326;
     font-family: "IBM Courier", monospace;
+    height: 1.5em;
     bottom: 2vmin;
     resize: none;
     width: 85%;
@@ -46,6 +49,7 @@
 
 #terminalLabel{
     left:2vmin;
+
     bottom: calc(2vmin + 1.5em);
     color: #232326;
     background-color: #FFF9F2;
@@ -56,8 +60,14 @@
 }
 
 #terminalLabel2{
+    height:1.5em;
+    padding-right: 1em;
     bottom: 2vmin;
+    background-color: #232326;
+    color: #FFF9F2;
 }
+
+
 
 .toolbar{
 
