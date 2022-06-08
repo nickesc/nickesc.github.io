@@ -67,9 +67,9 @@ class TerminalDisplay {
         this.projectsButton.addEventListener('click', (event) => {
             this.setDisplay(this.projects)
         });
-        this.helpButton.addEventListener('click', (event) => {
+        /*this.helpButton.addEventListener('click', (event) => {
             this.setDisplay(this.help)
-        });
+        });*/
 
         this.portfolioButton.addEventListener('click', (event) => {
             this.redirectToPortfolio();

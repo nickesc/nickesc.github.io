@@ -4,6 +4,7 @@ body{
     background-color: #232326;
     color: #FFF9F2;
     overflow: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 
@@ -11,6 +12,20 @@ body{
 h1{
     margin: 0;
     padding: 0;
+}
+.pageHeader{
+    font-weight: bold;
+    margin-bottom: .5em;
+}
+
+.blocker{
+    height: 20px;
+    background-color: #FFF9F2;
+    font-size: 16px;
+    color: #232326;
+    font-weight: bold;
+    align-items: stretch;
+    display: flex;
 }
 
 #workInProgress{
@@ -44,4 +59,26 @@ a:hover {
 /* selected link */
 a:active {
     color: #232326;
+}
+
+.pointer {
+    cursor: pointer;
+}
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #232326;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #FFF9F2;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #D6D6D6;
 }
