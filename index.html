@@ -60,7 +60,7 @@
 
         <div class="terminalDisplay">
             <div class="terminalHeader">
-                <img class="mainLogo logo nescobar-square opaque-logo"
+                <img class="mainLogo disableSelect logo nescobar-square opaque-logo"
                      src="https://raw.githubusercontent.com/nickesc/N.-Escobar-Media-Branding/main/Logos/nescobar/nescobar-square-opaque.png"
                      alt="nescobar-square-opaque">
 
@@ -262,21 +262,21 @@
             <div class="tools">
                 <div class="tool" id="toolApp"></div>
                 <div class="tool" id="toolTitle"></div>
-                <div class="tool" id="toolTime"></div>
+                <div class="tool disableSelect" id="toolTime"></div>
             </div>
-            <div class="tool pointer" id="close">X</div>
+            <div class="tool pointer disableSelect" id="close">X</div>
         </div>
 
         <div class="terminalInput">
-            <div id="terminalLabel">nickesc.github.io [Version 0.7.2]</div>
-            <label id="terminalLabel2" for="terminal">&gt;</label><textarea id="terminal" name="story" rows="1"
+            <div id="terminalLabel" class = disableSelect>nickesc.github.io [Version 0.7.2]</div>
+            <label class = "disableSelect" id="terminalLabel2" for="terminal">&gt;</label><textarea id="terminal" name="story" rows="1"
                                                                             placeholder="Type 'help' for help."
                                                                             autocomplete="off" spellcheck="false"
                                                                             autocapitalize="off"></textarea>
         </div>
     </div>
 
-    <spotify style="position: fixed;">
+    <spotify class = "disableSelect" style="position: fixed;">
         <a href="#" class="expand"
            style="position:absolute; bottom: 1.5vmin; right: max(1vw,15px); min-width: 50px; max-width:80px; width: 10vmin;"
            onclick="document.getElementsByClassName('spotifyPlayer')[0].style.display='flex'"><img
