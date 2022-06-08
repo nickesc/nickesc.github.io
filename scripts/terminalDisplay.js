@@ -12,6 +12,7 @@ class TerminalDisplay {
     spiralPage = document.getElementById("spiralBlog")
     projectsPage = document.getElementById("projectsPage")
     helpPage = document.getElementById("helpPage")
+    crightPage = document.getElementById("crightPage")
 
     homeButton =document.getElementById("homeButton")
     spiralButton = document.getElementById("spiralButton")
@@ -23,8 +24,10 @@ class TerminalDisplay {
     spiral = {page:this.spiralPage, button:this.spiralButton, name:"spiral"}
     projects = {page:this.projectsPage, button:this.projectsButton, name:"projects"}
     help = {page:this.helpPage, button:this.helpButton, name:"help"}
+    cright = {page:this.crightPage, button:null, name:"cright"}
 
-    displayList = [this.home,this.spiral,this.projects,this.help]
+    displayList = [this.home,this.spiral,this.projects,this.help, this.cright]
+    commandOnly = []
 
     display = {}
 
@@ -40,13 +43,16 @@ class TerminalDisplay {
     }
 
     clearMain(){
-        this.homePage.style.display = "none"
+        for(let i = 0; i<this.displayList.length; i++){
+            this.displayList[i].page.style.display = "none"
+        }
+        //this.homePage.style.display = "none"
         this.lightenButton(this.homeButton)
-        this.spiralPage.style.display = "none"
+        //this.spiralPage.style.display = "none"
         this.lightenButton(this.spiralButton)
-        this.projectsPage.style.display = "none"
+        //this.projectsPage.style.display = "none"
         this.lightenButton(this.projectsButton)
-        this.helpPage.style.display = "none"
+        //this.helpPage.style.display = "none"
         for(let i =0;i<this.errors.length;i++){
             this.errors[i].style.display = "none"
         }
@@ -54,6 +60,9 @@ class TerminalDisplay {
 
     redirectToPortfolio(){
         window.location.href = "http://nickesc.com";
+    }
+    redirectToResume(){
+        window.location.href = "./pages/Resume.html";
     }
 
     attachListeners(){
@@ -111,7 +120,7 @@ class TerminalDisplay {
         this.clearMain()
         display.page.style.display = "initial"
         this.toolTitle.innerText = ("/"+display.name).toUpperCase()
-        if(this.display!==this.help) {
+        if(this.display!==this.help && !this.commandOnly.includes(this.display)) {
             this.darkenButton(display.button)
         }
     }
@@ -125,7 +134,14 @@ class TerminalDisplay {
     }
 
     constructor() {
+        for(let i = 0; i<this.displayList.length; i++){
+            if(this.displayList[i].button === null){
+                this.commandOnly.push(this.displayList[i])
+            }
+        }
+
         this.init()
+
     }
 
 }

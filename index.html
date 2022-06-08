@@ -29,6 +29,7 @@
 
     <link rel="stylesheet" href="/css/terminalDisplay.css">
     <link rel="stylesheet" href="/css/help.css">
+    <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/Spiral.css">
     <link rel="stylesheet" href="/css/terminal.css">
     <script src="scripts/Blog.js"></script>
@@ -79,9 +80,39 @@
 
             <div class="terminalMain">
                 <div class="terminalPage" id="homePage" style="display: none">
-                    <div>About me</div>
-                    <div>Featured projects</div>
-                    <div>Contact and social</div>
+                    <div class="pageHeader">About me</div>
+                    <div class = "indent">
+                        <div>
+                            Hi! My name is Nick, this is my website. I'm a computer scientist and artist, and I work at
+                            the intersection of those fields. I'm curious about how people interact with art, and how
+                            technology can be used to create experiences unlike any other.
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="pageHeader">Featured Work</div>
+                    <div class="featureHolder">
+                        <div class = "featureBox">
+                            <div class="featureImgHolder">
+                                <img class = "featureImage" alt = "projectImg" src="">
+                            </div>
+                            <div class = "featureName">project name</div>
+                        </div>
+                        <div class = "featureBox">
+                            <div class="featureImgHolder">
+                                <img class = "featureImage" alt = "projectImg" src="">
+                            </div>
+                            <div class = "featureName">project name</div>
+                        </div>
+                        <div class = "featureBox">
+                            <div class="featureImgHolder">
+                                <img class = "featureImage" alt = "projectImg" src="">
+                            </div>
+                            <div class = "featureName">project name</div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="pageHeader">Contact and social</div>
                 </div>
 
                 <div class="terminalPage" id="spiralBlog" style="display: none">
@@ -214,6 +245,14 @@
 
                             <tr>
                                 <td class="command">
+                                    cright
+                                </td>
+                                <td class="usage">
+                                    show copyright information
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="command">
                                     help
                                 </td>
                                 <td class="usage">
@@ -226,6 +265,22 @@
                                 </td>
                                 <td class="usage">
                                     open a page; used with pages in the toolbar
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="command">
+                                    power
+                                </td>
+                                <td class="usage">
+                                    toggle power; stop or start the terminal
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="command">
+                                    resume
+                                </td>
+                                <td class="usage">
+                                    redirect to my resume
                                 </td>
                             </tr>
                             <tr>
@@ -244,15 +299,16 @@
                                     stop the terminal
                                 </td>
                             </tr>
-                            <tr>
-                                <td class="command">
-                                    power
-                                </td>
-                                <td class="usage">
-                                    toggle power; stop or start the terminal
-                                </td>
-                            </tr>
+
+
                         </table>
+                    </div>
+                </div>
+
+                <div class="terminalPage" id="crightPage" style="display: none">
+                    <div class="pageHeader">Copyright</div>
+                    <div class = "indent">
+                        <div>Copyright &copy; 2022 N. Escobar</div>
                     </div>
                 </div>
             </div>
@@ -276,9 +332,7 @@
         </div>
     </div>
 
-    <div id = cright>
-        Copyright &copy; 2022 N. Escobar; all rights reserved.
-    </div>
+
 
     <spotify class = "disableSelect" style="position: fixed;">
         <a href="#" class="expand"

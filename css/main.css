@@ -1,0 +1,12 @@
+.featureHolder{
+    display: flex;
+    flex-direction: row;
+    background-color: #FFF9F2;
+    width: fit-content;
+    max-width: 100%;
+    color: #232326;
+}
+.featureBox{
+    display: flex;
+    flex-direction: column;
+}

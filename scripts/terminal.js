@@ -61,7 +61,7 @@ class Terminal {
             this.terminal.value = this.lastCommands[this.commandIndex]
         }
 
-        this.displayError(this.commandIndex)
+        //this.displayError(this.commandIndex)
     }
 
     // replaces the current text in the console with the next command
@@ -208,6 +208,12 @@ class Terminal {
                 case (command[0] === "power"):
                     this.powerToggle()
                     break;
+                case (command[0] === "resume"):
+                    this.terminalDisplay.redirectToResume()
+                    break;
+                case (command[0] === "cright"):
+                    this.terminalDisplay.setDisplay(this.terminalDisplay.cright)
+                    break;
 
                 case (command[0] === ""):
                     break;
@@ -215,39 +221,6 @@ class Terminal {
                     this.displayError(Terminal.errorMessages.unknown)
                     break;
             }
-
-            /*switch (command.toLowerCase()) {
-                case "help":
-                    this.terminalDisplay.setDisplay(this.terminalDisplay.help)
-                    break;
-                case "open home":
-                    this.terminalDisplay.setDisplay(this.terminalDisplay.home)
-                    break;
-                case "open projects":
-                    this.terminalDisplay.setDisplay(this.terminalDisplay.projects)
-                    break;
-                case "open spiral":
-                    this.terminalDisplay.setDisplay(this.terminalDisplay.spiral)
-                    break;
-                case "open portfolio":
-                    this.terminalDisplay.redirectToPortfolio()
-                    break;
-                case "":
-                    break;
-                case "start":
-                    this.start()
-                    break;
-                case "stop":
-                    this.stop()
-                    break;
-                case "power":
-                    this.powerToggle()
-                    break;
-
-                default:
-                    this.displayError(Terminal.errorMessages.unknown)
-                    break;
-            }*/
         } else {
             this.displayError(Terminal.errorMessages.stopped)
         }

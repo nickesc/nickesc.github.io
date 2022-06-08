@@ -36,18 +36,6 @@ h1{
     display: flex;
 }
 
-#cright{
-    position: absolute;
-    bottom: 1vmax;
-    left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    width: fit-content;
-    color: #777777;
-    font-size: .8em;
-}
-
 #workInProgress{
     background-color: #fff3b9;
     color: #9f9137;
