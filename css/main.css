@@ -1,12 +1,38 @@
 .featureHolder{
     display: flex;
-    flex-direction: row;
-    background-color: #FFF9F2;
-    width: fit-content;
-    max-width: 100%;
-    color: #232326;
+    flex-wrap: wrap;
+
 }
 .featureBox{
-    display: flex;
-    flex-direction: column;
+    margin: .5vmin;
+    border:2px solid #FFF9F2;
+    color: #232326;
+    padding: 0;
+}
+
+.featureImg{
+    object-position: 25%;
+    display: block;
+    margin: 2vmin auto;
+    object-fit: cover;
+    height: 17vw;
+    max-height: 200px;
+    width:17vw;
+    max-width:200px;
+
+}
+.featureName{
+    font-weight: bold;
+    background-color: #FFF9F2;
+    font-size: 10pt;
+    box-sizing: border-box;
+    padding: 0 2vmin;
+    white-space: nowrap;
+    overflow: hidden;
+    min-width: 130px;
+    width: 23vw;
+    max-width: 300px;
+    text-overflow:ellipsis;
+    border: none;
+    margin: 0;
 }

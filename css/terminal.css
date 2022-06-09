@@ -38,7 +38,7 @@
     resize: none;
     width: 85%;
     max-width: calc(1200px + 4vmin);
-    box-sizing: border-box;
+
     border: none;
     border-radius: 0;
     outline: none;

@@ -11,7 +11,7 @@ class Terminal {
     commandIndex = 0
     command;
     currText = "";
-    static promptDefault = "nickesc.github.io [Version 0.3.7]";
+    static promptDefault = "nickesc.github.io [Version 0.8.2]";
     prompt = Terminal.promptDefault;
 
     powerButton = document.getElementById("close")
