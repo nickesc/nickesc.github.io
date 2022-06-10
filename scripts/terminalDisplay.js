@@ -105,7 +105,6 @@ class TerminalDisplay {
     darkenButton(button){
         button.style.backgroundColor = "#232326"
         button.style.color = "#FFF9F2"
-        console.log(button)
     }
     lightenButton(button){
         button.style.backgroundColor = "#FFF9F2"

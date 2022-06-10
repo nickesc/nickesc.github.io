@@ -230,7 +230,7 @@
                     <div class="pageHeader">Help and Usage</div>
                     <div class = "indent">
                         <div>Type commands from the list below into the terminal.</div>
-                        <div id="hideOnMobile">
+                        <div class="hideOnMobile">
                             <div>Use <code>UP</code> and <code>DOWN</code> arrow keys to scroll through command history
                             </div>
                             <div>Use <code>CRTL+C</code> to clear the command line</div>
@@ -327,7 +327,7 @@
         </div>
 
         <div class="terminalInput">
-            <div id="terminalLabel" class = disableSelect>nickesc.github.io [Version 0.8.2]</div>
+            <div id="terminalLabel" class = disableSelect>nickesc.github.io [v0.8.2]</div>
             <label class = "disableSelect" id="terminalLabel2" for="terminal">&gt;</label><textarea id="terminal" name="story" rows="1"
                                                                             placeholder="Type 'help' for help."
                                                                             autocomplete="off" spellcheck="false"
@@ -582,8 +582,7 @@
 
         let terminalDisplay = new TerminalDisplay()
         let terminal = new Terminal(terminalDisplay)
-
-        let projects = new Projects()
+        let projects = new Projects(terminal)
     </script>
 </body>
 </html>

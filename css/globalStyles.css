@@ -7,6 +7,16 @@ body{
     -webkit-backface-visibility: hidden;
 }
 
+@media (pointer:coarse) {
+
+    .hideOnMobile{
+        display: none;
+    }
+}
+.indent {
+    margin-left: 2em;
+    font-size: .9em;
+}
 
 .disableSelect {
     -webkit-touch-callout: none;
@@ -24,6 +34,7 @@ h1{
 .pageHeader{
     font-weight: bold;
     margin-bottom: .5em;
+    display: flex;
 }
 
 .blocker{
@@ -35,6 +46,7 @@ h1{
     align-items: stretch;
     display: flex;
 }
+
 
 #workInProgress{
     background-color: #fff3b9;

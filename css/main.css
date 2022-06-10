@@ -29,10 +29,18 @@
     padding: 0 2vmin;
     white-space: nowrap;
     overflow: hidden;
-    min-width: 130px;
+    min-width: 100px;
     width: 23vw;
-    max-width: 300px;
+    max-width: 375px;
     text-overflow:ellipsis;
     border: none;
     margin: 0;
+}
+
+@media screen and (max-width: 557px) {
+
+    .featureName{
+        width: 33vw;
+    }
+
 }

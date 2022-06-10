@@ -11,11 +11,12 @@ class Terminal {
     commandIndex = 0
     command;
     currText = "";
-    static promptDefault = "nickesc.github.io [Version 0.8.2]";
+    static promptDefault = "nickesc.github.io [v0.8.2]";
     prompt = Terminal.promptDefault;
 
     powerButton = document.getElementById("close")
     status = document.getElementById("status")
+    terminalDisplay;
 
     static errorMessages = {"stopped": "Stopped. Type 'start'.", "unknown": "Unknown command. Click for help.", "badPage":"Unknown page. Click for help."}
 
