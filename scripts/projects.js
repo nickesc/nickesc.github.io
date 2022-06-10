@@ -29,7 +29,7 @@ class Projects{
 
         this.mgic = this.makeProject({
             "name":"My-Girlfriend-is-Curious",
-            "imgUrl":"../img/mgicLogo.svg",
+            "imgUrl":"../img/mgicLogo.png",
             "bgColor":"#191414",
             "projectUrl":"https://nickesc.github.io/My-Girlfriend-is-Curious",
             "sourceUrl":"https://github.com/nickesc/My-Girlfriend-is-Curious",
@@ -39,7 +39,7 @@ class Projects{
         })
         this.scaredyBot = this.makeProject({
             "name":"ScaredyBot",
-            "imgUrl":"../img/scaredyBotLogo.svg",
+            "imgUrl":"../img/scaredyBotLogo.png",
             "bgColor":"#29485d",
             "projectUrl":"https://nickesc.github.io/scaredyBot/",
             "sourceUrl":"https://github.com/nickesc/scaredyBot",
@@ -50,7 +50,7 @@ class Projects{
 
         this.branches = this.makeProject({
             "name":"Branches",
-            "imgUrl":"../img/branchesLogo.svg",
+            "imgUrl":"../img/branchesLogo.png",
             "bgColor":"#e0e0e0",
             "projectUrl":"https://github.com/nickesc/BranchesGame",
             "sourceUrl":"https://github.com/nickesc/BranchesGame",
@@ -58,9 +58,9 @@ class Projects{
             "year":"2021",
             "cat":Projects.Categories.ART
         })
-        this.hbpa = this.makeProject({
+        this.hbPiA = this.makeProject({
             "name":"HomebakedPiArithmetic",
-            "imgUrl":"../img/hbPiALogo.svg",
+            "imgUrl":"../img/hbPiALogo.png",
             "bgColor":"#000000",
             "projectUrl":"https://github.com/nickesc/HomebakedPiArithmetic",
             "sourceUrl":"https://github.com/nickesc/HomebakedPiArithmetic",
@@ -71,7 +71,7 @@ class Projects{
 
         this.gmailExplorer = this.makeProject({
             "name":"GmailExplorer",
-            "imgUrl":"../img/gmailExplorerLogo.svg",
+            "imgUrl":"../img/gmailExplorerLogo.png",
             "bgColor":"#e0dfea",
             "projectUrl":"https://github.com/nickesc/GmailExplorer",
             "sourceUrl":"https://github.com/nickesc/GmailExplorer",
@@ -80,19 +80,19 @@ class Projects{
             "cat":Projects.Categories.CODE
         })
 
-        this.pvi = this.makeProject({
-            "name":"Photogrammetry Video Instructions",
-            "imgUrl":"../img/pviLogo.svg",
-            "bgColor":"#e0e0e0",
-            "projectUrl":"https://nickesc.github.io/PhotogrammetryVideoInstructions/",
-            "sourceUrl":"https://github.com/nickesc/PhotogrammetryVideoInstructions",
-            "desc":"Instructions for how to pick an object and take a video for the purposes of turning it into a point-cloud using photogrammetry",
+        this.iob = this.makeProject({
+            "name":"In Our Backyard",
+            "imgUrl":"../img/iobLogo.png",
+            "bgColor":"#142d14",
+            "projectUrl":"https://github.com/nickesc/In-Our-Backyard",
+            "sourceUrl":"https://github.com/nickesc/In-Our-Backyard",
+            "desc":"A collaboration between me and my parents, a project containing an animation and guide, both based around point-cloud visualization",
             "year":"2021",
             "cat":Projects.Categories.TEXT
         })
 
 
-        this.list = [this.mgic, this.scaredyBot, this.branches, this.hbpa, this.gmailExplorer,this.pvi]
+        this.list = [this.mgic, this.scaredyBot, this.branches, this.hbpa, this.gmailExplorer,this.iob]
 
     }
 
@@ -101,12 +101,11 @@ class Projects{
     setFeature(){
         this.featureHolders[0].appendChild(this.branches.getFeatureBox())
         this.featureHolders[0].appendChild(this.mgic.getFeatureBox())
-        this.featureHolders[0].appendChild(this.gmailExplorer.getFeatureBox())
         this.featureHolders[0].appendChild(this.scaredyBot.getFeatureBox())
-        this.featureHolders[0].appendChild(this.hbpa.getFeatureBox())
-        this.featureHolders[0].appendChild(this.pvi.getFeatureBox())
+        this.featureHolders[0].appendChild(this.hbPiA.getFeatureBox())
+        this.featureHolders[0].appendChild(this.gmailExplorer.getFeatureBox())
+        this.featureHolders[0].appendChild(this.iob.getFeatureBox())
     }
-
 }
 
 /*
