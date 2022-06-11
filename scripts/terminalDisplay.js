@@ -122,6 +122,8 @@ class TerminalDisplay {
         if(this.display!==this.help && !this.commandOnly.includes(this.display)) {
             this.darkenButton(display.button)
         }
+        let main = document.getElementsByClassName("terminalMain")[0]
+        main.scrollTop = 0
     }
 
     init(){

@@ -60,13 +60,13 @@ class Post {
         postTitle.className = "postTitle"
         postTitle.innerHTML = this.title
         postAuthor.className = "postAuthor"
-        postAuthor.innerHTML = this.author
+        postAuthor.innerHTML = "by "+this.author
         postTime.className = "postTime"
         if (this.updated!==this.published){
-            postTime.innerHTML = "published: "+this.published +"; <i>updated: "+this.updated+"</i>"
+            postTime.innerHTML = "Updated: "+this.updated
         }
         else{
-            postTime.innerHTML = "published: "+this.published
+            postTime.innerHTML = "Published: "+this.published
         }
         postContent.className = "postContent"
         postContent.innerHTML = this.content
@@ -80,8 +80,9 @@ class Post {
         postDiv.appendChild(postTitle)
         postDiv.appendChild(postAuthor)
         postDiv.appendChild(postTime)
-        postDiv.appendChild(postContent)
         postDiv.appendChild(postURL)
+        postDiv.appendChild(postContent)
+
 
         if(this.count > 0) {
             postReplies.appendChild(postRePrompt)

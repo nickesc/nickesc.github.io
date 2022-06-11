@@ -2,10 +2,64 @@
     max-height: 40vh;
     max-width: 98%;
 }
-#spiralBlog{
-    width: 98%;
+#content{
+    width: 95%;
 
+}
+.postDiv{
+    background-color: #FFF9F2;
+    color: #232326;
+    padding: min(max(1em, 2vw),27px);
+    font-size: 16px;
+    margin-bottom: 4vh;
 }
 
 
+.posturl, .postDiv a {
+    color: #EF5252;
+}
 
+.posturl:link, .postDiv a:link {
+    color: #EF5252;
+}
+
+/* visited link */
+.posturl:visited, .postDiv a:visited{
+    color: #EF5252;
+}
+
+/* mouse over link */
+.posturl:hover, .postDiv a:hover {
+    text-decoration: underline dotted;
+    color: #232326;
+}
+
+
+/* selected link */
+.posturl:active, .postDiv a:active {
+    color: #FFF9F2;
+}
+
+
+@media screen and (max-width: 500px) {
+    .postDiv{
+        font-size: 14px;
+    }
+
+}
+
+.postTitle{
+    font-weight: bold;
+    font-size: 1.5em;
+    padding-bottom: .5em;
+}
+
+.postAuthor{
+    font-style: italic;
+}
+.postTime, .posturl{
+    font-size: .8em;
+}
+.markdown-body{
+
+}

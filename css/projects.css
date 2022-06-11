@@ -21,18 +21,19 @@
     justify-content: space-between;
 }
 .projectSource{
-    color: #232326;
+    color: #EF5252;
     font-style: italic;
     margin: .5em;
+    width: fit-content;
 }
 
 .projectSource:link {
-    color: #232326;
+    color: #EF5252;
 }
 
 /* visited link */
 .projectSource:visited {
-    color: #232326;
+    color: #EF5252;
 }
 
 /* mouse over link */
@@ -56,7 +57,7 @@
 
 @media screen and (max-width: 500px) {
     .projectBox{
-        width:100%;
+        width:95%;
     }
 
 }

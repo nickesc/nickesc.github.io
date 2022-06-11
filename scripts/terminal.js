@@ -17,6 +17,7 @@ class Terminal {
     powerButton = document.getElementById("close")
     status = document.getElementById("status")
     terminalDisplay;
+    projects;
 
     static errorMessages = {"stopped": "Stopped. Type 'start'.", "unknown": "Unknown command. Click for help.", "badPage":"Unknown page. Click for help."}
 
@@ -171,6 +172,40 @@ class Terminal {
         this.active = false
     }
 
+    testIfProjectNameExists(projectName, getProject = false){
+
+        //console.log(projectName)
+        //projectName = projectName.toLowerCase().split(" ")
+
+        let source = false
+        let img = false
+        if(projectName[1] === "source"){
+            source = true
+        }
+        if(projectName[1] === "img"){
+            img = true
+        }
+
+        for(let x=0; x<this.projects.list.length; x++){
+            if(projectName[0] === this.projects.list[x].command.toLowerCase()){
+                if (getProject) {
+                    if(source){
+                        console.log("source")
+                        this.projects.list[x].redirectToSource()
+                    } else if(img){
+                        console.log("img")
+                        this.projects.list[x].redirectToImg()
+                    } else{
+                        console.log("project")
+                        this.projects.list[x].redirectToProject()
+                    }
+                    return true
+                }
+                return true
+            }
+        }
+    }
+
     // intercept commands given to the terminal
     commandInput(command) {
 
@@ -214,6 +249,9 @@ class Terminal {
                     break;
                 case (command[0] === "cright"):
                     this.terminalDisplay.setDisplay(this.terminalDisplay.cright)
+                    break;
+                case (this.testIfProjectNameExists(command)):
+                    this.testIfProjectNameExists(command, true)
                     break;
 
                 case (command[0] === ""):

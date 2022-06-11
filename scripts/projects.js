@@ -19,6 +19,7 @@ class Projects{
         this.projectsHolder = document.getElementById("projectsHolder")
         this.constructProjects()
         this.setFeatured()
+        this.terminal.projects = this
         //this.setProjects()
     }
 
@@ -38,18 +39,20 @@ class Projects{
             "sourceUrl":"https://github.com/nickesc/BranchesGame",
             "desc":"Branches: A Game of Choice and Agency is a game that aims to create a feeling of agency for the player through the use of choice and branching narrative.",
             "year":"2021",
-            "cat":Projects.Categories.ART
+            "cat":Projects.Categories.ART,
+            "command":"Branches"
         })
 
         this.mgic = this.makeProject({
-            "name":"My-Girlfriend-is-Curious",
+            "name":"My Girlfriend is Curious",
             "imgUrl":"../img/mgicLogo.png",
             "bgColor":"#191414",
             "projectUrl":"https://nickesc.github.io/My-Girlfriend-is-Curious",
             "sourceUrl":"https://github.com/nickesc/My-Girlfriend-is-Curious",
             "desc":"My girlfriend wants to know what I’m listening to, and I don’t like Spotify displaying it on their app, so I wrote a small server and HTML tag using Spotify's API and thelinmichael/spotify-web-api-node that will return and display my current listening activity.",
             "year":"2022",
-            "cat":Projects.Categories.CODE
+            "cat":Projects.Categories.CODE,
+            "command":"MyGirlfriendisCurious"
         })
         this.scaredyBot = this.makeProject({
             "name":"ScaredyBot",
@@ -59,7 +62,8 @@ class Projects{
             "sourceUrl":"https://github.com/nickesc/scaredyBot",
             "desc":"A robot that runs away from people, built using an iRobot Create2, the pyCreate2 library and a Raspberry Pi.",
             "year":"2022",
-            "cat":Projects.Categories.CODE
+            "cat":Projects.Categories.CODE,
+            "command":"ScaredyBot"
         })
 
 
@@ -71,7 +75,8 @@ class Projects{
             "sourceUrl":"https://github.com/nickesc/HomebakedPiArithmetic",
             "desc":"Bare metal coding a Raspberry Pi into a calculator with a (very) primitive GUI.",
             "year":"2021",
-            "cat":Projects.Categories.CODE
+            "cat":Projects.Categories.CODE,
+            "command":"HomebakedPiArithmetic"
         })
 
         this.gmailExplorer = this.makeProject({
@@ -82,7 +87,8 @@ class Projects{
             "sourceUrl":"https://github.com/nickesc/GmailExplorer",
             "desc":"A series of Jupyter Notebooks that grab and visualize nearly every email I've ever received.",
             "year":"2022",
-            "cat":Projects.Categories.CODE
+            "cat":Projects.Categories.CODE,
+            "command":"GmailExplorer"
         })
 
         this.iob = this.makeProject({
@@ -93,7 +99,8 @@ class Projects{
             "sourceUrl":"https://github.com/nickesc/In-Our-Backyard",
             "desc":"A collaboration between me and my parents, a project containing an animation and guide, both based around point-cloud visualization.",
             "year":"2021",
-            "cat":Projects.Categories.ART
+            "cat":Projects.Categories.ART,
+            "command":"InOurBackyard"
         })
 
         this.steamToolsApi = this.makeProject({
@@ -104,17 +111,19 @@ class Projects{
             "sourceUrl":"https://github.com/nickesc/SteamToolsAPI",
             "desc":"A wrapper for the Steam Web API. Unfinished but semi-robust, allows users to explore the Steam Web API a little more easily.",
             "year":"2021",
-            "cat":Projects.Categories.CODE
+            "cat":Projects.Categories.CODE,
+            "command":"SteamToolsAPI"
         })
         this.logos = this.makeProject({
-            "name":"Logo Reference Page",
+            "name":"Logo Reference Sheet",
             "imgUrl":"../img/logosLogo.png",
             "bgColor":"#EF5252",
             "projectUrl":"https://nickesc.github.io/N.-Escobar-Media-Branding/Logos/logos.html",
             "sourceUrl":"https://github.com/nickesc/N.-Escobar-Media-Branding/tree/main/Logos",
             "desc":"A reference for my different logos. Provides image links, HTML tags and color codes useful when making other projects to keep branding consistent",
             "year":"2022",
-            "cat":Projects.Categories.ART
+            "cat":Projects.Categories.ART,
+            "command":"LogoReferenceSheet"
         })
         this.branchesScript = this.makeProject({
             "name":"Branches Script",
@@ -124,7 +133,8 @@ class Projects{
             "sourceUrl":"https://github.com/nickesc/Branches-Script/",
             "desc":"The script page for Branches. Frontend and backend with a database for lines in the script. Used the webpage to keep voice actors updated on lines I needed recoded while making the game, and sent notifications to them when a new line is added. The database is currently broken.",
             "year":"2021",
-            "cat":Projects.Categories.CODE
+            "cat":Projects.Categories.CODE,
+            "command":"BranchesScript"
         })
 
         this.wildlife = this.makeProject({
@@ -135,7 +145,8 @@ class Projects{
             "sourceUrl":"https://github.com/nickesc/Wildlife",
             "desc":"A spoof of a Steam listing for the fake game, Wildlife: Speculative Explorations of Southern California's Animal Ecology. Wildlife is an exploration of a potential climate change future, made as a part of an experimental art class.",
             "year":"2021",
-            "cat":Projects.Categories.ART
+            "cat":Projects.Categories.ART,
+            "command":"Wildlife"
         })
 
         this.llt = this.makeProject({
@@ -146,7 +157,8 @@ class Projects{
             "sourceUrl":"https://github.com/nickesc/license-templates",
             "desc":"Better license templates for the Lice license generator.",
             "year":"2022",
-            "cat":Projects.Categories.CODE
+            "cat":Projects.Categories.CODE,
+            "command":"LiceLicenseTemplates"
         })
 
         this.valor = this.makeProject({
@@ -155,12 +167,13 @@ class Projects{
             "bgColor":"#7C5745",
             "projectUrl":"#",
             "sourceUrl":"#",
-            "desc":"The final project from my COMP 131 class. An unplayable first person dungeon crawler, written in Java.",
+            "desc":"The final project from my COMP 131 class. An confusing first person dungeon crawler, written in Java. No links to this yet.",
             "year":"projectYear",
-            "cat":Projects.Categories.CODE
+            "cat":Projects.Categories.CODE,
+            "command":"Valor"
         })
 
-        this.list = [this.mgic, this.scaredyBot, this.branches, this.hbpa, this.gmailExplorer,this.iob, this.steamToolsApi, this.logos, this.branchesScript, this.wildlife, this.llt, this.valor]
+        this.list = [this.mgic, this.scaredyBot, this.branches, this.hbPiA, this.gmailExplorer,this.iob, this.steamToolsApi, this.logos, this.branchesScript, this.wildlife, this.llt, this.valor]
 
         this.featured = [this.branches, this.mgic, this.scaredyBot, this.hbPiA, this.gmailExplorer,this.iob]
 
@@ -236,9 +249,20 @@ class Project{
         this.desc = projectObject.desc;
         this.year = projectObject.year;
         this.cat = projectObject.cat;
+        this.command = projectObject.command
         this.createProjectBox()
         document.getElementById("projectsHolder").appendChild(this.getProjectBox())
 
+    }
+
+    redirectToProject(){
+        window.location.href = this.projectUrl;
+    }
+    redirectToSource(){
+        window.location.href = this.sourceUrl;
+    }
+    redirectToImg(){
+        window.location.href = this.imgUrl;
     }
 
     createFeatureBox(){
@@ -307,18 +331,28 @@ class Project{
         this.projectBox.name.innerText = this.name
         this.projectBox.desc.innerText = this.desc
         this.projectBox.year.innerText = this.year
-        this.projectBox.source.innerText = "> Source"
+        this.projectBox.source.innerText = "Source"
+        this.projectBox.source.style.color = "#EF5252"
+        this.projectBox.source.style.textDecoration = "underline solid"
         //this.projectBox.source.href = this.sourceUrl
         this.projectBox.box.style.backgroundColor = this.bgColor
 
         this.projectBox.box.addEventListener('mouseenter', (event) => {
             this.terminal.terminalDisplay.darkenButton(this.projectBox.textHolder)
-            this.projectBox.source.style.color = "#FFF9F2"
         });
         this.projectBox.box.addEventListener('mouseleave', (event) => {
             this.terminal.terminalDisplay.lightenButton(this.projectBox.textHolder)
-            this.projectBox.source.style.color = "#232326"
         });
+
+        this.projectBox.source.addEventListener('mouseenter', (event) => {
+            this.projectBox.source.style.color = "#FFF9F2"
+            this.projectBox.source.style.textDecoration = "underline dotted"
+        });
+        this.projectBox.source.addEventListener('mouseleave', (event) => {
+            this.projectBox.source.style.color = "#EF5252"
+            this.projectBox.source.style.textDecoration = "underline solid"
+        });
+
 
 
         this.projectBox.box.addEventListener('click', (event) => {
@@ -328,6 +362,7 @@ class Project{
         this.projectBox.source.addEventListener('click', (event) => {
             event.stopPropagation();
             window.location.href = this.sourceUrl;
+            this.projectBox.source.style.color = "#232326"
         });
     }
 
