@@ -1,0 +1,62 @@
+.projectBox{
+    border: 2px solid #FFF9F2;
+    max-width: 1070px;
+    width: 90%;
+    margin-top: 2vmin;
+}
+
+.projectTextHolder{
+    background-color: #FFF9F2;
+    color: #232326;
+    padding: 1em;
+}
+.projectName{
+    font-weight: bold;
+}
+
+.projectTopHolder{
+    margin-bottom: .5em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.projectSource{
+    color: #232326;
+    font-style: italic;
+    margin: .5em;
+}
+
+.projectSource:link {
+    color: #232326;
+}
+
+/* visited link */
+.projectSource:visited {
+    color: #232326;
+}
+
+/* mouse over link */
+.projectSource:hover {
+    text-decoration: underline dotted;
+    color:#EF5252;
+}
+
+
+/* selected link */
+.projectSource:active {
+    color: #FFF9F2;
+}
+
+.projectImg{
+    height: 20vh;
+    display: block;
+    margin: 2vmin auto;
+    object-fit: cover;
+}
+
+@media screen and (max-width: 500px) {
+    .projectBox{
+        width:100%;
+    }
+
+}

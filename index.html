@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="/css/terminalDisplay.css">
     <link rel="stylesheet" href="/css/help.css">
     <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/projects.css">
     <link rel="stylesheet" href="/css/Spiral.css">
     <link rel="stylesheet" href="/css/terminal.css">
     <script src="scripts/Blog.js"></script>
@@ -82,7 +83,7 @@
             <div class="terminalMain">
                 <div class="terminalPage" id="homePage" style="display: none">
                     <div class="pageHeader">About me</div>
-                    <div class = "indent">
+                    <div class="indent">
                         <div>
                             Hi! My name is Nick, this is my website. I'm a computer scientist and artist, and I work at
                             the intersection of those fields. I'm curious about how people interact with art, and how
@@ -99,23 +100,89 @@
                         </tr>
 
                     </table>
-                    <!--<div class="featureHolder">
-                        <div class = "featureBox">
-                            <div class="featureImgHolder">
-                                <img class = "featureImage" alt = "projectImg" src="">
-                            </div>
-                            <div class = "featureName">project name</div>
-                        </div>
-                        <div class = "featureBox">
-                            <div class="featureImgHolder">
-                                <img class = "featureImage" alt = "projectImg" src="">
-                            </div>
-                            <div class = "featureName">project name</div>
-                        </div>
-
-                    </div>-->
                     <br>
-                    <div class="pageHeader">Contact and social</div>
+                    <div class="pageHeader">Contact</div>
+                    <div class="indent">
+                        <div>
+                            For business inquiries, please email <a href = "mailto:nick@nescobar.media">nick@nescobar.media</a><br><br>
+                            For everything else, connect with me on these platforms:
+
+                        </div>
+                    </div>
+                    <table id="socialButtons">
+                        <tr>
+                            <td>
+
+                        <a href="https://github.com/nickesc">
+                            <svg class="platformLogo" viewBox="-10 -10 120 120">
+                                <path d="M50,1.2c-27.6,0-50,22.4-50,50c0,22.1,14.3,40.8,34.2,47.4c2.5,0.5,3.3-1.1,3.3-2.4V87c-13.9,3-16.8-5.9-16.8-5.9c-2.3-5.8-5.6-7.3-5.6-7.3c-4.5-3.1,
+                                0.3-3,0.3-3c5,0.3,7.7,5.2,7.7,5.2c4.5,7.6,11.7,5.4,14.5,4.2c0.4-3.2,1.7-5.4,3.2-6.7c-11.1-1.3-22.8-5.6-22.8-24.7c0-5.5,2-9.9,5.2-13.4c-0.5-1.3-2.2-6.3,
+                                0.5-13.2c0,0,4.2-1.3,13.8,5.1c4-1.1,8.3-1.7,12.5-1.7c4.2,0,8.5,0.6,12.5,1.7c9.5-6.5,13.7-5.1,13.7-5.1c2.7,6.9,1,12,0.5,13.2c3.2,3.5,5.1,8,5.1,13.4c0,
+                                19.2-11.7,23.4-22.8,24.7c1.8,1.5,3.4,4.6,3.4,9.3v13.7c0,1.3,0.8,2.9,3.3,2.4C85.7,92.1,100,73.3,100,51.2C100,23.6,77.6,1.2,50,1.2z"/>
+                            </svg>
+                        </a>
+                            </td>
+                            <td>
+                        <a href="https://www.youtube.com/channel/UC8hZSCkN6YCLFej3Y-0RuVQ">
+                            <svg class="platformLogo" viewBox="-10 -10 120 120">
+                                <path class="st0" d="M97.9,25.9c-1.2-4.3-4.5-7.7-8.8-8.8C81.3,15,50,15,50,15s-31.3,0-39.1,2.1c-4.3,1.2-7.7,4.5-8.8,8.8
+                                        C0,33.7,0,50,0,50s0,16.3,2.1,24.1c1.2,4.3,4.5,7.7,8.8,8.8C18.7,85,50,85,50,85s31.3,0,39.1-2.1c4.3-1.2,7.7-4.5,8.8-8.8
+                                        C100,66.3,100,50,100,50S100,33.7,97.9,25.9z M40,65V35l26,15L40,65z"/>
+                            </svg>
+
+                        </a>
+                            </td>
+                            <td>
+                        <a href="https://vimeo.com/nescobarmedia">
+                            <svg class="platformLogo" viewBox="-10 -10 120 120">
+                                <path d="M100,26.7c-0.4,9.8-7.2,23.1-20.4,40.1C66,84.5,54.5,93.3,45,93.3c-5.8,0-10.8-5.4-14.8-16.2
+                                        c-2.7-9.9-5.4-19.8-8.1-29.7c-3-10.8-6.2-16.2-9.6-16.2c-0.7,0-3.4,1.6-7.8,4.7L0,30c4.9-4.3,9.8-8.7,14.6-13
+                                        c6.6-5.7,11.5-8.7,14.8-9c7.8-0.7,12.6,4.6,14.4,16c1.9,12.3,3.3,20,4,23c2.2,10.2,4.7,15.3,7.4,15.3c2.1,0,5.2-3.3,9.4-9.9
+                                        c4.2-6.6,6.4-11.7,6.7-15.1c0.6-5.7-1.6-8.6-6.7-8.6c-2.4,0-4.9,0.6-7.4,1.6c4.9-16.1,14.3-24,28.2-23.5
+                                        C95.7,7,100.5,13.7,100,26.7"/>
+                            </svg>
+                        </a>
+                            </td>
+                            <td>
+                        <a href="https://twitter.com/nickesc_/">
+                            <svg class="platformLogo" viewBox="-10 -10 120 120">
+                                <path id="white_background" class="st0" d="M89.8,29.6c0.1,0.9,0.1,1.8,0.1,2.7c0,27.1-20.6,58.4-58.4,58.4v0
+                                        c-11.1,0-22.1-3.2-31.4-9.2c1.6,0.2,3.3,0.3,4.9,0.3c9.2,0,18.2-3.1,25.5-8.8c-8.8-0.2-16.5-5.9-19.2-14.2c3.1,0.6,6.2,0.5,9.3-0.4
+                                        C10.9,56.4,4,48,4,38.2c0-0.1,0-0.2,0-0.3c2.9,1.6,6,2.5,9.3,2.6c-9-6-11.8-18-6.3-27.4c10.4,12.8,25.8,20.6,42.3,21.4
+                                        c-1.7-7.1,0.6-14.6,5.9-19.6c8.3-7.8,21.3-7.4,29,0.9c4.6-0.9,9-2.6,13-5c-1.5,4.7-4.7,8.8-9,11.3c4.1-0.5,8-1.6,11.8-3.2
+                                        C97.2,23.1,93.8,26.7,89.8,29.6z"/>
+                            </svg>
+                        </a>
+                            </td>
+                            <td>
+                        <a href="https://www.linkedin.com/in/nick-escobar-a18a30236">
+                            <svg class="platformLogo" viewBox="-10 -10 120 120">
+                                <g transform="matrix(1,0,0,1,-138.462,-287.425)">
+                                    <path d="M223.7,372.6h-14.8v-23.2c0-5.5-0.1-12.7-7.7-12.7c-7.7,0-8.9,6-8.9,12.3v23.6h-14.8v-47.7h14.2v6.5h0.2
+                                            c2.9-5,8.3-7.9,14-7.7c15,0,17.8,9.9,17.8,22.7L223.7,372.6z M160.7,318.4C160.7,318.4,160.7,318.4,160.7,318.4
+                                            c-4.7,0-8.6-3.9-8.6-8.6s3.9-8.6,8.6-8.6c4.7,0,8.6,3.9,8.6,8.6c0,0,0,0,0,0C169.3,314.5,165.4,318.4,160.7,318.4 M168.1,372.6
+                                            h-14.8v-47.7h14.8V372.6z M231.1,287.4h-85.2c-4,0-7.3,3.2-7.4,7.2v85.6c0,4,3.4,7.3,7.4,7.2h85.2c4,0.1,7.4-3.2,7.4-7.2v-85.6
+                                            C238.4,290.6,235.1,287.4,231.1,287.4"/>
+                                </g>
+                            </svg>
+                        </a>
+                            </td>
+                            <td>
+                        <a href="https://oxy.joinhandshake.com/stu/users/13218443">
+                            <svg class="platformLogo" viewBox="-10 -10 120 120">
+                                <path d="M88.1,44.6c-1.7-0.6-9.6-2.5-19.8,0.1c-25.6,6.6-30.3-6.9-41.1-10c-2.5-0.7-12.7-1.6-16.5,0.4c-1.4,0.7-2.3,2.4-2.3,4
+                                        c0,7-0.1,38.3-0.1,53.1c0,4.3,3.4,7.7,7.7,7.7h16c4.2,0,7.6-3.4,7.7-7.6C39.8,79.4,40,57.2,40,54.7c0-0.9,0.5-1.1,1.7-1.5
+                                        c10.2-2.6,18.1,3.1,18.3,11.1c0.2,8.8,0.4,19,0.4,27.9c0,4.2,3.4,7.6,7.6,7.6c4.8,0,10.8,0.1,15.9,0.1c4.2,0,7.6-3.4,7.6-7.6
+                                        c0-14.3,0.1-34.7,0.1-43.1C91.6,46.8,90.2,45.5,88.1,44.6z M77.6,38.3c7.8,0,14.2-6.3,14.2-14.2S85.4,10,77.6,10
+                                        s-14.2,6.3-14.2,14.2C63.4,32,69.8,38.3,77.6,38.3z M23.3,29.8c8.2,0,14.9-6.7,14.9-14.9S31.5,0,23.3,0S8.4,6.7,8.4,14.9
+                                        S15,29.8,23.3,29.8z"/>
+                            </svg>
+                        </a>
+                            </td>
+                        </tr>
+
+
+                    </table>
                 </div>
 
                 <div class="terminalPage" id="spiralBlog" style="display: none">
@@ -161,74 +228,20 @@
                 </div>
 
                 <div class="terminalPage" id="projectsPage" style="display: none">
-                    <div class="projectHolder" id="photogrammetryHolder">
-                        > <a href="https://nickesc.github.io/PhotogrammetryVideoInstructions/">Photogrammetry Video
-                        Instructions</a><br>
-                    </div>
-                    <br>
 
-                    <div class="projectHolder" id="steamToolsHolder">
-                        > <a href="../SteamTools/steamToolsHome.html">Steam Tools</a><br>
-                        > <a href="https://github.com/nickesc/SteamToolsAPI">Steam Tools API</a>(<a
-                            href="https://steam-tools-nickesc.herokuapp.com/">endpoint</a>)<br>
-                    </div>
-                    <br>
+                    <div class="pageHeader">Projects</div>
 
-                    <div class="projectHolder" id="Branding">
-                        > <a href="https://nickesc.github.io/N.-Escobar-Media-Branding/">N. Escobar Media Branding
-                        Document</a><br>
-                        > <a href="https://github.com/nickesc/N.-Escobar-Media-Branding/">N. Escobar Media Branding
-                        Reference</a><br>
-                        > <a href="https://github.com/nickesc/N.-Escobar-Media-Branding/archive/main.zip">N. Escobar
-                        Media Branding Download</a><br>
-                    </div>
-                    <br>
+                    <div id="projectsHolder">
 
-                    <div class="projectHolder" id="branches">
-                        > <a href="https://github.com/nickesc/BranchesGame">Branches: A Game of Choice and
-                        Agency</a><br>
-                        > <a href="https://nickesc.github.io/Branches-Script/">Branches-Script</a><br>
-                        > <a href="https://main.d3m0i5w2x6m5nl.amplifyapp.com/">Branches-Script (backup)</a><br>
-                    </div>
-                    <br>
 
-                    <div class="projectHolder" id="gmailExplorer">
-                        > <a href="https://nickesc.github.io/Gmail-Explorer-Reader/">Gmail Explorer Reader</a><br>
-                        > <a href="https://nickesc.github.io/Gmail-Explorer-Imputer/">Gmail Explorer Imputer</a><br>
-                        > <a href="https://nickesc.github.io/Gmail-Explorer-Visualizer/">Gmail Explorer
-                        Visualizer</a><br>
                     </div>
-                    <br>
 
-                    <div class="projectHolder" id="wildlife">
-                        > <a href="https://nickesc.github.io/Wildlife/">Wildlife: Speculative Explorations of Southern
-                        California's Animal Ecology</a><br>
-                    </div>
-                    <br>
 
-                    <div class="projectHolder" id="HomeBakedPiArithmetic">
-                        > <a href="https://github.com/nickesc/HomebakedPiArithmetic">Home Baked Pi: Arithmetic</a><br>
-                    </div>
-                    <br>
-
-                    <!--<div class = "projectHolder" id="nuggClubScraper">
-                        <a href = "https://github.com/nickesc/NuggClubScraper">Nugg Club Scraper</a><br>
-                    </div><br>-->
-
-                    <div class="projectHolder" id="licenseTemplates">
-                        > <a href="https://github.com/nickesc/license-templates">Lice License Templates</a><br>
-                    </div>
-                    <br>
-
-                    <div class="projectHolder" id="valor">
-                        > <a href=""></a>Valor (no link yet)<br>
-                    </div>
-                    <br>
                 </div>
 
                 <div class="terminalPage" id="helpPage" style="display: none">
                     <div class="pageHeader">Help and Usage</div>
-                    <div class = "indent">
+                    <div class="indent">
                         <div>Type commands from the list below into the terminal.</div>
                         <div class="hideOnMobile">
                             <div>Use <code>UP</code> and <code>DOWN</code> arrow keys to scroll through command history
@@ -310,7 +323,7 @@
 
                 <div class="terminalPage" id="crightPage" style="display: none">
                     <div class="pageHeader">Copyright</div>
-                    <div class = "indent">
+                    <div class="indent">
                         <div>Copyright &copy; 2022 N. Escobar</div>
                     </div>
                 </div>
@@ -327,17 +340,18 @@
         </div>
 
         <div class="terminalInput">
-            <div id="terminalLabel" class = disableSelect>nickesc.github.io [v0.8.2]</div>
-            <label class = "disableSelect" id="terminalLabel2" for="terminal">&gt;</label><textarea id="terminal" name="story" rows="1"
-                                                                            placeholder="Type 'help' for help."
-                                                                            autocomplete="off" spellcheck="false"
-                                                                            autocapitalize="off"></textarea>
+            <div id="terminalLabel" class=disableSelect>nickesc.github.io [v0.8.2]</div>
+            <label class="disableSelect" id="terminalLabel2" for="terminal">&gt;</label><textarea id="terminal"
+                                                                                                  name="story" rows="1"
+                                                                                                  placeholder="Type 'help' for help."
+                                                                                                  autocomplete="off"
+                                                                                                  spellcheck="false"
+                                                                                                  autocapitalize="off"></textarea>
         </div>
     </div>
 
 
-
-    <spotify class = "disableSelect" style="position: fixed;">
+    <spotify class="disableSelect" style="position: fixed;">
         <a href="#" class="expand"
            style="position:absolute; bottom: 1.5vmin; right: max(1vw,15px); min-width: 50px; max-width:80px; width: 10vmin;"
            onclick="document.getElementsByClassName('spotifyPlayer')[0].style.display='flex'"><img

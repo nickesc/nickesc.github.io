@@ -1,27 +1,28 @@
-.featureHolder{
+.featureHolder {
     display: flex;
     flex-wrap: wrap;
 
 }
-.featureBox{
+
+.featureBox {
     margin: .5vmin;
-    border:2px solid #FFF9F2;
+    border: 2px solid #FFF9F2;
     color: #232326;
     padding: 0;
 }
 
-.featureImg{
-    object-position: 25%;
+.featureImg {
     display: block;
     margin: 2vmin auto;
     object-fit: cover;
     height: 17vw;
     max-height: 200px;
-    width:17vw;
-    max-width:200px;
+    width: 17vw;
+    max-width: 200px;
 
 }
-.featureName{
+
+.featureName {
     font-weight: bold;
     background-color: #FFF9F2;
     font-size: 10pt;
@@ -32,16 +33,40 @@
     min-width: 100px;
     width: 23vw;
     max-width: 375px;
-    text-overflow:ellipsis;
+    text-overflow: ellipsis;
     border: none;
     margin: 0;
 }
 
+#socialButtons {
+
+    max-width: 225px;
+    justify-content: space-between;
+    margin-left: 2em;
+    margin-top: 1.5vmin;
+
+}
+
+.platformLogo {
+    width: 3em;
+    fill: #FFF9F2;
+    margin: 5px;
+}
+
 @media screen and (max-width: 557px) {
 
-    .featureName{
+    .platformLogo{
+        max-width: 7vw;
+    }
+    .featureName {
         width: 33vw;
         font-size: 8pt;
     }
 
+}
+@media screen and (max-width: 410px) {
+
+    .platformLogo {
+        max-width: 6vw;
+    }
 }

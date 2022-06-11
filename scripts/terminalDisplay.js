@@ -102,9 +102,9 @@ class TerminalDisplay {
         }
     }
 
-    darkenButton(button){
+    darkenButton(button, color = "#FFF9F2"){
         button.style.backgroundColor = "#232326"
-        button.style.color = "#FFF9F2"
+        button.style.color = color
     }
     lightenButton(button){
         button.style.backgroundColor = "#FFF9F2"

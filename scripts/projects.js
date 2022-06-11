@@ -6,7 +6,8 @@ class Projects{
     branches;
     hbpa;
     gmailExplorer;
-    pvi;
+    iob;
+
 
     list = []
 
@@ -15,8 +16,10 @@ class Projects{
     constructor(terminal) {
         this.terminal = terminal
         this.featureHolders = document.getElementsByClassName("featureHolder")
-        this.constructProject()
-        this.setFeature()
+        this.projectsHolder = document.getElementById("projectsHolder")
+        this.constructProjects()
+        this.setFeatured()
+        //this.setProjects()
     }
 
     static Categories = {"ART":"art", "CODE":"code", "VIDEO":"video", "TEXT":"text"}
@@ -25,7 +28,18 @@ class Projects{
         return new Project(projectObject,this.terminal)
     }
 
-    constructProject(){
+    constructProjects(){
+
+        this.branches = this.makeProject({
+            "name":"Branches",
+            "imgUrl":"../img/branchesLogo.png",
+            "bgColor":"#e0e0e0",
+            "projectUrl":"https://github.com/nickesc/BranchesGame",
+            "sourceUrl":"https://github.com/nickesc/BranchesGame",
+            "desc":"Branches: A Game of Choice and Agency is a game that aims to create a feeling of agency for the player through the use of choice and branching narrative.",
+            "year":"2021",
+            "cat":Projects.Categories.ART
+        })
 
         this.mgic = this.makeProject({
             "name":"My-Girlfriend-is-Curious",
@@ -48,23 +62,14 @@ class Projects{
             "cat":Projects.Categories.CODE
         })
 
-        this.branches = this.makeProject({
-            "name":"Branches",
-            "imgUrl":"../img/branchesLogo.png",
-            "bgColor":"#e0e0e0",
-            "projectUrl":"https://github.com/nickesc/BranchesGame",
-            "sourceUrl":"https://github.com/nickesc/BranchesGame",
-            "desc":"A game that aims to create a feeling of agency for the player through the use of choice and branching narrative",
-            "year":"2021",
-            "cat":Projects.Categories.ART
-        })
+
         this.hbPiA = this.makeProject({
             "name":"HomebakedPiArithmetic",
             "imgUrl":"../img/hbPiALogo.png",
             "bgColor":"#000000",
             "projectUrl":"https://github.com/nickesc/HomebakedPiArithmetic",
             "sourceUrl":"https://github.com/nickesc/HomebakedPiArithmetic",
-            "desc":"Bare metal coding a Raspberry Pi into a calculator with a (very) primitive GUI",
+            "desc":"Bare metal coding a Raspberry Pi into a calculator with a (very) primitive GUI.",
             "year":"2021",
             "cat":Projects.Categories.CODE
         })
@@ -75,7 +80,7 @@ class Projects{
             "bgColor":"#e0dfea",
             "projectUrl":"https://github.com/nickesc/GmailExplorer",
             "sourceUrl":"https://github.com/nickesc/GmailExplorer",
-            "desc":"A series of Jupyter Notebooks that grab and visualize nearly every email I've ever received",
+            "desc":"A series of Jupyter Notebooks that grab and visualize nearly every email I've ever received.",
             "year":"2022",
             "cat":Projects.Categories.CODE
         })
@@ -86,38 +91,108 @@ class Projects{
             "bgColor":"#142d14",
             "projectUrl":"https://github.com/nickesc/In-Our-Backyard",
             "sourceUrl":"https://github.com/nickesc/In-Our-Backyard",
-            "desc":"A collaboration between me and my parents, a project containing an animation and guide, both based around point-cloud visualization",
+            "desc":"A collaboration between me and my parents, a project containing an animation and guide, both based around point-cloud visualization.",
             "year":"2021",
-            "cat":Projects.Categories.TEXT
+            "cat":Projects.Categories.ART
         })
 
+        this.steamToolsApi = this.makeProject({
+            "name":"Steam Tools API",
+            "imgUrl":"../img/steamToolsApiLogo.png",
+            "bgColor":"#1B2838",
+            "projectUrl":"https://steam-tools-nickesc.herokuapp.com/",
+            "sourceUrl":"https://github.com/nickesc/SteamToolsAPI",
+            "desc":"A wrapper for the Steam Web API. Unfinished but semi-robust, allows users to explore the Steam Web API a little more easily.",
+            "year":"2021",
+            "cat":Projects.Categories.CODE
+        })
+        this.logos = this.makeProject({
+            "name":"Logo Reference Page",
+            "imgUrl":"../img/logosLogo.png",
+            "bgColor":"#EF5252",
+            "projectUrl":"https://nickesc.github.io/N.-Escobar-Media-Branding/Logos/logos.html",
+            "sourceUrl":"https://github.com/nickesc/N.-Escobar-Media-Branding/tree/main/Logos",
+            "desc":"A reference for my different logos. Provides image links, HTML tags and color codes useful when making other projects to keep branding consistent",
+            "year":"2022",
+            "cat":Projects.Categories.ART
+        })
+        this.branchesScript = this.makeProject({
+            "name":"Branches Script",
+            "imgUrl":"../img/branchesScriptLogo.png",
+            "bgColor":"#e0e0e0",
+            "projectUrl":"https://nickesc.github.io/Branches-Script/",
+            "sourceUrl":"https://github.com/nickesc/Branches-Script/",
+            "desc":"The script page for Branches. Frontend and backend with a database for lines in the script. Used the webpage to keep voice actors updated on lines I needed recoded while making the game, and sent notifications to them when a new line is added. The database is currently broken.",
+            "year":"2021",
+            "cat":Projects.Categories.CODE
+        })
 
-        this.list = [this.mgic, this.scaredyBot, this.branches, this.hbpa, this.gmailExplorer,this.iob]
+        this.wildlife = this.makeProject({
+            "name":"Wildlife",
+            "imgUrl":"../img/wildlifeLogo.png",
+            "bgColor":"#2D417C",
+            "projectUrl":"https://nickesc.github.io/Wildlife/",
+            "sourceUrl":"https://github.com/nickesc/Wildlife",
+            "desc":"A spoof of a Steam listing for the fake game, Wildlife: Speculative Explorations of Southern California's Animal Ecology. Wildlife is an exploration of a potential climate change future, made as a part of an experimental art class.",
+            "year":"2021",
+            "cat":Projects.Categories.ART
+        })
+
+        this.llt = this.makeProject({
+            "name":"Lice License Templates",
+            "imgUrl":"../img/lltLogo.png",
+            "bgColor":"#C1A4DD",
+            "projectUrl":"https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/license-info.md",
+            "sourceUrl":"https://github.com/nickesc/license-templates",
+            "desc":"Better license templates for the Lice license generator.",
+            "year":"2022",
+            "cat":Projects.Categories.CODE
+        })
+
+        this.valor = this.makeProject({
+            "name":"Valor",
+            "imgUrl":"../img/valorLogo.png",
+            "bgColor":"#7C5745",
+            "projectUrl":"#",
+            "sourceUrl":"#",
+            "desc":"The final project from my COMP 131 class. An unplayable first person dungeon crawler, written in Java.",
+            "year":"projectYear",
+            "cat":Projects.Categories.CODE
+        })
+
+        this.list = [this.mgic, this.scaredyBot, this.branches, this.hbpa, this.gmailExplorer,this.iob, this.steamToolsApi, this.logos, this.branchesScript, this.wildlife, this.llt, this.valor]
+
+        this.featured = [this.branches, this.mgic, this.scaredyBot, this.hbPiA, this.gmailExplorer,this.iob]
 
     }
 
 
 
-    setFeature(){
-        this.featureHolders[0].appendChild(this.branches.getFeatureBox())
-        this.featureHolders[0].appendChild(this.mgic.getFeatureBox())
-        this.featureHolders[0].appendChild(this.scaredyBot.getFeatureBox())
-        this.featureHolders[0].appendChild(this.hbPiA.getFeatureBox())
-        this.featureHolders[0].appendChild(this.gmailExplorer.getFeatureBox())
-        this.featureHolders[0].appendChild(this.iob.getFeatureBox())
+    setFeatured(){
+
+        for (let i = 0; i<this.featured.length; i++){
+            this.featureHolders[0].appendChild(this.featured[i].getFeatureBox())
+        }
+    }
+
+    setProjects(){
+
+        for (let i = 0; i<this.list.length; i++){
+            this.projectsHolder.appendChild(this.list[i].getProjectBox())
+        }
     }
 }
 
 /*
-let projectTemplate = new Project({
+this.projectTemplate = new Project({
     "name":"projectName",
-    "imgUrl":"imageUrl",
-    "bgColor"":"backgroundColor
+    "imgUrl":"../img/Logo.png",
+    "bgColor":"#",
     "projectUrl":"projectUrl",
     "sourceUrl":"sourceUrl",
     "desc":"projectDescription",
     "year":"projectYear",
-    "cat":"projectCategory"
+    "cat":Projects.Categories.
 })
 */
 
@@ -129,6 +204,17 @@ class Project{
         "img":undefined,
         "name":undefined
     };
+    projectBox = {
+        "box":undefined,
+        "textHolder":undefined,
+        "topHolder":undefined,
+        "img":undefined,
+        "name":undefined,
+        "desc":undefined,
+        "year":undefined,
+        "source":undefined
+    };
+    featured = false;
     started = false;
 
     constructor(projectObject, terminal) {
@@ -150,6 +236,9 @@ class Project{
         this.desc = projectObject.desc;
         this.year = projectObject.year;
         this.cat = projectObject.cat;
+        this.createProjectBox()
+        document.getElementById("projectsHolder").appendChild(this.getProjectBox())
+
     }
 
     createFeatureBox(){
@@ -185,11 +274,74 @@ class Project{
         });
     }
 
+    createProjectBox(){
+        this.projectBox.box = document.createElement("div")
+        this.projectBox.textHolder = document.createElement("div")
+        this.projectBox.img = document.createElement("IMG")
+        this.projectBox.topHolder = document.createElement("div")
+        this.projectBox.name = document.createElement("div")
+        this.projectBox.desc = document.createElement("div")
+        this.projectBox.year = document.createElement("div")
+        this.projectBox.source = document.createElement("div")
+
+        this.projectBox.box.appendChild(this.projectBox.img)
+        this.projectBox.box.appendChild(this.projectBox.textHolder)
+        this.projectBox.textHolder.appendChild(this.projectBox.topHolder)
+        this.projectBox.topHolder.appendChild(this.projectBox.name)
+        this.projectBox.topHolder.appendChild(this.projectBox.year)
+        this.projectBox.textHolder.appendChild(this.projectBox.desc)
+        this.projectBox.textHolder.appendChild(this.projectBox.source)
+
+
+        this.projectBox.box.className = "projectBox pointer"
+        this.projectBox.textHolder.className = "projectTextHolder"
+        this.projectBox.topHolder.className = "projectTopHolder"
+        this.projectBox.img.className = "projectImg"
+        this.projectBox.name.className = "projectName"
+        this.projectBox.desc.className = "projectDesc"
+        this.projectBox.year.className = "projectYear"
+        this.projectBox.source.className = "projectSource"
+
+        this.projectBox.img.alt = this.name + " image"
+        this.projectBox.img.src = this.imgUrl
+        this.projectBox.name.innerText = this.name
+        this.projectBox.desc.innerText = this.desc
+        this.projectBox.year.innerText = this.year
+        this.projectBox.source.innerText = "> Source"
+        //this.projectBox.source.href = this.sourceUrl
+        this.projectBox.box.style.backgroundColor = this.bgColor
+
+        this.projectBox.box.addEventListener('mouseenter', (event) => {
+            this.terminal.terminalDisplay.darkenButton(this.projectBox.textHolder)
+            this.projectBox.source.style.color = "#FFF9F2"
+        });
+        this.projectBox.box.addEventListener('mouseleave', (event) => {
+            this.terminal.terminalDisplay.lightenButton(this.projectBox.textHolder)
+            this.projectBox.source.style.color = "#232326"
+        });
+
+
+        this.projectBox.box.addEventListener('click', (event) => {
+            //event.stopPropagation();
+            window.location.href = this.projectUrl;
+        });
+        this.projectBox.source.addEventListener('click', (event) => {
+            event.stopPropagation();
+            window.location.href = this.sourceUrl;
+        });
+    }
+
     getFeatureBox(){
-        if(!this.started){
+        if(!this.featured){
             this.createFeatureBox()
+            this.featured=true
         }
         return this.featureBox.box
+    }
+
+    getProjectBox(){
+
+        return this.projectBox.box
     }
 
 }

@@ -74,6 +74,12 @@ a:visited {
 /* mouse over link */
 a:hover {
     text-decoration: underline dotted;
+    color:#EF5252;
+}
+a svg:hover {
+    fill: #232326;
+    stroke: #FFF9F2;
+    stroke-width: 5px;
 }
 
 /* selected link */
