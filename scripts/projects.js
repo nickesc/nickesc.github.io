@@ -168,7 +168,7 @@ class Projects{
             "projectUrl":"#",
             "sourceUrl":"#",
             "desc":"The final project from my COMP 131 class. An confusing first person dungeon crawler, written in Java. No links to this yet.",
-            "year":"projectYear",
+            "year":"2019",
             "cat":Projects.Categories.CODE,
             "command":"Valor"
         })
