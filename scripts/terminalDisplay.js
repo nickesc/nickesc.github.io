@@ -61,6 +61,9 @@ class TerminalDisplay {
     redirectToPortfolio(){
         window.location.href = "http://nickesc.com";
     }
+    redirectToSource(){
+        window.location.href = "http://github.com/nickesc/nickesc.github.io";
+    }
     redirectToResume(){
         window.location.href = "./pages/Resume.html";
     }

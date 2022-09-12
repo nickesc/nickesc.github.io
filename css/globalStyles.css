@@ -47,6 +47,28 @@ h1{
     display: flex;
 }
 
+.banner{
+    position: fixed; 
+    background-color: #EF5252; 
+    display: none; 
+    flex-direction: row; 
+    width: 100%; 
+    height: fit-content; 
+    justify-content: space-between; 
+    padding: 5px 10px; 
+    box-sizing: border-box;
+}
+
+.bannerText {
+    padding-right: 20px;
+}
+.bannerClose{
+    font-weight: bold;
+}
+.bannerClose:hover{
+    text-decoration: underline;
+}
+
 
 #workInProgress{
     background-color: #fff3b9;

@@ -247,9 +247,14 @@ class Terminal {
                 case (command[0] === "resume"):
                     this.terminalDisplay.redirectToResume()
                     break;
+                case (command[0] === "source"):
+                    this.terminalDisplay.redirectToSource()
+                    break;
                 case (command[0] === "cright"):
                     this.terminalDisplay.setDisplay(this.terminalDisplay.cright)
                     break;
+                case (command[0] === "firefox"):
+                    firefoxBanner.openFirefoxBanner()
                 case (this.testIfProjectNameExists(command)):
                     this.testIfProjectNameExists(command, true)
                     break;
