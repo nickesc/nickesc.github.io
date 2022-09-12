@@ -53,6 +53,14 @@
             spiral["info"] = response;
         }
     </script>
+
+    <script>
+        if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
+            alert("Site is know to have formatting issues on Firefox, all functionality remains available")
+        }
+        
+    </script>
+
     <script src="https://www.googleapis.com/blogger/v3/blogs/3333201081983185753?callback=handleResponse&key=AIzaSyBBHliycteWigA8ujZw9QlXB-UFJXw3T-s&fields=name,posts,published,updated,url,selfLink"></script>
 </head>
 
@@ -242,6 +250,7 @@
                 <div class="terminalPage" id="helpPage" style="display: none">
                     <div class="pageHeader">Help and Usage</div>
                     <div class="indent">
+                        <div>Site is know to have formatting issues on Firefox, but all functionality is available</div>
                         <div>Type commands from the list below into the terminal.</div>
                         <div class="hideOnMobile">
                             <div>Use <code>UP</code> and <code>DOWN</code> arrow keys to scroll through command history
