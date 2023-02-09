@@ -7,6 +7,8 @@ class Projects{
     hbpa;
     gmailExplorer;
     iob;
+    dotfiles;
+    bumblebee;
 
 
     list = []
@@ -66,17 +68,16 @@ class Projects{
             "command":"ScaredyBot"
         })
 
-
-        this.hbPiA = this.makeProject({
-            "name":"HomebakedPiArithmetic",
-            "imgUrl":"../img/hbPiALogo.png",
-            "bgColor":"#000000",
-            "projectUrl":"https://github.com/nickesc/HomebakedPiArithmetic",
-            "sourceUrl":"https://github.com/nickesc/HomebakedPiArithmetic",
-            "desc":"Bare metal coding a Raspberry Pi into a calculator with a (very) primitive GUI.",
-            "year":"2021",
+        this.bumblebee = this.makeProject({
+            "name":"The BumbleBee",
+            "imgUrl":"../img/bumblebeeLogo.png",
+            "bgColor":"#152C49",
+            "projectUrl":"https://nickesc.github.io/BumbleBee",
+            "sourceUrl":"https://github.com/nickesc/bumblebee",
+            "desc":"A portable word game generator written in CircuitPython, based on The New York Times Spelling Bee.",
+            "year":"2023",
             "cat":Projects.Categories.CODE,
-            "command":"HomebakedPiArithmetic"
+            "command":"TheBumbleBee"
         })
 
         this.gmailExplorer = this.makeProject({
@@ -89,6 +90,30 @@ class Projects{
             "year":"2022",
             "cat":Projects.Categories.CODE,
             "command":"GmailExplorer"
+        })
+
+        this.dotfiles = this.makeProject({
+            "name":".dotfiles",
+            "imgUrl":"../img/dotfilesLogo.png",
+            "bgColor":"#28704F",
+            "projectUrl":"https://github.com/nickesc/.dotfiles",
+            "sourceUrl":"https://github.com/nickesc/.dotfiles",
+            "desc":"My .dotfile repository for automated MacOS setup, including custom scripts and themes.",
+            "year":"2022",
+            "cat":Projects.Categories.CODE,
+            "command":".dotfiles"
+        })
+
+        this.hbPiA = this.makeProject({
+            "name":"HomebakedPiArithmetic",
+            "imgUrl":"../img/hbPiALogo.png",
+            "bgColor":"#000000",
+            "projectUrl":"https://github.com/nickesc/HomebakedPiArithmetic",
+            "sourceUrl":"https://github.com/nickesc/HomebakedPiArithmetic",
+            "desc":"Bare metal coding a Raspberry Pi into a calculator with a (very) primitive GUI.",
+            "year":"2021",
+            "cat":Projects.Categories.CODE,
+            "command":"HomebakedPiArithmetic"
         })
 
         this.iob = this.makeProject({
@@ -173,9 +198,12 @@ class Projects{
             "command":"Valor"
         })
 
-        this.list = [this.mgic, this.scaredyBot, this.branches, this.hbPiA, this.gmailExplorer,this.iob, this.steamToolsApi, this.logos, this.branchesScript, this.wildlife, this.llt, this.valor]
 
-        this.featured = [this.branches, this.mgic, this.scaredyBot, this.hbPiA, this.gmailExplorer,this.iob]
+
+
+        this.list = [this.mgic, this.scaredyBot, this.branches, this.bumblebee, this.gmailExplorer, this.dotfiles, this.iob, this.hbPiA, this.steamToolsApi, this.logos, this.branchesScript, this.wildlife, this.llt, this.valor]
+
+        this.featured = [this.branches, this.mgic, this.scaredyBot, this.bumblebee, this.gmailExplorer, this.dotfiles]
 
     }
 
