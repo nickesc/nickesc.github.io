@@ -134,7 +134,7 @@ class Projects{
             "bgColor":"#232323",
             "projectUrl":"https://github.com/nickesc/.dotfiles/blob/main/scripts/note",
             "sourceUrl":"https://github.com/nickesc/.dotfiles/blob/main/scripts/note",
-            "desc":"A ZSH script to manage 'notes' and 'notebooks' from the command line; creates git tracked directories of Markdown files, to be used as a note taking program",
+            "desc":"A ZSH script to manage 'notes' and 'notebooks' from the command line; creates git tracked directories of Markdown files for easy access to notes.",
             "year":"2023",
             "cat":Projects.Categories.CODE,
             "command":"Note"
