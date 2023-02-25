@@ -122,11 +122,25 @@ class Projects{
             "bgColor":"#142d14",
             "projectUrl":"https://github.com/nickesc/In-Our-Backyard",
             "sourceUrl":"https://github.com/nickesc/In-Our-Backyard",
-            "desc":"A collaboration between me and my parents, a project containing an animation and guide, both based around point-cloud visualization.",
+            "desc":"A collaboration between my parents and me; a project containing an animation and guide, both based around point-cloud visualization.",
             "year":"2021",
             "cat":Projects.Categories.ART,
             "command":"InOurBackyard"
         })
+
+        this.notes = this.makeProject({
+            "name":"Note",
+            "imgUrl":"../img/noteLogo.png",
+            "bgColor":"#232323",
+            "projectUrl":"https://github.com/nickesc/.dotfiles/blob/main/scripts/note",
+            "sourceUrl":"https://github.com/nickesc/.dotfiles/blob/main/scripts/note",
+            "desc":"A ZSH script to manage 'notes' and 'notebooks' from the command line; creates git tracked directories of Markdown files, to be used as a note taking program",
+            "year":"2023",
+            "cat":Projects.Categories.CODE,
+            "command":"Note"
+        })
+
+
 
         this.steamToolsApi = this.makeProject({
             "name":"Steam Tools API",
