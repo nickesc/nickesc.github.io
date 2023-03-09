@@ -10,7 +10,7 @@
     background-color: #FFF9F2;
     color: #232326;
     padding: min(max(1em, 2vw),27px);
-    font-size: 16px;
+    font-size: 1em;
     margin-bottom: 4vh;
 }
 
@@ -43,7 +43,7 @@
 
 @media screen and (max-width: 500px) {
     .postDiv{
-        font-size: 14px;
+        font-size: .8em;
     }
 
 }
@@ -59,7 +59,4 @@
 }
 .postTime, .posturl{
     font-size: .8em;
-}
-.markdown-body{
-
 }
