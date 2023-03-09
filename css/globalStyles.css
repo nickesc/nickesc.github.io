@@ -48,14 +48,14 @@ h1{
 }
 
 .banner{
-    position: fixed; 
-    background-color: #EF5252; 
-    display: none; 
-    flex-direction: row; 
-    width: 100%; 
-    height: fit-content; 
-    justify-content: space-between; 
-    padding: 5px 10px; 
+    position: fixed;
+    background-color: #EF5252;
+    display: none;
+    flex-direction: row;
+    width: 100%;
+    height: fit-content;
+    justify-content: space-between;
+    padding: 5px 10px;
     box-sizing: border-box;
 }
 
@@ -129,4 +129,11 @@ a:active {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: #D6D6D6;
+}
+
+@media screen and (max-width: 557px) {
+    .indent {
+        margin-left: .5em;
+        font-size: .7em;
+    }
 }

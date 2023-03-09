@@ -1,49 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-CW1RJZFZ6R"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-        
-            gtag('config', 'G-CW1RJZFZ6R');
-        </script>
         <title>Spiral</title>
-    
+
         <meta charset="UTF-8">
         <meta name="description" content="A collection of thoughts, ideas and updates for absolutely no one">
         <meta name="keywords" content="blog, website, art, computer science, coding, design, video games, portfolio">
         <meta name="author" content="Nick Escobar">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
         <link rel="stylesheet" href="/css/globalStyles.css">
 
         <link rel="stylesheet" href="/fonts/ibm-courier/fonts/IBM-Courier.css">
 
         <link rel="stylesheet" href="/css/Spiral.css">
         <script src = "../scripts/Blog.js"></script>
-        
+
         <script>
             const sprialAPIKey = "AIzaSyBBHliycteWigA8ujZw9QlXB-UFJXw3T-s"
             const spiralBlogID = "3333201081983185753"
             const spiralBlogURL = "https://nescobarmedia.blogspot.com/"
             let url = "https://www.googleapis.com/blogger/v3/blogs/" + spiralBlogID + "?key=" + sprialAPIKey
-            
+
         </script>
-        
+
         <script>
             let spiral = {info:{}, posts:{}}
             function handleResponse(response) {
                 //console.log(response);
                 spiral["info"]=response;
-                
+
                 //console.log(response)
             }
         </script>
         <script src="https://www.googleapis.com/blogger/v3/blogs/3333201081983185753?callback=handleResponse&key=AIzaSyBBHliycteWigA8ujZw9QlXB-UFJXw3T-s&fields=name,posts,published,updated,url,selfLink"></script>
         <script src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@2/dist/zero-md.min.js" type="module"></script>
-        
+
     </head>
     <body>
         <div class="terminalBlock">
@@ -315,6 +307,6 @@
                 </script>
             </div>
         </spotify>
-    
+
     </body>
 </html>

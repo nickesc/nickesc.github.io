@@ -58,6 +58,7 @@
 @media screen and (max-width: 500px) {
     .projectBox{
         width:95%;
+        font-size: .7em;
     }
 
 }
