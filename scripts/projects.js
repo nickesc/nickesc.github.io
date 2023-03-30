@@ -81,7 +81,7 @@ class Projects{
         })
 
         this.gmailExplorer = this.makeProject({
-            "name":"GmailExplorer",
+            "name":"Gmail Explorer",
             "imgUrl":"../img/gmailExplorerLogo.png",
             "bgColor":"#e0dfea",
             "projectUrl":"https://github.com/nickesc/GmailExplorer",
@@ -105,15 +105,15 @@ class Projects{
         })
 
         this.hbPiA = this.makeProject({
-            "name":"HomebakedPiArithmetic",
+            "name":"Homebaked Pi: Arithmetic",
             "imgUrl":"../img/hbPiALogo.png",
             "bgColor":"#000000",
             "projectUrl":"https://github.com/nickesc/HomebakedPiArithmetic",
             "sourceUrl":"https://github.com/nickesc/HomebakedPiArithmetic",
-            "desc":"Bare metal coding a Raspberry Pi into a calculator with a (very) primitive GUI.",
+            "desc":"Bare metal coding a Raspberry Pi into a calculator with a primitive GUI.",
             "year":"2021",
             "cat":Projects.Categories.CODE,
-            "command":"HomebakedPiArithmetic"
+            "command":"HomebakedPi:Arithmetic"
         })
 
         this.iob = this.makeProject({
