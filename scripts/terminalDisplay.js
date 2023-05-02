@@ -69,7 +69,7 @@ class TerminalDisplay {
     }
 
     attachListeners(){
-        document.addEventListener('contextmenu', event => event.preventDefault());
+        //document.addEventListener('contextmenu', event => event.preventDefault());
 
         this.homeButton.addEventListener('click', (event) => {
             this.setDisplay(this.home)

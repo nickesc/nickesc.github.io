@@ -9,6 +9,7 @@ class Projects{
     iob;
     dotfiles;
     bumblebee;
+    starfish;
 
 
     list = []
@@ -80,17 +81,17 @@ class Projects{
             "command":"TheBumbleBee"
         })
 
-        this.gmailExplorer = this.makeProject({
-            "name":"Gmail Explorer",
-            "imgUrl":"../img/gmailExplorerLogo.png",
-            "bgColor":"#e0dfea",
-            "projectUrl":"https://github.com/nickesc/GmailExplorer",
-            "sourceUrl":"https://github.com/nickesc/GmailExplorer",
-            "desc":"A series of Jupyter Notebooks that grab and visualize nearly every email I've ever received.",
-            "year":"2022",
-            "cat":Projects.Categories.CODE,
-            "command":"GmailExplorer"
-        })
+        this.starfish = this.makeProject({
+            "name": "Starfish",
+            "imgUrl": "../img/starfishLogo.png",
+            "bgColor": "#92D0DD",
+            "projectUrl": "https://nickesc.itch.io/starfish",
+            "sourceUrl": "https://github.com/nickesc/projectStarfish",
+            "desc": "A small, physics-based game with a simple premise: throw the Starfish as far as you can before the timer runs out! Built with Godot as a part of the Gamedev.js Jam 2023 game jam.",
+            "year": "2023",
+            "cat": Projects.Categories.ART,
+            "command": "Starfish",
+        });
 
         this.dotfiles = this.makeProject({
             "name":".dotfiles",
@@ -102,6 +103,18 @@ class Projects{
             "year":"2022",
             "cat":Projects.Categories.CODE,
             "command":".dotfiles"
+        })
+
+        this.gmailExplorer = this.makeProject({
+            "name":"Gmail Explorer",
+            "imgUrl":"../img/gmailExplorerLogo.png",
+            "bgColor":"#e0dfea",
+            "projectUrl":"https://github.com/nickesc/GmailExplorer",
+            "sourceUrl":"https://github.com/nickesc/GmailExplorer",
+            "desc":"A series of Jupyter Notebooks that grab and visualize nearly every email I've ever received.",
+            "year":"2022",
+            "cat":Projects.Categories.CODE,
+            "command":"GmailExplorer"
         })
 
         this.hbPiA = this.makeProject({
@@ -212,16 +225,34 @@ class Projects{
             "command":"Valor"
         })
 
+        this.list = [
+          this.mgic,
+          this.scaredyBot,
+          this.branches,
+          this.bumblebee,
+          this.starfish,
+          this.dotfiles,
+          this.gmailExplorer,
+          this.iob,
+          this.hbPiA,
+          this.steamToolsApi,
+          this.logos,
+          this.branchesScript,
+          this.wildlife,
+          this.llt,
+          this.valor,
+        ];
 
-
-
-        this.list = [this.mgic, this.scaredyBot, this.branches, this.bumblebee, this.gmailExplorer, this.dotfiles, this.iob, this.hbPiA, this.steamToolsApi, this.logos, this.branchesScript, this.wildlife, this.llt, this.valor]
-
-        this.featured = [this.branches, this.mgic, this.scaredyBot, this.bumblebee, this.gmailExplorer, this.dotfiles]
+        this.featured = [
+          this.branches,
+          this.mgic,
+          this.scaredyBot,
+          this.bumblebee,
+          this.starfish,
+          this.dotfiles,
+        ];
 
     }
-
-
 
     setFeatured(){
 
