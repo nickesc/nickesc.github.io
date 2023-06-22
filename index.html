@@ -401,7 +401,7 @@
         </div>
     </div>
 
-    <!-- <spotify class="disableSelect" style="position: fixed;">
+    <spotify class="disableSelect" style="position: fixed;">
         <a href="#" class="expand"
            style="position:absolute; bottom: 1.5vmin; right: max(1vw,15px); min-width: 50px; max-width:80px; width: 10vmin;"
            onclick="document.getElementsByClassName('spotifyPlayer')[0].style.display='flex'"><img
@@ -507,7 +507,7 @@
 
                 mediaQuery.addListener(handleChange);
                 handleChange(mediaQuery);
-                const currentSongUrl = "https://mgic-server.herokuapp.com/current";
+                const currentSongUrl = "https://mgic.onrender.com/current";
 
                 function setSong() {
                     fetch(currentSongUrl)
@@ -640,7 +640,7 @@
                 setSong()
             </script>
         </div>
-    </spotify> -->
+    </spotify>
 
     <script>
         let firefoxBanner = new FirefoxBanner()
