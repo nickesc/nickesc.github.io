@@ -37,9 +37,23 @@
     padding: 0 min(1vw,.5em);
 }
 
+@media (max-width: 580px) {
+  .terminalMenu{
+    align-content: stretch;
+    flex-wrap: wrap;
+  }
+  .blocker.terminalMenu  {
+    height: 46px;
+  }
+}
+
+@media (max-width: 290px) {
+  .blocker.terminalMenu  {
+    height: 66px;
+  }
+}
+
 .menuButton{
-
-
     padding: .1em min(1vw,.5em) 0;
     font-weight: bold;
 }

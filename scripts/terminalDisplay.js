@@ -14,10 +14,12 @@ class TerminalDisplay {
     helpPage = document.getElementById("helpPage")
     crightPage = document.getElementById("crightPage")
 
-    homeButton =document.getElementById("homeButton")
+    homeButton = document.getElementById("homeButton")
     spiralButton = document.getElementById("spiralButton")
     projectsButton = document.getElementById("projectsButton")
     portfolioButton = document.getElementById("portfolioButton")
+    githubButton = document.getElementById("githubButton")
+    resumeButton = document.getElementById("resumeButton")
     helpButton = document.getElementById("terminalLabel")
 
     home = {page:this.homePage, button:this.homeButton, name:"home"}
@@ -52,17 +54,24 @@ class TerminalDisplay {
         this.lightenButton(this.spiralButton)
         //this.projectsPage.style.display = "none"
         this.lightenButton(this.projectsButton)
+        this.lightenButton(this.portfolioButton);
+        this.lightenButton(this.githubButton);
+        this.lightenButton(this.resumeButton);
         //this.helpPage.style.display = "none"
         for(let i =0;i<this.errors.length;i++){
             this.errors[i].style.display = "none"
         }
     }
 
+    redirectToGithub(){
+        window.location.href = "https://github.com/nickesc";
+    }
+
     redirectToPortfolio(){
-        window.location.href = "http://nickesc.com";
+        window.location.href = "https://nickesc.com";
     }
     redirectToSource(){
-        window.location.href = "http://github.com/nickesc/nickesc.github.io";
+        window.location.href = "https://github.com/nickesc/nickesc.github.io";
     }
     redirectToResume(){
         window.location.href = "./pages/Resume.html";
@@ -87,6 +96,14 @@ class TerminalDisplay {
 
         this.portfolioButton.addEventListener('click', (event) => {
             this.redirectToPortfolio();
+        });
+
+        this.githubButton.addEventListener('click', (event) => {
+            this.redirectToGithub();
+        });
+
+        this.resumeButton.addEventListener('click', (event) => {
+            this.redirectToResume();
         });
 
 

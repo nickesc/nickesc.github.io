@@ -229,6 +229,14 @@ class Terminal {
                             this.terminalDisplay.redirectToPortfolio()
                             found = true
                             break;
+                        } else if (command[1] === "github"){
+                            this.terminalDisplay.redirectToGithub()
+                            found = true
+                            break;
+                        } else if (command[1] === "resume"){
+                            this.terminalDisplay.redirectToResume()
+                            found = true
+                            break;
                         }
                     }
                     if(!found){
@@ -246,6 +254,12 @@ class Terminal {
                     break;
                 case (command[0] === "resume"):
                     this.terminalDisplay.redirectToResume()
+                    break;
+                case (command[0] === "portfolio"):
+                    this.terminalDisplay.redirectToPortfolio()
+                    break;
+                case (command[0] === "github"):
+                    this.terminalDisplay.redirectToGithub()
                     break;
                 case (command[0] === "source"):
                     this.terminalDisplay.redirectToSource()

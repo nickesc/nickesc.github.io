@@ -137,3 +137,8 @@ a:active {
         font-size: .8em;
     }
 }
+
+body {
+  font-variant-ligatures: none;
+  font-feature-settings: "liga" 0;
+}
