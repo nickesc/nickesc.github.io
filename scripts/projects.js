@@ -40,7 +40,7 @@ class Projects{
             "bgColor": "#CECECE",
             "projectUrl": "https://www.npmjs.com/package/loggedmessage",
             "sourceUrl": "https://github.com/nickesc/loggedmessage",
-            "desc": "a simple but flexible console logging library with common-sense builtin functions and defaults.",
+            "desc": "A simple but flexible console logging library with common-sense builtin functions and defaults.",
             "year": "2023",
             "cat": Projects.Categories.CODE,
             "command": "loggedmessage",
