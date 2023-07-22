@@ -34,6 +34,18 @@ class Projects{
 
     constructProjects(){
 
+        this.loggedmessage = this.makeProject({
+            "name": "loggedmessage",
+            "imgUrl": "../img/loggedmessageLogo.png",
+            "bgColor": "#CECECE",
+            "projectUrl": "https://www.npmjs.com/package/loggedmessage",
+            "sourceUrl": "https://github.com/nickesc/loggedmessage",
+            "desc": "a simple but flexible console logging library with common-sense builtin functions and defaults.",
+            "year": "2023",
+            "cat": Projects.Categories.CODE,
+            "command": "loggedmessage",
+        });
+
         this.starfish = this.makeProject({
             "name": "Starfish",
             "imgUrl": "../img/starfishLogo.png",
@@ -239,6 +251,7 @@ class Projects{
         })
 
         this.list = [
+          this.loggedmessage, // jul 2023
           this.starfish, // april 2023
           this.bumblebee, // jan 2023
           this.dotfiles, // nov 2022
