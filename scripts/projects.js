@@ -33,6 +33,17 @@ class Projects{
     }
 
     constructProjects(){
+        this.tempChecker = this.makeProject({
+            "name": "tempChecker",
+            "imgUrl": "../img/tempCheckerLogo.png",
+            "bgColor": "#111111",
+            "projectUrl": "https://io.adafruit.com/nickesc/dashboards/room-environment",
+            "sourceUrl": "https://github.com/nickesc/tempChecker",
+            "desc": "A small project to track the temperature and other conditions in my bedroom and other rooms of my house.",
+            "year": "2023",
+            "cat": Projects.Categories.CODE,
+            "command": "tempchecker",
+        });
 
         this.loggedmessage = this.makeProject({
             "name": "loggedmessage",
@@ -251,24 +262,25 @@ class Projects{
         })
 
         this.list = [
-          this.loggedmessage, // jul 2023
-          this.starfish, // april 2023
-          this.bumblebee, // jan 2023
-          this.dotfiles, // nov 2022
-          this.note, // nov 2022
-          this.paradise, // nov 2022
-          this.scaredyBot, // may 2022
-          this.gmailExplorer, // may 2022
-          this.mgic, // april 2022
-          this.logos, // march 2022
-          this.branches, // dec 2021
-          this.branchesScript, // dec 2021
-          this.hbPiA, // dec 2021
-          this.steamToolsApi, // nov 2021
-          this.wildlife, // dec 2021
-          this.llt, // dec 2021
-          this.iob, // oct 2021
-          this.valor, // dec 2019
+            this.tempChecker, // sep 2023
+            this.loggedmessage, // jul 2023
+            this.starfish, // april 2023
+            this.bumblebee, // jan 2023
+            this.dotfiles, // nov 2022
+            this.note, // nov 2022
+            this.paradise, // nov 2022
+            this.scaredyBot, // may 2022
+            this.gmailExplorer, // may 2022
+            this.mgic, // april 2022
+            this.logos, // march 2022
+            this.branches, // dec 2021
+            this.branchesScript, // dec 2021
+            this.hbPiA, // dec 2021
+            this.steamToolsApi, // nov 2021
+            this.wildlife, // dec 2021
+            this.llt, // dec 2021
+            this.iob, // oct 2021
+            this.valor, // dec 2019
         ];
 
         this.featured = [

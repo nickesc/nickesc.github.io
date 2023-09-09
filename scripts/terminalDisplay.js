@@ -19,7 +19,7 @@ class TerminalDisplay {
     projectsButton = document.getElementById("projectsButton")
     portfolioButton = document.getElementById("portfolioButton")
     githubButton = document.getElementById("githubButton")
-    resumeButton = document.getElementById("resumeButton")
+    //resumeButton = document.getElementById("resumeButton")
     helpButton = document.getElementById("terminalLabel")
 
     home = {page:this.homePage, button:this.homeButton, name:"home"}
@@ -56,7 +56,7 @@ class TerminalDisplay {
         this.lightenButton(this.projectsButton)
         this.lightenButton(this.portfolioButton);
         this.lightenButton(this.githubButton);
-        this.lightenButton(this.resumeButton);
+        //this.lightenButton(this.resumeButton);
         //this.helpPage.style.display = "none"
         for(let i =0;i<this.errors.length;i++){
             this.errors[i].style.display = "none"
@@ -102,9 +102,9 @@ class TerminalDisplay {
             this.redirectToGithub();
         });
 
-        this.resumeButton.addEventListener('click', (event) => {
+        /* this.resumeButton.addEventListener('click', (event) => {
             this.redirectToResume();
-        });
+        }); */
 
 
 
