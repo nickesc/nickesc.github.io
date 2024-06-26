@@ -233,11 +233,11 @@ class Terminal {
                             this.terminalDisplay.redirectToGithub()
                             found = true
                             break;
-                        }/* else if (command[1] === "resume"){
+                        } else if (command[1] === "resume"){
                             this.terminalDisplay.redirectToResume()
                             found = true
                             break;
-                        } */
+                        }
                     }
                     if(!found){
                         this.displayError(Terminal.errorMessages.badPage)
@@ -252,9 +252,9 @@ class Terminal {
                 case (command[0] === "power"):
                     this.powerToggle()
                     break;
-                /* case (command[0] === "resume"):
+                case (command[0] === "resume"):
                     this.terminalDisplay.redirectToResume()
-                    break; */
+                    break;
                 case (command[0] === "portfolio"):
                     this.terminalDisplay.redirectToPortfolio()
                     break;
