@@ -13,6 +13,7 @@ class Projects{
     tempchecker;
     deltaskinTemplate;
     clientEnhanced;
+    controllerMappingTemplates;
 
 
     list = []
@@ -36,6 +37,18 @@ class Projects{
     }
 
     constructProjects(){
+        this.controllerMappingTemplates = this.makeProject({
+            "name": "Controller Mapping Templates",
+            "imgUrl": "../img/controllerMappingTemplates.png",
+            "bgColor": "#111111",
+            "projectUrl": "https://nickesc.itch.io/controller-mapping-templates",
+            "sourceUrl": "https://github.com/nickesc/controller-mapping-templates",
+            "desc": "Simple templates to create controller mapping images for a number of gamepads.",
+            "year": "2025",
+            "cat": Projects.Categories.ART,
+            "command": "controllermappingtemplates",
+        });
+
         this.clientEnhanced = this.makeProject({
             "name": "Client-Enhanced",
             "imgUrl": "../img/clientEnhanced.png",
