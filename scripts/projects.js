@@ -10,6 +10,8 @@ class Projects{
     dotfiles;
     bumblebee;
     starfish;
+    tempchecker;
+    deltaskinTemplate;
 
 
     list = []
@@ -33,6 +35,18 @@ class Projects{
     }
 
     constructProjects(){
+        this.deltaskinTemplate = this.makeProject({
+            "name": "deltaskin-template",
+            "imgUrl": "../img/deltaskinTemplate.png",
+            "bgColor": "#111111",
+            "projectUrl": "https://github.com/nickesc/deltaskin-template",
+            "sourceUrl": "https://github.com/nickesc/deltaskin-template",
+            "desc": "A template and build system for creating skins for the Delta emulator.",
+            "year": "2024",
+            "cat": Projects.Categories.CODE,
+            "command": "deltaskintemplate",
+        });
+
         this.tempChecker = this.makeProject({
             "name": "tempChecker",
             "imgUrl": "../img/tempCheckerLogo.png",
