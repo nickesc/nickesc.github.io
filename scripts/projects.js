@@ -12,6 +12,7 @@ class Projects{
     starfish;
     tempchecker;
     deltaskinTemplate;
+    clientEnhanced;
 
 
     list = []
@@ -35,6 +36,18 @@ class Projects{
     }
 
     constructProjects(){
+        this.clientEnhanced = this.makeProject({
+            "name": "Client-Enhanced",
+            "imgUrl": "../img/clientEnhanced.png",
+            "bgColor": "#111111",
+            "projectUrl": "https://github.com/nickesc/client-enhanced/releases",
+            "sourceUrl": "https://github.com/nickesc/client-enhanced",
+            "desc": "A client-side Minecraft modpack that aims to overhaul and modernize the experience.",
+            "year": "2024",
+            "cat": Projects.Categories.CODE,
+            "command": "clientenhanced",
+        });
+
         this.deltaskinTemplate = this.makeProject({
             "name": "deltaskin-template",
             "imgUrl": "../img/deltaskinTemplate.png",
