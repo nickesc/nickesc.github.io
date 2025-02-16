@@ -14,6 +14,7 @@ class Projects{
     deltaskinTemplate;
     clientEnhanced;
     controllerMappingTemplates;
+    wbge;
 
 
     list = []
@@ -37,6 +38,19 @@ class Projects{
     }
 
     constructProjects(){
+
+        this.wbge = this.makeProject({
+            "name": "White Background Enforcer",
+            "imgUrl": "../img/wbge.png",
+            "bgColor": "#111111",
+            "projectUrl": "https://addons.mozilla.org/en-US/firefox/addon/wbge/",
+            "sourceUrl": "https://github.com/nickesc/white-background-enforcer",
+            "desc": "A browser extension that sets a white background on pages where background-color is not explicitly set",
+            "year": "2025",
+            "cat": Projects.Categories.CODE,
+            "command": "whitebackgroundenforcer",
+        });
+
         this.controllerMappingTemplates = this.makeProject({
             "name": "Controller Mapping Templates",
             "imgUrl": "../img/controllerMappingTemplates.png",
