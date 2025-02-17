@@ -42,7 +42,7 @@ class Projects{
         this.wbge = this.makeProject({
             "name": "White Background Enforcer",
             "imgUrl": "../img/wbge.png",
-            "bgColor": "#111111",
+            "bgColor": "#2B2B2B",
             "projectUrl": "https://addons.mozilla.org/en-US/firefox/addon/wbge/",
             "sourceUrl": "https://github.com/nickesc/white-background-enforcer",
             "desc": "A browser extension that sets a white background on pages where background-color is not explicitly set",
@@ -54,7 +54,7 @@ class Projects{
         this.controllerMappingTemplates = this.makeProject({
             "name": "Controller Mapping Templates",
             "imgUrl": "../img/controllerMappingTemplates.png",
-            "bgColor": "#111111",
+            "bgColor": "#FFFFFF",
             "projectUrl": "https://nickesc.itch.io/controller-mapping-templates",
             "sourceUrl": "https://github.com/nickesc/controller-mapping-templates",
             "desc": "Simple templates to create controller mapping images for a number of gamepads.",
@@ -66,7 +66,7 @@ class Projects{
         this.clientEnhanced = this.makeProject({
             "name": "Client-Enhanced",
             "imgUrl": "../img/clientEnhanced.png",
-            "bgColor": "#111111",
+            "bgColor": "#76D676",
             "projectUrl": "https://github.com/nickesc/client-enhanced/releases",
             "sourceUrl": "https://github.com/nickesc/client-enhanced",
             "desc": "A client-side Minecraft modpack that aims to overhaul and modernize the experience.",
@@ -78,7 +78,7 @@ class Projects{
         this.deltaskinTemplate = this.makeProject({
             "name": "deltaskin-template",
             "imgUrl": "../img/deltaskinTemplate.png",
-            "bgColor": "#111111",
+            "bgColor": "#9636EB",
             "projectUrl": "https://github.com/nickesc/deltaskin-template",
             "sourceUrl": "https://github.com/nickesc/deltaskin-template",
             "desc": "A template and build system for creating skins for the Delta emulator.",
