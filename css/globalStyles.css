@@ -59,12 +59,12 @@ h1{
     box-sizing: border-box;
 }
 
-.bannerText a, .bannerDismiss {
+.bannerText a {
     color: #FFF9F2;
     text-decoration: underline;
 }
 
-.bannerText a:hover, .bannerDismiss:hover {
+.bannerText a:hover {
     text-decoration: underline dotted;
     color:#FFF9F2;
 }
@@ -72,14 +72,28 @@ h1{
 .bannerText {
     padding-right: 20px;
 }
+
+.bannerDismiss {
+    text-decoration: underline dotted;
+    font-size: .8em;
+    cursor: pointer;
+}
+
 .bannerClose{
     font-weight: bold;
     cursor: pointer;
 }
-.bannerClose:hover{
+.bannerClose:hover, .bannerDismiss:hover{
     text-decoration: underline;
 }
 
+.bannerButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2em;
+    align-items: center;
+}
 
 #workInProgress{
     background-color: #fff3b9;
@@ -150,6 +164,13 @@ a:active {
 
     .bannerText {
         font-size: .8em;
+    }
+
+    .bannerButtons {
+        flex-direction: column-reverse;
+        align-items: flex-end;
+        gap: .4em;
+        justify-content:center;
     }
 }
 

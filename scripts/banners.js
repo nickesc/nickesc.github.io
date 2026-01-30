@@ -4,7 +4,7 @@ class Banner{
             <div class="bannerText" id="${bannerId}Text">
                 ${bannerText}
             </div>
-            <div style="display: flex; flex-direction: row; justify-content: space-between; gap: 2em; align-items: center;">
+            <div class="bannerButtons" style="">
                 <div class="bannerDismiss" style="font-size: .8em; cursor: pointer;" id="${bannerId}Dismiss">Dismiss</div>
                 <div class="bannerClose" id="${bannerId}Close">X</div>
             </div>
