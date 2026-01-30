@@ -93,13 +93,6 @@
         <div class="blocker terminalMenu">
           <div class="menuButton pointer" id="homeButton" onclick="">HOME</div>
           <div class="menuButton pointer" id="projectsButton">PROJECTS</div>
-          <div
-            class="menuButton pointer"
-            id="spiralButton"
-            style="display: none"
-          >
-            SPIRAL
-          </div>
           <div class="menuButton pointer" id="portfolioButton">PORTFOLIO</div>
           <div class="menuButton pointer" id="githubButton">GITHUB</div>
           <div class="menuButton pointer" id="resumeButton">RESUME</div>
@@ -389,7 +382,7 @@
         ><img
           src="https://raw.githubusercontent.com/nickesc/My-Girlfriend-is-Curious/main/img/expand.png"
           alt="Expand Spotify"
-          style="color: #b3b3b3; max-height: 80px"
+          style="color: #b3b3b3; max-height: 80px; background-color: rgb(25, 20, 20);"
       /></a>
       <div
         class="spotifyPlayer"
@@ -517,8 +510,8 @@
                   max-width: 23ch;
                   color: white;
                   font-weight: bold;
-                "
-                >...</a
+                  "
+                >Service offline</a
               >
               <div
                 class="trackBreak"
@@ -646,7 +639,7 @@
               style="min-height: 21px; height: 1em; margin: 10px"
               alt="Spotify Logo"
             />
-            <div class="listenOnText" style="font-weight: bold">&nbsp;</div>
+            <div class="listenOnText" style="font-weight: bold">UNABLE TO CONNECT</div>
           </a>
         </div>
         <script>
@@ -719,9 +712,9 @@
                   onlineStatus.onmouseout = function () {
                     this.style.backgroundColor = "#d01616";
                   };
-                  listenOnText.innerHTML = "UNABLE TO CONNECT";
+                  listenOnText.innerHTML = "NOT CURRENTLY STREAMING";
                   listenOnContainer.removeAttribute("href");
-                  trackName.innerHTML = "no track available";
+                  trackName.innerHTML = "No track playing";
                   trackName.removeAttribute("href");
                   trackContext.style.display = "none";
                   trackBreak.style.display = "none";
