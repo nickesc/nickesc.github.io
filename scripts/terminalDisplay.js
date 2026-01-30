@@ -9,13 +9,11 @@ class TerminalDisplay {
     errors = document.getElementsByClassName("errorText")
 
     homePage = document.getElementById("homePage")
-    spiralPage = document.getElementById("spiralBlog")
     projectsPage = document.getElementById("projectsPage")
     helpPage = document.getElementById("helpPage")
     crightPage = document.getElementById("crightPage")
 
     homeButton = document.getElementById("homeButton")
-    spiralButton = document.getElementById("spiralButton")
     projectsButton = document.getElementById("projectsButton")
     portfolioButton = document.getElementById("portfolioButton")
     githubButton = document.getElementById("githubButton")
@@ -23,12 +21,11 @@ class TerminalDisplay {
     helpButton = document.getElementById("terminalLabel")
 
     home = {page:this.homePage, button:this.homeButton, name:"home"}
-    spiral = {page:this.spiralPage, button:this.spiralButton, name:"spiral"}
     projects = {page:this.projectsPage, button:this.projectsButton, name:"projects"}
     help = {page:this.helpPage, button:this.helpButton, name:"help"}
     cright = {page:this.crightPage, button:null, name:"cright"}
 
-    displayList = [this.home,this.spiral,this.projects,this.help, this.cright]
+    displayList = [this.home,this.projects,this.help, this.cright]
     commandOnly = []
 
     display = {}
@@ -50,8 +47,6 @@ class TerminalDisplay {
         }
         //this.homePage.style.display = "none"
         this.lightenButton(this.homeButton)
-        //this.spiralPage.style.display = "none"
-        this.lightenButton(this.spiralButton)
         //this.projectsPage.style.display = "none"
         this.lightenButton(this.projectsButton)
         this.lightenButton(this.portfolioButton);
@@ -84,9 +79,9 @@ class TerminalDisplay {
             this.setDisplay(this.home)
 
         });
-        this.spiralButton.addEventListener('click', (event) => {
+        /*this.spiralButton.addEventListener('click', (event) => {
             this.setDisplay(this.spiral)
-        });
+        });*/
         this.projectsButton.addEventListener('click', (event) => {
             this.setDisplay(this.projects)
         });

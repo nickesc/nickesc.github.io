@@ -1,674 +1,844 @@
 <html lang="en">
-<head>
-    <script src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@2/dist/zero-md.min.js" type="module"></script>
+  <head>
+    <script
+      src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@2/dist/zero-md.min.js"
+      type="module"
+    ></script>
 
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
 
     <!-- Primary Meta Tags -->
     <title>N. Escobar</title>
-    <meta name="title" content="N. Escobar">
-    <meta name="description" content="Nick Escobar's personal website. Find featured code projects and art projects, contact information, and a functional terminal.">
+    <meta name="title" content="N. Escobar" />
+    <meta
+      name="description"
+      content="Nick Escobar's personal website. Find featured code projects and art projects, contact information, and a functional terminal."
+    />
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://nickesc.github.io/">
-    <meta property="og:title" content="N. Escobar">
-    <meta property="og:description" content="Nick Escobar's personal website. Find featured code projects and art projects, contact information, and a functional terminal.">
-    <meta property="og:image" content="https://raw.githubusercontent.com/nickesc/N.-Escobar-Media-Branding/main/Logos/nescobar/nescobar_preview_opaque.png">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://nickesc.github.io/" />
+    <meta property="og:title" content="N. Escobar" />
+    <meta
+      property="og:description"
+      content="Nick Escobar's personal website. Find featured code projects and art projects, contact information, and a functional terminal."
+    />
+    <meta
+      property="og:image"
+      content="https://raw.githubusercontent.com/nickesc/N.-Escobar-Media-Branding/main/Logos/nescobar/nescobar_preview_opaque.png"
+    />
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://nickesc.github.io/">
-    <meta property="twitter:title" content="N. Escobar">
-    <meta property="twitter:description" content="Nick Escobar's personal website. Find featured code projects and art projects, contact information, and a functional terminal.">
-    <meta property="twitter:image" content="https://raw.githubusercontent.com/nickesc/N.-Escobar-Media-Branding/main/Logos/nescobar/nescobar_preview_opaque.png">
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://nickesc.github.io/" />
+    <meta property="twitter:title" content="N. Escobar" />
+    <meta
+      property="twitter:description"
+      content="Nick Escobar's personal website. Find featured code projects and art projects, contact information, and a functional terminal."
+    />
+    <meta
+      property="twitter:image"
+      content="https://raw.githubusercontent.com/nickesc/N.-Escobar-Media-Branding/main/Logos/nescobar/nescobar_preview_opaque.png"
+    />
 
-    <meta name="keywords" content="website, art, computer science, coding, design, video games, portfolio">
-    <meta name="author" content="Nick Escobar">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta
+      name="keywords"
+      content="website, art, computer science, coding, design, video games, portfolio"
+    />
+    <meta name="author" content="Nick Escobar" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1"
+    />
 
-    <link rel="icon" type="image/x-icon"
-          href="https://raw.githubusercontent.com/nickesc/N.-Escobar-Media-Branding/main/Logos/nescobar/nescobar-square.png">
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://raw.githubusercontent.com/nickesc/N.-Escobar-Media-Branding/main/Logos/nescobar/nescobar-square.png"
+    />
 
-    <link rel="stylesheet" href="/css/globalStyles.css">
-    <link rel="stylesheet" href="/fonts/ibm-courier/fonts/IBM-Courier.css">
+    <link rel="stylesheet" href="/css/globalStyles.css" />
+    <link rel="stylesheet" href="/fonts/ibm-courier/fonts/IBM-Courier.css" />
 
-    <link rel="stylesheet" href="/css/terminalDisplay.css">
-    <link rel="stylesheet" href="/css/help.css">
-    <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/projects.css">
-    <link rel="stylesheet" href="/css/Spiral.css">
-    <link rel="stylesheet" href="/css/terminal.css">
-    <script src="scripts/Blog.js"></script>
+    <link rel="stylesheet" href="/css/terminalDisplay.css" />
+    <link rel="stylesheet" href="/css/help.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/projects.css" />
+    <link rel="stylesheet" href="/css/Spiral.css" />
+    <link rel="stylesheet" href="/css/terminal.css" />
     <script src="scripts/terminal.js"></script>
     <script src="scripts/terminalDisplay.js"></script>
     <script src="scripts/projects.js"></script>
     <script src="scripts/banners.js"></script>
+  </head>
 
-    <script>
-        const sprialAPIKey = "AIzaSyBBHliycteWigA8ujZw9QlXB-UFJXw3T-s"
-        const spiralBlogID = "3333201081983185753"
-        const spiralBlogURL = "https://nescobarmedia.blogspot.com/"
-        let url = "https://www.googleapis.com/blogger/v3/blogs/" + spiralBlogID + "?key=" + sprialAPIKey
-    </script>
-
-    <script>
-        let spiral = {info: {}, posts: {}}
-
-        function handleResponse(response) {
-            spiral["info"] = response;
-        }
-    </script>
-
-
-
-    <script src="https://www.googleapis.com/blogger/v3/blogs/3333201081983185753?callback=handleResponse&key=AIzaSyBBHliycteWigA8ujZw9QlXB-UFJXw3T-s&fields=name,posts,published,updated,url,selfLink"></script>
-</head>
-
-
-<body>
+  <body>
     <div class="terminalBlock">
-        <div id="status" style="display: none">Stopped.</div>
+      <div id="status" style="display: none">Stopped.</div>
 
-        <div class="terminalDisplay">
-            <div class="terminalHeader">
-                <img class="mainLogo disableSelect logo nescobar-square opaque-logo"
-                     src="https://raw.githubusercontent.com/nickesc/N.-Escobar-Media-Branding/main/Logos/nescobar/nescobar-square-opaque.png"
-                     alt="nescobar-square-opaque">
+      <div class="terminalDisplay">
+        <div class="terminalHeader">
+          <img
+            class="mainLogo disableSelect logo nescobar-square opaque-logo"
+            src="https://raw.githubusercontent.com/nickesc/N.-Escobar-Media-Branding/main/Logos/nescobar/nescobar-square-opaque.png"
+            alt="nescobar-square-opaque"
+          />
 
-                <div class="mainTitle">
-                    <div class="n">N.</div>
-                    <div class="escobar">Escobar</div>
-                </div>
+          <div class="mainTitle">
+            <div class="n">N.</div>
+            <div class="escobar">Escobar</div>
+          </div>
+        </div>
+
+        <div class="blocker terminalMenu">
+          <div class="menuButton pointer" id="homeButton" onclick="">HOME</div>
+          <div class="menuButton pointer" id="projectsButton">PROJECTS</div>
+          <div
+            class="menuButton pointer"
+            id="spiralButton"
+            style="display: none"
+          >
+            SPIRAL
+          </div>
+          <div class="menuButton pointer" id="portfolioButton">PORTFOLIO</div>
+          <div class="menuButton pointer" id="githubButton">GITHUB</div>
+          <div class="menuButton pointer" id="resumeButton">RESUME</div>
+        </div>
+
+        <div class="terminalMain">
+          <div class="terminalPage" id="homePage" style="display: none">
+            <div class="pageHeader">About me</div>
+            <div class="indent">
+              <div>
+                Welcome to my website! I'm <strong>Nick Escobar</strong>, a
+                computer scientist and artist working at the intersection of
+                those two fields. I'm curious about how people interact with
+                art, and how technology can be used to create experiences unlike
+                any other.<br />
+                <br />
+                I work in a number of different technical fields, including full
+                stack web development, game development, hardware development
+                and more. As an artist, I also have a background in graphic
+                design, digital photography, animation and video production,
+                with expertise in the Adobe Creative Cloud apps like
+                Illustrator, Photoshop and Premiere Pro.<br />
+                <br />
+                I am the Founder and Creative Director of
+                <strong>N. Escobar Media</strong>, a small independent
+                production studio that aims to build innovative digital
+                experiences through any medium possible.
+              </div>
             </div>
+            <br />
 
-            <div class="blocker terminalMenu">
-                <div class="menuButton pointer" id="homeButton" onclick="">HOME</div>
-                <div class="menuButton pointer" id="projectsButton">PROJECTS</div>
-                <div class="menuButton pointer" id="spiralButton">SPIRAL</div>
-                <div class="menuButton pointer" id="portfolioButton">PORTFOLIO</div>
-                <div class="menuButton pointer" id="githubButton">GITHUB</div>
-                <div class="menuButton pointer" id="resumeButton">RESUME</div>
+            <div class="pageHeader">Featured projects</div>
+            <table>
+              <tr class="featureHolder"></tr>
+            </table>
+            <br />
+            <div class="pageHeader">Contact</div>
+            <div class="indent">
+              <div>
+                For business inquiries, please email
+                <a href="mailto:nick@nescobar.media">nick@nescobar.media</a
+                ><br /><br />
+                For everything else, connect with me on these platforms:
+              </div>
             </div>
-
-            <div class="terminalMain">
-                <div class="terminalPage" id="homePage" style="display: none">
-                    <div class="pageHeader">About me</div>
-                    <div class="indent">
-                        <div>
-                            Welcome to my website! I'm <strong>Nick Escobar</strong>, a computer scientist and artist working at the intersection of those two fields. I'm curious about how people interact with art, and how technology can be used to create experiences unlike any other.<br>
-                            <br>
-                            I work in a number of different technical fields, including full stack web development, game development, hardware development and more. As an artist, I also have a background in graphic design, digital photography, animation and video production, with expertise in the Adobe Creative Cloud apps like Illustrator, Photoshop and Premiere Pro.<br>
-                            <br>
-                            I am the Founder and Creative Director of <strong>N. Escobar Media</strong>, a small independent production studio that aims to build innovative digital experiences through any medium possible.
-                        </div>
-                    </div>
-                    <br>
-
-                    <div class="pageHeader">Featured projects</div>
-                    <table>
-
-                        <tr class="featureHolder">
-
-                        </tr>
-
-                    </table>
-                    <br>
-                    <div class="pageHeader">Contact</div>
-                    <div class="indent">
-                        <div>
-                            For business inquiries, please email <a href = "mailto:nick@nescobar.media">nick@nescobar.media</a><br><br>
-                            For everything else, connect with me on these platforms:
-
-                        </div>
-                    </div>
-                    <table id="socialButtons">
-                        <tr>
-                            <td>
-
-                        <a href="https://github.com/nickesc">
-                            <svg class="platformLogo" viewBox="-10 -10 120 120">
-                                <path d="M50,1.2c-27.6,0-50,22.4-50,50c0,22.1,14.3,40.8,34.2,47.4c2.5,0.5,3.3-1.1,3.3-2.4V87c-13.9,3-16.8-5.9-16.8-5.9c-2.3-5.8-5.6-7.3-5.6-7.3c-4.5-3.1,
+            <table id="socialButtons">
+              <tr>
+                <td>
+                  <a href="https://github.com/nickesc">
+                    <svg class="platformLogo" viewBox="-10 -10 120 120">
+                      <path
+                        d="M50,1.2c-27.6,0-50,22.4-50,50c0,22.1,14.3,40.8,34.2,47.4c2.5,0.5,3.3-1.1,3.3-2.4V87c-13.9,3-16.8-5.9-16.8-5.9c-2.3-5.8-5.6-7.3-5.6-7.3c-4.5-3.1,
                                 0.3-3,0.3-3c5,0.3,7.7,5.2,7.7,5.2c4.5,7.6,11.7,5.4,14.5,4.2c0.4-3.2,1.7-5.4,3.2-6.7c-11.1-1.3-22.8-5.6-22.8-24.7c0-5.5,2-9.9,5.2-13.4c-0.5-1.3-2.2-6.3,
                                 0.5-13.2c0,0,4.2-1.3,13.8,5.1c4-1.1,8.3-1.7,12.5-1.7c4.2,0,8.5,0.6,12.5,1.7c9.5-6.5,13.7-5.1,13.7-5.1c2.7,6.9,1,12,0.5,13.2c3.2,3.5,5.1,8,5.1,13.4c0,
-                                19.2-11.7,23.4-22.8,24.7c1.8,1.5,3.4,4.6,3.4,9.3v13.7c0,1.3,0.8,2.9,3.3,2.4C85.7,92.1,100,73.3,100,51.2C100,23.6,77.6,1.2,50,1.2z"/>
-                            </svg>
-                        </a>
-                            </td>
-                            <td>
-                        <a href="https://www.youtube.com/channel/UC8hZSCkN6YCLFej3Y-0RuVQ">
-                            <svg class="platformLogo" viewBox="-10 -10 120 120">
-                                <path class="st0" d="M97.9,25.9c-1.2-4.3-4.5-7.7-8.8-8.8C81.3,15,50,15,50,15s-31.3,0-39.1,2.1c-4.3,1.2-7.7,4.5-8.8,8.8
+                                19.2-11.7,23.4-22.8,24.7c1.8,1.5,3.4,4.6,3.4,9.3v13.7c0,1.3,0.8,2.9,3.3,2.4C85.7,92.1,100,73.3,100,51.2C100,23.6,77.6,1.2,50,1.2z"
+                      />
+                    </svg>
+                  </a>
+                </td>
+                <td>
+                  <a
+                    href="https://www.youtube.com/channel/UC8hZSCkN6YCLFej3Y-0RuVQ"
+                  >
+                    <svg class="platformLogo" viewBox="-10 -10 120 120">
+                      <path
+                        class="st0"
+                        d="M97.9,25.9c-1.2-4.3-4.5-7.7-8.8-8.8C81.3,15,50,15,50,15s-31.3,0-39.1,2.1c-4.3,1.2-7.7,4.5-8.8,8.8
                                         C0,33.7,0,50,0,50s0,16.3,2.1,24.1c1.2,4.3,4.5,7.7,8.8,8.8C18.7,85,50,85,50,85s31.3,0,39.1-2.1c4.3-1.2,7.7-4.5,8.8-8.8
-                                        C100,66.3,100,50,100,50S100,33.7,97.9,25.9z M40,65V35l26,15L40,65z"/>
-                            </svg>
-
-                        </a>
-                            </td>
-                            <td>
-                        <a href="https://vimeo.com/nescobarmedia">
-                            <svg class="platformLogo" viewBox="-10 -10 120 120">
-                                <path d="M100,26.7c-0.4,9.8-7.2,23.1-20.4,40.1C66,84.5,54.5,93.3,45,93.3c-5.8,0-10.8-5.4-14.8-16.2
+                                        C100,66.3,100,50,100,50S100,33.7,97.9,25.9z M40,65V35l26,15L40,65z"
+                      />
+                    </svg>
+                  </a>
+                </td>
+                <td>
+                  <a href="https://vimeo.com/nescobarmedia">
+                    <svg class="platformLogo" viewBox="-10 -10 120 120">
+                      <path
+                        d="M100,26.7c-0.4,9.8-7.2,23.1-20.4,40.1C66,84.5,54.5,93.3,45,93.3c-5.8,0-10.8-5.4-14.8-16.2
                                         c-2.7-9.9-5.4-19.8-8.1-29.7c-3-10.8-6.2-16.2-9.6-16.2c-0.7,0-3.4,1.6-7.8,4.7L0,30c4.9-4.3,9.8-8.7,14.6-13
                                         c6.6-5.7,11.5-8.7,14.8-9c7.8-0.7,12.6,4.6,14.4,16c1.9,12.3,3.3,20,4,23c2.2,10.2,4.7,15.3,7.4,15.3c2.1,0,5.2-3.3,9.4-9.9
                                         c4.2-6.6,6.4-11.7,6.7-15.1c0.6-5.7-1.6-8.6-6.7-8.6c-2.4,0-4.9,0.6-7.4,1.6c4.9-16.1,14.3-24,28.2-23.5
-                                        C95.7,7,100.5,13.7,100,26.7"/>
-                            </svg>
-                        </a>
-                            </td>
-                            <td>
-                        <a rel="me" href="https://infosec.exchange/@nickesc">
-                            <svg class="platformLogo" viewBox="-10 -10 120 120">
-                                <path class="st0" d="M96.6,32.8c0-21.7-14.2-28.1-14.2-28.1C75.3,1.5,63,0.1,50.2,0h-0.3C37.1,0.1,24.8,1.5,17.6,4.8
+                                        C95.7,7,100.5,13.7,100,26.7"
+                      />
+                    </svg>
+                  </a>
+                </td>
+                <td>
+                  <a rel="me" href="https://infosec.exchange/@nickesc">
+                    <svg class="platformLogo" viewBox="-10 -10 120 120">
+                      <path
+                        class="st0"
+                        d="M96.6,32.8c0-21.7-14.2-28.1-14.2-28.1C75.3,1.5,63,0.1,50.2,0h-0.3C37.1,0.1,24.8,1.5,17.6,4.8
 	                                c0,0-14.2,6.4-14.2,28.1c0,5-0.1,10.9,0.1,17.2C4,71.3,7.3,92.2,26.9,97.4c9.1,2.4,16.8,2.9,23.1,2.5c11.3-0.6,17.7-4,17.7-4
 	                                l-0.4-8.2c0,0-8.1,2.5-17.2,2.3c-9-0.3-18.5-1-20-12.1c-0.1-1-0.2-2-0.2-3.1c0,0,8.8,2.2,20.1,2.7c6.8,0.3,13.3-0.4,19.8-1.2
 	                                c12.6-1.5,23.4-9.2,24.8-16.3C96.9,48.8,96.6,32.8,96.6,32.8z M79.9,60.8H69.5V35.3c0-5.4-2.3-8.1-6.8-8.1c-5,0-7.5,3.2-7.5,9.6v14
 	                                H44.9v-14c0-6.4-2.5-9.6-7.5-9.6c-4.5,0-6.8,2.7-6.8,8.1v25.5H20.1V34.5c0-5.4,1.3-9.6,4.1-12.8c2.9-3.2,6.5-4.8,11.2-4.8
 	                                c5.3,0,9.4,2,12,6.1l2.6,4.4l2.6-4.4c2.6-4.1,6.7-6.1,12-6.1c4.6,0,8.3,1.6,11.2,4.8c2.7,3.2,4.1,7.4,4.1,12.8L79.9,60.8L79.9,60.8z
-	                                "/>
-                        </a>
-                            </td>
-                            <td>
-                        <a href="https://www.linkedin.com/in/nick-escobar-a18a30236">
-                            <svg class="platformLogo" viewBox="-10 -10 120 120">
-                                <g transform="matrix(1,0,0,1,-138.462,-287.425)">
-                                    <path d="M223.7,372.6h-14.8v-23.2c0-5.5-0.1-12.7-7.7-12.7c-7.7,0-8.9,6-8.9,12.3v23.6h-14.8v-47.7h14.2v6.5h0.2
+	                                "
+                      />
+                    </svg>
+                  </a>
+                </td>
+                <td>
+                  <a href="https://www.linkedin.com/in/nick-escobar-a18a30236">
+                    <svg class="platformLogo" viewBox="-10 -10 120 120">
+                      <g transform="matrix(1,0,0,1,-138.462,-287.425)">
+                        <path
+                          d="M223.7,372.6h-14.8v-23.2c0-5.5-0.1-12.7-7.7-12.7c-7.7,0-8.9,6-8.9,12.3v23.6h-14.8v-47.7h14.2v6.5h0.2
                                             c2.9-5,8.3-7.9,14-7.7c15,0,17.8,9.9,17.8,22.7L223.7,372.6z M160.7,318.4C160.7,318.4,160.7,318.4,160.7,318.4
                                             c-4.7,0-8.6-3.9-8.6-8.6s3.9-8.6,8.6-8.6c4.7,0,8.6,3.9,8.6,8.6c0,0,0,0,0,0C169.3,314.5,165.4,318.4,160.7,318.4 M168.1,372.6
                                             h-14.8v-47.7h14.8V372.6z M231.1,287.4h-85.2c-4,0-7.3,3.2-7.4,7.2v85.6c0,4,3.4,7.3,7.4,7.2h85.2c4,0.1,7.4-3.2,7.4-7.2v-85.6
-                                            C238.4,290.6,235.1,287.4,231.1,287.4"/>
-                                </g>
-                            </svg>
-                        </a>
-                            </td>
-                            <td>
-                        <a href="https://oxy.joinhandshake.com/stu/users/13218443">
-                            <svg class="platformLogo" viewBox="-10 -10 120 120">
-                                <path d="M88.1,44.6c-1.7-0.6-9.6-2.5-19.8,0.1c-25.6,6.6-30.3-6.9-41.1-10c-2.5-0.7-12.7-1.6-16.5,0.4c-1.4,0.7-2.3,2.4-2.3,4
+                                            C238.4,290.6,235.1,287.4,231.1,287.4"
+                        />
+                      </g>
+                    </svg>
+                  </a>
+                </td>
+                <td>
+                  <a href="https://oxy.joinhandshake.com/stu/users/13218443">
+                    <svg class="platformLogo" viewBox="-10 -10 120 120">
+                      <path
+                        d="M88.1,44.6c-1.7-0.6-9.6-2.5-19.8,0.1c-25.6,6.6-30.3-6.9-41.1-10c-2.5-0.7-12.7-1.6-16.5,0.4c-1.4,0.7-2.3,2.4-2.3,4
                                         c0,7-0.1,38.3-0.1,53.1c0,4.3,3.4,7.7,7.7,7.7h16c4.2,0,7.6-3.4,7.7-7.6C39.8,79.4,40,57.2,40,54.7c0-0.9,0.5-1.1,1.7-1.5
                                         c10.2-2.6,18.1,3.1,18.3,11.1c0.2,8.8,0.4,19,0.4,27.9c0,4.2,3.4,7.6,7.6,7.6c4.8,0,10.8,0.1,15.9,0.1c4.2,0,7.6-3.4,7.6-7.6
                                         c0-14.3,0.1-34.7,0.1-43.1C91.6,46.8,90.2,45.5,88.1,44.6z M77.6,38.3c7.8,0,14.2-6.3,14.2-14.2S85.4,10,77.6,10
                                         s-14.2,6.3-14.2,14.2C63.4,32,69.8,38.3,77.6,38.3z M23.3,29.8c8.2,0,14.9-6.7,14.9-14.9S31.5,0,23.3,0S8.4,6.7,8.4,14.9
-                                        S15,29.8,23.3,29.8z"/>
-                            </svg>
-                        </a>
-                            </td>
-                        </tr>
+                                        S15,29.8,23.3,29.8z"
+                      />
+                    </svg>
+                  </a>
+                </td>
+              </tr>
+            </table>
+          </div>
 
+          <div class="terminalPage" id="projectsPage" style="display: none">
+            <div class="pageHeader">Projects</div>
 
-                    </table>
+            <div id="projectsHolder"></div>
+          </div>
+
+          <div class="terminalPage" id="helpPage" style="display: none">
+            <div class="pageHeader">Help and Usage</div>
+            <div class="indent">
+              <div>
+                This site is know to have formatting issues on Firefox; all site
+                functionality remains available
+              </div>
+              <br />
+              <div>Type commands from the list below into the terminal.</div>
+              <div class="hideOnMobile">
+                <div>
+                  Use <code>UP</code> and <code>DOWN</code> arrow keys to scroll
+                  through command history
                 </div>
+                <div>Use <code>CRTL+C</code> to clear the command line</div>
+              </div>
+              <br />
+              <table class="helpTable">
+                <tr>
+                  <th class="command">command</th>
+                  <th class="usage">usage</th>
+                </tr>
 
-                <div class="terminalPage" id="spiralBlog" style="display: none">
+                <tr>
+                  <td class="command">cright</td>
+                  <td class="usage">show copyright information</td>
+                </tr>
+                <tr>
+                  <td class="command">firefox</td>
+                  <td class="usage">
+                    open the Firefox-specific formatting warning
+                  </td>
+                </tr>
+                <tr>
+                  <td class="command">github</td>
+                  <td class="usage">redirect to GitHub profile</td>
+                </tr>
+                <tr>
+                  <td class="command">help</td>
+                  <td class="usage">show the help screen</td>
+                </tr>
+                <tr>
+                  <td class="command">open &#60;tab&#62;</td>
+                  <td class="usage">
+                    open a tab; used with tabs in the toolbar
+                  </td>
+                </tr>
+                <tr>
+                  <td class="command">portfolio</td>
+                  <td class="usage">redirect to portfolio</td>
+                </tr>
+                <tr>
+                  <td class="command">power</td>
+                  <td class="usage">
+                    toggle power; stop or start the terminal
+                  </td>
+                </tr>
+                <tr>
+                  <td class="command">&#60;projectCommand&#62;</td>
+                  <td class="usage">
+                    redirect to a project; the &#60;projectCommand&#62; is the
+                    project's name without spaces
+                  </td>
+                </tr>
+                <tr>
+                  <td class="command">&#60;projectCommand&#62; source</td>
+                  <td class="usage">redirect to a project's source</td>
+                </tr>
+                <tr>
+                  <td class="command">&#60;projectCommand&#62; img</td>
+                  <td class="usage">redirect to a project's logo image</td>
+                </tr>
+                <tr>
+                  <td class="command">resume</td>
+                  <td class="usage">redirect to resume</td>
+                </tr>
+                <tr>
+                  <td class="command">source</td>
+                  <td class="usage">redirect to site source</td>
+                </tr>
 
-
-                    <div class="pageHeader">Spiral Blog Posts</div>
-
-                    <div id="content"></div>
-
-                    <div style="height: 3vh"></div>
-
-                    <script>
-
-                        fetch(spiral["info"]["posts"]["selfLink"] + '?key=' + sprialAPIKey + '&fields=items(author(displayName),content,id,labels,published,replies,selfLink,title,updated,url)')
-                            .then(response => response.json())
-                            .then(data => {
-                                spiral["posts"] = data["items"]
-
-                                async function getReplies(blog) {
-
-                                    for (let i = 0; i < blog["posts"].length; i++) {
-                                        const response = await fetch(blog["posts"][i]["replies"]["selfLink"] + '?key=' + sprialAPIKey + '&fields=items(author(displayName,image),content,id,published,selfLink,updated)')
-                                        const replies = await response.json()
-                                        blog["posts"][i]["replies"] = await replies["items"]
-                                        //console.log(replies)
-                                    }
-
-                                    return blog
-                                }
-
-                                getReplies(spiral).then(blog => {
-                                    let Spiral = new Blog(blog)
-                                    //console.log(Spiral)
-                                    let spiralPosts = Spiral.createElementList()
-                                    for (let i = 0; i < spiralPosts.length; i++) {
-                                        document.getElementById("content").appendChild(spiralPosts[i])
-                                    }
-                                })
-
-                            });
-
-                    </script>
-                </div>
-
-                <div class="terminalPage" id="projectsPage" style="display: none">
-
-                    <div class="pageHeader">Projects</div>
-
-                    <div id="projectsHolder">
-
-
-                    </div>
-
-
-                </div>
-
-                <div class="terminalPage" id="helpPage" style="display: none">
-                    <div class="pageHeader">Help and Usage</div>
-                    <div class="indent">
-                        <div>This site is know to have formatting issues on Firefox; all site functionality remains available</div><br>
-                        <div>Type commands from the list below into the terminal.</div>
-                        <div class="hideOnMobile">
-                            <div>Use <code>UP</code> and <code>DOWN</code> arrow keys to scroll through command history
-                            </div>
-                            <div>Use <code>CRTL+C</code> to clear the command line</div>
-                        </div>
-                        <br>
-                        <table class="helpTable">
-                            <tr>
-                                <th class="command">
-                                    command
-                                </th>
-                                <th class="usage">
-                                    usage
-                                </th>
-                            </tr>
-
-                            <tr>
-                                <td class="command">
-                                    cright
-                                </td>
-                                <td class="usage">
-                                    show copyright information
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="command">
-                                    firefox
-                                </td>
-                                <td class="usage">
-                                    open the Firefox-specific formatting warning
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="command">
-                                    github
-                                </td>
-                                <td class="usage">
-                                    redirect to GitHub profile
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="command">
-                                    help
-                                </td>
-                                <td class="usage">
-                                    show the help screen
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="command">
-                                    open &#60;tab&#62;
-                                </td>
-                                <td class="usage">
-                                    open a tab; used with tabs in the toolbar
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="command">
-                                    portfolio
-                                </td>
-                                <td class="usage">
-                                    redirect to portfolio
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="command">
-                                    power
-                                </td>
-                                <td class="usage">
-                                    toggle power; stop or start the terminal
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="command">
-                                    &#60;projectCommand&#62;
-                                </td>
-                                <td class="usage">
-                                    redirect to a project; the &#60;projectCommand&#62; is the project's name without spaces
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="command">
-                                    &#60;projectCommand&#62; source
-                                </td>
-                                <td class="usage">
-                                    redirect to a project's source
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="command">
-                                    &#60;projectCommand&#62; img
-                                </td>
-                                <td class="usage">
-                                    redirect to a project's logo image
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="command">
-                                    resume
-                                </td>
-                                <td class="usage">
-                                    redirect to resume
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="command">
-                                    source
-                                </td>
-                                <td class="usage">
-                                    redirect to site source
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td class="command">
-                                    start
-                                </td>
-                                <td class="usage">
-                                    start the terminal
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="command">
-                                    stop
-                                </td>
-                                <td class="usage">
-                                    stop the terminal
-                                </td>
-                            </tr>
-
-
-                        </table>
-                    </div>
-                </div>
-
-                <div class="terminalPage" id="crightPage" style="display: none">
-                    <div class="pageHeader">Copyright</div>
-                    <div class="indent">
-                        <div>Copyright &copy; 2022 N. Escobar</div>
-                    </div>
-                </div>
+                <tr>
+                  <td class="command">start</td>
+                  <td class="usage">start the terminal</td>
+                </tr>
+                <tr>
+                  <td class="command">stop</td>
+                  <td class="usage">stop the terminal</td>
+                </tr>
+              </table>
             </div>
-        </div>
+          </div>
 
-        <div class="blocker toolbar">
-            <div class="tools">
-                <div class="tool" id="toolApp"></div>
-                <div class="tool" id="toolTitle"></div>
-                <div class="tool disableSelect" id="toolTime"></div>
+          <div class="terminalPage" id="crightPage" style="display: none">
+            <div class="pageHeader">Copyright</div>
+            <div class="indent">
+              <div>Copyright &copy; 2022 N. Escobar</div>
             </div>
-            <div class="tool pointer disableSelect" id="close">X</div>
+          </div>
         </div>
+      </div>
 
-        <div class="terminalInput">
-            <div id="terminalLabel" class=disableSelect>nickesc.github.io [v0.8.2]</div>
-            <label class="disableSelect" id="terminalLabel2" for="terminal">&gt;</label><textarea id="terminal"
-                                                                                                  name="story" rows="1"
-                                                                                                  placeholder="Type 'help' for help."
-                                                                                                  autocomplete="off"
-                                                                                                  spellcheck="false"
-                                                                                                  autocapitalize="off"></textarea>
+      <div class="blocker toolbar">
+        <div class="tools">
+          <div class="tool" id="toolApp"></div>
+          <div class="tool" id="toolTitle"></div>
+          <div class="tool disableSelect" id="toolTime"></div>
         </div>
+        <div class="tool pointer disableSelect" id="close">X</div>
+      </div>
+
+      <div class="terminalInput">
+        <div id="terminalLabel" class="disableSelect">
+          nickesc.github.io [v1.8.2]
+        </div>
+        <label class="disableSelect" id="terminalLabel2" for="terminal"
+          >&gt;</label
+        ><textarea
+          id="terminal"
+          name="story"
+          rows="1"
+          placeholder="Type 'help' for help."
+          autocomplete="off"
+          spellcheck="false"
+          autocapitalize="off"
+        ></textarea>
+      </div>
     </div>
 
-    <spotify class="disableSelect" style="position: fixed;">
-        <a href="#" class="expand"
-           style="position:absolute; bottom: 1.5vmin; right: max(1vw,15px); min-width: 50px; max-width:80px; width: 10vmin;"
-           onclick="document.getElementsByClassName('spotifyPlayer')[0].style.display='flex'"><img
-                src="https://raw.githubusercontent.com/nickesc/My-Girlfriend-is-Curious/main/img/expand.png"
-                alt="Expand Spotify" style="color: #B3B3B3; max-height: 80px"></a>
-        <div class="spotifyPlayer"
-             style="position: relative; display: none; flex-direction: row; width: 100vw; max-width: 700px; min-width: 320px; font-family: 'Helvetica Neue', sans-serif; background-color: #191414;text-overflow: ellipsis;white-space: nowrap;overflow: hidden; ">
-            <a href="https://open.spotify.com/user/goofyshnoofy"
-               style="color: white; font-weight: bold; text-decoration: none">
-                <div class="spotifyStatusIndicator"
-                     style="position: absolute; right: min(1.5vmin,10px); top: min(1.5vmin,10px); background-color: #191414;text-align: center; padding: min(.7vmin,7px) min(1vmin,7px); font-size: clamp(10px, 1.5vw, 12px); min-width: 40px;max-width: 80px; border-radius: 10000px;"
-                     onMouseOver="this.style.backgroundColor='#191414'"
-                     onMouseOut="this.style.backgroundColor='#191414'">&nbsp;
-                </div>
-            </a>
-            <a href="#" class="collapse"
-               style="filter: drop-shadow(0 0 2px #232323);position:absolute; top: .5vmin; left: .7vmin; min-width: 15px; max-width:20px; width: 5vmin;"
-               onclick="document.getElementsByClassName('spotifyPlayer')[0].style.display='none'"><img
-                    src="https://raw.githubusercontent.com/nickesc/My-Girlfriend-is-Curious/main/img/collapse.png"
-                    alt="Collapse Spotify" style="color: #B3B3B3; width: 100%"></a>
-            <div class="playerImgContainer" style="height: 130px;">
-                <img class="trackImg"
-                     src="https://raw.githubusercontent.com/nickesc/My-Girlfriend-is-Curious/main/img/missingAlbum.png"
-                     alt="albumArt" style="height:130px;object-fit: cover">
-            </div>
-            <div class='playerControlsContainer' style=" display: flex; flex-direction: column; width: 100%">
-                <div class="trackInfoContainer"
-                     style="display: flex; flex-direction: column; height:65%; max-width: 100%; justify-content:center; padding-left: 2.5%;padding-right: 2.5%">
-                    <div class="device"
-                         style="color: #535353; font-size: clamp(8px,1.5vw,15px);display: flex;align-items: center;">
-                        <div class="deviceName">&nbsp;</div>
-                        <img class="deviceImg"
-                             src="https://raw.githubusercontent.com/nickesc/My-Girlfriend-is-Curious/main/img/blank.png"
-                             alt="deviceImage" style="padding-left:3px;height:2ex;color: #535353">
-                    </div>
-                    <div class="playerMiddle"
-                         style="display: flex; flex-direction: row; align-items: baseline; justify-content: left; width: 100%; margin: .3vh 0">
-                        <a href="" class="trackName"
-                           style="text-decoration:none;font-size:clamp(9px,2vw,17px);text-overflow: clip;white-space: nowrap;overflow: hidden;width: fit-content;max-width:23ch;color: white; font-weight: bold;">...</a>
-                        <div class="trackBreak"
-                             style="font-size: clamp(8px,2vw,20px); color: #B3B3B3; padding: 0 min(3px,1vw)">&nbsp;
-                        </div>
-                        <a href="" class="trackContext"
-                           style="font-size: clamp(7px,1.5vw,15px);text-decoration:none; text-overflow: clip;white-space: nowrap;overflow: hidden;width: fit-content;max-width:25ch;color: #B3B3B3; font-weight: normal;">&nbsp;</a>
-                    </div>
-                    <div style="display: flex; justify-content: space-between">
-                        <a class="trackArtist"
-                           style="font-size:clamp(8px,1.5vw,15px);color: #B3B3B3; font-weight: normal; text-decoration: none; text-overflow: clip;white-space: nowrap;overflow: hidden;width: fit-content;max-width:50ch;"
-                           href="">&nbsp;</a>
-                        <div style="display: flex; flex-direction: row; justify-content: center; font-size: 15px">
-                            <img class="shuffleImg"
-                                 src="https://raw.githubusercontent.com/nickesc/My-Girlfriend-is-Curious/main/img/blank.png"
-                                 alt="shuffleImage" style="padding-left:1vw;height:2ex;">
-                            <img class="repeatImg"
-                                 src="https://raw.githubusercontent.com/nickesc/My-Girlfriend-is-Curious/main/img/blank.png"
-                                 alt="repeatImage" style="padding-left:1vw;padding-right:1vw;height:2ex;">
-                            <div class="volumeLevel"
-                                 style="margin:auto 3px;min-width:3ex; width:6vw; max-width: 7ex; background-color: #191414; height: .5vw; max-height: 4px; min-height: 2px;">
-                                <div class="volumeFill" style="background-color: #B3B3B3; width:0%; height: 100%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="playerProgressContainer" style="height:10%; display: flex; flex-direction: row">
-                    <div style="width: 95%; height:30%; background-color: #535353; margin-left: auto; margin-right: auto">
-                        <div class="innerProgress"
-                             style="width: 1%; height: 100%; background-color: #B3B3B3;"></div>
-                    </div>
-                </div>
-                <a class="onSpotifyContainer"
-                   style="font-size: 17px;text-decoration:none;height: 25%; background-color: #191414;text-align: center; color: white; font-weight: bold; display: flex;justify-content: center;align-items: center;"
-                   onMouseOver="this.style.backgroundColor='#191414'"
-                   onMouseOut="this.style.backgroundColor='#191414'">
-                    <img src="https://raw.githubusercontent.com/nickesc/My-Girlfriend-is-Curious/main/img/Spotify_Icon_RGB_White.png"
-                         style="min-height: 21px; height: 1em; margin: 10px" alt="Spotify Logo">
-                    <div class="listenOnText" style="font-weight: bold">&nbsp;</div>
-                </a>
-            </div>
-            <script>
-                const timer = 5
-                const mediaQuery = window.matchMedia('(min-width: 760px)');
-                let spotify = document.getElementsByTagName("spotify")[0];
-                let trackImg = document.getElementsByClassName("trackImg")[0];
-                let trackImgContainer = document.getElementsByClassName("playerImgContainer")[0];
-                let listenOnContainer = document.getElementsByClassName("onSpotifyContainer")[0];
-                let expand = document.getElementsByClassName("expand")[0];
-
-                function handleChange(e) {
-                    if (mediaQuery.matches) {
-                        spotify.style.right = "5%";
-                        spotify.style.bottom = "5%";
-                        trackImg.style.height = "130px";
-                        trackImgContainer.style.maxHeight = "130px";
-                        listenOnContainer.style.fontSize = "17px";
-                    } else {
-                        spotify.style.right = "0px";
-                        spotify.style.bottom = "0px";
-                        trackImg.style.height = "93px";
-                        trackImgContainer.style.maxHeight = "93px";
-                        listenOnContainer.style.fontSize = "13px";
-                    }
-                }
-
-                mediaQuery.addListener(handleChange);
-                handleChange(mediaQuery);
-                const currentSongUrl = "https://mgic.onrender.com/current";
-
-                function setSong() {
-                    fetch(currentSongUrl)
-                        .then(data => {
-                            return data.json();
-                        })
-                        .then(res => {
-                            console.log(res);
-                            let onlineStatus = document.getElementsByClassName("spotifyStatusIndicator")[0];
-                            let listenOn = document.getElementsByClassName("onSpotifyContainer")[0];
-                            let listenOnText = document.getElementsByClassName("listenOnText")[0];
-                            let trackName = document.getElementsByClassName("trackName")[0];
-                            let volBack = document.getElementsByClassName("volumeLevel")[0];
-                            let trackContext = document.getElementsByClassName("trackContext")[0];
-                            let trackBreak = document.getElementsByClassName("trackBreak")[0];
-                            let deviceImg = document.getElementsByClassName("deviceImg")[0];
-                            let deviceName = document.getElementsByClassName("deviceName")[0];
-                            let artistName = document.getElementsByClassName("trackArtist")[0];
-                            let progress = document.getElementsByClassName("innerProgress")[0];
-                            let vol = document.getElementsByClassName("volumeFill")[0];
-                            let shuffle = document.getElementsByClassName("shuffleImg")[0];
-                            let repeat = document.getElementsByClassName("repeatImg")[0];
-                            if (!res.playing) {
-                                onlineStatus.innerHTML = "Offline";
-                                onlineStatus.style.backgroundColor = "#d01616";
-                                onlineStatus.onmouseover = function () {
-                                    this.style.backgroundColor = "#a21111";
-                                }
-                                onlineStatus.onmouseout = function () {
-                                    this.style.backgroundColor = "#d01616";
-                                }
-                                listenOnText.innerHTML = "UNABLE TO CONNECT";
-                                listenOnContainer.removeAttribute("href");
-                                trackName.innerHTML = "no track available";
-                                trackName.removeAttribute("href");
-                                trackContext.style.display = "none";
-                                trackBreak.style.display = "none";
-                                artistName.style.display = "none";
-                                deviceName.style.display = "none";
-                                deviceImg.style.display = "none";
-                                shuffle.style.display = "none";
-                                volBack.style.display = "none";
-                                repeat.style.display = "none";
-                                progress.style.width = "1%";
-                                listenOnContainer.style.backgroundColor = "#191414";
-                                listenOnContainer.onmouseover = function () {
-                                    this.style.backgroundColor = "#191414";
-                                }
-                                listenOnContainer.onmouseout = function () {
-                                    this.style.backgroundColor = "#191414";
-                                }
-                                trackImg.src = "https://raw.githubusercontent.com/nickesc/My-Girlfriend-is-Curious/main/img/missingAlbum.png";
-                            } else {
-                                artistName.style.display = "inline";
-                                deviceName.style.display = "inline";
-                                deviceImg.style.display = "inline";
-                                shuffle.style.display = "inline";
-                                volBack.style.display = "inline";
-                                repeat.style.display = "inline";
-                                volBack.style.backgroundColor = "#535353";
-                                onlineStatus.innerHTML = "Online";
-                                onlineStatus.style.backgroundColor = "#2E77D0";
-                                onlineStatus.onmouseover = function () {
-                                    this.style.backgroundColor = "#235fa9";
-                                }
-                                onlineStatus.onmouseout = function () {
-                                    this.style.backgroundColor = "#2E77D0";
-                                }
-                                listenOn.style.backgroundColor = "#1DB954";
-                                listenOnContainer.href = res.track.url;
-                                listenOnText.innerHTML = "LISTEN ON SPOTIFY";
-                                listenOnContainer.onmouseover = function () {
-                                    this.style.backgroundColor = "#169d46";
-                                }
-                                listenOnContainer.onmouseout = function () {
-                                    this.style.backgroundColor = "#1DB954";
-                                }
-                                trackName.innerHTML = res.track.name;
-                                trackName.href = res.track.url;
-                                if (res.track.context) {
-                                    trackBreak.innerHTML = "-";
-                                    trackContext.style.display = "inline";
-                                    trackBreak.style.display = "inline";
-                                    trackContext.innerHTML = res.track.context.name;
-                                    trackContext.href = res.track.context.url;
-                                } else {
-                                    trackName.style.maxWidth = "80%";
-                                    trackContext.innerHTML = "";
-                                    trackBreak.style.display = "none";
-                                    trackBreak.style.display = "none";
-                                }
-                                if (res.device.type === "Smartphone" || res.device.type === "Tablet") {
-                                    deviceImg.style.display = "inline";
-                                    deviceImg.src = "https://raw.githubusercontent.com/nickesc/My-Girlfriend-is-Curious/main/img/phoneIcon.png";
-                                } else if (res.device.type === "Computer") {
-                                    deviceImg.style.display = "inline";
-                                    deviceImg.src = "https://raw.githubusercontent.com/nickesc/My-Girlfriend-is-Curious/main/img/compIcon.png";
-                                } else {
-                                    deviceImg.style.display = "none";
-                                }
-                                deviceName.textContent = res.device.name;
-                                let artists = "";
-                                for (let i = 0; i < res.track.artists.names.length; i++) {
-                                    if (i === 0) {
-                                        artists = res.track.artists.names[i];
-                                    } else {
-                                        artists = artists + ", " + res.track.artists.names[i];
-                                    }
-                                }
-                                artistName.innerHTML = artists;
-                                artistName.href = res.track.artists.url;
-                                progress.style.width = String(res.player.progress * 100) + "%";
-                                trackImg.src = res.track.image;
-                                vol.style.width = String(res.player.vol) + "%";
-                                if (res.player.shuffle === true) {
-                                    shuffle.src = "https://raw.githubusercontent.com/nickesc/My-Girlfriend-is-Curious/main/img/shuffleOn.png";
-                                } else {
-                                    shuffle.src = "https://raw.githubusercontent.com/nickesc/My-Girlfriend-is-Curious/main/img/shuffleOff.png";
-                                }
-                                if (res.player.repeat === "off") {
-                                    repeat.src = "https://raw.githubusercontent.com/nickesc/My-Girlfriend-is-Curious/main/img/repeatOff.png";
-                                } else {
-                                    repeat.src = "https://raw.githubusercontent.com/nickesc/My-Girlfriend-is-Curious/main/img/repeatOn.png";
-                                }
-                            }
-                            setTimeout(setSong, timer * 1000);
-                        });
-                }
-
-                setSong()
-            </script>
+    <spotify class="disableSelect" style="position: fixed">
+      <a
+        href="#"
+        class="expand"
+        style="
+          position: absolute;
+          bottom: 1.5vmin;
+          right: max(1vw, 15px);
+          min-width: 50px;
+          max-width: 80px;
+          width: 10vmin;
+        "
+        onclick="
+          document.getElementsByClassName('spotifyPlayer')[0].style.display =
+            'flex'
+        "
+        ><img
+          src="https://raw.githubusercontent.com/nickesc/My-Girlfriend-is-Curious/main/img/expand.png"
+          alt="Expand Spotify"
+          style="color: #b3b3b3; max-height: 80px"
+      /></a>
+      <div
+        class="spotifyPlayer"
+        style="
+          position: relative;
+          display: none;
+          flex-direction: row;
+          width: 100vw;
+          max-width: 700px;
+          min-width: 320px;
+          font-family: &quot;Helvetica Neue&quot;, sans-serif;
+          background-color: #191414;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+        "
+      >
+        <a
+          href="https://open.spotify.com/user/goofyshnoofy"
+          style="color: white; font-weight: bold; text-decoration: none"
+        >
+          <div
+            class="spotifyStatusIndicator"
+            style="
+              position: absolute;
+              right: min(1.5vmin, 10px);
+              top: min(1.5vmin, 10px);
+              background-color: #191414;
+              text-align: center;
+              padding: min(0.7vmin, 7px) min(1vmin, 7px);
+              font-size: clamp(10px, 1.5vw, 12px);
+              min-width: 40px;
+              max-width: 80px;
+              border-radius: 10000px;
+            "
+            onMouseOver="this.style.backgroundColor='#191414'"
+            onMouseOut="this.style.backgroundColor='#191414'"
+          >
+            &nbsp;
+          </div>
+        </a>
+        <a
+          href="#"
+          class="collapse"
+          style="
+            filter: drop-shadow(0 0 2px #232323);
+            position: absolute;
+            top: 0.5vmin;
+            left: 0.7vmin;
+            min-width: 15px;
+            max-width: 20px;
+            width: 5vmin;
+          "
+          onclick="
+            document.getElementsByClassName('spotifyPlayer')[0].style.display =
+              'none'
+          "
+          ><img
+            src="https://raw.githubusercontent.com/nickesc/My-Girlfriend-is-Curious/main/img/collapse.png"
+            alt="Collapse Spotify"
+            style="color: #b3b3b3; width: 100%"
+        /></a>
+        <div class="playerImgContainer" style="height: 130px">
+          <img
+            class="trackImg"
+            src="https://raw.githubusercontent.com/nickesc/My-Girlfriend-is-Curious/main/img/missingAlbum.png"
+            alt="albumArt"
+            style="height: 130px; object-fit: cover"
+          />
         </div>
+        <div
+          class="playerControlsContainer"
+          style="display: flex; flex-direction: column; width: 100%"
+        >
+          <div
+            class="trackInfoContainer"
+            style="
+              display: flex;
+              flex-direction: column;
+              height: 65%;
+              max-width: 100%;
+              justify-content: center;
+              padding-left: 2.5%;
+              padding-right: 2.5%;
+            "
+          >
+            <div
+              class="device"
+              style="
+                color: #535353;
+                font-size: clamp(8px, 1.5vw, 15px);
+                display: flex;
+                align-items: center;
+              "
+            >
+              <div class="deviceName">&nbsp;</div>
+              <img
+                class="deviceImg"
+                src="https://raw.githubusercontent.com/nickesc/My-Girlfriend-is-Curious/main/img/blank.png"
+                alt="deviceImage"
+                style="padding-left: 3px; height: 2ex; color: #535353"
+              />
+            </div>
+            <div
+              class="playerMiddle"
+              style="
+                display: flex;
+                flex-direction: row;
+                align-items: baseline;
+                justify-content: left;
+                width: 100%;
+                margin: 0.3vh 0;
+              "
+            >
+              <a
+                href=""
+                class="trackName"
+                style="
+                  text-decoration: none;
+                  font-size: clamp(9px, 2vw, 17px);
+                  text-overflow: clip;
+                  white-space: nowrap;
+                  overflow: hidden;
+                  width: fit-content;
+                  max-width: 23ch;
+                  color: white;
+                  font-weight: bold;
+                "
+                >...</a
+              >
+              <div
+                class="trackBreak"
+                style="
+                  font-size: clamp(8px, 2vw, 20px);
+                  color: #b3b3b3;
+                  padding: 0 min(3px, 1vw);
+                "
+              >
+                &nbsp;
+              </div>
+              <a
+                href=""
+                class="trackContext"
+                style="
+                  font-size: clamp(7px, 1.5vw, 15px);
+                  text-decoration: none;
+                  text-overflow: clip;
+                  white-space: nowrap;
+                  overflow: hidden;
+                  width: fit-content;
+                  max-width: 25ch;
+                  color: #b3b3b3;
+                  font-weight: normal;
+                "
+                >&nbsp;</a
+              >
+            </div>
+            <div style="display: flex; justify-content: space-between">
+              <a
+                class="trackArtist"
+                style="
+                  font-size: clamp(8px, 1.5vw, 15px);
+                  color: #b3b3b3;
+                  font-weight: normal;
+                  text-decoration: none;
+                  text-overflow: clip;
+                  white-space: nowrap;
+                  overflow: hidden;
+                  width: fit-content;
+                  max-width: 50ch;
+                "
+                href=""
+                >&nbsp;</a
+              >
+              <div
+                style="
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: center;
+                  font-size: 15px;
+                "
+              >
+                <img
+                  class="shuffleImg"
+                  src="https://raw.githubusercontent.com/nickesc/My-Girlfriend-is-Curious/main/img/blank.png"
+                  alt="shuffleImage"
+                  style="padding-left: 1vw; height: 2ex"
+                />
+                <img
+                  class="repeatImg"
+                  src="https://raw.githubusercontent.com/nickesc/My-Girlfriend-is-Curious/main/img/blank.png"
+                  alt="repeatImage"
+                  style="padding-left: 1vw; padding-right: 1vw; height: 2ex"
+                />
+                <div
+                  class="volumeLevel"
+                  style="
+                    margin: auto 3px;
+                    min-width: 3ex;
+                    width: 6vw;
+                    max-width: 7ex;
+                    background-color: #191414;
+                    height: 0.5vw;
+                    max-height: 4px;
+                    min-height: 2px;
+                  "
+                >
+                  <div
+                    class="volumeFill"
+                    style="background-color: #b3b3b3; width: 0%; height: 100%"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="playerProgressContainer"
+            style="height: 10%; display: flex; flex-direction: row"
+          >
+            <div
+              style="
+                width: 95%;
+                height: 30%;
+                background-color: #535353;
+                margin-left: auto;
+                margin-right: auto;
+              "
+            >
+              <div
+                class="innerProgress"
+                style="width: 1%; height: 100%; background-color: #b3b3b3"
+              ></div>
+            </div>
+          </div>
+          <a
+            class="onSpotifyContainer"
+            style="
+              font-size: 17px;
+              text-decoration: none;
+              height: 25%;
+              background-color: #191414;
+              text-align: center;
+              color: white;
+              font-weight: bold;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            "
+            onMouseOver="this.style.backgroundColor='#191414'"
+            onMouseOut="this.style.backgroundColor='#191414'"
+          >
+            <img
+              src="https://raw.githubusercontent.com/nickesc/My-Girlfriend-is-Curious/main/img/Spotify_Icon_RGB_White.png"
+              style="min-height: 21px; height: 1em; margin: 10px"
+              alt="Spotify Logo"
+            />
+            <div class="listenOnText" style="font-weight: bold">&nbsp;</div>
+          </a>
+        </div>
+        <script>
+          const timer = 5;
+          const mediaQuery = window.matchMedia("(min-width: 760px)");
+          let spotify = document.getElementsByTagName("spotify")[0];
+          let trackImg = document.getElementsByClassName("trackImg")[0];
+          let trackImgContainer =
+            document.getElementsByClassName("playerImgContainer")[0];
+          let listenOnContainer =
+            document.getElementsByClassName("onSpotifyContainer")[0];
+          let expand = document.getElementsByClassName("expand")[0];
+
+          function handleChange(e) {
+            if (mediaQuery.matches) {
+              spotify.style.right = "5%";
+              spotify.style.bottom = "5%";
+              trackImg.style.height = "130px";
+              trackImgContainer.style.maxHeight = "130px";
+              listenOnContainer.style.fontSize = "17px";
+            } else {
+              spotify.style.right = "0px";
+              spotify.style.bottom = "0px";
+              trackImg.style.height = "93px";
+              trackImgContainer.style.maxHeight = "93px";
+              listenOnContainer.style.fontSize = "13px";
+            }
+          }
+
+          mediaQuery.addListener(handleChange);
+          handleChange(mediaQuery);
+          const currentSongUrl = "https://mgic.onrender.com/current";
+
+          function setSong() {
+            fetch(currentSongUrl)
+              .then((data) => {
+                return data.json();
+              })
+              .then((res) => {
+                console.log(res);
+                let onlineStatus = document.getElementsByClassName(
+                  "spotifyStatusIndicator",
+                )[0];
+                let listenOn =
+                  document.getElementsByClassName("onSpotifyContainer")[0];
+                let listenOnText =
+                  document.getElementsByClassName("listenOnText")[0];
+                let trackName = document.getElementsByClassName("trackName")[0];
+                let volBack = document.getElementsByClassName("volumeLevel")[0];
+                let trackContext =
+                  document.getElementsByClassName("trackContext")[0];
+                let trackBreak =
+                  document.getElementsByClassName("trackBreak")[0];
+                let deviceImg = document.getElementsByClassName("deviceImg")[0];
+                let deviceName =
+                  document.getElementsByClassName("deviceName")[0];
+                let artistName =
+                  document.getElementsByClassName("trackArtist")[0];
+                let progress =
+                  document.getElementsByClassName("innerProgress")[0];
+                let vol = document.getElementsByClassName("volumeFill")[0];
+                let shuffle = document.getElementsByClassName("shuffleImg")[0];
+                let repeat = document.getElementsByClassName("repeatImg")[0];
+                if (!res.playing) {
+                  onlineStatus.innerHTML = "Offline";
+                  onlineStatus.style.backgroundColor = "#d01616";
+                  onlineStatus.onmouseover = function () {
+                    this.style.backgroundColor = "#a21111";
+                  };
+                  onlineStatus.onmouseout = function () {
+                    this.style.backgroundColor = "#d01616";
+                  };
+                  listenOnText.innerHTML = "UNABLE TO CONNECT";
+                  listenOnContainer.removeAttribute("href");
+                  trackName.innerHTML = "no track available";
+                  trackName.removeAttribute("href");
+                  trackContext.style.display = "none";
+                  trackBreak.style.display = "none";
+                  artistName.style.display = "none";
+                  deviceName.style.display = "none";
+                  deviceImg.style.display = "none";
+                  shuffle.style.display = "none";
+                  volBack.style.display = "none";
+                  repeat.style.display = "none";
+                  progress.style.width = "1%";
+                  listenOnContainer.style.backgroundColor = "#191414";
+                  listenOnContainer.onmouseover = function () {
+                    this.style.backgroundColor = "#191414";
+                  };
+                  listenOnContainer.onmouseout = function () {
+                    this.style.backgroundColor = "#191414";
+                  };
+                  trackImg.src =
+                    "https://raw.githubusercontent.com/nickesc/My-Girlfriend-is-Curious/main/img/missingAlbum.png";
+                } else {
+                  artistName.style.display = "inline";
+                  deviceName.style.display = "inline";
+                  deviceImg.style.display = "inline";
+                  shuffle.style.display = "inline";
+                  volBack.style.display = "inline";
+                  repeat.style.display = "inline";
+                  volBack.style.backgroundColor = "#535353";
+                  onlineStatus.innerHTML = "Online";
+                  onlineStatus.style.backgroundColor = "#2E77D0";
+                  onlineStatus.onmouseover = function () {
+                    this.style.backgroundColor = "#235fa9";
+                  };
+                  onlineStatus.onmouseout = function () {
+                    this.style.backgroundColor = "#2E77D0";
+                  };
+                  listenOn.style.backgroundColor = "#1DB954";
+                  listenOnContainer.href = res.track.url;
+                  listenOnText.innerHTML = "LISTEN ON SPOTIFY";
+                  listenOnContainer.onmouseover = function () {
+                    this.style.backgroundColor = "#169d46";
+                  };
+                  listenOnContainer.onmouseout = function () {
+                    this.style.backgroundColor = "#1DB954";
+                  };
+                  trackName.innerHTML = res.track.name;
+                  trackName.href = res.track.url;
+                  if (res.track.context) {
+                    trackBreak.innerHTML = "-";
+                    trackContext.style.display = "inline";
+                    trackBreak.style.display = "inline";
+                    trackContext.innerHTML = res.track.context.name;
+                    trackContext.href = res.track.context.url;
+                  } else {
+                    trackName.style.maxWidth = "80%";
+                    trackContext.innerHTML = "";
+                    trackBreak.style.display = "none";
+                    trackBreak.style.display = "none";
+                  }
+                  if (
+                    res.device.type === "Smartphone" ||
+                    res.device.type === "Tablet"
+                  ) {
+                    deviceImg.style.display = "inline";
+                    deviceImg.src =
+                      "https://raw.githubusercontent.com/nickesc/My-Girlfriend-is-Curious/main/img/phoneIcon.png";
+                  } else if (res.device.type === "Computer") {
+                    deviceImg.style.display = "inline";
+                    deviceImg.src =
+                      "https://raw.githubusercontent.com/nickesc/My-Girlfriend-is-Curious/main/img/compIcon.png";
+                  } else {
+                    deviceImg.style.display = "none";
+                  }
+                  deviceName.textContent = res.device.name;
+                  let artists = "";
+                  for (let i = 0; i < res.track.artists.names.length; i++) {
+                    if (i === 0) {
+                      artists = res.track.artists.names[i];
+                    } else {
+                      artists = artists + ", " + res.track.artists.names[i];
+                    }
+                  }
+                  artistName.innerHTML = artists;
+                  artistName.href = res.track.artists.url;
+                  progress.style.width =
+                    String(res.player.progress * 100) + "%";
+                  trackImg.src = res.track.image;
+                  vol.style.width = String(res.player.vol) + "%";
+                  if (res.player.shuffle === true) {
+                    shuffle.src =
+                      "https://raw.githubusercontent.com/nickesc/My-Girlfriend-is-Curious/main/img/shuffleOn.png";
+                  } else {
+                    shuffle.src =
+                      "https://raw.githubusercontent.com/nickesc/My-Girlfriend-is-Curious/main/img/shuffleOff.png";
+                  }
+                  if (res.player.repeat === "off") {
+                    repeat.src =
+                      "https://raw.githubusercontent.com/nickesc/My-Girlfriend-is-Curious/main/img/repeatOff.png";
+                  } else {
+                    repeat.src =
+                      "https://raw.githubusercontent.com/nickesc/My-Girlfriend-is-Curious/main/img/repeatOn.png";
+                  }
+                }
+                setTimeout(setSong, timer * 1000);
+              });
+          }
+
+          setSong();
+        </script>
+      </div>
     </spotify>
 
     <script>
-        let firefoxBanner = new FirefoxBanner()
+      let firefoxBanner = new FirefoxBanner();
 
-        let terminalDisplay = new TerminalDisplay()
-        let terminal = new Terminal(terminalDisplay)
-        let projects = new Projects(terminal)
+      let terminalDisplay = new TerminalDisplay();
+      let terminal = new Terminal(terminalDisplay);
+      let projects = new Projects(terminal);
     </script>
-</body>
+  </body>
 </html>
