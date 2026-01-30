@@ -15,11 +15,17 @@ class Projects{
     clientEnhanced;
     controllerMappingTemplates;
     wbge;
-
-
-    list = []
-
-
+    keyboardLayouts;
+    qrBaker;
+    noMoreAiSearch;
+    steploop;
+    inputTerminal;
+    animwebp;
+    forajs;
+    pokemonAnalysis;
+    gscClockUtil;
+    moreJourneyMapWaypoints;
+    modpackLock;
 
     constructor(terminal) {
         this.terminal = terminal
@@ -39,13 +45,145 @@ class Projects{
 
     constructProjects(){
 
+        this.modpackLock = this.makeProject({
+            "name": "modpack-lock",
+            "imgUrl": "../img/modpackLock.png",
+            "bgColor": "#363e3f",
+            "projectUrl": "https://www.npmjs.com/package/modpack-lock",
+            "sourceUrl": "https://github.com/nickesc/modpack-lock",
+            "desc": "Creates a modpack lockfile for files hosted on Modrinth (mods, resource packs, shaders and datapacks).",
+            "year": "2026",
+            "cat": Projects.Categories.CODE,
+            "command": "modpack-lock",
+        });
+
+        this.moreJourneyMapWaypoints = this.makeProject({
+            "name": "More JourneyMap Waypoints",
+            "imgUrl": "../img/moreJourneyMapWaypoints.png",
+            "bgColor": "#0f0f0f",
+            "projectUrl": "https://modrinth.com/project/more-journeymap-waypoints",
+            "sourceUrl": "https://github.com/nickesc/More-JourneyMap-Waypoints",
+            "desc": "An addon resource pack for JourneyMap with more icons to use as waypoints.",
+            "year": "2026",
+            "cat": Projects.Categories.ART,
+            "command": "morejourneymapwaypoints",
+        });
+
+        this.gscClockUtil = this.makeProject({
+            "name": "Pokémon GSC Clock Password Generator",
+            "imgUrl": "../img/gscClockUtil.png",
+            "bgColor": "#232323",
+            "projectUrl": "https://gsc-clock-util.batcomputer.xyz",
+            "sourceUrl": "https://github.com/nickesc/gsc-clock-util",
+            "desc": "Generates a password to reset the clock in Pokemon Gold, Silver and Crystal.",
+            "year": "2025",
+            "cat": Projects.Categories.CODE,
+            "command": "gsc-clock-util",
+        });
+
+        this.pokemonAnalysis = this.makeProject({
+            "name": "Pokémon Team Analyzer",
+            "imgUrl": "../img/pokemonAnalysis.png",
+            "bgColor": "#232323",
+            "projectUrl": "https://pokemon-analysis.batcomputer.xyz",
+            "sourceUrl": "#",
+            "desc": "Analyze a Pokemon team and generate reports on coverage.",
+            "year": "2025",
+            "cat": Projects.Categories.CODE,
+            "command": "pokemon-team-analysis",
+        });
+
+        this.forajs = this.makeProject({
+            "name": "4ajs",
+            "imgUrl": "../img/4ajs.png",
+            "bgColor": "#80cfff",
+            "projectUrl": "https://github.com/nickesc/4ajs",
+            "sourceUrl": "https://github.com/nickesc/4ajs",
+            "desc": "A game made with love for the greatest person in the world.",
+            "year": "2025",
+            "cat": Projects.Categories.CODE,
+            "command": "4ajs",
+        });
+
+        this.animwebp = this.makeProject({
+            "name": "animwebp",
+            "imgUrl": "../img/animwebp.png",
+            "bgColor": "#f9f9f9",
+            "projectUrl": "https://www.npmjs.com/package/animwebp",
+            "sourceUrl": "https://github.com/nickesc/animwebp",
+            "desc": "Convert a sequence of images to an animated WebP.",
+            "year": "2025",
+            "cat": Projects.Categories.CODE,
+            "command": "animwebp",
+        });
+
+        this.inputTerminal = this.makeProject({
+            "name": "input-terminal",
+            "imgUrl": "../img/inputTerminal.png",
+            "bgColor": "#0c0c0c",
+            "projectUrl": "https://nickesc.github.io/input-terminal/",
+            "sourceUrl": "https://github.com/nickesc/input-terminal",
+            "desc": "Turn any HTMLInputElement into a terminal interface.",
+            "year": "2025",
+            "cat": Projects.Categories.CODE,
+            "command": "input-terminal",
+        });
+
+        this.steploop = this.makeProject({
+            "name": "Steploop",
+            "imgUrl": "../img/steploop.png",
+            "bgColor": "#fb3448",
+            "projectUrl": "https://www.npmjs.com/package/steploop",
+            "sourceUrl": "https://github.com/nickesc/steploop",
+            "desc": "A foundation for building loops that execute at a consistent, specified rate.",
+            "year": "2025",
+            "cat": Projects.Categories.CODE,
+            "command": "steploop",
+        });
+
+        this.noMoreAiSearch = this.makeProject({
+            "name": "No More AI Search",
+            "imgUrl": "../img/noMoreAiSearch.png",
+            "bgColor": "#0f0f0f",
+            "projectUrl": "https://github.com/nickesc/no-more-ai-search",
+            "sourceUrl": "https://github.com/nickesc/no-more-ai-search",
+            "desc": "Remove the AI Mode button and AI Overview from Google Search results.",
+            "year": "2025",
+            "cat": Projects.Categories.CODE,
+            "command": "nomoreaisearch",
+        });
+
+        this.qrBaker = this.makeProject({
+            "name": "QR-Baker",
+            "imgUrl": "../img/qrBaker.png",
+            "bgColor": "#46465b",
+            "projectUrl": "https://nickesc.github.io/qr-baker/",
+            "sourceUrl": "https://github.com/nickesc/qr-baker",
+            "desc": "Multi-platform QR code generator built with Godot 4.",
+            "year": "2025",
+            "cat": Projects.Categories.CODE,
+            "command": "qr-baker",
+        });
+
+        this.keyboardLayouts = this.makeProject({
+            "name": "Keyboard Layouts",
+            "imgUrl": "../img/keyboardLayouts.png",
+            "bgColor": "#fff",
+            "projectUrl": "https://github.com/nickesc/KeyboardLayouts/blob/main/README.md",
+            "sourceUrl": "https://github.com/nickesc/keyboardLayouts",
+            "desc": "Various keyboard layouts in SVG and PNG formats, organized by category/size.",
+            "year": "2025",
+            "cat": Projects.Categories.ART,
+            "command": "keyboardlayouts",
+        });
+
         this.wbge = this.makeProject({
             "name": "White Background Enforcer",
             "imgUrl": "../img/wbge.png",
             "bgColor": "#2B2B2B",
             "projectUrl": "https://addons.mozilla.org/en-US/firefox/addon/wbge/",
             "sourceUrl": "https://github.com/nickesc/white-background-enforcer",
-            "desc": "A browser extension that sets a white background on pages where background-color is not explicitly set",
+            "desc": "A browser extension that sets a white background on pages where background-color is not explicitly set.",
             "year": "2025",
             "cat": Projects.Categories.CODE,
             "command": "whitebackgroundenforcer",
@@ -315,35 +453,13 @@ class Projects{
             "command":"Valor"
         })
 
-        this.list = [
-            this.tempChecker, // sep 2023
-            this.loggedmessage, // jul 2023
-            this.starfish, // april 2023
-            this.bumblebee, // jan 2023
-            this.dotfiles, // nov 2022
-            this.note, // nov 2022
-            this.paradise, // nov 2022
-            this.scaredyBot, // may 2022
-            this.gmailExplorer, // may 2022
-            this.mgic, // april 2022
-            this.logos, // march 2022
-            this.branches, // dec 2021
-            this.branchesScript, // dec 2021
-            this.hbPiA, // dec 2021
-            this.steamToolsApi, // nov 2021
-            this.wildlife, // dec 2021
-            this.llt, // dec 2021
-            this.iob, // oct 2021
-            this.valor, // dec 2019
-        ];
-
         this.featured = [
-          this.starfish,
+          this.modpackLock,
+          this.inputTerminal,
+          this.steploop,
           this.bumblebee,
-          this.dotfiles,
-          this.scaredyBot,
-          this.mgic,
-          this.branches,
+          this.moreJourneyMapWaypoints,
+          this.starfish,
         ];
 
     }
@@ -352,13 +468,6 @@ class Projects{
 
         for (let i = 0; i<this.featured.length; i++){
             this.featureHolders[0].appendChild(this.featured[i].getFeatureBox())
-        }
-    }
-
-    setProjects(){
-
-        for (let i = 0; i<this.list.length; i++){
-            this.projectsHolder.appendChild(this.list[i].getProjectBox())
         }
     }
 }
