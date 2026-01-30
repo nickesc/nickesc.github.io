@@ -10,3 +10,6 @@
 # Project Specific
 /.idea/
 .DS_Store
+v1/
+
+node_modules/
