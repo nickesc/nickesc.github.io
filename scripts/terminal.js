@@ -225,7 +225,7 @@ class Terminal {
                             this.terminalDisplay.setDisplay(this.terminalDisplay.displayList[i])
                             found = true
                             break;
-                        } else if (command[1] === "portfolio"){
+                        } else if (command[1] === "art" || command[1] === "portfolio"){
                             this.terminalDisplay.redirectToPortfolio()
                             found = true
                             break;
@@ -255,7 +255,7 @@ class Terminal {
                 case (command[0] === "resume"):
                     this.terminalDisplay.redirectToResume()
                     break;
-                case (command[0] === "portfolio"):
+                case (command[0] === "art" || command[0] === "portfolio"):
                     this.terminalDisplay.redirectToPortfolio()
                     break;
                 case (command[0] === "github"):
