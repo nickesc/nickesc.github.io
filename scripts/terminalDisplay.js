@@ -15,6 +15,7 @@ class TerminalDisplay {
 
     homeButton = document.getElementById("homeButton")
     projectsButton = document.getElementById("projectsButton")
+    mediaButton = document.getElementById("mediaButton")
     portfolioButton = document.getElementById("portfolioButton")
     githubButton = document.getElementById("githubButton")
     resumeButton = document.getElementById("resumeButton")
@@ -49,6 +50,7 @@ class TerminalDisplay {
         this.lightenButton(this.homeButton)
         //this.projectsPage.style.display = "none"
         this.lightenButton(this.projectsButton)
+        this.lightenButton(this.mediaButton);
         this.lightenButton(this.portfolioButton);
         this.lightenButton(this.githubButton);
         this.lightenButton(this.resumeButton);
@@ -64,6 +66,9 @@ class TerminalDisplay {
 
     redirectToPortfolio(){
         window.location.href = "https://nickesc.com";
+    }
+    redirectToMedia(){
+        window.location.href = "https://nescobar.media";
     }
     redirectToSource(){
         window.location.href = "https://github.com/nickesc/nickesc.github.io";
@@ -84,6 +89,9 @@ class TerminalDisplay {
         });*/
         this.projectsButton.addEventListener('click', (event) => {
             this.setDisplay(this.projects)
+        });
+        this.mediaButton.addEventListener('click', (event) => {
+            this.redirectToMedia();
         });
         /*this.helpButton.addEventListener('click', (event) => {
             this.setDisplay(this.help)
