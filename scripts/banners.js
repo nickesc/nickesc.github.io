@@ -44,17 +44,6 @@ class Banner{
     }
 }
 
-class FirefoxBanner extends Banner{
-
-    constructor(){
-        super("This site is know to have formatting issues on Firefox; all site functionality remains available", "ffBanner")
-
-        if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
-            this.loadBanner();
-        }
-    }
-}
-
 class UnderConstructionBanner extends Banner{
     constructor(){
         super("This site is actively being rebuilt; it is quite old and in need of some love <3" +

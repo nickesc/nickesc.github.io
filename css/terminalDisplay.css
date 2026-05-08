@@ -1,13 +1,16 @@
 .terminalDisplay{
-    padding: 0 4vmin 4vmin 4vmin;
+    padding: 0 4vmin 0 4vmin;
     max-width: 1200px;
-    height: auto;
+    height: calc(100% - 3em);
+    display: flex;
+    flex-direction: column;
 
 }
 
 .terminalMain{
-    max-height: calc(70% - 40px);
-    overflow-y: scroll;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
     overflow-x: hidden;
 }
 
@@ -43,13 +46,8 @@
     flex-wrap: wrap;
   }
   .blocker.terminalMenu  {
-    height: 46px;
-  }
-}
-
-@media (max-width: 290px) {
-  .blocker.terminalMenu  {
-    height: 66px;
+    height: auto;
+    min-height: 20px;
   }
 }
 
@@ -67,5 +65,4 @@
     background-color: #232326;
     color: #232326;
 }
-
 

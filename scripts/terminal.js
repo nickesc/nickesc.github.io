@@ -145,7 +145,7 @@ class Terminal {
 
     // starts the terminal display
     start() {
-        document.getElementsByClassName("terminalDisplay")[0].style.display = "block"
+        document.getElementsByClassName("terminalDisplay")[0].style.display = "flex"
         if (this.active === false) {
             this.terminalDisplay.setDisplay(this.terminalDisplay.home)
             this.terminalDisplay.toolTitle.style.color = "#232326"
@@ -267,8 +267,6 @@ class Terminal {
                 case (command[0] === "cright"):
                     this.terminalDisplay.setDisplay(this.terminalDisplay.cright)
                     break;
-                case (command[0] === "firefox"):
-                    firefoxBanner.openFirefoxBanner()
                 case (this.testIfProjectNameExists(command)):
                     this.testIfProjectNameExists(command, true)
                     break;

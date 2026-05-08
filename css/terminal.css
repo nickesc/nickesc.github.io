@@ -9,13 +9,8 @@
     right:0;
     padding: calc(2vmin + 23px) 2vmin 2vmin 2vmin;
     margin: 5vmin;
-    overflow: scroll;
-    -ms-overflow-style: none; /* for Internet Explorer, Edge */
-    scrollbar-width: none; /* for Firefox */
+    overflow: hidden;
 
-}
-.terminalBlock::-webkit-scrollbar {
-    display: none; /* for Chrome, Safari, and Opera */
 }
 
 #terminal, #terminalLabel, #terminalLabel2{
