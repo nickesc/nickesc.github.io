@@ -46,6 +46,10 @@
 		flex: 1;
 		min-height: 0;
 		overflow: hidden;
+		background: rgba(from var(--brand-dark) r g b / 0.8);
+		border-radius: var(--window-corners);
+		margin: 1rem;
+		margin-top: 0;
 	}
 
 	.output {

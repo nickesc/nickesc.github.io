@@ -137,6 +137,7 @@
 		align-items: center;
 		justify-content: center;
 		transition: background-color 0.3s ease;
+		margin: 0.5rem 0;
 
 		.handle {
 			user-select: none;
