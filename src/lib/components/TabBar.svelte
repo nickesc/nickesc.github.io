@@ -40,8 +40,8 @@
 		<nav class="scrollable">
 			<ol>
 				{#each tabs as tab}
-					<li class:active={tab.href === page.url.pathname}>
-						<a href={tab.href}>{tab.name}</a>
+					<li>
+						<a href={tab.href} class:active={tab.href === page.url.pathname}>{tab.name}</a>
 					</li>
 				{/each}
 			</ol>
@@ -76,36 +76,39 @@
 			justify-content: flex-start;
 			padding: 0;
 			margin: 0;
-			gap: 0.5rem;
+			gap: 0.3rem;
 
 			li {
-				margin: 0;
-				padding: 0.25rem 0.5rem;
-				transition: background-color 0.1s ease-in-out;
-
 				a,
 				a:visited {
+					display: inline-block;
 					color: var(--brand-white);
 					text-decoration: none;
-					transition: color 0.1s ease-in-out;
-				}
-
-				&:hover {
-					background-color: rgba(from var(--brand-grey) r g b / 0.25);
+					padding: 0.25rem 0.5rem;
 					border-radius: var(--corners);
-				}
+					transition:
+						color 0.1s ease-in-out,
+						background-color 0.1s ease-in-out;
 
-				&.active {
-					background-color: rgba(from var(--brand-grey) r g b / 0.7);
-					border-radius: var(--corners);
-
-					a,
-					a:visited {
-						color: var(--brand-dark);
+					&:hover,
+					&:focus {
+						background-color: rgba(from var(--brand-grey) r g b / 0.25);
+						outline: none;
 					}
 
-					&:hover {
-						background-color: rgba(from var(--brand-grey) r g b / 0.5);
+					&:active {
+						background-color: rgba(from var(--brand-grey) r g b / 0.4);
+					}
+
+					&.active {
+						color: var(--brand-dark);
+						background-color: rgba(from var(--brand-grey) r g b / 0.7);
+
+						&:hover,
+						&:focus {
+							background-color: rgba(from var(--brand-grey) r g b / 0.5);
+							outline: none;
+						}
 					}
 				}
 			}
