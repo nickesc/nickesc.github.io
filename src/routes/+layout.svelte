@@ -27,6 +27,14 @@
 </div>
 
 <style>
+	:global(:root) {
+		--brand-black: #111;
+		--brand-dark: #232326;
+		--brand-accent: #ef5252;
+		--brand-grey: #d6d6d6;
+		--brand-white: #fff9f2;
+	}
+
 	:global(body) {
 		margin: 0;
 		font-family: 'IBM Plex Mono', monospace;
