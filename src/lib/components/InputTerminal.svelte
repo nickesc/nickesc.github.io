@@ -4,6 +4,7 @@
 	import { SvelteOutputAdapter } from 'input-terminal/svelte';
 
 	let input: HTMLInputElement;
+	let outputElement: HTMLElement;
 	const output = new SvelteOutputAdapter();
 
 	onMount(() => {
@@ -12,10 +13,17 @@
 
 		return () => terminal.destroy();
 	});
+
+	$effect(() => {
+		output.entries;
+		if (outputElement) {
+			outputElement.scrollTop = outputElement.scrollHeight;
+		}
+	});
 </script>
 
 <div class="input-terminal">
-	<div class="output" aria-live="polite">
+	<div class="output" bind:this={outputElement} aria-live="polite">
 		<div class="output-entries">
 			{#each output.entries as entry (entry.metadata.sequence)}
 				<div class:error={entry.operation === 'stderr'}>{String(entry.data)}</div>
