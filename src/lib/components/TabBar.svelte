@@ -11,12 +11,12 @@
 			href: '/projects'
 		},
 		{
-			name: 'Resume',
-			href: '/resume'
-		},
-		{
 			name: 'Contact',
 			href: '/contact'
+		},
+		{
+			name: 'Resume',
+			href: '/resume'
 		},
 		{
 			name: 'GitHub',
@@ -32,26 +32,59 @@
 <nav>
 	<ol>
 		{#each tabs as tab}
-			<li>
-				<a href={tab.href} class:active={tab.href === page.url.pathname}>{tab.name}</a>
+			<li class:active={tab.href === page.url.pathname}>
+				<a href={tab.href}>{tab.name}</a>
 			</li>
 		{/each}
 	</ol>
 </nav>
 
 <style>
-	nav ol {
-		list-style: none;
-		display: flex;
-		flex-direction: row;
-		justify-content: flex-start;
-		align-items: center;
-		padding: 1rem;
-		margin: 0;
-		gap: 1rem;
-	}
-	nav ol li {
-		margin: 0;
-		padding: 0;
+	nav {
+		overflow-x: scroll;
+		box-sizing: content-box;
+		scrollbar-width: none;
+		ol {
+			list-style: none;
+			display: flex;
+			flex-direction: row;
+			justify-content: flex-start;
+			align-items: center;
+			padding: 0;
+			margin: 0;
+			gap: 0.5rem;
+
+			li {
+				margin: 0;
+				padding: 0.25rem 0.5rem;
+				transition: background-color 0.1s ease-in-out;
+
+				a,
+				a:visited {
+					color: var(--brand-white);
+					text-decoration: none;
+					transition: color 0.1s ease-in-out;
+				}
+
+				&:hover {
+					background-color: rgba(from var(--brand-grey) r g b / 0.25);
+					border-radius: var(--corners);
+				}
+
+				&.active {
+					background-color: rgba(from var(--brand-grey) r g b / 0.7);
+					border-radius: var(--corners);
+
+					a,
+					a:visited {
+						color: var(--brand-dark);
+					}
+
+					&:hover {
+						background-color: rgba(from var(--brand-grey) r g b / 0.5);
+					}
+				}
+			}
+		}
 	}
 </style>
