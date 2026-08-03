@@ -18,7 +18,7 @@
 	<header>
 		<TabBar />
 	</header>
-	<main id="content">
+	<main>
 		{@render children()}
 	</main>
 	<footer>
@@ -33,6 +33,9 @@
 		--brand-accent: #ef5252;
 		--brand-grey: #d6d6d6;
 		--brand-white: #fff9f2;
+
+		--corners: 2px;
+		--window-corners: 7px;
 	}
 
 	:global(body) {
@@ -47,5 +50,28 @@
 	:global(*::before),
 	:global(*::after) {
 		box-sizing: inherit;
+	}
+
+	:global(#terminal-window p, h1, h2, h3, h4, h5, h6) {
+		color: var(--brand-white);
+	}
+
+	#terminal-window {
+		display: flex;
+		flex-direction: column;
+		margin: 1rem;
+		border: 1px solid var(--brand-grey);
+		border-radius: var(--window-corners);
+		box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+		backdrop-filter: blur(10px);
+		background: rgba(from var(--brand-dark) r g b / 0.9);
+		header {
+			padding: 0.5rem;
+		}
+		main {
+			padding: 1rem;
+		}
+		footer {
+		}
 	}
 </style>
