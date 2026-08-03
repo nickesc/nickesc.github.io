@@ -16,9 +16,11 @@
 
 <div class="input-terminal">
 	<div class="output" aria-live="polite">
-		{#each output.entries as entry (entry.metadata.sequence)}
-			<div class:error={entry.operation === 'stderr'}>{String(entry.data)}</div>
-		{/each}
+		<div class="output-entries">
+			{#each output.entries as entry (entry.metadata.sequence)}
+				<div class:error={entry.operation === 'stderr'}>{String(entry.data)}</div>
+			{/each}
+		</div>
 	</div>
 
 	<input bind:this={input} aria-label="Terminal input" />
@@ -31,10 +33,24 @@
 		font: 1rem/1.5 monospace;
 		color: var(--brand-grey);
 		font-family: 'Fira Code Variable', monospace;
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+		min-height: 0;
+		overflow: hidden;
 	}
 
 	.output {
+		flex: 1;
+		min-height: 0;
+		overflow-y: auto;
+		display: flex;
+		flex-direction: column;
 		white-space: pre-wrap;
+	}
+
+	.output-entries {
+		margin-top: auto;
 	}
 
 	.error {
@@ -42,6 +58,7 @@
 	}
 
 	input {
+		flex-shrink: 0;
 		width: 100%;
 		padding: 0;
 		border: 0;
