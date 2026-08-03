@@ -1,17 +1,77 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { Terminal } from 'input-terminal';
+	import { Terminal, Command } from 'input-terminal';
 	import { SvelteOutputAdapter } from 'input-terminal/svelte';
+	import { page } from '$app/state';
+	import { goto } from '$app/navigation';
+	import { tabs, tabTree } from '$lib/tabs';
+	import { getFromPath, type File, type Directory } from '$lib/filetree';
 
 	let input: HTMLInputElement;
 	let outputElement: HTMLElement;
 	const output = new SvelteOutputAdapter();
+	let terminal: Terminal;
+
+	let hostname = $state(page.url.hostname);
+	let user = $state('visitor');
+	let path = $derived(page.url.pathname);
+
+	let filetree: Directory = $state(tabTree);
+	let currentDirectory: Directory = $derived(getFromPath(filetree, path) as Directory);
+
+	const ls = new Command('ls', (args, options, terminal) => {
+		if (currentDirectory.parent !== null) {
+			terminal.stdout('..');
+		}
+		terminal.stdout(currentDirectory.children.map((child) => child.name).join('\n'));
+		return { directory: currentDirectory };
+	});
+
+	const cd = new Command('cd', (args, options, terminal) => {
+		if (args[0] === '..') {
+			if (!currentDirectory.parent) {
+				terminal.stderr('Already at root directory');
+				return { directory: currentDirectory };
+			}
+			currentDirectory = currentDirectory.parent;
+			goto(currentDirectory.path);
+			return { directory: currentDirectory };
+		}
+		const newDirectory = currentDirectory.children.find(
+			(child) => child.type === 'directory' && child.name === args[0]
+		);
+		if (!newDirectory) {
+			terminal.stderr(`Directory ${args[0]} not found`);
+			return { directory: currentDirectory };
+		}
+
+		if (!newDirectory.path.startsWith('/')) {
+			window.open(newDirectory.path, '_blank');
+		} else {
+			currentDirectory = newDirectory as Directory;
+			goto(currentDirectory.path, { replaceState: true, noScroll: true, keepFocus: true });
+		}
+
+		return { directory: currentDirectory };
+	});
 
 	onMount(() => {
-		const terminal = new Terminal({ input, output });
+		terminal = new Terminal({
+			input,
+			output,
+			options: { preprompt: `${user}@${hostname}:${path}`, prompt: ' > ' },
+			commands: [ls, cd]
+		});
 		terminal.init();
 
 		return () => terminal.destroy();
+	});
+
+	$effect(() => {
+		console.log('updating options');
+		if (terminal) {
+			terminal.updateOptions({ preprompt: `${user}@${hostname}:${path}`, prompt: ' > ' });
+		}
 	});
 
 	$effect(() => {
