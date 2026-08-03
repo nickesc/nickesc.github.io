@@ -1,6 +1,12 @@
 <script lang="ts">
 	import { page } from '$app/state';
 
+	let { on = $bindable() } = $props();
+
+	function handlePowerButtonClick() {
+		on = !on;
+	}
+
 	const tabs = [
 		{
 			name: 'Home',
@@ -29,27 +35,46 @@
 	];
 </script>
 
-<nav>
-	<ol>
-		{#each tabs as tab}
-			<li class:active={tab.href === page.url.pathname}>
-				<a href={tab.href}>{tab.name}</a>
-			</li>
-		{/each}
-	</ol>
-</nav>
+<header style:justify-content={on ? 'space-between' : 'flex-end'}>
+	{#if on}
+		<nav>
+			<ol>
+				{#each tabs as tab}
+					<li class:active={tab.href === page.url.pathname}>
+						<a href={tab.href}>{tab.name}</a>
+					</li>
+				{/each}
+			</ol>
+		</nav>
+	{/if}
+	<button id="power-button" onclick={handlePowerButtonClick}>
+		{#if on}
+			X
+		{:else}
+			O
+		{/if}
+	</button>
+</header>
 
 <style>
+	header {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0.5rem;
+	}
+
 	nav {
 		overflow-x: scroll;
-		box-sizing: content-box;
 		scrollbar-width: none;
+
 		ol {
 			list-style: none;
 			display: flex;
 			flex-direction: row;
-			justify-content: flex-start;
 			align-items: center;
+			justify-content: flex-start;
 			padding: 0;
 			margin: 0;
 			gap: 0.5rem;
