@@ -1,6 +1,9 @@
 <script lang="ts">
 	import favicon from '$lib/assets/favicon.svg';
 
+	import '@fontsource/ibm-plex-mono/400.css';
+	import '@fontsource/ibm-plex-mono/700.css';
+
 	import TabBar from '$lib/components/TabBar.svelte';
 	import InputTerminal from '$lib/components/InputTerminal.svelte';
 
@@ -26,7 +29,7 @@
 <style>
 	:global(body) {
 		margin: 0;
-		background: #111;
+		font-family: 'IBM Plex Mono', monospace;
 	}
 	:global(html) {
 		box-sizing: border-box;
