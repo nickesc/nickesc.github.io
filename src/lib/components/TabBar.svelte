@@ -1,38 +1,12 @@
 <script lang="ts">
 	import { page } from '$app/state';
+	import { tabs } from '$lib/tabs';
 
 	let { on = $bindable() } = $props();
 
 	function handlePowerButtonClick() {
 		on = !on;
 	}
-
-	const tabs = [
-		{
-			name: 'Home',
-			href: '/'
-		},
-		{
-			name: 'Projects',
-			href: '/projects'
-		},
-		{
-			name: 'Contact',
-			href: '/contact'
-		},
-		{
-			name: 'Resume',
-			href: '/resume'
-		},
-		{
-			name: 'GitHub',
-			href: 'https://github.com/nickesc'
-		},
-		{
-			name: 'Art',
-			href: 'https://nickesc.com/'
-		}
-	];
 </script>
 
 <header style:justify-content={on ? 'space-between' : 'flex-end'}>
