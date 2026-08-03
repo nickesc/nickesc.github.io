@@ -26,11 +26,11 @@
 
 <style>
 	.input-terminal {
-		min-height: 100vh;
 		padding: 1rem;
 		box-sizing: border-box;
 		font: 1rem/1.5 monospace;
-		color: #eee;
+		color: var(--brand-grey);
+		font-family: 'Fira Code Variable', monospace;
 	}
 
 	.output {
