@@ -86,7 +86,7 @@
 	<div class="output scrollable" bind:this={outputElement} aria-live="polite">
 		<div class="output-entries">
 			{#each output.entries as entry (entry.metadata.sequence)}
-				<div class:error={entry.operation === 'stderr'}>{String(entry.data)}</div>
+				<div class:error={entry.operation === 'stderr'}>{@html String(entry.data)}</div>
 			{/each}
 		</div>
 	</div>
