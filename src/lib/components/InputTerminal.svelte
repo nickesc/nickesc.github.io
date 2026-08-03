@@ -23,7 +23,7 @@
 </script>
 
 <div class="input-terminal">
-	<div class="output" bind:this={outputElement} aria-live="polite">
+	<div class="output scrollable" bind:this={outputElement} aria-live="polite">
 		<div class="output-entries">
 			{#each output.entries as entry (entry.metadata.sequence)}
 				<div class:error={entry.operation === 'stderr'}>{String(entry.data)}</div>
@@ -51,7 +51,7 @@
 	.output {
 		flex: 1;
 		min-height: 0;
-		overflow-y: auto;
+		overflow-y: scroll;
 		display: flex;
 		flex-direction: column;
 		white-space: pre-wrap;

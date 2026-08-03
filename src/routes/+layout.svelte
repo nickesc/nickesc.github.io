@@ -48,7 +48,7 @@
 
 <div id="terminal-window" bind:this={windowElement} class:dragging>
 	<TabBar bind:on />
-	<main style:flex={`${mainHeight} 1 0`}>
+	<main class="scrollable" style:flex={`${mainHeight} 1 0`}>
 		{#if on}
 			{@render children()}
 		{/if}
@@ -94,6 +94,12 @@
 		box-sizing: inherit;
 	}
 
+	:global(.scrollable) {
+		scrollbar-gutter: stable;
+		scrollbar-color: rgba(from var(--brand-grey) r g b / 0.9) transparent;
+		scrollbar-width: thin;
+	}
+
 	:global(#terminal-window p, h1, h2, h3, h4, h5, h6) {
 		color: var(--brand-white);
 	}
@@ -120,7 +126,7 @@
 	main {
 		padding: 1rem;
 		min-height: 0;
-		overflow-y: auto;
+		overflow-y: scroll;
 	}
 
 	.divider {

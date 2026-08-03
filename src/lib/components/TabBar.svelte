@@ -37,7 +37,7 @@
 
 <header style:justify-content={on ? 'space-between' : 'flex-end'}>
 	{#if on}
-		<nav>
+		<nav class="scrollable">
 			<ol>
 				{#each tabs as tab}
 					<li class:active={tab.href === page.url.pathname}>
@@ -67,7 +67,6 @@
 
 	nav {
 		overflow-x: scroll;
-		scrollbar-width: none;
 
 		ol {
 			list-style: none;
