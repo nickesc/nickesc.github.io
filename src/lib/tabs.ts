@@ -1,29 +1,36 @@
 import type { Directory } from '$lib/filetree';
+type Tab = {
+	name: string;
+	href: string;
+	external?: boolean;
+};
 
-export const tabs = [
+export const tabs: Tab[] = [
 	{
-		name: 'Home',
+		name: 'home',
 		href: '/'
 	},
 	{
-		name: 'Projects',
+		name: 'projects',
 		href: '/projects'
 	},
 	{
-		name: 'Contact',
+		name: 'contact',
 		href: '/contact'
 	},
 	{
-		name: 'Resume',
+		name: 'resume',
 		href: '/resume'
 	},
 	{
 		name: 'GitHub',
-		href: 'https://github.com/nickesc'
+		href: 'https://github.com/nickesc',
+		external: true
 	},
 	{
 		name: 'Art',
-		href: 'https://nickesc.com/'
+		href: 'https://nickesc.com/',
+		external: true
 	}
 ];
 

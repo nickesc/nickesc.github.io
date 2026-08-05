@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import { tabs } from '$lib/tabs';
+	import ExternalArrow from '$lib/components/externalArrow.svelte';
 
 	let { on = $bindable() } = $props();
 
@@ -15,7 +16,12 @@
 			<ol>
 				{#each tabs as tab}
 					<li>
-						<a href={tab.href} class:active={tab.href === page.url.pathname}>{tab.name}</a>
+						<a href={tab.href} class:active={tab.href === page.url.pathname}
+							>{tab.name}
+							{#if tab.external}
+								<ExternalArrow width=".75rem" height=".75rem" />
+							{/if}
+						</a>
 					</li>
 				{/each}
 			</ol>
@@ -55,7 +61,11 @@
 			li {
 				a,
 				a:visited {
-					display: inline-block;
+					display: inline-flex;
+					flex-direction: row;
+					align-items: center;
+					justify-content: center;
+					gap: 0.2rem;
 					color: var(--brand-white);
 					text-decoration: none;
 					padding: 0.25rem 0.5rem;

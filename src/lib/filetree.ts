@@ -1,17 +1,18 @@
 export type File = {
 	type: 'file';
 	name: string;
-	path: string;
 	parent: Directory | null;
 	content: string;
+	href?: string;
 };
 
 export type Directory = {
 	type: 'directory';
 	name: string;
-	path: string;
+	page?: string;
 	parent: Directory | null;
-	children: (File | Directory)[];
+	children: Directory[];
+	files: File[];
 };
 
 export function getFromPath(root: Directory, path: string): Directory | File {
