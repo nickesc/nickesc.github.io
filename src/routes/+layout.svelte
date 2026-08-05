@@ -50,13 +50,14 @@
 		return nextBg ?? false;
 	}
 
-	function handleMouseDown(event: MouseEvent) {
+	function handlePointerDown(event: PointerEvent) {
 		event.preventDefault();
+		(event.currentTarget as HTMLElement).setPointerCapture(event.pointerId);
 		initialY = event.clientY;
 		dragging = true;
 	}
 
-	function handleMouseMove(event: MouseEvent) {
+	function handlePointerMove(event: PointerEvent) {
 		if (!dragging || !windowElement) return;
 
 		const deltaPx = event.clientY - initialY;
@@ -65,14 +66,15 @@
 		initialY = event.clientY;
 	}
 
-	function handleMouseUp() {
+	function handlePointerUp() {
 		dragging = false;
 	}
 </script>
 
 <svelte:window
-	onmousemove={dragging ? handleMouseMove : undefined}
-	onmouseup={dragging ? handleMouseUp : undefined}
+	onpointermove={dragging ? handlePointerMove : undefined}
+	onpointerup={dragging ? handlePointerUp : undefined}
+	onpointercancel={dragging ? handlePointerUp : undefined}
 />
 
 <svelte:head>
@@ -111,7 +113,7 @@
 		<div
 			class="vertical handle"
 			class:dragging
-			onmousedown={handleMouseDown}
+			onpointerdown={handlePointerDown}
 			role="separator"
 			aria-orientation="horizontal"
 			aria-valuenow={mainHeight}
@@ -325,20 +327,32 @@
 	.divider {
 		user-select: none;
 		flex-shrink: 0;
-		height: 4px;
+		height: 20px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		transition: background-color 0.3s ease;
-		margin: 0.5rem 0;
+		margin: 0;
 
 		.handle {
+			position: relative;
 			user-select: none;
+			touch-action: none;
 			display: block;
-			background-color: var(--brand-grey);
-			border-radius: 100px;
 			opacity: 0.5;
 			transition: opacity 0.2s ease;
+
+			&::before {
+				content: '';
+				position: absolute;
+				top: 50%;
+				left: 0;
+				right: 0;
+				height: 4px;
+				transform: translateY(-50%);
+				background-color: var(--brand-grey);
+				border-radius: 100px;
+			}
 
 			&.vertical {
 				cursor: row-resize;
