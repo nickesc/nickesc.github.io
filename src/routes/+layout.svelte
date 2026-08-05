@@ -19,6 +19,7 @@
 	let windowElement: HTMLElement | undefined = $state();
 
 	let on = $state(true);
+	let maximized = $state(false);
 
 	function handleMouseDown(event: MouseEvent) {
 		event.preventDefault();
@@ -49,8 +50,14 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-<div id="terminal-window" bind:this={windowElement} class:dragging>
-	<TabBar bind:on />
+<div
+	id="terminal-window"
+	bind:this={windowElement}
+	class:dragging
+	style:max-height={maximized ? 'calc(100vh - 2rem)' : `950px`}
+	style:max-width={maximized ? 'calc(100vw - 2rem)' : `1200px`}
+>
+	<TabBar bind:on bind:maximized />
 	<main class="scrollable" style:flex={`${mainHeight} 1 0`}>
 		{#if on}
 			{#key page.url.pathname}
@@ -90,6 +97,10 @@
 	:global(body) {
 		margin: 0;
 		font-family: 'IBM Plex Mono', monospace;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
 	}
 	:global(html) {
 		box-sizing: border-box;
@@ -123,6 +134,9 @@
 		box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 		backdrop-filter: blur(10px);
 		background: rgba(from var(--brand-dark) r g b / 0.9);
+		transition:
+			max-height 0.3s ease-in-out,
+			max-width 0.3s ease-in-out;
 
 		&.dragging {
 			user-select: none;
