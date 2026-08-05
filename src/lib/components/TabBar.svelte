@@ -26,7 +26,7 @@
 		<ol>
 			{#each tabs as tab}
 				{#if on}
-					<li in:fade={{ duration: 75 }} out:fade={{ duration: 100 }}>
+					<li in:fade={{ duration: 50 }} out:fade={{ duration: 75 }}>
 						<a href={tab.href} class:active={tab.href === page.url.pathname}
 							>{tab.name.charAt(0).toUpperCase() + tab.name.slice(1)}
 							{#if tab.external}
