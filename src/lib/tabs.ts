@@ -1,4 +1,6 @@
-import type { Directory } from '$lib/filetree';
+import type { Directory, File } from '$lib/filetree';
+import { createDirectory, createFile } from '$lib/filetree';
+
 type Tab = {
 	name: string;
 	href: string;
@@ -34,23 +36,12 @@ export const tabs: Tab[] = [
 	}
 ];
 
-const root: Directory = {
-	type: 'directory',
-	name: 'root',
-	path: '/',
-	parent: null,
-	children: []
-};
+const root: Directory = createDirectory('home', null);
 
 export const tabTree: Directory = {
 	...root,
 	children: tabs
-		.filter((tab) => tab.href !== '/')
-		.map((tab): Directory => ({
-			type: 'directory',
-			name: tab.name,
-			path: tab.href,
-			parent: root,
-			children: []
-		}))
+		.filter((tab) => tab.href !== '/' && !tab.external)
+		.map((tab): Directory => createDirectory(tab.name, root)),
+	files: tabs.filter((tab) => tab.external).map((tab): File => createFile(tab.name, tab.href, root))
 };

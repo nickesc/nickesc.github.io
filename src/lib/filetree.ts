@@ -15,13 +15,22 @@ export type Directory = {
 	files: File[];
 };
 
-export function getFromPath(root: Directory, path: string): Directory | File {
-	if (path === '/') {
-		return root;
-	}
-	const target = root.children.find((child) => child.path === path);
-	if (!target) {
-		throw new Error(`Directory ${path} not found`);
-	}
-	return target;
+export function createFile(name: string, content: string, parent: Directory, href?: string): File {
+	return {
+		type: 'file',
+		name,
+		parent,
+		content,
+		href: href ?? undefined
+	};
+}
+
+export function createDirectory(name: string, parent: Directory | null): Directory {
+	return {
+		type: 'directory',
+		name,
+		parent,
+		children: [],
+		files: []
+	};
 }
