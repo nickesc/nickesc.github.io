@@ -10,6 +10,8 @@
 
 	let { on = $bindable(), maximized = $bindable() } = $props();
 
+	let buttonSize = '.8rem';
+
 	function handlePowerButtonClick() {
 		on = !on;
 	}
@@ -50,10 +52,10 @@
 			aria-label="Maximize window"
 			aria-expanded={maximized}
 			style:background-color={maximized ? 'transparent' : 'var(--green)'}
-			style:color={maximized ? 'var(--green)' : 'var(--brand-dark)'}
+			style:color={maximized ? 'var(--green)' : 'rgba(from var(--brand-dark) r g b / 0.7)'}
 			style:border-color={maximized ? 'var(--green)' : 'transparent'}
 		>
-			<MaximizeSymbol width="1rem" height="1rem" {maximized} />
+			<MaximizeSymbol width={buttonSize} height={buttonSize} {maximized} />
 		</button>
 		<button
 			id="power-button"
@@ -63,10 +65,10 @@
 			role="switch"
 			aria-checked={on}
 			style:background-color={on ? 'var(--red)' : 'transparent'}
-			style:color={on ? 'var(--brand-dark)' : 'var(--red)'}
+			style:color={on ? 'rgba(from var(--brand-dark) r g b / 0.7)' : 'var(--red)'}
 			style:border-color={on ? 'transparent' : 'var(--red)'}
 		>
-			<PowerSymbol width="1rem" height="1rem" />
+			<PowerSymbol width={buttonSize} height={buttonSize} />
 		</button>
 	</span>
 </header>
@@ -82,24 +84,33 @@
 	}
 
 	.window-button {
-		--green: rgba(82, 160, 239, 0.9);
-		--red: rgba(from var(--brand-accent) r g b / 0.9);
+		--green: rgba(82, 160, 239, 0.8);
+		--red: rgba(from var(--brand-accent) r g b / 0.8);
 
 		transition:
 			background-color 0.25s ease-in-out,
 			color 0.25s ease-in-out,
-			border-color 0.25s ease-in-out;
+			border-color 0.25s ease-in-out,
+			opacity 0.25s ease-in-out;
 
-		border: 1px solid transparent;
+		border: 1.5px solid transparent;
 		margin: 0;
 		cursor: pointer;
 		outline: none;
-		padding: 0.35rem;
+		padding: 0.2rem;
 		border-radius: calc(var(--window-corners) / 1.6);
 		aspect-ratio: 1 / 1;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+
+		&:hover {
+			opacity: 0.65;
+		}
+
+		&:active {
+			opacity: 0.5;
+		}
 	}
 
 	nav {
