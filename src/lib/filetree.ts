@@ -15,20 +15,29 @@ export type Directory = {
 	files: File[];
 };
 
-export function createFile(name: string, content: string, parent: Directory, href?: string): File {
+export function createFile(
+	name: string,
+	parent: Directory,
+	{ content = '', href }: { content?: string; href?: string } = {}
+): File {
 	return {
 		type: 'file',
 		name,
 		parent,
 		content,
-		href: href ?? undefined
+		href
 	};
 }
 
-export function createDirectory(name: string, parent: Directory | null): Directory {
+export function createDirectory(
+	name: string,
+	parent: Directory | null,
+	page?: string
+): Directory {
 	return {
 		type: 'directory',
 		name,
+		page,
 		parent,
 		children: [],
 		files: []
@@ -36,7 +45,7 @@ export function createDirectory(name: string, parent: Directory | null): Directo
 }
 
 export function dirToPath(dir: Directory): string[] {
-	const path = [];
+	const path: string[] = [];
 	while (dir.parent) {
 		path.unshift(dir.name);
 		dir = dir.parent;
@@ -45,7 +54,8 @@ export function dirToPath(dir: Directory): string[] {
 }
 
 export function dirToPathString(dir: Directory): string {
-	return `/${dirToPath(dir).join('/')}`;
+	const parts = dirToPath(dir);
+	return parts.length === 0 ? '/' : `/${parts.join('/')}`;
 }
 
 export function getRoot(directory: Directory): Directory {
@@ -57,4 +67,59 @@ export function getRoot(directory: Directory): Directory {
 
 export function findChildDir(name: string, searchFrom: Directory): Directory | null {
 	return searchFrom.children.find((child) => child.name === name) ?? null;
+}
+
+export function findChildFile(name: string, searchFrom: Directory): File | null {
+	return searchFrom.files.find((file) => file.name === name) ?? null;
+}
+
+export function findDirectoryByPage(page: string, searchFrom: Directory): Directory | null {
+	if (searchFrom.page === page) return searchFrom;
+
+	for (const child of searchFrom.children) {
+		const match = findDirectoryByPage(page, child);
+		if (match) return match;
+	}
+
+	return null;
+}
+
+/** Resolve an absolute or relative directory path from `currentDirectory`. Supports `/`, `~`, `.`, and `..`. */
+export function resolveDirectory(
+	pathString: string,
+	currentDirectory: Directory
+): Directory | null {
+	const root = getRoot(currentDirectory);
+
+	if (pathString === '' || pathString === '/' || pathString === '~') {
+		return root;
+	}
+
+	let current: Directory;
+	let remainder: string;
+
+	if (pathString.startsWith('~/')) {
+		current = root;
+		remainder = pathString.slice(2);
+	} else if (pathString.startsWith('/')) {
+		current = root;
+		remainder = pathString.slice(1);
+	} else {
+		current = currentDirectory;
+		remainder = pathString;
+	}
+
+	for (const part of remainder.split('/')) {
+		if (part === '' || part === '.') continue;
+		if (part === '..') {
+			current = current.parent ?? current;
+			continue;
+		}
+
+		const child = findChildDir(part, current);
+		if (!child) return null;
+		current = child;
+	}
+
+	return current;
 }

@@ -7,8 +7,13 @@
 
 	import '@fontsource/unifontex';
 
-	import { tabs, tabTree } from '$lib/tabs';
-	import type { File, Directory } from '$lib/filetree';
+	import { tabTree } from '$lib/tabs';
+	import {
+		dirToPathString,
+		findDirectoryByPage,
+		resolveDirectory,
+		type Directory
+	} from '$lib/filetree';
 	import { backgrounds, type Background } from '$lib/themes';
 
 	let {
@@ -24,10 +29,9 @@
 
 	let hostname = $state(page.url.hostname);
 	let user = $state('visitor');
-	let path = $derived(page.url.pathname);
 
-	let filetree: Directory = $state(tabTree);
-	let currentDirectory: Directory = $state(filetree);
+	let currentDirectory: Directory = $state(tabTree);
+	let path = $derived(dirToPathString(currentDirectory));
 
 	const theme = new Command('theme', (args, options, terminal) => {
 		if (args[0] === 'list') {
@@ -66,31 +70,25 @@ Examples:
 	});
 
 	const cd = new Command('cd', (args, options, terminal) => {
-		if (args[0] === '..') {
-			if (!currentDirectory.parent) {
-				terminal.stderr('Already at root directory');
-				return { directory: currentDirectory };
-			}
-			currentDirectory = currentDirectory.parent;
-			goto(currentDirectory.path);
-			return { directory: currentDirectory };
-		}
-		const newDirectory = currentDirectory.children.find(
-			(child) => child.type === 'directory' && child.name === args[0]
-		);
-		if (!newDirectory) {
-			terminal.stderr(`Directory ${args[0]} not found`);
+		const gotoOpts = { replaceState: true, noScroll: true, keepFocus: true };
+		const targetPath = String(args[0] ?? '~');
+		const directory = resolveDirectory(targetPath, currentDirectory);
+
+		if (!directory) {
+			terminal.stderr(`Directory ${targetPath} not found`);
 			return { directory: currentDirectory };
 		}
 
-		if (!newDirectory.path.startsWith('/')) {
-			window.open(newDirectory.path, '_blank');
-		} else {
-			currentDirectory = newDirectory as Directory;
-			goto(currentDirectory.path, { replaceState: true, noScroll: true, keepFocus: true });
+		if (directory === currentDirectory) {
+			terminal.stderr(`Already at ${dirToPathString(directory)}`);
+			return { directory };
 		}
 
-		return { directory: currentDirectory };
+		currentDirectory = directory;
+		if (directory.page) {
+			goto(directory.page, gotoOpts);
+		}
+		return { directory };
 	});
 
 	onMount(() => {
@@ -106,7 +104,13 @@ Examples:
 	});
 
 	$effect(() => {
-		console.log('updating options');
+		const pageDirectory = findDirectoryByPage(page.url.pathname, tabTree);
+		if (pageDirectory) {
+			currentDirectory = pageDirectory;
+		}
+	});
+
+	$effect(() => {
 		if (terminal) {
 			terminal.updateOptions({ preprompt: `${user}@${hostname}:${path}`, prompt: ' > ' });
 		}
@@ -124,7 +128,7 @@ Examples:
 	<div class="output scrollable" bind:this={outputElement} aria-live="polite">
 		<div class="output-entries">
 			{#each output.entries as entry (entry.metadata.sequence)}
-				<div class:error={entry.operation === 'stderr'}>{@html String(entry.data)}</div>
+				<div class:error={entry.operation === 'stderr'}>{String(entry.data)}</div>
 			{/each}
 		</div>
 	</div>
