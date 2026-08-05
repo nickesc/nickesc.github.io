@@ -19,7 +19,7 @@
 				{#if on}
 					<li in:fade={{ duration: 75 }} out:fade={{ duration: 100 }}>
 						<a href={tab.href} class:active={tab.href === page.url.pathname}
-							>{tab.name}
+							>{tab.name.charAt(0).toUpperCase() + tab.name.slice(1)}
 							{#if tab.external}
 								<ExternalArrow width=".75rem" height=".75rem" />
 							{/if}
