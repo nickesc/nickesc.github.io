@@ -34,3 +34,27 @@ export function createDirectory(name: string, parent: Directory | null): Directo
 		files: []
 	};
 }
+
+export function dirToPath(dir: Directory): string[] {
+	const path = [];
+	while (dir.parent) {
+		path.unshift(dir.name);
+		dir = dir.parent;
+	}
+	return path;
+}
+
+export function dirToPathString(dir: Directory): string {
+	return `/${dirToPath(dir).join('/')}`;
+}
+
+export function getRoot(directory: Directory): Directory {
+	while (directory.parent) {
+		directory = directory.parent;
+	}
+	return directory;
+}
+
+export function findChildDir(name: string, searchFrom: Directory): Directory | null {
+	return searchFrom.children.find((child) => child.name === name) ?? null;
+}
