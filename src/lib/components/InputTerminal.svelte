@@ -106,10 +106,14 @@
 		flex: 1;
 		min-height: 0;
 		overflow: hidden;
-		background: rgba(from var(--brand-dark) r g b / 0.8);
+		background: rgba(from var(--brand-black) r g b / 0.5);
+		backdrop-filter: blur(10px);
 		border-radius: var(--window-corners);
 		margin: 1rem;
 		margin-top: 0;
+		border: 1px solid rgba(from var(--brand-dark) r g b / 0.7);
+		border-right: 1px solid rgba(from var(--brand-dark) r g b / 0.5);
+		border-bottom: 1px solid rgba(from var(--brand-dark) r g b / 0.5);
 	}
 
 	.output {

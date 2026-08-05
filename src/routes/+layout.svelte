@@ -129,11 +129,13 @@
 		display: flex;
 		flex-direction: column;
 		margin: 1rem;
-		border: 1px solid var(--brand-grey);
+		border: 1px solid rgba(from var(--brand-grey) r g b / 0.2);
+		border-right: 1px solid rgba(from var(--brand-grey) r g b / 0.1);
+		border-bottom: 1px solid rgba(from var(--brand-grey) r g b / 0.1);
 		border-radius: var(--window-corners);
 		box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
-		backdrop-filter: blur(10px);
-		background: rgba(from var(--brand-dark) r g b / 0.9);
+		backdrop-filter: blur(20px);
+		background: rgba(from var(--brand-black) r g b / 0.8);
 		transition:
 			max-height 0.3s ease-in-out,
 			max-width 0.3s ease-in-out;
