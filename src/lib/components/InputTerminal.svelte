@@ -4,6 +4,9 @@
 	import { SvelteOutputAdapter } from 'input-terminal/svelte';
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
+
+	import '@fontsource/unifontex';
+
 	import { tabs, tabTree } from '$lib/tabs';
 	import { getFromPath, type File, type Directory } from '$lib/filetree';
 	import { backgrounds, type Background } from '$lib/themes';
@@ -134,7 +137,7 @@ Examples:
 		box-sizing: border-box;
 		font: 1rem/1.5 monospace;
 		color: var(--brand-grey);
-		font-family: 'Fira Code Variable', monospace;
+		font-family: 'UnifontEx', monospace;
 		display: flex;
 		flex-direction: column;
 		flex: 1;
