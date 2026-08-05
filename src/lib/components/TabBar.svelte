@@ -4,15 +4,22 @@
 	import { page } from '$app/state';
 	import { tabs } from '$lib/tabs';
 
+	import ExternalArrow from '$lib/components/ExternalArrow.svelte';
+	import PowerSymbol from '$lib/components/PowerSymbol.svelte';
+	import MaximizeSymbol from '$lib/components/MaximizeSymbol.svelte';
 
-	let { on = $bindable() } = $props();
+	let { on = $bindable(), maximized = $bindable() } = $props();
 
 	function handlePowerButtonClick() {
 		on = !on;
 	}
+
+	function handleMaximizedButtonClick() {
+		maximized = !maximized;
+	}
 </script>
 
-<header style:justify-content={on ? 'space-between' : 'flex-end'}>
+<header>
 	<nav class="scrollable">
 		<ol>
 			{#each tabs as tab}
@@ -29,22 +36,70 @@
 			{/each}
 		</ol>
 	</nav>
-	<button id="power-button" onclick={handlePowerButtonClick}>
-		{#if on}
-			X
-		{:else}
-			O
-		{/if}
-	</button>
+	<span
+		style:display="flex"
+		style:flex-direction="row"
+		style:align-items="center"
+		style:justify-content="center"
+		style:gap=".35rem"
+	>
+		<button
+			id="maximize-button"
+			class="window-button"
+			onclick={handleMaximizedButtonClick}
+			aria-label="Maximize window"
+			aria-expanded={maximized}
+			style:background-color={maximized ? 'transparent' : 'var(--green)'}
+			style:color={maximized ? 'var(--green)' : 'var(--brand-dark)'}
+			style:border-color={maximized ? 'var(--green)' : 'transparent'}
+		>
+			<MaximizeSymbol width="1rem" height="1rem" {maximized} />
+		</button>
+		<button
+			id="power-button"
+			class="window-button"
+			onclick={handlePowerButtonClick}
+			aria-label="Toggle power"
+			role="switch"
+			aria-checked={on}
+			style:background-color={on ? 'var(--red)' : 'transparent'}
+			style:color={on ? 'var(--brand-dark)' : 'var(--red)'}
+			style:border-color={on ? 'transparent' : 'var(--red)'}
+		>
+			<PowerSymbol width="1rem" height="1rem" />
+		</button>
+	</span>
 </header>
 
 <style>
 	header {
 		display: flex;
 		flex-direction: row;
-		align-items: center;
+		align-items: flex-start;
 		justify-content: space-between;
 		padding: 0.5rem;
+		gap: 1rem;
+	}
+
+	.window-button {
+		--green: rgba(82, 160, 239, 0.9);
+		--red: rgba(from var(--brand-accent) r g b / 0.9);
+
+		transition:
+			background-color 0.25s ease-in-out,
+			color 0.25s ease-in-out,
+			border-color 0.25s ease-in-out;
+
+		border: 1px solid transparent;
+		margin: 0;
+		cursor: pointer;
+		outline: none;
+		padding: 0.35rem;
+		border-radius: calc(var(--window-corners) / 1.6);
+		aspect-ratio: 1 / 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 
 	nav {
