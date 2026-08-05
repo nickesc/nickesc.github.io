@@ -11,7 +11,7 @@
 	let {
 		onThemeChange
 	}: {
-		onThemeChange?: (id?: Background) => boolean;
+		onThemeChange?: (id?: Background) => Background | false;
 	} = $props();
 
 	let input: HTMLInputElement;
@@ -32,9 +32,9 @@
 			return { themes: backgrounds };
 		}
 
-		const changed = onThemeChange?.((args[0] as Background) ?? undefined);
+		const changed = onThemeChange?.(args[0] as Background);
 		if (changed) {
-			terminal.stdout(args[0] ? `Theme changed to ${args[0]}` : 'Theme cycled');
+			terminal.stdout(args[0] ? `Theme changed to ${args[0]}` : `Theme cycled to ${changed}`);
 		} else {
 			terminal.stderr(`Theme ${args[0]} not found`);
 		}

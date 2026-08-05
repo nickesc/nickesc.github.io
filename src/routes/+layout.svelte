@@ -30,7 +30,7 @@
 	let selectedBg = $derived(incomingBg ?? currentBg);
 	let overlayOn = $state(false);
 
-	export function setBackground(id?: string) {
+	export function setBackground(id?: string): Background | false {
 		const nextBg =
 			id === undefined
 				? backgrounds[(backgrounds.indexOf(currentBg) + 1) % backgrounds.length]
@@ -47,7 +47,7 @@
 			incomingBg = null;
 		}, BG_FADE_MS);
 
-		return true;
+		return nextBg ?? false;
 	}
 
 	function handleMouseDown(event: MouseEvent) {
