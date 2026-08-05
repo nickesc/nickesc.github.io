@@ -8,7 +8,7 @@
 	import '@fontsource/unifontex';
 
 	import { tabs, tabTree } from '$lib/tabs';
-	import { getFromPath, type File, type Directory } from '$lib/filetree';
+	import type { File, Directory } from '$lib/filetree';
 	import { backgrounds, type Background } from '$lib/themes';
 
 	let {
