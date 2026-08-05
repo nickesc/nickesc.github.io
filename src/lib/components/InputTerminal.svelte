@@ -6,6 +6,13 @@
 	import { goto } from '$app/navigation';
 	import { tabs, tabTree } from '$lib/tabs';
 	import { getFromPath, type File, type Directory } from '$lib/filetree';
+	import { backgrounds, type Background } from '$lib/themes';
+
+	let {
+		onThemeChange
+	}: {
+		onThemeChange?: (id?: Background) => boolean;
+	} = $props();
 
 	let input: HTMLInputElement;
 	let outputElement: HTMLElement;
@@ -18,6 +25,33 @@
 
 	let filetree: Directory = $state(tabTree);
 	let currentDirectory: Directory = $derived(getFromPath(filetree, path) as Directory);
+
+	const theme = new Command('theme', (args, options, terminal) => {
+		if (args[0] === 'list') {
+			terminal.stdout(backgrounds.join('\n'));
+			return { themes: backgrounds };
+		}
+
+		const changed = onThemeChange?.((args[0] as Background) ?? undefined);
+		if (changed) {
+			terminal.stdout(args[0] ? `Theme changed to ${args[0]}` : 'Theme cycled');
+		} else {
+			terminal.stderr(`Theme ${args[0]} not found`);
+		}
+		return { theme: args[0] };
+	});
+
+	theme.manual = `theme [list | &lt;name&gt;]
+
+Change the page theme to a named theme. With no arguments, advances to the next theme. Print available themes with \`theme list\`.
+
+Themes: ${backgrounds.join(', ')}
+
+Examples:
+  theme           # cycle to the next theme
+  theme list      # list available themes
+  theme ${backgrounds[0]}     # switch to the ${backgrounds[0]} theme
+`;
 
 	const ls = new Command('ls', (args, options, terminal) => {
 		if (currentDirectory.parent !== null) {
@@ -60,7 +94,7 @@
 			input,
 			output,
 			options: { preprompt: `${user}@${hostname}:${path}`, prompt: ' > ' },
-			commands: [ls, cd]
+			commands: [ls, cd, theme]
 		});
 		terminal.init();
 

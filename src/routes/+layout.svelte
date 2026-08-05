@@ -117,7 +117,7 @@
 		></div>
 	</div>
 	<footer style:flex={`${footerHeight} 1 0`}>
-		<InputTerminal />
+		<InputTerminal onThemeChange={setBackground} />
 	</footer>
 </div>
 
