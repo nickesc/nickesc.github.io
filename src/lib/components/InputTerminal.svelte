@@ -60,7 +60,8 @@ Examples:
 		if (currentDirectory.parent !== null) {
 			terminal.stdout('..');
 		}
-		terminal.stdout(currentDirectory.children.map((child) => child.name).join('\n'));
+		terminal.stdout(currentDirectory.children.map((child) => `${child.name}/`).join('\n'));
+		terminal.stdout(currentDirectory.files.map((file) => file.name).join('\n'));
 		return { directory: currentDirectory };
 	});
 
