@@ -16,7 +16,7 @@
 	}
 
 	.background {
-		background-color: var(--brand-accent);
+		background-color: rgba(from var(--brand-accent) r g b / 0.85);
 		width: fit-content;
 		padding: 0.5rem 1rem;
 		border-radius: var(--corners);

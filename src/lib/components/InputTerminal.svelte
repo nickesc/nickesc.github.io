@@ -4,8 +4,18 @@
 	import { SvelteOutputAdapter } from 'input-terminal/svelte';
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
+
+	import '@fontsource/unifontex';
+
 	import { tabs, tabTree } from '$lib/tabs';
-	import { getFromPath, type File, type Directory } from '$lib/filetree';
+	import type { File, Directory } from '$lib/filetree';
+	import { backgrounds, type Background } from '$lib/themes';
+
+	let {
+		onThemeChange
+	}: {
+		onThemeChange?: (id?: Background) => Background | false;
+	} = $props();
 
 	let input: HTMLInputElement;
 	let outputElement: HTMLElement;
@@ -17,13 +27,41 @@
 	let path = $derived(page.url.pathname);
 
 	let filetree: Directory = $state(tabTree);
-	let currentDirectory: Directory = $derived(getFromPath(filetree, path) as Directory);
+	let currentDirectory: Directory = $state(filetree);
+
+	const theme = new Command('theme', (args, options, terminal) => {
+		if (args[0] === 'list') {
+			terminal.stdout(backgrounds.join('\n'));
+			return { themes: backgrounds };
+		}
+
+		const changed = onThemeChange?.(args[0] as Background);
+		if (changed) {
+			terminal.stdout(args[0] ? `Theme changed to ${args[0]}` : `Theme cycled to ${changed}`);
+		} else {
+			terminal.stderr(`Theme ${args[0]} not found`);
+		}
+		return { theme: args[0] };
+	});
+
+	theme.manual = `theme [list | &lt;name&gt;]
+
+Change the page theme to a named theme. With no arguments, advances to the next theme. Print available themes with \`theme list\`.
+
+Themes: ${backgrounds.join(', ')}
+
+Examples:
+  theme           # cycle to the next theme
+  theme list      # list available themes
+  theme ${backgrounds[0]}     # switch to the ${backgrounds[0]} theme
+`;
 
 	const ls = new Command('ls', (args, options, terminal) => {
 		if (currentDirectory.parent !== null) {
 			terminal.stdout('..');
 		}
-		terminal.stdout(currentDirectory.children.map((child) => child.name).join('\n'));
+		terminal.stdout(currentDirectory.children.map((child) => `${child.name}/`).join('\n'));
+		terminal.stdout(currentDirectory.files.map((file) => file.name).join('\n'));
 		return { directory: currentDirectory };
 	});
 
@@ -60,7 +98,7 @@
 			input,
 			output,
 			options: { preprompt: `${user}@${hostname}:${path}`, prompt: ' > ' },
-			commands: [ls, cd]
+			commands: [ls, cd, theme]
 		});
 		terminal.init();
 
@@ -91,7 +129,14 @@
 		</div>
 	</div>
 
-	<input bind:this={input} aria-label="Terminal input" />
+	<input
+		bind:this={input}
+		aria-label="Terminal input"
+		autocomplete="off"
+		autocorrect="off"
+		autocapitalize="off"
+		spellcheck="false"
+	/>
 </div>
 
 <style>
@@ -100,16 +145,20 @@
 		box-sizing: border-box;
 		font: 1rem/1.5 monospace;
 		color: var(--brand-grey);
-		font-family: 'Fira Code Variable', monospace;
+		font-family: 'UnifontEx', monospace;
 		display: flex;
 		flex-direction: column;
 		flex: 1;
 		min-height: 0;
 		overflow: hidden;
-		background: rgba(from var(--brand-dark) r g b / 0.8);
+		background: rgba(from var(--brand-black) r g b / 0.5);
+		backdrop-filter: blur(10px);
 		border-radius: var(--window-corners);
 		margin: 1rem;
 		margin-top: 0;
+		border: 1px solid rgba(from var(--brand-dark) r g b / 0.7);
+		border-right: 1px solid rgba(from var(--brand-dark) r g b / 0.5);
+		border-bottom: 1px solid rgba(from var(--brand-dark) r g b / 0.5);
 	}
 
 	.output {
