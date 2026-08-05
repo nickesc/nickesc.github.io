@@ -27,7 +27,7 @@
 	let path = $derived(page.url.pathname);
 
 	let filetree: Directory = $state(tabTree);
-	let currentDirectory: Directory = $derived(getFromPath(filetree, path) as Directory);
+	let currentDirectory: Directory = $state(filetree);
 
 	const theme = new Command('theme', (args, options, terminal) => {
 		if (args[0] === 'list') {
