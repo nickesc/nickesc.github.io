@@ -129,7 +129,14 @@ Examples:
 		</div>
 	</div>
 
-	<input bind:this={input} aria-label="Terminal input" />
+	<input
+		bind:this={input}
+		aria-label="Terminal input"
+		autocomplete="off"
+		autocorrect="off"
+		autocapitalize="off"
+		spellcheck="false"
+	/>
 </div>
 
 <style>
