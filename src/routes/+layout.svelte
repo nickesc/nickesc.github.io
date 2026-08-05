@@ -84,7 +84,7 @@
 
 <style>
 	:global(:root) {
-		--brand-black: #111;
+		--brand-black: #0e0e0f;
 		--brand-dark: #232326;
 		--brand-accent: #ef5252;
 		--brand-grey: #d6d6d6;
