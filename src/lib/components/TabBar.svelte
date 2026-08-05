@@ -51,9 +51,9 @@
 			onclick={handleMaximizedButtonClick}
 			aria-label="Maximize window"
 			aria-expanded={maximized}
-			style:background-color={maximized ? 'transparent' : 'var(--green)'}
-			style:color={maximized ? 'var(--green)' : 'rgba(from var(--brand-dark) r g b / 0.7)'}
-			style:border-color={maximized ? 'var(--green)' : 'transparent'}
+			style:background-color={maximized ? 'rgba(from var(--base-blue) r g b / 0.1)' : 'var(--blue)'}
+			style:color={'var(--base-blue)'}
+			style:border-color={maximized ? 'rgba(from var(--base-blue) r g b / 0.5)' : 'transparent'}
 		>
 			<MaximizeSymbol width={buttonSize} height={buttonSize} {maximized} />
 		</button>
@@ -64,9 +64,9 @@
 			aria-label="Toggle power"
 			role="switch"
 			aria-checked={on}
-			style:background-color={on ? 'var(--red)' : 'transparent'}
-			style:color={on ? 'rgba(from var(--brand-dark) r g b / 0.7)' : 'var(--red)'}
-			style:border-color={on ? 'transparent' : 'var(--red)'}
+			style:background-color={on ? 'var(--red)' : 'rgba(from var(--base-red) r g b / 0.1)'}
+			style:color={'var(--base-red)'}
+			style:border-color={on ? 'transparent' : 'rgba(from var(--base-red) r g b / 0.5)'}
 		>
 			<PowerSymbol width={buttonSize} height={buttonSize} />
 		</button>
@@ -84,8 +84,11 @@
 	}
 
 	.window-button {
-		--green: rgba(82, 160, 239, 0.8);
-		--red: rgba(from var(--brand-accent) r g b / 0.8);
+		--base-blue: rgb(82, 160, 239);
+		--base-red: var(--brand-accent);
+
+		--blue: rgba(from var(--base-blue) r g b / 0.2);
+		--red: rgba(from var(--base-red) r g b / 0.2);
 
 		transition:
 			background-color 0.25s ease-in-out,
@@ -97,19 +100,22 @@
 		margin: 0;
 		cursor: pointer;
 		outline: none;
-		padding: 0.2rem;
+		padding: 0.5rem;
 		border-radius: calc(var(--window-corners) / 1.6);
 		aspect-ratio: 1 / 1;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		margin-bottom: 0.75rem;
 
 		&:hover {
-			opacity: 0.65;
+			--blue: rgba(from var(--base-blue) r g b / 0.5);
+			--red: rgba(from var(--base-red) r g b / 0.5);
 		}
 
 		&:active {
-			opacity: 0.5;
+			--blue: rgba(from var(--base-blue) r g b / 0.7);
+			--red: rgba(from var(--base-red) r g b / 0.7);
 		}
 	}
 
