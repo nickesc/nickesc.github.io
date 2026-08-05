@@ -153,17 +153,6 @@
 		box-sizing: border-box;
 	}
 
-	.site-bg-stack {
-		--bg-dot-core: 1.6px;
-		--bg-dot-edge: 2px;
-		--bg-dot-grid: 44px;
-		position: fixed;
-		inset: 0;
-		z-index: 0;
-		pointer-events: none;
-		background-color: #0c0c10;
-	}
-
 	:global(*),
 	:global(*::before),
 	:global(*::after) {
@@ -183,6 +172,7 @@
 		}
 		:global(.scrollable::-webkit-scrollbar) {
 			width: 8px;
+			height: 8px;
 		}
 
 		:global(.scrollable::-webkit-scrollbar-track) {
@@ -202,6 +192,17 @@
 
 	:global(#terminal-window p, h1, h2, h3, h4, h5, h6) {
 		color: var(--brand-white);
+	}
+
+	.site-bg-stack {
+		--bg-dot-core: 1.6px;
+		--bg-dot-edge: 2px;
+		--bg-dot-grid: 44px;
+		position: fixed;
+		inset: 0;
+		z-index: 0;
+		pointer-events: none;
+		background-color: #0c0c10;
 	}
 
 	.site-bg {
