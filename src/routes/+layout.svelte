@@ -111,7 +111,7 @@
 	<div class="divider">
 		<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 		<div
-			class="vertical handle"
+			class="horizontal handle"
 			class:dragging
 			onpointerdown={handlePointerDown}
 			role="separator"
@@ -358,7 +358,7 @@
 				border-radius: 100px;
 			}
 
-			&.vertical {
+			&.horizontal {
 				cursor: row-resize;
 				width: 85%;
 				max-width: 350px;
