@@ -93,7 +93,7 @@
 	id="terminal-window"
 	bind:this={windowElement}
 	class:dragging
-	style:max-height={maximized ? 'calc(100vh - 2rem)' : `950px`}
+	style:max-height={maximized ? 'calc(100dvh - 2rem)' : `950px`}
 	style:max-width={maximized ? 'calc(100vw - 2rem)' : `1200px`}
 >
 	<TabBar bind:on bind:maximized />
@@ -140,9 +140,13 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		height: 100vh;
+		position: fixed;
+		inset: 0;
+		width: 100%;
+		height: 100dvh;
 		background-color: #0c0c10;
 		overflow: hidden;
+		overscroll-behavior: none;
 	}
 
 	:global(html) {
@@ -158,6 +162,46 @@
 		z-index: 0;
 		pointer-events: none;
 		background-color: #0c0c10;
+	}
+
+	:global(*),
+	:global(*::before),
+	:global(*::after) {
+		box-sizing: inherit;
+	}
+
+	:global(.scrollable) {
+		scrollbar-gutter: stable;
+		scrollbar-color: rgba(from var(--brand-grey) r g b / 0.9) transparent;
+		scrollbar-width: thin;
+	}
+
+	@supports selector(::-webkit-scrollbar) {
+		:global(.scrollable) {
+			scrollbar-width: auto;
+			scrollbar-color: auto;
+		}
+		:global(.scrollable::-webkit-scrollbar) {
+			width: 8px;
+		}
+
+		:global(.scrollable::-webkit-scrollbar-track) {
+			background: transparent;
+		}
+
+		:global(.scrollable::-webkit-scrollbar-thumb) {
+			background: rgba(from var(--brand-grey) r g b / 0.8);
+			border-radius: 4px;
+		}
+
+		:global(.scrollable::-webkit-scrollbar-thumb:hover) {
+			transition: background-color 0.2s ease;
+			background: rgba(from var(--brand-grey) r g b / 1);
+		}
+	}
+
+	:global(#terminal-window p, h1, h2, h3, h4, h5, h6) {
+		color: var(--brand-white);
 	}
 
 	.site-bg {
@@ -182,8 +226,6 @@
 			transition: none;
 		}
 	}
-
-	/* --- TEMP background variants --- */
 
 	.site-bg[data-bg='chalk-slate'] {
 		background-color: #b0bcc8;
@@ -246,44 +288,11 @@
 		--bg-gradient: linear-gradient(165deg, #0e1a20 0%, #081116 60%, #05090d 100%);
 	}
 
-	:global(*),
-	:global(*::before),
-	:global(*::after) {
-		box-sizing: inherit;
-	}
-
-	/* :global(.scrollable) {
-		scrollbar-gutter: stable;
-		scrollbar-color: rgba(from var(--brand-grey) r g b / 0.9) transparent;
-		scrollbar-width: thin;
-	} */
-
-	:global(.scrollable::-webkit-scrollbar) {
-		width: 8px;
-	}
-
-	:global(.scrollable::-webkit-scrollbar-track) {
-		background: transparent;
-	}
-
-	:global(.scrollable::-webkit-scrollbar-thumb) {
-		background: rgba(from var(--brand-grey) r g b / 0.8);
-		border-radius: 4px;
-	}
-
-	:global(.scrollable::-webkit-scrollbar-thumb:hover) {
-		transition: background-color 0.2s ease;
-		background: rgba(from var(--brand-grey) r g b / 1);
-	}
-
-	:global(#terminal-window p, h1, h2, h3, h4, h5, h6) {
-		color: var(--brand-white);
-	}
-
 	#terminal-window {
 		position: relative;
 		z-index: 1;
 		height: calc(100vh - 2rem);
+		height: calc(100dvh - 2rem);
 		width: calc(100vw - 2rem);
 		overflow: hidden;
 		display: flex;
@@ -293,7 +302,7 @@
 		border-right: 1px solid rgba(from var(--brand-grey) r g b / 0.1);
 		border-bottom: 1px solid rgba(from var(--brand-grey) r g b / 0.1);
 		border-radius: var(--window-corners);
-		box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+		box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.5);
 		backdrop-filter: blur(20px);
 		background: rgba(from var(--brand-black) r g b / 0.8);
 		transition:
