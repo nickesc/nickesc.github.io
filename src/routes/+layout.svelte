@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { fade } from 'svelte/transition';
+
 	import favicon from '$lib/assets/favicon.svg';
 
 	import '@fontsource/ibm-plex-mono/400.css';
@@ -50,7 +52,9 @@
 	<TabBar bind:on />
 	<main class="scrollable" style:flex={`${mainHeight} 1 0`}>
 		{#if on}
-			{@render children()}
+			<div in:fade={{ duration: 50 }} out:fade={{ duration: 100 }}>
+				{@render children()}
+			</div>
 		{/if}
 	</main>
 	<div class="divider">

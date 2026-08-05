@@ -1,7 +1,9 @@
 <script lang="ts">
+	import { fade } from 'svelte/transition';
+
 	import { page } from '$app/state';
 	import { tabs } from '$lib/tabs';
-	import ExternalArrow from '$lib/components/externalArrow.svelte';
+
 
 	let { on = $bindable() } = $props();
 
@@ -11,11 +13,11 @@
 </script>
 
 <header style:justify-content={on ? 'space-between' : 'flex-end'}>
-	{#if on}
-		<nav class="scrollable">
-			<ol>
-				{#each tabs as tab}
-					<li>
+	<nav class="scrollable">
+		<ol>
+			{#each tabs as tab}
+				{#if on}
+					<li in:fade={{ duration: 75 }} out:fade={{ duration: 100 }}>
 						<a href={tab.href} class:active={tab.href === page.url.pathname}
 							>{tab.name}
 							{#if tab.external}
@@ -23,10 +25,10 @@
 							{/if}
 						</a>
 					</li>
-				{/each}
-			</ol>
-		</nav>
-	{/if}
+				{/if}
+			{/each}
+		</ol>
+	</nav>
 	<button id="power-button" onclick={handlePowerButtonClick}>
 		{#if on}
 			X
