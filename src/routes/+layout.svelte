@@ -251,10 +251,28 @@
 		box-sizing: inherit;
 	}
 
-	:global(.scrollable) {
+	/* :global(.scrollable) {
 		scrollbar-gutter: stable;
 		scrollbar-color: rgba(from var(--brand-grey) r g b / 0.9) transparent;
 		scrollbar-width: thin;
+	} */
+
+	:global(.scrollable::-webkit-scrollbar) {
+		width: 8px;
+	}
+
+	:global(.scrollable::-webkit-scrollbar-track) {
+		background: transparent;
+	}
+
+	:global(.scrollable::-webkit-scrollbar-thumb) {
+		background: rgba(from var(--brand-grey) r g b / 0.8);
+		border-radius: 4px;
+	}
+
+	:global(.scrollable::-webkit-scrollbar-thumb:hover) {
+		transition: background-color 0.2s ease;
+		background: rgba(from var(--brand-grey) r g b / 1);
 	}
 
 	:global(#terminal-window p, h1, h2, h3, h4, h5, h6) {
