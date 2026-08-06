@@ -9,7 +9,7 @@ type Project = {
 	description: string;
 	year: number;
 	category: ProjectCategory;
-	command: string;
+	featured?: true;
 };
 
 function logo(filename: string): string {
@@ -27,7 +27,7 @@ export const projects: Project[] = [
 			'Creates a modpack lockfile for files hosted on Modrinth (mods, resource packs, shaders and datapacks).',
 		year: 2026,
 		category: 'code',
-		command: 'modpack-lock'
+		featured: true
 	},
 
 	{
@@ -38,8 +38,7 @@ export const projects: Project[] = [
 		sourceUrl: 'https://github.com/nickesc/More-JourneyMap-Waypoints',
 		description: 'An addon resource pack for JourneyMap with more icons to use as waypoints.',
 		year: 2026,
-		category: 'art',
-		command: 'morejourneymapwaypoints'
+		category: 'art'
 	},
 
 	{
@@ -50,8 +49,7 @@ export const projects: Project[] = [
 		sourceUrl: 'https://github.com/nickesc/gsc-clock-util',
 		description: 'Generates a password to reset the clock in Pokemon Gold, Silver and Crystal.',
 		year: 2025,
-		category: 'code',
-		command: 'gsc-clock-util'
+		category: 'code'
 	},
 
 	{
@@ -62,8 +60,7 @@ export const projects: Project[] = [
 		sourceUrl: '#',
 		description: 'Analyze a Pokemon team and generate reports on coverage.',
 		year: 2025,
-		category: 'code',
-		command: 'pokemon-team-analysis'
+		category: 'code'
 	},
 
 	{
@@ -74,8 +71,7 @@ export const projects: Project[] = [
 		sourceUrl: 'https://github.com/nickesc/4ajs',
 		description: 'A game made with love for the greatest person in the world.',
 		year: 2025,
-		category: 'code',
-		command: '4ajs'
+		category: 'code'
 	},
 
 	{
@@ -86,8 +82,7 @@ export const projects: Project[] = [
 		sourceUrl: 'https://github.com/nickesc/animwebp',
 		description: 'Convert a sequence of images to an animated WebP.',
 		year: 2025,
-		category: 'code',
-		command: 'animwebp'
+		category: 'code'
 	},
 
 	{
@@ -99,7 +94,7 @@ export const projects: Project[] = [
 		description: 'Turn any HTMLInputElement into a terminal interface.',
 		year: 2025,
 		category: 'code',
-		command: 'input-terminal'
+		featured: true
 	},
 
 	{
@@ -111,7 +106,7 @@ export const projects: Project[] = [
 		description: 'A foundation for building loops that execute at a consistent, specified rate.',
 		year: 2025,
 		category: 'code',
-		command: 'steploop'
+		featured: true
 	},
 
 	{
@@ -122,8 +117,7 @@ export const projects: Project[] = [
 		sourceUrl: 'https://github.com/nickesc/no-more-ai-search',
 		description: 'Remove the AI Mode button and AI Overview from Google Search results.',
 		year: 2025,
-		category: 'code',
-		command: 'nomoreaisearch'
+		category: 'code'
 	},
 
 	{
@@ -134,8 +128,7 @@ export const projects: Project[] = [
 		sourceUrl: 'https://github.com/nickesc/qr-baker',
 		description: 'Multi-platform QR code generator built with Godot 4.',
 		year: 2025,
-		category: 'code',
-		command: 'qr-baker'
+		category: 'code'
 	},
 
 	{
@@ -146,8 +139,7 @@ export const projects: Project[] = [
 		sourceUrl: 'https://github.com/nickesc/keyboardLayouts',
 		description: 'Various keyboard layouts in SVG and PNG formats, organized by category/size.',
 		year: 2025,
-		category: 'art',
-		command: 'keyboardlayouts'
+		category: 'art'
 	},
 
 	{
@@ -159,8 +151,7 @@ export const projects: Project[] = [
 		description:
 			'A browser extension that sets a white background on pages where background-color is not explicitly set.',
 		year: 2025,
-		category: 'code',
-		command: 'whitebackgroundenforcer'
+		category: 'code'
 	},
 
 	{
@@ -171,8 +162,7 @@ export const projects: Project[] = [
 		sourceUrl: 'https://github.com/nickesc/controller-mapping-templates',
 		description: 'Simple templates to create controller mapping images for a number of gamepads.',
 		year: 2025,
-		category: 'art',
-		command: 'controllermappingtemplates'
+		category: 'art'
 	},
 
 	{
@@ -185,7 +175,7 @@ export const projects: Project[] = [
 			'A client-side Minecraft modpack that aims to overhaul and modernize the experience.',
 		year: 2024,
 		category: 'code',
-		command: 'clientenhanced'
+		featured: true
 	},
 
 	{
@@ -196,8 +186,7 @@ export const projects: Project[] = [
 		sourceUrl: 'https://github.com/nickesc/deltaskin-template',
 		description: 'A template and build system for creating skins for the Delta emulator.',
 		year: 2024,
-		category: 'code',
-		command: 'deltaskintemplate'
+		category: 'code'
 	},
 
 	{
@@ -209,8 +198,7 @@ export const projects: Project[] = [
 		description:
 			'A small project to track the temperature and other conditions in my bedroom and other rooms of my house.',
 		year: 2023,
-		category: 'code',
-		command: 'tempchecker'
+		category: 'code'
 	},
 
 	{
@@ -222,8 +210,7 @@ export const projects: Project[] = [
 		description:
 			'A simple but flexible console logging library with common-sense builtin functions and defaults.',
 		year: 2023,
-		category: 'code',
-		command: 'loggedmessage'
+		category: 'code'
 	},
 
 	{
@@ -236,7 +223,7 @@ export const projects: Project[] = [
 			'A small, physics-based game with a simple premise: throw the Starfish as far as you can before the timer runs out! Built with Godot as a part of the Gamedev.js Jam 2023 game jam.',
 		year: 2023,
 		category: 'art',
-		command: 'Starfish'
+		featured: true
 	},
 
 	{
@@ -249,7 +236,7 @@ export const projects: Project[] = [
 			'A portable word game generator written in CircuitPython, based on The New York Times Spelling Bee.',
 		year: 2023,
 		category: 'code',
-		command: 'TheBumbleBee'
+		featured: true
 	},
 
 	{
@@ -261,8 +248,7 @@ export const projects: Project[] = [
 		description:
 			'My .dotfile repository for automated MacOS setup, including custom scripts and themes.',
 		year: 2022,
-		category: 'code',
-		command: '.dotfiles'
+		category: 'code'
 	},
 
 	{
@@ -274,8 +260,7 @@ export const projects: Project[] = [
 		description:
 			"A ZSH script to manage 'notes' and 'notebooks' from the command line; creates git tracked directories of Markdown files for easy access to notes.",
 		year: 2022,
-		category: 'code',
-		command: 'note'
+		category: 'code'
 	},
 
 	{
@@ -288,8 +273,7 @@ export const projects: Project[] = [
 		description:
 			'An alternate port of the Paradise theme by Manas140 to VSCode, released on the Visual Studio Code Marketplace.',
 		year: 2022,
-		category: 'code',
-		command: 'VSCodeParadise'
+		category: 'code'
 	},
 
 	{
@@ -301,8 +285,7 @@ export const projects: Project[] = [
 		description:
 			'A robot that runs away from people, built using an iRobot Create2, the pyCreate2 library and a Raspberry Pi.',
 		year: 2022,
-		category: 'code',
-		command: 'ScaredyBot'
+		category: 'code'
 	},
 
 	{
@@ -314,8 +297,7 @@ export const projects: Project[] = [
 		description:
 			"A series of Jupyter Notebooks that grab and visualize nearly every email I've ever received.",
 		year: 2022,
-		category: 'code',
-		command: 'GmailExplorer'
+		category: 'code'
 	},
 
 	{
@@ -327,8 +309,7 @@ export const projects: Project[] = [
 		description:
 			"My girlfriend wants to know what I’m listening to, and I don’t like Spotify displaying it on their app, so I wrote a small server and HTML tag using Spotify's API and thelinmichael/spotify-web-api-node that will return and display my current listening activity.",
 		year: 2022,
-		category: 'code',
-		command: 'MyGirlfriendisCurious'
+		category: 'code'
 	},
 
 	{
@@ -340,8 +321,7 @@ export const projects: Project[] = [
 		description:
 			'A reference for my different logos. Provides image links, HTML tags and color codes useful when making other projects to keep branding consistent',
 		year: 2022,
-		category: 'art',
-		command: 'LogoReferenceSheet'
+		category: 'art'
 	},
 
 	{
@@ -353,8 +333,7 @@ export const projects: Project[] = [
 		description:
 			'Branches: A Game of Choice and Agency is a game that aims to create a feeling of agency for the player through the use of choice and branching narrative.',
 		year: 2021,
-		category: 'art',
-		command: 'Branches'
+		category: 'art'
 	},
 
 	{
@@ -366,8 +345,7 @@ export const projects: Project[] = [
 		description:
 			'The script page for Branches. Frontend and backend with a database for lines in the script. Used the webpage to keep voice actors updated on lines I needed recoded while making the game, and sent notifications to them when a new line is added. The database is currently broken.',
 		year: 2021,
-		category: 'code',
-		command: 'BranchesScript'
+		category: 'code'
 	},
 
 	{
@@ -378,8 +356,7 @@ export const projects: Project[] = [
 		sourceUrl: 'https://github.com/nickesc/HomebakedPiArithmetic',
 		description: 'Bare metal coding a Raspberry Pi into a calculator with a primitive GUI.',
 		year: 2021,
-		category: 'code',
-		command: 'HomebakedPi:Arithmetic'
+		category: 'code'
 	},
 
 	{
@@ -391,8 +368,7 @@ export const projects: Project[] = [
 		description:
 			'A wrapper for the Steam Web API. Unfinished but semi-robust, allows users to explore the Steam Web API a little more easily.',
 		year: 2021,
-		category: 'code',
-		command: 'SteamToolsAPI'
+		category: 'code'
 	},
 
 	{
@@ -404,8 +380,7 @@ export const projects: Project[] = [
 		description:
 			"A spoof of a Steam listing for the fake game, Wildlife: Speculative Explorations of Southern California's Animal Ecology. Wildlife is an exploration of a potential climate change future, made as a part of an experimental art class.",
 		year: 2021,
-		category: 'art',
-		command: 'Wildlife'
+		category: 'art'
 	},
 
 	{
@@ -416,8 +391,7 @@ export const projects: Project[] = [
 		sourceUrl: 'https://github.com/nickesc/license-templates',
 		description: 'Better license templates for the Lice license generator.',
 		year: 2021,
-		category: 'code',
-		command: 'LiceLicenseTemplates'
+		category: 'code'
 	},
 
 	{
@@ -429,8 +403,7 @@ export const projects: Project[] = [
 		description:
 			'A collaboration between my parents and me; a project containing an animation and guide, both based around point-cloud visualization.',
 		year: 2021,
-		category: 'art',
-		command: 'InOurBackyard'
+		category: 'art'
 	},
 
 	{
@@ -442,7 +415,6 @@ export const projects: Project[] = [
 		description:
 			'The final project from my COMP 131 class. An confusing first person dungeon crawler, written in Java. No links to this yet.',
 		year: 2019,
-		category: 'code',
-		command: 'Valor'
+		category: 'code'
 	}
 ];
