@@ -95,7 +95,7 @@
 	id="terminal-window"
 	bind:this={windowElement}
 	class:dragging
-	style:max-height={maximized ? 'calc(100dvh - 2rem)' : `950px`}
+	style:max-height={maximized ? 'calc(100dvh - 2rem)' : `965px`}
 	style:max-width={maximized ? 'calc(100vw - 2rem)' : `1200px`}
 >
 	<TabBar bind:on bind:maximized />
@@ -147,6 +147,7 @@
 		width: 100%;
 		height: 100dvh;
 		background-color: #0c0c10;
+		color: var(--brand-white);
 		overflow: hidden;
 		overscroll-behavior: none;
 	}
@@ -190,10 +191,6 @@
 			transition: background-color 0.2s ease;
 			background: rgba(from var(--brand-grey) r g b / 1);
 		}
-	}
-
-	:global(#terminal-window p, h1, h2, h3, h4, h5, h6, ul) {
-		color: var(--brand-white);
 	}
 
 	.site-bg-stack {
