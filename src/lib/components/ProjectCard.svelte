@@ -36,12 +36,7 @@
 		padding: 0.25rem;
 		border-radius: var(--corners);
 		text-decoration: none;
-		transition:
-			background-color 0.2s ease-in-out,
-			outline 0.2s ease-in-out,
-			outline-offset 0.2s ease-in-out;
-		outline: 1.5px solid transparent;
-		outline-offset: 3px;
+		transition: background-color 0.2s ease-in-out;
 
 		p,
 		h3 {
@@ -50,13 +45,10 @@
 
 		&:hover {
 			background-color: rgba(from var(--brand-grey) r g b / 1);
-			outline: 1.5px solid rgba(from var(--project-color) r g b / 0.5);
 		}
 
 		&:active {
 			background-color: rgba(from var(--brand-grey) r g b / 1);
-			outline: 1.5px solid rgba(from var(--project-color) r g b / 0.7);
-			outline-offset: 2px;
 		}
 
 		.logo-container {
