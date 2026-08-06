@@ -2,6 +2,7 @@
 	import { projects } from '$lib/projects';
 
 	import Badge from '$lib/components/Badge.svelte';
+	import ProjectCard from '$lib/components/ProjectCard.svelte';
 
 	import SiHtml5 from '@icons-pack/svelte-simple-icons/icons/SiHtml5';
 	import SiCss from '@icons-pack/svelte-simple-icons/icons/SiCss';
@@ -29,13 +30,7 @@
 
 <div class="featured-projects-container">
 	{#each displayedProjects as project}
-		<a href={project.projectUrl} target="_blank" class="featured-container">
-			<div class="featured-logo-container" style="background-color: {project.background}">
-				<img class="featured-logo" src={project.imgUrl} alt={project.name} />
-			</div>
-
-			<h3 class="featured-name">{project.name}</h3>
-		</a>
+		<ProjectCard {project} featured={true} />
 	{/each}
 </div>
 
@@ -127,43 +122,12 @@
 	}
 
 	.featured-projects-container {
+		--project-color: rgba(from var(--brand-accent) r g b / 0.9);
 		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 		gap: 1rem;
 		max-width: 900px;
 		margin: 0 auto;
-
-		.featured-container {
-			display: flex;
-			flex-direction: column;
-			align-items: flex-start;
-			justify-content: flex-start;
-			gap: 0.25rem;
-
-			.featured-logo-container {
-				width: 100%;
-				height: 100%;
-				overflow: hidden;
-				border-radius: var(--corners);
-				display: flex;
-				align-items: center;
-				justify-content: center;
-			}
-
-			.featured-logo {
-				width: 70%;
-				height: 100%;
-				object-fit: cover;
-			}
-
-			.featured-name {
-				font-size: 1.25rem;
-				font-weight: 700;
-				color: var(--brand-white);
-				margin: 0;
-				padding: 0;
-			}
-		}
 	}
 
 	.badges {

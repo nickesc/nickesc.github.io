@@ -1,9 +1,12 @@
 <script lang="ts">
 	import { projects } from '$lib/projects';
+	import ProjectCard from '$lib/components/ProjectCard.svelte';
 
 	let displayedProjects = $state(projects);
 	let selectedCategory = $state('all');
 	let selectedYear: number | 'all' = $state<number | 'all'>('all');
+
+	let delay = 0;
 
 	const years: number[] = $derived(Array.from(new Set(projects.map((project) => project.year))));
 	const categories: string[] = $derived(
@@ -43,16 +46,7 @@
 
 <div class="projects-container">
 	{#each displayedProjects as project}
-		<div class="project-container">
-			<div class="project-logo-container" style:background-color={project.background}>
-				<img class="project-logo" src={project.imgUrl} alt={project.name} />
-			</div>
-
-			<h3 class="project-name">{project.name}</h3>
-			<p class="project-description">{project.description}</p>
-			<a class="project-url" href={project.projectUrl} target="_blank">View Project</a>
-			<a class="project-source-url" href={project.sourceUrl} target="_blank">View Source</a>
-		</div>
+		<ProjectCard {project} />
 	{/each}
 </div>
 
