@@ -192,8 +192,9 @@
 		}
 	}
 
-	:global(#terminal-window p, h1, h2, h3, h4, h5, h6) {
+	:global(#terminal-window p, h1, h2, h3, h4, h5, h6, ul) {
 		color: var(--brand-white);
+		margin: 0;
 	}
 
 	.site-bg-stack {
@@ -323,7 +324,7 @@
 	}
 
 	main {
-		padding: 1rem;
+		padding: 0 1rem;
 		min-height: 0;
 		overflow-y: scroll;
 	}
