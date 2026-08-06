@@ -20,8 +20,11 @@
 <div class="title-background">
 	<h1>Nick Escobar</h1>
 </div>
+<p>
+	I'm a software developer and artist. I mostly work on web stuff, developer tools, and games. I'm a
+	big fan of open source software, building unique experiences, and learning new things.
+</p>
 
-<p>I'm a software engineer.</p>
 <p>Tech</p>
 <ul class="badges">
 	<li>
