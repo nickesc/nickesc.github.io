@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Project } from '$lib/projects';
 	import { scale } from 'svelte/transition';
-	let { project, featured = false } = $props();
+	let { project, featured = false }: { project: Project; featured?: boolean } = $props();
 </script>
 
 <a
@@ -18,7 +18,9 @@
 
 	{#if !featured}
 		<p class="description">{project.description}</p>
+		<!-- svelte-ignore node_invalid_placement_ssr -->
 		<a class="url" href={project.projectUrl} target="_blank">View Project</a>
+		<!-- svelte-ignore node_invalid_placement_ssr -->
 		<a class="source-url" href={project.sourceUrl} target="_blank">View Source</a>
 	{/if}
 </a>

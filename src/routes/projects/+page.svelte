@@ -56,15 +56,4 @@
 		grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
 		gap: 1rem;
 	}
-
-	.project-logo-container {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.project-logo {
-		max-width: 300px;
-		width: 100%;
-	}
 </style>
