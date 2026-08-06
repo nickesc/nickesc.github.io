@@ -1,5 +1,8 @@
 <script lang="ts">
 	import type { Project } from '$lib/projects';
+	import SiGithub from '@icons-pack/svelte-simple-icons/icons/SiGithub';
+	import SiGit from '@icons-pack/svelte-simple-icons/icons/SiGit';
+
 	let { project, featured = false }: { project: Project; featured?: boolean } = $props();
 </script>
 
@@ -17,7 +20,18 @@
 		{#if !featured}
 			<p class="description">{project.description}</p>
 			{#if project.sourceUrl}
-				<a class="source-url" href={project.sourceUrl} target="_blank"> View Source </a>
+				<ul class="link-row">
+					<li>
+						<a class="source-url" href={project.sourceUrl} target="_blank">
+							{#if project.sourceUrl.includes('github.com')}
+								<SiGithub height="1em" width="1em" style="color: var(--brand-grey)" />
+							{:else}
+								<SiGit height="1em" width="1em" style="color: var(--brand-grey)" />
+							{/if}
+							Source
+						</a>
+					</li>
+				</ul>
 			{/if}
 		{/if}
 	</div>
@@ -31,19 +45,62 @@
 		align-items: flex-start;
 		justify-content: flex-start;
 		gap: 0.25rem;
-		background-color: rgba(from var(--brand-grey) r g b / 0.85);
+		background-color: rgba(from var(--brand-grey) r g b / 0.8);
 		padding: 0.25rem;
 		border-radius: var(--corners);
 		text-decoration: none;
 		transition: background-color 0.2s ease-in-out;
+
+		.link-row {
+			width: 100%;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: flex-end;
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			margin-top: auto;
+			margin-bottom: 0.5rem;
+			gap: 0.5rem;
+
+			li a {
+				background-color: rgba(from var(--brand-black) r g b / 0.8);
+				padding: 0.25rem 0.5rem;
+				border-radius: var(--corners);
+				font-size: 0.8rem;
+				font-weight: 500;
+				text-decoration: none;
+				color: var(--brand-grey);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 0.5rem;
+				transition:
+					background-color 0.2s ease-in-out,
+					border-color 0.2s ease-in-out;
+
+				&:hover {
+					background-color: rgba(from var(--brand-black) r g b / 0.9);
+				}
+
+				&:active {
+					background-color: rgba(from var(--brand-black) r g b / 1);
+				}
+			}
+		}
 
 		p,
 		h3 {
 			color: var(--brand-dark);
 		}
 
+		p {
+			margin: 0.5rem 0;
+		}
+
 		&:hover {
-			background-color: rgba(from var(--brand-grey) r g b / 1);
+			background-color: rgba(from var(--brand-grey) r g b / 0.9);
 		}
 
 		&:active {
@@ -99,7 +156,9 @@
 			flex-direction: column;
 			align-items: flex-start;
 			justify-content: flex-start;
+			flex: 1;
 			margin: 0 0.5rem;
+			width: calc(100% - 1rem);
 		}
 	}
 
