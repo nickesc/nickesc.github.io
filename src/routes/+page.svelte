@@ -22,10 +22,8 @@
 <div class="title-background">
 	<h1>Nick Escobar</h1>
 </div>
-<p>
-	I'm a software developer and artist. I mostly work on web stuff, developer tools, and games. I'm a
-	big fan of open source software, building unique experiences, and learning new things.
-</p>
+<p>I'm a software developer and artist. I mostly work on web stuff, developer tools, and games.</p>
+<p>2 things I love: open source software and learning new things</p>
 
 <h2>Check out some of my favorite projects:</h2>
 
@@ -70,20 +68,21 @@
 	<li>
 		<Badge icon={SiCss} text="CSS" href="https://www.w3.org/Style/CSS/" bgColor="rgb(21,114,182)" />
 	</li>
-	<li>
-		<Badge
-			icon={SiTypescript}
-			text="TypeScript"
-			href="https://www.typescriptlang.org/"
-			bgColor="rgb(49,120,198)"
-		/>
-	</li>
+
 	<li>
 		<Badge
 			icon={SiJavascript}
 			text="JavaScript"
 			href="https://262.ecma-international.org/"
 			bgColor="rgb(240,219,79)"
+		/>
+	</li>
+	<li>
+		<Badge
+			icon={SiTypescript}
+			text="TypeScript"
+			href="https://www.typescriptlang.org/"
+			bgColor="rgb(49,120,198)"
 		/>
 	</li>
 	<li>
