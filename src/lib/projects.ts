@@ -1,6 +1,6 @@
 type ProjectCategory = 'code' | 'art' | 'design' | 'music' | 'video' | 'writing' | 'other';
 
-type Project = {
+export type Project = {
 	name: string;
 	imgUrl: string;
 	background: string;
