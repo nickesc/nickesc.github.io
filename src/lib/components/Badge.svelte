@@ -11,7 +11,7 @@
 	let { icon: Icon, text, href, bgColor }: Props = $props();
 </script>
 
-<a {href} style:--logo-color={bgColor} style:color={bgColor}>
+<a {href} style:--logo-color={bgColor} style:color={bgColor} target="_blank">
 	<Icon class="icon" title={text} />
 
 	{text}
