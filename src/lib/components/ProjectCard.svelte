@@ -1,33 +1,30 @@
 <script lang="ts">
 	import type { Project } from '$lib/projects';
-	import { scale } from 'svelte/transition';
 	let { project, featured = false }: { project: Project; featured?: boolean } = $props();
 </script>
 
-<a
-	href={project.projectUrl}
-	target="_blank"
-	class={[{ featured }, 'container']}
-	style:--project-color={project.background}
->
+<article class={[{ featured }, 'container']} style:--project-color={project.background}>
 	<div class={[{ featured }, 'logo-container']} style="background-color: {project.background}">
 		<img class={[{ featured }, 'logo']} src={project.imgUrl} alt={project.name} />
 	</div>
 	<div class="info-container">
-		<h3 class={[featured, 'name']}>{project.name}</h3>
+		<h3 class={[featured, 'name']}>
+			<a class="card-link" href={project.projectUrl} target="_blank">
+				{project.name}
+			</a>
+		</h3>
 
 		{#if !featured}
 			<p class="description">{project.description}</p>
-			<!-- svelte-ignore node_invalid_placement_ssr -->
-			<a class="url" href={project.projectUrl} target="_blank">View Project</a>
-			<!-- svelte-ignore node_invalid_placement_ssr -->
-			<a class="source-url" href={project.sourceUrl} target="_blank">View Source</a>
+			<a class="url" href={project.projectUrl} target="_blank"> View Project </a>
+			<a class="source-url" href={project.sourceUrl} target="_blank"> View Source </a>
 		{/if}
 	</div>
-</a>
+</article>
 
 <style>
 	.container {
+		position: relative;
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
@@ -71,6 +68,29 @@
 		.name {
 			margin: 0;
 			padding: 0;
+		}
+
+		.card-link {
+			color: inherit;
+			text-decoration: none;
+
+			&::after {
+				position: absolute;
+				inset: 0;
+				border-radius: var(--corners);
+				content: '';
+			}
+
+			&:focus-visible::after {
+				outline: 2px solid currentColor;
+				outline-offset: 2px;
+			}
+		}
+
+		.url,
+		.source-url {
+			position: relative;
+			z-index: 1;
 		}
 
 		.info-container {
