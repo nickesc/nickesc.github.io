@@ -17,7 +17,7 @@
 </script>
 
 <p>Hi, I'm</p>
-<div class="background">
+<div class="title-background">
 	<h1>Nick Escobar</h1>
 </div>
 
@@ -70,11 +70,12 @@
 		padding: 0;
 	}
 
-	.background {
+	.title-background {
 		background-color: rgba(from var(--brand-accent) r g b / 0.85);
 		width: fit-content;
 		padding: 0.5rem 1rem;
 		border-radius: var(--corners);
+		margin: 0.75rem 0;
 	}
 
 
