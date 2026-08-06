@@ -36,6 +36,7 @@
 		"@fontsource/ibm-plex-mono": "^5.3.0",
 		"@fontsource/ibm-plex-sans": "^5.3.0",
 		"@fontsource/unifontex": "^5.3.0",
+		"@icons-pack/svelte-simple-icons": "^7.2.0",
 		"input-terminal": "^0.8.1"
 	},
 	"allowScripts": {
