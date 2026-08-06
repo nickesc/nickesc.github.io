@@ -6,6 +6,8 @@
 
 	import '@fontsource/ibm-plex-mono/400.css';
 	import '@fontsource/ibm-plex-mono/700.css';
+	import '@fontsource/ibm-plex-sans/400.css';
+	import '@fontsource/ibm-plex-sans/700.css';
 
 	import TabBar from '$lib/components/TabBar.svelte';
 	import InputTerminal from '$lib/components/InputTerminal.svelte';
@@ -160,6 +162,14 @@
 	:global(*::before),
 	:global(*::after) {
 		box-sizing: inherit;
+	}
+
+	:global(p, li) {
+		font-family: 'IBM Plex Sans', sans-serif;
+	}
+
+	:global(h1, h2, h3, h4, h5, h6, a) {
+		font-family: 'IBM Plex Mono', monospace;
 	}
 
 	:global(.scrollable) {
