@@ -16,8 +16,9 @@
 
 		{#if !featured}
 			<p class="description">{project.description}</p>
-			<a class="url" href={project.projectUrl} target="_blank"> View Project </a>
-			<a class="source-url" href={project.sourceUrl} target="_blank"> View Source </a>
+			{#if project.sourceUrl}
+				<a class="source-url" href={project.sourceUrl} target="_blank"> View Source </a>
+			{/if}
 		{/if}
 	</div>
 </article>

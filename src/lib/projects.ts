@@ -5,7 +5,7 @@ export type Project = {
 	imgUrl: string;
 	background: string;
 	projectUrl: string;
-	sourceUrl: string;
+	sourceUrl?: string;
 	description: string;
 	year: number;
 	category: ProjectCategory;
@@ -411,7 +411,6 @@ export const projects: Project[] = [
 		imgUrl: logo('valorLogo.png'),
 		background: '#7C5745',
 		projectUrl: '#',
-		sourceUrl: '#',
 		description:
 			'The final project from my COMP 131 class. An confusing first person dungeon crawler, written in Java. No links to this yet.',
 		year: 2019,
