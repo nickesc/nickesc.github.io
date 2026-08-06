@@ -194,7 +194,6 @@
 
 	:global(#terminal-window p, h1, h2, h3, h4, h5, h6, ul) {
 		color: var(--brand-white);
-		margin: 0;
 	}
 
 	.site-bg-stack {
