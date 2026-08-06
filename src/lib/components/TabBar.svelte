@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { fade } from 'svelte/transition';
+	import { cubicInOut } from 'svelte/easing';
+	import { fade, scale } from 'svelte/transition';
 
 	import { page } from '$app/state';
 	import { tabs } from '$lib/tabs';
@@ -11,6 +12,8 @@
 	let { on = $bindable(), maximized = $bindable() } = $props();
 
 	let buttonSize = '.8rem';
+	let windowHeight = $state(0);
+	let windowWidth = $state(0);
 
 	function handlePowerButtonClick() {
 		on = !on;
@@ -20,6 +23,8 @@
 		maximized = !maximized;
 	}
 </script>
+
+<svelte:window bind:innerHeight={windowHeight} bind:innerWidth={windowWidth} />
 
 <header>
 	<nav class="scrollable">
@@ -45,18 +50,23 @@
 		style:justify-content="center"
 		style:gap=".35rem"
 	>
-		<button
-			id="maximize-button"
-			class="window-button"
-			onclick={handleMaximizedButtonClick}
-			aria-label="Maximize window"
-			aria-expanded={maximized}
-			style:background-color={maximized ? 'rgba(from var(--base-blue) r g b / 0.1)' : 'var(--blue)'}
-			style:color={'var(--base-blue)'}
-			style:border-color={maximized ? 'rgba(from var(--base-blue) r g b / 0.5)' : 'transparent'}
-		>
-			<MaximizeSymbol width={buttonSize} height={buttonSize} {maximized} />
-		</button>
+		{#if windowWidth > 1250 || windowHeight > 1000}
+			<button
+				id="maximize-button"
+				class="window-button"
+				onclick={handleMaximizedButtonClick}
+				aria-label="Maximize window"
+				aria-expanded={maximized}
+				style:background-color={maximized
+					? 'rgba(from var(--base-blue) r g b / 0.1)'
+					: 'var(--blue)'}
+				style:color={'var(--base-blue)'}
+				style:border-color={maximized ? 'rgba(from var(--base-blue) r g b / 0.5)' : 'transparent'}
+				transition:scale={{ duration: 200, easing: cubicInOut }}
+			>
+				<MaximizeSymbol width={buttonSize} height={buttonSize} {maximized} />
+			</button>
+		{/if}
 		<button
 			id="power-button"
 			class="window-button"
