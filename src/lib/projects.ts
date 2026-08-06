@@ -57,7 +57,6 @@ export const projects: Project[] = [
 		imgUrl: logo('pokemonAnalysis.png'),
 		background: '#232323',
 		projectUrl: 'https://pokemon-analysis.batcomputer.xyz',
-		sourceUrl: '#',
 		description: 'Analyze a Pokemon team and generate reports on coverage.',
 		year: 2025,
 		category: 'code'
