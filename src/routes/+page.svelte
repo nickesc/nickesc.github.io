@@ -19,13 +19,11 @@
 	displayedProjects = projects.filter((project) => project.featured === true);
 </script>
 
-<p>Hi, I'm</p>
+<p style:margin-top="0">Hi, I'm</p>
 <div class="title-background">
 	<h1>Nick Escobar</h1>
 </div>
 <p>I'm a software developer and artist. I mostly work on web stuff, developer tools, and games.</p>
-<p>2 things I love: open source software and learning new things</p>
-
 <h2>Check out some of my favorite projects:</h2>
 
 <div class="featured-projects-container">
@@ -35,6 +33,8 @@
 </div>
 
 <h2>About me</h2>
+<p>2 things I love: open source software and learning new things</p>
+
 <p>School</p>
 <ul>
 	<li>
