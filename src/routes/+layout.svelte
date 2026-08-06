@@ -62,7 +62,7 @@
 
 		const deltaPx = event.clientY - initialY;
 		const deltaPct = (deltaPx / windowElement.clientHeight) * 100;
-		mainHeight = Math.min(90, Math.max(10, mainHeight + deltaPct));
+		mainHeight = Math.min(91, Math.max(9, mainHeight + deltaPct));
 		initialY = event.clientY;
 	}
 

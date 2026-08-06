@@ -154,9 +154,9 @@ Examples:
 		border-radius: var(--window-corners);
 		margin: 1rem;
 		margin-top: 0;
-		border: 1px solid rgba(from var(--brand-dark) r g b / 0.7);
-		border-right: 1px solid rgba(from var(--brand-dark) r g b / 0.5);
-		border-bottom: 1px solid rgba(from var(--brand-dark) r g b / 0.5);
+		border: 1px solid rgba(from var(--brand-grey) r g b / 0.2);
+		border-right: 1px solid rgba(from var(--brand-grey) r g b / 0.1);
+		border-bottom: 1px solid rgba(from var(--brand-grey) r g b / 0.1);
 	}
 
 	.output {
