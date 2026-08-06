@@ -64,16 +64,18 @@
 			icon={SiHtml5}
 			text="HTML"
 			href="https://html.spec.whatwg.org/multipage/"
-			bgColor="#E44D26"
+			bgColor="rgb(228,77,38)"
 		/>
 	</li>
-	<li><Badge icon={SiCss} text="CSS" href="https://www.w3.org/Style/CSS/" bgColor="#1572B6" /></li>
+	<li>
+		<Badge icon={SiCss} text="CSS" href="https://www.w3.org/Style/CSS/" bgColor="rgb(21,114,182)" />
+	</li>
 	<li>
 		<Badge
 			icon={SiTypescript}
 			text="TypeScript"
 			href="https://www.typescriptlang.org/"
-			bgColor="#3178C6"
+			bgColor="rgb(49,120,198)"
 		/>
 	</li>
 	<li>
@@ -81,17 +83,29 @@
 			icon={SiJavascript}
 			text="JavaScript"
 			href="https://262.ecma-international.org/"
-			bgColor="#f0db4f"
-			textColor="dark"
+			bgColor="rgb(240,219,79)"
 		/>
 	</li>
-	<li><Badge icon={SiNodedotjs} text="Node.js" href="https://nodejs.org/" bgColor="#339933" /></li>
-	<li><Badge icon={SiReact} text="React" href="https://react.dev/" bgColor="#3eb6d6" /></li>
-	<li><Badge icon={SiSvelte} text="Svelte" href="https://svelte.dev/" bgColor="#FF3E00" /></li>
-	<li><Badge icon={SiPython} text="Python" href="https://www.python.org/" bgColor="#306998" /></li>
-	<li><Badge icon={SiZsh} text="Zsh" href="https://zsh.sourceforge.io/" bgColor="#222" /></li>
 	<li>
-		<Badge icon={SiGodotengine} text="Godot" href="https://godotengine.org/" bgColor="#478CBF" />
+		<Badge icon={SiNodedotjs} text="Node.js" href="https://nodejs.org/" bgColor="rgb(51,153,51)" />
+	</li>
+	<li><Badge icon={SiReact} text="React" href="https://react.dev/" bgColor="rgb(62,182,214)" /></li>
+	<li>
+		<Badge icon={SiSvelte} text="Svelte" href="https://svelte.dev/" bgColor="rgb(255,62,0)" />
+	</li>
+	<li>
+		<Badge icon={SiPython} text="Python" href="https://www.python.org/" bgColor="rgb(48,105,152)" />
+	</li>
+	<li>
+		<Badge icon={SiZsh} text="Zsh" href="https://zsh.sourceforge.io/" bgColor="rgb(153,153,153)" />
+	</li>
+	<li>
+		<Badge
+			icon={SiGodotengine}
+			text="Godot"
+			href="https://godotengine.org/"
+			bgColor="rgb(71,140,191)"
+		/>
 	</li>
 </ul>
 

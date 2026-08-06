@@ -6,23 +6,14 @@
 		text: string;
 		href: string;
 		bgColor: string;
-		textColor?: 'dark' | 'light';
 	}
 
-	let { icon: Icon, text, href, bgColor, textColor = 'light' }: Props = $props();
+	let { icon: Icon, text, href, bgColor }: Props = $props();
 </script>
 
-<a
-	{href}
-	style:background-color={bgColor}
-	style:color={textColor === 'dark' ? 'var(--brand-dark)' : 'var(--brand-grey)'}
->
-	<div
-		class="badge-icon-container"
-		style:color={textColor === 'dark' ? 'var(--brand-dark)' : 'var(--brand-white)'}
-	>
-		<Icon class="icon" title={text} />
-	</div>
+<a {href} style:--logo-color={bgColor} style:color={bgColor}>
+	<Icon class="icon" title={text} />
+
 	{text}
 </a>
 
@@ -35,6 +26,20 @@
 		text-decoration: none;
 		padding: 0.25rem 0.5rem;
 		border-radius: var(--corners);
+		background-color: rgba(from var(--logo-color) r g b / 0.25);
+		border: 1.5px solid transparent;
+		transition:
+			background-color 0.2s ease-in-out,
+			border 0.2s ease-in-out;
+
+		&:hover {
+			background-color: rgba(from var(--logo-color) r g b / 0.5);
+		}
+
+		&:active {
+			background-color: rgba(from var(--logo-color) r g b / 0.75);
+			border-color: var(--logo-color);
+		}
 	}
 
 	a :global(.icon) {
