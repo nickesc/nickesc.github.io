@@ -128,7 +128,7 @@
 
 	.featured-projects-container {
 		display: grid;
-		grid-template-columns: 1fr 1fr 1fr;
+		grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 		gap: 1rem;
 		max-width: 900px;
 		margin: 0 auto;
