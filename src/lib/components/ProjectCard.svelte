@@ -13,16 +13,17 @@
 	<div class={[{ featured }, 'logo-container']} style="background-color: {project.background}">
 		<img class={[{ featured }, 'logo']} src={project.imgUrl} alt={project.name} />
 	</div>
+	<div class="info-container">
+		<h3 class={[featured, 'name']}>{project.name}</h3>
 
-	<h3 class={[featured, 'name']}>{project.name}</h3>
-
-	{#if !featured}
-		<p class="description">{project.description}</p>
-		<!-- svelte-ignore node_invalid_placement_ssr -->
-		<a class="url" href={project.projectUrl} target="_blank">View Project</a>
-		<!-- svelte-ignore node_invalid_placement_ssr -->
-		<a class="source-url" href={project.sourceUrl} target="_blank">View Source</a>
-	{/if}
+		{#if !featured}
+			<p class="description">{project.description}</p>
+			<!-- svelte-ignore node_invalid_placement_ssr -->
+			<a class="url" href={project.projectUrl} target="_blank">View Project</a>
+			<!-- svelte-ignore node_invalid_placement_ssr -->
+			<a class="source-url" href={project.sourceUrl} target="_blank">View Source</a>
+		{/if}
+	</div>
 </a>
 
 <style>
@@ -62,7 +63,6 @@
 		}
 
 		.logo {
-			width: 50%;
 			height: 100%;
 			aspect-ratio: 1 / 1;
 			object-fit: scale-down;
@@ -72,6 +72,14 @@
 			margin: 0;
 			padding: 0;
 		}
+
+		.info-container {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			justify-content: flex-start;
+			margin: 0 0.5rem;
+		}
 	}
 
 	.featured {
@@ -80,8 +88,8 @@
 			font-weight: 700;
 		}
 
-		.logo {
-			width: 70%;
+		.logo-container {
+			aspect-ratio: 4.5 / 3;
 		}
 	}
 </style>
