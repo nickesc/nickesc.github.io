@@ -101,6 +101,10 @@
 
 		&:hover {
 			background-color: rgba(from var(--brand-grey) r g b / 0.9);
+
+			.logo-container {
+				opacity: 0.8;
+			}
 		}
 
 		&:active {
@@ -115,6 +119,7 @@
 			display: flex;
 			align-items: center;
 			justify-content: center;
+			transition: opacity 0.2s ease-in-out;
 		}
 
 		.logo {
