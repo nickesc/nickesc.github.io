@@ -149,6 +149,8 @@
 		--brand-grey: #d6d6d6;
 		--brand-white: #fff9f2;
 
+		--form-accent-color: rgb(64, 99, 203);
+
 		--corners: 2px;
 		--window-corners: 5px;
 
