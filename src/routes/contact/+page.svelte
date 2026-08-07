@@ -17,10 +17,6 @@
 	let emailEl = $state<HTMLInputElement | null>(null);
 	let messageEl = $state<HTMLTextAreaElement | null>(null);
 
-	function validateEmail(email: string) {
-		return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
-	}
-
 	async function handleSubmit(e: Event) {
 		e.preventDefault();
 		sending = true;
@@ -94,6 +90,7 @@
 					name="email"
 					placeholder="Email"
 					required
+					pattern={'[^\\s@]+@[^\\s@]+\\.[^\\s@]{2,}'}
 					bind:value={email}
 					aria-required="true"
 					aria-label="Email"
@@ -118,7 +115,7 @@
 
 			<button
 				type="submit"
-				disabled={!name || !validateEmail(email) || !message || sending}
+				disabled={!name || !emailEl?.validity.valid || !message || sending}
 				aria-busy={sending}
 				aria-label="Send message"
 				class={['submit-button', { sending }]}
@@ -186,12 +183,14 @@
 			&:focus {
 				outline: none;
 				border-color: var(--form-accent-color);
-				border-bottom-color: rgba(from var(--form-accent-color) r g b / 0.7);
-				border-right-color: rgba(from var(--form-accent-color) r g b / 0.7);
 			}
 
 			&::placeholder {
 				color: rgba(from var(--brand-dark) r g b / 0.6);
+			}
+
+			&:invalid {
+				border-color: rgba(199, 32, 66, 0.8);
 			}
 		}
 
