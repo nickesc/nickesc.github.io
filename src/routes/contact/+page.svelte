@@ -115,7 +115,7 @@
 
 			<button
 				type="submit"
-				disabled={!name || !emailEl?.validity.valid || !message || sending}
+				disabled={!name || !email || !emailEl?.validity.valid || !message || sending}
 				aria-busy={sending}
 				aria-label="Send message"
 				class={['submit-button', { sending }]}
