@@ -1,6 +1,7 @@
 import adapter from '@sveltejs/adapter-static';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
+import { version } from './package.json' with { type: 'json' };
 
 export default defineConfig({
 	plugins: [
@@ -20,6 +21,9 @@ export default defineConfig({
 			})
 		})
 	],
+	define: {
+		__APP_VERSION__: JSON.stringify(version)
+	},
 	ssr: {
 		noExternal: ['@icons-pack/svelte-simple-icons']
 	}

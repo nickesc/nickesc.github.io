@@ -28,12 +28,20 @@
 	let terminal: Terminal;
 
 	let hostname = $state(page.url.hostname);
-	let user = $state('visitor');
+	let user = $state('user');
 
 	let currentDirectory: Directory = $derived(
 		findDirectoryByPage(page.url.pathname, tabTree) ?? tabTree
 	);
 	let path = $derived(dirToPathString(currentDirectory));
+
+	const version = new Command('version', (args, options, terminal) => {
+		terminal.stdout(`${page.url.hostname}@${__APP_VERSION__}`);
+		return { version: __APP_VERSION__ };
+	});
+	version.manual = `version
+
+Print the version of the application.`;
 
 	const theme = new Command('theme', (args, options, terminal) => {
 		if (args[0] === 'list') {
@@ -97,7 +105,7 @@ Examples:
 			input,
 			output,
 			options: { preprompt: `${user}@${hostname}:${path}`, prompt: ' > ' },
-			commands: [ls, cd, theme]
+			commands: [ls, cd, theme, version]
 		});
 		terminal.init();
 
