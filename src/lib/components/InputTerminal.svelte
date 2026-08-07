@@ -5,8 +5,6 @@
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
 
-	import '@fontsource/unifontex';
-
 	import { tabTree } from '$lib/tabs';
 	import {
 		dirToPathString,
@@ -150,7 +148,7 @@ Examples:
 		box-sizing: border-box;
 		font: 1rem/1.5 monospace;
 		color: var(--brand-grey);
-		font-family: 'UnifontEx', monospace;
+		font-family: var(--terminal-font);
 		display: flex;
 		flex-direction: column;
 		flex: 1;

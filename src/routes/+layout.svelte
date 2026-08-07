@@ -9,6 +9,7 @@
 	import '@fontsource/ibm-plex-mono/700.css';
 	import '@fontsource/ibm-plex-sans/400.css';
 	import '@fontsource/ibm-plex-sans/700.css';
+	import '@fontsource/unifontex';
 
 	import TabBar from '$lib/components/TabBar.svelte';
 	import InputTerminal from '$lib/components/InputTerminal.svelte';
@@ -137,11 +138,15 @@
 
 		--corners: 2px;
 		--window-corners: 7px;
+
+		--mono-font: 'IBM Plex Mono', monospace;
+		--sans-font: 'IBM Plex Sans', sans-serif;
+		--terminal-font: 'UnifontEx', monospace;
 	}
 
 	:global(body) {
 		margin: 0;
-		font-family: 'IBM Plex Mono', monospace;
+		font-family: var(--mono-font);
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -166,11 +171,11 @@
 	}
 
 	:global(p, li) {
-		font-family: 'IBM Plex Sans', sans-serif;
+		font-family: var(--sans-font);
 	}
 
 	:global(h1, h2, h3, h4, h5, h6, a) {
-		font-family: 'IBM Plex Mono', monospace;
+		font-family: var(--mono-font);
 	}
 
 	:global(.scrollable) {
