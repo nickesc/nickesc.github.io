@@ -70,7 +70,7 @@
 	{:else}
 		<form onsubmit={handleSubmit} out:fade={{ duration: 400 }}>
 			<label for="name">
-				<div class="label-text">Name</div>
+				<div class="label-text">Name<span class="required">*</span></div>
 				<input
 					type="text"
 					name="name"
@@ -84,7 +84,7 @@
 				/>
 			</label>
 			<label for="email">
-				<div class="label-text">Email</div>
+				<div class="label-text">Email<span class="required">*</span></div>
 				<input
 					type="email"
 					name="email"
@@ -99,7 +99,7 @@
 				/>
 			</label>
 			<label for="message">
-				<div class="label-text">Message</div>
+				<div class="label-text">Message<span class="required">*</span></div>
 				<textarea
 					name="message"
 					placeholder="Message"
@@ -108,7 +108,8 @@
 					aria-required="true"
 					aria-label="Message"
 					rows="8"
-					bind:this={messageEl}></textarea>
+					bind:this={messageEl}
+					style:resize="vertical"></textarea>
 			</label>
 
 			<button
@@ -141,15 +142,14 @@
 <style>
 	.contact-container {
 		width: 100%;
-		max-width: 700px;
 		margin: 0 auto;
 	}
 
 	form {
+		--form-accent-color: rgb(64, 99, 203);
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
-		max-width: 700px;
 		width: 100%;
 
 		label {
@@ -161,23 +161,36 @@
 			text-transform: uppercase;
 			letter-spacing: 0.05em;
 			font-family: var(--mono-font);
+
+			.required {
+				color: rgba(199, 32, 66, 0.8);
+			}
 		}
 
 		input,
 		textarea {
 			padding: 0.5rem 1rem;
-			border-radius: var(--corners);
-			border: 1.5px solid rgba(from var(--brand-grey) r g b / 0.6);
-			border-bottom: 1.5px solid rgba(from var(--brand-grey) r g b / 0.2);
-			border-right: 1.5px solid rgba(from var(--brand-grey) r g b / 0.2);
+			border-radius: var(--window-corners);
+			border: 1.5px solid rgba(from var(--brand-grey) r g b / 0.2);
+			border-bottom: 1.5px solid rgba(from var(--brand-grey) r g b / 0.1);
+			border-right: 1.5px solid rgba(from var(--brand-grey) r g b / 0.1);
 			font-size: 16px;
-			font-family: var(--sans-font);
+			font-family: var(--terminal-font);
 			width: 100%;
 			box-sizing: border-box;
+			background-color: rgba(from var(--brand-black) r g b / 0.8);
+			transition: border-color 0.2s ease-in-out;
+			color: var(--brand-white);
+
+			&:focus {
+				outline: none;
+				border-color: rgba(from var(--form-accent-color) r g b / 0.7);
+				border-bottom-color: rgba(from var(--form-accent-color) r g b / 0.5);
+				border-right-color: rgba(from var(--form-accent-color) r g b / 0.5);
+			}
 		}
 
 		button {
-			--submit-button-color: rgb(64, 99, 203);
 			padding: 0.5rem 1rem;
 			border-radius: var(--corners);
 			border: none;
@@ -186,24 +199,24 @@
 			font-weight: 500;
 			width: 100%;
 			box-sizing: border-box;
-			background-color: rgba(from var(--submit-button-color) r g b / 0.8);
+			background-color: rgba(from var(--form-accent-color) r g b / 0.8);
 			color: rgba(from var(--brand-white) r g b / 0.9);
 			transition:
 				background-color 0.2s ease-in-out,
 				color 0.2s ease-in-out;
 
 			&:disabled {
-				background-color: rgba(from var(--submit-button-color) r g b / 0.25);
+				background-color: rgba(from var(--form-accent-color) r g b / 0.25);
 				color: rgba(from var(--brand-white) r g b / 0.5);
 			}
 
 			&:hover:not(:disabled) {
-				background-color: rgba(from var(--submit-button-color) r g b / 1);
+				background-color: rgba(from var(--form-accent-color) r g b / 1);
 				color: var(--brand-white);
 			}
 
 			&:active:not(:disabled) {
-				background-color: rgba(from var(--submit-button-color) r g b / 0.7);
+				background-color: rgba(from var(--form-accent-color) r g b / 0.7);
 				color: rgba(from var(--brand-white) r g b / 0.7);
 			}
 		}
