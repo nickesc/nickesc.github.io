@@ -12,7 +12,11 @@
 
 	const years: number[] = $derived(Array.from(new Set(projects.map((project) => project.year))));
 	const categories: string[] = $derived(
-		Array.from(new Set(projects.map((project) => project.category)))
+		Array.from(new Set(projects.map((project) => project.category))).sort((a, b) => {
+			if (a === 'other') return 1;
+			if (b === 'other') return -1;
+			return a.localeCompare(b);
+		})
 	);
 
 	function longestLength(labels: string[]) {
