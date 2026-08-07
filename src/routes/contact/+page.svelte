@@ -17,6 +17,10 @@
 	let emailEl = $state<HTMLInputElement | null>(null);
 	let messageEl = $state<HTMLTextAreaElement | null>(null);
 
+	function validateEmail(email: string) {
+		return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+	}
+
 	async function handleSubmit(e: Event) {
 		e.preventDefault();
 		sending = true;
@@ -114,7 +118,7 @@
 
 			<button
 				type="submit"
-				disabled={!name || !email || !message || sending}
+				disabled={!name || !validateEmail(email) || !message || sending}
 				aria-busy={sending}
 				aria-label="Send message"
 				class={['submit-button', { sending }]}
