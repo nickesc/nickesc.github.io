@@ -363,6 +363,38 @@
 		}
 	}
 
+	:global(input[type='checkbox']) {
+		-webkit-appearance: none;
+		appearance: none;
+		background-color: transparent;
+		margin: 0;
+		font: inherit;
+		color: currentColor;
+		width: 2rem;
+		height: 2rem;
+		border: 3px solid rgba(from var(--brand-grey) r g b / 0.8);
+		border-radius: var(--corners);
+		display: grid;
+		place-content: center;
+		cursor: pointer;
+
+		&::before {
+			content: '';
+			width: 1.65em;
+			height: 1.65em;
+			transition: 0.1s background-color ease-in-out;
+			background-color: transparent;
+		}
+
+		&:hover::before {
+			background-color: rgba(from var(--brand-grey) r g b / 0.3);
+		}
+
+		&:checked::before {
+			background-color: rgba(from var(--brand-grey) r g b / 0.8);
+		}
+	}
+
 	.site-bg-stack {
 		--bg-dot-core: 1.6px;
 		--bg-dot-edge: 2px;
