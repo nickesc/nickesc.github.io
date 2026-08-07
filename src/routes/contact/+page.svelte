@@ -1,4 +1,6 @@
 <script lang="ts">
+	import AlertSymbol from '$lib/components/AlertSymbol.svelte';
+
 	let name = $state('');
 	let email = $state('');
 	let message = $state('');
@@ -87,10 +89,53 @@
 	</form>
 {/if}
 
+{#if error}
+	<div in:fade={{ duration: 400 }} class="error-container">
+		<AlertSymbol height="2em" width="2em" />
+		<p class="error-text" in:fade={{ duration: 100 }}>
+			{error} If the problem persists, please contact me directly at
+			<a href="mailto:nick@nickesc.io">nick@nickesc.io</a>.
+		</p>
+	</div>
+{/if}
+
 <style>
 	form {
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
+	}
+	.error-container {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 0.75rem;
+		padding: 1rem 1.5rem;
+		border-radius: 0.5rem;
+		background-color: rgba(175, 12, 45, 0.2);
+		color: rgba(175, 12, 45, 1);
+		border: 1.5px solid rgba(175, 12, 45, 0.5);
+		border-bottom: 1.5px solid rgba(175, 12, 45, 0.2);
+		border-right: 1.5px solid rgba(175, 12, 45, 0.2);
+		margin: 1rem 0;
+
+		.error-text {
+			font-size: 1rem;
+			margin: 0;
+		}
+
+		a {
+			color: inherit;
+			text-decoration: underline;
+			transition: color 0.15s ease-in-out;
+
+			&:hover {
+				color: rgb(199, 32, 66);
+			}
+
+			&:active {
+				color: rgb(154, 26, 52);
+			}
+		}
 	}
 </style>
