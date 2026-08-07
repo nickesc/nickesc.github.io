@@ -1,18 +1,18 @@
 <script lang="ts">
-	import { projects } from '$lib/projects';
+	import { projects, type Category } from '$lib/projects';
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
 	import { onMount } from 'svelte';
 
 	let displayedProjects = $state(projects);
-	let selectedCategory = $state('all');
+	let selectedCategory = $state<Category | 'all'>('all');
 	let selectedYear: number | 'all' = $state<number | 'all'>('all');
 	let showArchived = $state(false);
 
 	let delay = 0;
 
 	const years: number[] = $derived(Array.from(new Set(projects.map((project) => project.year))));
-	const categories: string[] = $derived(
-		Array.from(new Set(projects.map((project) => project.category))).sort((a, b) => {
+	const categories: Category[] = $derived(
+		Array.from(new Set(projects.flatMap((project) => project.categories))).sort((a, b) => {
 			if (a === 'other') return 1;
 			if (b === 'other') return -1;
 			return a.localeCompare(b);
@@ -32,7 +32,7 @@
 		} else {
 			displayedProjects = projects.filter(
 				(project) =>
-					(selectedCategory === 'all' || project.category === selectedCategory) &&
+					(selectedCategory === 'all' || project.categories.includes(selectedCategory)) &&
 					(selectedYear === 'all' || project.year === selectedYear) &&
 					(showArchived || !project.archived)
 			);
