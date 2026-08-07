@@ -134,6 +134,8 @@ Examples:
 		autocorrect="off"
 		autocapitalize="off"
 		spellcheck="false"
+		enterkeyhint="send"
+		autofocus
 	/>
 </div>
 
@@ -185,5 +187,6 @@ Examples:
 		background: transparent;
 		font: inherit;
 		color: inherit;
+		caret-shape: underscore;
 	}
 </style>
