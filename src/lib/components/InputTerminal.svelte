@@ -101,6 +101,12 @@ Examples:
 		});
 		terminal.init();
 
+		const isDesktop = window.matchMedia('(pointer: fine)').matches;
+
+		if (isDesktop && input) {
+			input.focus();
+		}
+
 		return () => terminal.destroy();
 	});
 
@@ -135,7 +141,6 @@ Examples:
 		autocapitalize="off"
 		spellcheck="false"
 		enterkeyhint="send"
-		autofocus
 	/>
 </div>
 
