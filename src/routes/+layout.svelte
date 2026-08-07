@@ -260,6 +260,17 @@
 		}
 	}
 
+	:global(.select-container) {
+		--widest: attr(data-widest type(<number>), 0);
+		display: inline-block;
+		flex-shrink: 0;
+
+		& > :global(select) {
+			box-sizing: border-box;
+			width: calc(var(--widest) * 1ch + 0.5rem + 1.75rem + 4px);
+		}
+	}
+
 	:global(select) {
 		-webkit-appearance: none;
 		-moz-appearance: none;
@@ -293,31 +304,32 @@
 			appearance: base-select;
 		}
 
-		:global(select:open) {
-			background-color: rgba(from var(--brand-grey) r g b / 0.9);
-
-			&::picker-icon {
-				rotate: 180deg;
-			}
-		}
-
 		:global(select) {
 			display: inline-flex;
 			align-items: center;
 			background-image: none;
 			padding-inline-end: 0.5rem;
-		}
 
-		:global(select::picker-icon) {
-			content: '';
-			width: 0.7rem;
-			height: 0.45rem;
-			margin-inline-start: auto;
-			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath fill='%23232326' d='M1.4 1.4L6 6l4.6-4.6L12 2.8 6 8.8 0 2.8z'/%3E%3C/svg%3E");
-			background-repeat: no-repeat;
-			background-size: contain;
-			opacity: 1;
-			transition: 0.2s rotate;
+			&::picker-icon {
+				content: '';
+				width: 0.7rem;
+				height: 0.45rem;
+				margin-inline-start: auto;
+				background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath fill='%23232326' d='M1.4 1.4L6 6l4.6-4.6L12 2.8 6 8.8 0 2.8z'/%3E%3C/svg%3E");
+				background-repeat: no-repeat;
+				background-size: contain;
+				opacity: 1;
+				transition: 0.2s rotate;
+			}
+
+			&:open {
+				background-color: rgba(from var(--brand-grey) r g b / 0.9);
+				border-radius: var(--corners) var(--corners) 0 0;
+
+				&::picker-icon {
+					rotate: 180deg;
+				}
+			}
 		}
 
 		:global(::picker(select)) {
@@ -325,26 +337,28 @@
 			color: var(--brand-dark);
 			font-family: var(--mono-font);
 			font-size: 1rem;
-			border-radius: var(--corners);
+			border-radius: 0 0 var(--corners) var(--corners);
 			backdrop-filter: blur(10px);
 			border: none;
 		}
 
-		:global(option:hover) {
-			background-color: var(--brand-grey);
-			font-weight: bold;
-			cursor: pointer;
-		}
+		:global(option) {
+			&:hover {
+				background-color: var(--brand-grey);
+				font-weight: bold;
+				cursor: pointer;
+			}
 
-		:global(option:checked) {
-			font-weight: bold;
-			display: flex;
-			align-items: center;
-		}
+			&:checked {
+				font-weight: bold;
+				display: flex;
+				align-items: center;
+			}
 
-		:global(option::checkmark) {
-			content: '❚';
-			transform: translateY(-0.1em);
+			&::checkmark {
+				content: '❚';
+				transform: translateY(-0.1em);
+			}
 		}
 
 		@supports (transition-behavior: allow-discrete) {

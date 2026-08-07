@@ -15,6 +15,13 @@
 		Array.from(new Set(projects.map((project) => project.category)))
 	);
 
+	function longestLength(labels: string[]) {
+		return Math.max(0, ...labels.map((label) => label.length));
+	}
+
+	const widestCategory = $derived(longestLength(['All', ...categories]));
+	const widestYear = $derived(longestLength(['All', ...years.map(String)]));
+
 	function filterProjects() {
 		if (selectedCategory === 'all' && selectedYear === 'all' && showArchived) {
 			displayedProjects = projects;
@@ -42,24 +49,26 @@
 	<span class="filters-selects">
 		<label for="category"
 			>Category
-			<select bind:value={selectedCategory} onchange={filterProjects}>
-				<option value="all">All</option>
-				{#each categories as category}
-					<option value={category}
-						>{category.charAt(0).toUpperCase() + category.slice(1).toLowerCase()}</option
-					>
-				{/each}
-			</select>
+			<span class="select-container" data-widest={widestCategory}>
+				<select bind:value={selectedCategory} onchange={filterProjects}>
+					<option value="all">All</option>
+					{#each categories as category}
+						<option value={category}>{category}</option>
+					{/each}
+				</select>
+			</span>
 		</label>
 
 		<label for="year"
 			>Year
-			<select bind:value={selectedYear} onchange={filterProjects}>
-				<option value="all">All</option>
-				{#each years as year}
-					<option value={year}>{year}</option>
-				{/each}
-			</select>
+			<span class="select-container" data-widest={widestYear}>
+				<select bind:value={selectedYear} onchange={filterProjects}>
+					<option value="all">All</option>
+					{#each years as year}
+						<option value={year}>{year}</option>
+					{/each}
+				</select>
+			</span>
 		</label>
 	</span>
 
@@ -124,6 +133,10 @@
 			&[for='archived'] {
 				align-items: flex-end;
 				text-align: right;
+			}
+
+			&[for='category'] :global(select) {
+				text-transform: capitalize;
 			}
 		}
 	}
