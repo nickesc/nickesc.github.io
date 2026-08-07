@@ -50,6 +50,7 @@
 		border-radius: var(--corners);
 		text-decoration: none;
 		transition: background-color 0.2s ease-in-out;
+		width: 100%;
 
 		.link-row {
 			width: 100%;
@@ -100,7 +101,7 @@
 		}
 
 		&:hover {
-			background-color: rgba(from var(--brand-grey) r g b / 0.9);
+			background-color: rgba(from var(--brand-grey) r g b / 1);
 
 			.logo-container {
 				opacity: 0.8;
@@ -108,7 +109,7 @@
 		}
 
 		&:active {
-			background-color: rgba(from var(--brand-grey) r g b / 1);
+			background-color: rgba(from var(--brand-grey) r g b / 0.7);
 		}
 
 		.logo-container {
