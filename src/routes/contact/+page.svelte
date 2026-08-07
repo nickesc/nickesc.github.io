@@ -72,7 +72,7 @@
 			<label for="name">
 				<div class="label-text">Name<span class="required">*</span></div>
 				<input
-					type="text"
+					type="name"
 					name="name"
 					placeholder="Name"
 					required
@@ -103,7 +103,7 @@
 				<div class="label-text">Message<span class="required">*</span></div>
 				<textarea
 					name="message"
-					placeholder="Message"
+					placeholder="Type your message here..."
 					required
 					bind:value={message}
 					aria-required="true"
