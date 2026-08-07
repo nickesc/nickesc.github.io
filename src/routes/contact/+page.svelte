@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { fade } from 'svelte/transition';
 	import AlertSymbol from '$lib/components/AlertSymbol.svelte';
 
 	let name = $state('');
@@ -10,7 +11,11 @@
 	let success: boolean = $state(false);
 
 	// not a secret link, just making it a little harder to detect
-	const x = atob('aHR0cHM6Ly9mb3Jtc3ByZWUuaW8vZi94ZGVua2Vidw==');
+	// const x = atob('aHR0cHM6Ly9mb3Jtc3ByZWUuaW8vZi94ZGVua2Vidw==');
+	const x = 'https://formspree.io/';
+
+	let emailEl = $state<HTMLInputElement | null>(null);
+	let messageEl = $state<HTMLTextAreaElement | null>(null);
 
 	async function handleSubmit(e: Event) {
 		e.preventDefault();
@@ -26,51 +31,72 @@
 
 			if (res.ok) {
 				sending = false;
+				success = true;
 			} else {
 				const data = await res.json();
 				error = data.error || 'Something went wrong.';
 			}
 		} catch (err) {
+			console.error(err);
 			error = 'Network error. Please try again.';
 		} finally {
 			sending = false;
 		}
 	}
+
+	function focusNext(e: KeyboardEvent, next: HTMLElement | null) {
+		if (e.key !== 'Enter') return;
+		e.preventDefault();
+		next?.focus();
+	}
 </script>
 
 <h2>Contact</h2>
-{#if error}
-	<p class="error">{error}</p>
-{/if}
 {#if success}
-	<p class="success">Message sent successfully!</p>
+	<p class="success" in:fade={{ duration: 300, delay: 400 }}>Message sent successfully!</p>
 {:else}
-	<form onsubmit={handleSubmit}>
-		<input
-			type="text"
-			name="name"
-			placeholder="Name"
-			required
-			bind:value={name}
-			aria-required="true"
-			aria-label="Name"
-		/>
-		<input
-			type="email"
-			name="email"
-			placeholder="Email"
-			required
-			bind:value={email}
-			aria-required="true"
-			aria-label="Email"
-		/>
-		<textarea
-			name="message"
-			placeholder="Message"
-			required
-			bind:value={message}
-			aria-required="true"
-			aria-label="Message"></textarea>
+	<form onsubmit={handleSubmit} out:fade={{ duration: 400 }}>
+		<label for="name">
+			<div class="label-text">Name</div>
+			<input
+				type="text"
+				name="name"
+				placeholder="Name"
+				required
+				bind:value={name}
+				aria-required="true"
+				aria-label="Name"
+				enterkeyhint="next"
+				onkeydown={(e) => focusNext(e, emailEl)}
+			/>
+		</label>
+		<label for="email">
+			<div class="label-text">Email</div>
+			<input
+				type="email"
+				name="email"
+				placeholder="Email"
+				required
+				bind:value={email}
+				aria-required="true"
+				aria-label="Email"
+				enterkeyhint="next"
+				onkeydown={(e) => focusNext(e, messageEl)}
+				bind:this={emailEl}
+			/>
+		</label>
+		<label for="message">
+			<div class="label-text">Message</div>
+			<textarea
+				name="message"
+				placeholder="Message"
+				required
+				bind:value={message}
+				aria-required="true"
+				aria-label="Message"
+				rows="8"
+				bind:this={messageEl}></textarea>
+		</label>
 
 		<button
 			type="submit"
@@ -104,7 +130,35 @@
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
+
+		label {
+			display: flex;
+			flex-direction: column;
+			gap: 0.25rem;
+		}
+
+		input,
+		textarea {
+			padding: 0.5rem 1rem;
+			border-radius: var(--corners);
+			border: 1.5px solid rgba(from var(--brand-grey) r g b / 0.6);
+			border-bottom: 1.5px solid rgba(from var(--brand-grey) r g b / 0.2);
+			border-right: 1.5px solid rgba(from var(--brand-grey) r g b / 0.2);
+			font-size: 16px;
+			width: 100%;
+			box-sizing: border-box;
+		}
+
+		button {
+			padding: 0.5rem 1rem;
+			border-radius: var(--corners);
+			border: 1px solid #ccc;
+			font-size: 16px;
+			width: 100%;
+			box-sizing: border-box;
+		}
 	}
+
 	.error-container {
 		display: flex;
 		flex-direction: row;
