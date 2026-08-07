@@ -192,6 +192,11 @@
 			&:invalid {
 				border-color: rgba(199, 32, 66, 0.8);
 			}
+
+			&::selection {
+				background-color: var(--form-accent-color);
+				color: var(--brand-grey);
+			}
 		}
 
 		button {
