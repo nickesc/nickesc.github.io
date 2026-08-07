@@ -167,38 +167,6 @@
 			}
 		}
 
-		input,
-		textarea {
-			padding: 0.5rem 1rem;
-			border-radius: var(--corners);
-			border: 2px solid transparent;
-			font-size: 16px;
-			font-family: var(--terminal-font);
-			width: 100%;
-			box-sizing: border-box;
-			background-color: rgba(from var(--brand-grey) r g b / 0.8);
-			transition: border-color 0.2s ease-in-out;
-			color: var(--brand-black);
-
-			&:focus {
-				outline: none;
-				border-color: var(--form-accent-color);
-			}
-
-			&::placeholder {
-				color: rgba(from var(--brand-dark) r g b / 0.6);
-			}
-
-			&:invalid {
-				border-color: rgba(199, 32, 66, 0.8);
-			}
-
-			&::selection {
-				background-color: var(--form-accent-color);
-				color: var(--brand-grey);
-			}
-		}
-
 		button {
 			padding: 0.5rem 1rem;
 			border-radius: var(--corners);
