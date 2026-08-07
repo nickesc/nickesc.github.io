@@ -135,6 +135,10 @@
 			display: flex;
 			flex-direction: column;
 			gap: 0.25rem;
+			color: rgba(from var(--brand-grey) r g b / 0.7);
+			font-size: 10px;
+			text-transform: uppercase;
+			letter-spacing: 0.05em;
 		}
 
 		input,
