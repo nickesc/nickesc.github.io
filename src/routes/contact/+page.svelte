@@ -171,6 +171,7 @@
 			border-bottom: 1.5px solid rgba(from var(--brand-grey) r g b / 0.2);
 			border-right: 1.5px solid rgba(from var(--brand-grey) r g b / 0.2);
 			font-size: 16px;
+			font-family: var(--sans-font);
 			width: 100%;
 			box-sizing: border-box;
 		}
