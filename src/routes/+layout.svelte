@@ -356,6 +356,17 @@
 		overflow-y: scroll;
 	}
 
+	.powered-off-container {
+		text-align: center;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100%;
+		font-size: 2rem;
+		font-weight: 600;
+		color: rgba(from var(--brand-grey) r g b / 0.3);
+	}
+
 	.divider {
 		user-select: none;
 		flex-shrink: 0;
