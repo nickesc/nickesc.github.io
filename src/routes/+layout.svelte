@@ -111,6 +111,8 @@
 				<div
 					in:fade|global={{ duration: MAIN_PANEL_FADE_MS, delay: MAIN_PANEL_FADE_MS }}
 					out:fade|global={{ duration: MAIN_PANEL_FADE_MS }}
+					role="tabpanel"
+					aria-labelledby={page.url.pathname}
 				>
 					{@render children()}
 				</div>

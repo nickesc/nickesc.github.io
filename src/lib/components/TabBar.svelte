@@ -28,12 +28,18 @@
 
 <header>
 	<nav class="scrollable">
-		<ol>
+		<ol role="tablist">
 			{#each tabs as tab}
 				{#if on}
 					<li in:fade={{ duration: fadeDuration }} out:fade={{ duration: fadeDuration }}>
-						<a href={tab.href} class:active={tab.href === page.url.pathname}
-							>{tab.name.charAt(0).toUpperCase() + tab.name.slice(1)}
+						<a
+							href={tab.href}
+							class:active={tab.href === page.url.pathname}
+							aria-controls={tab.href}
+							role="tab"
+							aria-selected={tab.href === page.url.pathname}
+						>
+							{tab.name.charAt(0).toUpperCase() + tab.name.slice(1)}
 							{#if tab.external}
 								<ExternalArrow width=".75rem" height=".75rem" />
 							{/if}
