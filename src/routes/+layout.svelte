@@ -5,6 +5,7 @@
 	import favicon from '$lib/assets/favicon.svg';
 
 	import '@fontsource/ibm-plex-mono/400.css';
+	import '@fontsource/ibm-plex-mono/500.css';
 	import '@fontsource/ibm-plex-mono/700.css';
 	import '@fontsource/ibm-plex-sans/400.css';
 	import '@fontsource/ibm-plex-sans/700.css';

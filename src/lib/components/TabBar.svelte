@@ -171,6 +171,7 @@
 					&.active {
 						color: var(--brand-dark);
 						background-color: rgba(from var(--brand-grey) r g b / 0.7);
+						font-weight: 500;
 
 						&:hover,
 						&:focus {
