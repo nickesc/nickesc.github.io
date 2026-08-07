@@ -124,9 +124,8 @@
 	.featured-projects-container {
 		--project-color: rgba(from var(--brand-accent) r g b / 0.9);
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+		grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 		gap: 1rem;
-		max-width: 900px;
 		margin: 0 auto;
 	}
 

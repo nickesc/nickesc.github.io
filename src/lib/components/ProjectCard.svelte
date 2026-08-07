@@ -113,7 +113,7 @@
 
 		.logo-container {
 			width: 100%;
-			aspect-ratio: 16 / 7;
+			max-height: 188px;
 			overflow: hidden;
 			border-radius: var(--corners);
 			display: flex;
@@ -171,10 +171,6 @@
 		.name {
 			font-size: 1.1rem;
 			font-weight: 700;
-		}
-
-		.logo-container {
-			aspect-ratio: 4.5 / 3;
 		}
 	}
 </style>
