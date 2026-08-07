@@ -11,13 +11,21 @@
 		<img class={[{ featured }, 'logo']} src={project.imgUrl} alt={project.name} />
 	</div>
 	<div class="info-container">
-		<h3 class={[featured, 'name']}>
-			<a class="card-link" href={project.projectUrl} target="_blank">
-				{project.name}
-			</a>
-		</h3>
-
-		{#if !featured}
+		{#if featured}
+			<h3 class={[featured, 'name']}>
+				<a class="card-link" href={project.projectUrl} target="_blank">
+					{project.name}
+				</a>
+			</h3>
+		{:else}
+			<div class="title-row">
+				<h3 class="name">
+					<a class="card-link" href={project.projectUrl} target="_blank">
+						{project.name}
+					</a>
+				</h3>
+				<time class="year-badge" datetime={String(project.year)}>{project.year}</time>
+			</div>
 			<p class="description">{project.description}</p>
 			{#if project.sourceUrl}
 				<ul class="link-row">
@@ -129,9 +137,34 @@
 			object-fit: scale-down;
 		}
 
+		.title-row {
+			display: flex;
+			align-items: baseline;
+			gap: 0.5rem;
+			width: 100%;
+		}
+
 		.name {
 			margin: 0;
 			padding: 0;
+		}
+
+		.title-row .name {
+			min-width: 0;
+			flex: 1;
+		}
+
+		.year-badge {
+			flex-shrink: 0;
+			padding: 0.25rem 0.4rem;
+			border-radius: var(--corners);
+			background-color: rgba(from var(--brand-dark) r g b / 0.2);
+			color: rgba(from var(--brand-dark) r g b / 0.8);
+			font-family: var(--mono-font);
+			font-size: 0.75rem;
+			font-weight: 500;
+			line-height: 1;
+			white-space: nowrap;
 		}
 
 		.card-link {
