@@ -6,6 +6,7 @@
 
 	import '@fontsource/ibm-plex-mono/400.css';
 	import '@fontsource/ibm-plex-mono/500.css';
+	import '@fontsource/ibm-plex-mono/600.css';
 	import '@fontsource/ibm-plex-mono/700.css';
 	import '@fontsource/ibm-plex-sans/400.css';
 	import '@fontsource/ibm-plex-sans/700.css';
@@ -28,6 +29,7 @@
 	let maximized = $state(false);
 
 	const BG_FADE_MS = 700;
+	const MAIN_PANEL_FADE_MS = 200;
 
 	let currentBg = $state<Background>(backgrounds[0]);
 	let incomingBg = $state<Background | null>(null);
@@ -102,15 +104,26 @@
 	style:max-height={maximized ? 'calc(100dvh - 2rem)' : `965px`}
 	style:max-width={maximized ? 'calc(100vw - 2rem)' : `1200px`}
 >
-	<TabBar bind:on bind:maximized />
+	<TabBar bind:on bind:maximized fadeDuration={MAIN_PANEL_FADE_MS} />
 	<main class="scrollable" style:flex={`${mainHeight} 1 0`}>
-		{#if on}
-			{#key page.url.pathname}
-				<div in:fade={{ duration: 100, delay: 150 }} out:fade={{ duration: 100 }}>
+		{#key page.url.pathname}
+			{#if on}
+				<div
+					in:fade|global={{ duration: MAIN_PANEL_FADE_MS, delay: MAIN_PANEL_FADE_MS }}
+					out:fade|global={{ duration: MAIN_PANEL_FADE_MS }}
+				>
 					{@render children()}
 				</div>
-			{/key}
-		{/if}
+			{:else}
+				<div
+					in:fade|global={{ duration: MAIN_PANEL_FADE_MS, delay: MAIN_PANEL_FADE_MS }}
+					out:fade|global={{ duration: MAIN_PANEL_FADE_MS }}
+					class="powered-off-container"
+				>
+					<span>Powered off...</span>
+				</div>
+			{/if}
+		{/key}
 	</main>
 	<div class="divider">
 		<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
@@ -124,7 +137,7 @@
 		></div>
 	</div>
 	<footer style:flex={`${footerHeight} 1 0`}>
-		<InputTerminal onThemeChange={setBackground} />
+		<InputTerminal bind:on onThemeChange={setBackground} />
 	</footer>
 </div>
 

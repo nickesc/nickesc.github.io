@@ -15,8 +15,10 @@
 	import { backgrounds, type Background } from '$lib/themes';
 
 	let {
+		on = $bindable(),
 		onThemeChange
 	}: {
+		on: boolean;
 		onThemeChange?: (id?: Background) => Background | false;
 	} = $props();
 
@@ -133,6 +135,7 @@ Examples:
 
 	<input
 		bind:this={input}
+		disabled={!on}
 		aria-label="Terminal input"
 		autocomplete="off"
 		autocorrect="off"
@@ -191,5 +194,10 @@ Examples:
 		font: inherit;
 		color: inherit;
 		caret-shape: underscore;
+		transition: color 0.3s ease;
+
+		&:disabled {
+			color: rgba(from var(--brand-grey) r g b / 0.5);
+		}
 	}
 </style>

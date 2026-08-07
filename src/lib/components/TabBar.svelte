@@ -9,7 +9,7 @@
 	import PowerSymbol from '$lib/components/PowerSymbol.svelte';
 	import MaximizeSymbol from '$lib/components/MaximizeSymbol.svelte';
 
-	let { on = $bindable(), maximized = $bindable() } = $props();
+	let { on = $bindable(), maximized = $bindable(), fadeDuration = 300 } = $props();
 
 	let buttonSize = '.8rem';
 	let windowHeight = $state(0);
@@ -31,7 +31,7 @@
 		<ol>
 			{#each tabs as tab}
 				{#if on}
-					<li in:fade={{ duration: 50 }} out:fade={{ duration: 75 }}>
+					<li in:fade={{ duration: fadeDuration }} out:fade={{ duration: fadeDuration }}>
 						<a href={tab.href} class:active={tab.href === page.url.pathname}
 							>{tab.name.charAt(0).toUpperCase() + tab.name.slice(1)}
 							{#if tab.external}
