@@ -1,4 +1,4 @@
-type ProjectCategory = 'code' | 'art' | 'design' | 'music' | 'video' | 'writing' | 'other';
+type ProjectCategory = 'code' | 'art' | 'design' | 'gamedev' | 'video' | 'writing' | 'other';
 
 export type Project = {
 	name: string;
@@ -39,7 +39,7 @@ export const projects: Project[] = [
 		sourceUrl: 'https://github.com/nickesc/More-JourneyMap-Waypoints',
 		description: 'An addon resource pack for JourneyMap with more icons to use as waypoints.',
 		year: 2026,
-		category: 'art'
+		category: 'other'
 	},
 
 	{
@@ -71,7 +71,7 @@ export const projects: Project[] = [
 		sourceUrl: 'https://github.com/nickesc/4ajs',
 		description: 'A game made with love for the greatest person in the world.',
 		year: 2025,
-		category: 'code'
+		category: 'gamedev'
 	},
 
 	{
@@ -174,7 +174,7 @@ export const projects: Project[] = [
 		description:
 			'A client-side Minecraft modpack that aims to overhaul and modernize the experience.',
 		year: 2024,
-		category: 'code',
+		category: 'other',
 		featured: true
 	},
 
@@ -224,7 +224,7 @@ export const projects: Project[] = [
 		description:
 			'A small, physics-based game with a simple premise: throw the Starfish as far as you can before the timer runs out! Built with Godot as a part of the Gamedev.js Jam 2023 game jam.',
 		year: 2023,
-		category: 'art',
+		category: 'gamedev',
 		featured: true
 	},
 
@@ -237,7 +237,7 @@ export const projects: Project[] = [
 		description:
 			'A portable word game generator written in CircuitPython, based on The New York Times Spelling Bee.',
 		year: 2023,
-		category: 'code',
+		category: 'gamedev',
 		featured: true
 	},
 
@@ -317,7 +317,7 @@ export const projects: Project[] = [
 	},
 
 	{
-		name: 'Logo Reference Sheet',
+		name: 'Logos',
 		imgUrl: logo('logosLogo.png'),
 		background: '#EF5252',
 		projectUrl: 'https://nickesc.github.io/N.-Escobar-Media-Branding/Logos/logos.html',
@@ -338,7 +338,7 @@ export const projects: Project[] = [
 		description:
 			'Branches: A Game of Choice and Agency is a game that aims to create a feeling of agency for the player through the use of choice and branching narrative.',
 		year: 2021,
-		category: 'art'
+		category: 'gamedev'
 	},
 
 	{
@@ -422,7 +422,7 @@ export const projects: Project[] = [
 		description:
 			'The final project from my COMP 131 class. An confusing first person dungeon crawler, written in Java. No links to this yet.',
 		year: 2019,
-		category: 'code',
+		category: 'gamedev',
 		archived: true
 	}
 ];
