@@ -271,7 +271,7 @@
 		background-size: 0.7rem 0.45rem;
 		color: var(--brand-dark);
 		font-family: var(--mono-font);
-		font-size: 1rem;
+		font-size: 16px;
 		padding: 0.25rem 1.75rem 0.25rem 0.5rem;
 		border-radius: var(--corners);
 		border: 2px solid transparent;
@@ -302,7 +302,7 @@
 		}
 
 		:global(select) {
-			display: flex-inline;
+			display: inline-flex;
 			align-items: center;
 			background-image: none;
 			padding-inline-end: 0.5rem;
