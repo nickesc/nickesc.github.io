@@ -147,7 +147,7 @@ Examples:
 
 <style>
 	.input-terminal {
-		padding: 1rem;
+		padding: 0.5rem 0.75rem;
 		box-sizing: border-box;
 		font: 1rem/1.5 monospace;
 		color: var(--brand-grey);
