@@ -65,7 +65,7 @@
 	{#if success}
 		<p
 			class="alert-container"
-			in:fade={{ duration: 300, delay: 400 }}
+			in:fade={{ duration: 300, delay: 600 }}
 			style="--alert-color: rgba(102, 187, 106);"
 			role="alert"
 		>
@@ -238,14 +238,11 @@
 		align-items: center;
 		gap: 0.75rem;
 		padding: 1rem 1.5rem;
-		border-radius: 0.5rem;
+		border-radius: var(--corners);
 		background-color: rgba(from var(--alert-color) r g b / 0.2);
 		color: rgba(from var(--alert-color) r g b / 1);
 		border: 1.5px solid rgba(from var(--alert-color) r g b / 0.5);
-		border-bottom: 1.5px solid rgba(from var(--alert-color) r g b / 0.2);
-		border-right: 1.5px solid rgba(from var(--alert-color) r g b / 0.2);
 		margin: 1rem 0;
-		max-width: 700px;
 		width: 100%;
 
 		.error-text {
