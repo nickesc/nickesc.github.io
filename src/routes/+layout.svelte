@@ -150,7 +150,7 @@
 		--brand-white: #fff9f2;
 
 		--corners: 2px;
-		--window-corners: 7px;
+		--window-corners: 5px;
 
 		--mono-font: 'IBM Plex Mono', monospace;
 		--sans-font: 'IBM Plex Sans', sans-serif;

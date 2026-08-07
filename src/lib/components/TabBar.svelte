@@ -111,7 +111,7 @@
 		cursor: pointer;
 		outline: none;
 		padding: 0.5rem;
-		border-radius: calc(var(--window-corners) / 1.6);
+		border-radius: calc(var(--corners));
 		aspect-ratio: 1 / 1;
 		display: flex;
 		align-items: center;
