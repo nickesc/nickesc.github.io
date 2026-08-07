@@ -10,6 +10,7 @@ export type Project = {
 	year: number;
 	category: ProjectCategory;
 	featured?: true;
+	archived?: true;
 };
 
 function logo(filename: string): string {
@@ -185,7 +186,8 @@ export const projects: Project[] = [
 		sourceUrl: 'https://github.com/nickesc/deltaskin-template',
 		description: 'A template and build system for creating skins for the Delta emulator.',
 		year: 2024,
-		category: 'code'
+		category: 'code',
+		archived: true
 	},
 
 	{
@@ -197,7 +199,8 @@ export const projects: Project[] = [
 		description:
 			'A small project to track the temperature and other conditions in my bedroom and other rooms of my house.',
 		year: 2023,
-		category: 'code'
+		category: 'code',
+		archived: true
 	},
 
 	{
@@ -259,7 +262,8 @@ export const projects: Project[] = [
 		description:
 			"A ZSH script to manage 'notes' and 'notebooks' from the command line; creates git tracked directories of Markdown files for easy access to notes.",
 		year: 2022,
-		category: 'code'
+		category: 'code',
+		archived: true
 	},
 
 	{
@@ -296,7 +300,8 @@ export const projects: Project[] = [
 		description:
 			"A series of Jupyter Notebooks that grab and visualize nearly every email I've ever received.",
 		year: 2022,
-		category: 'code'
+		category: 'code',
+		archived: true
 	},
 
 	{
@@ -320,7 +325,8 @@ export const projects: Project[] = [
 		description:
 			'A reference for my different logos. Provides image links, HTML tags and color codes useful when making other projects to keep branding consistent',
 		year: 2022,
-		category: 'art'
+		category: 'art',
+		archived: true
 	},
 
 	{
@@ -344,7 +350,8 @@ export const projects: Project[] = [
 		description:
 			'The script page for Branches. Frontend and backend with a database for lines in the script. Used the webpage to keep voice actors updated on lines I needed recoded while making the game, and sent notifications to them when a new line is added. The database is currently broken.',
 		year: 2021,
-		category: 'code'
+		category: 'code',
+		archived: true
 	},
 
 	{
@@ -367,7 +374,8 @@ export const projects: Project[] = [
 		description:
 			'A wrapper for the Steam Web API. Unfinished but semi-robust, allows users to explore the Steam Web API a little more easily.',
 		year: 2021,
-		category: 'code'
+		category: 'code',
+		archived: true
 	},
 
 	{
@@ -390,7 +398,8 @@ export const projects: Project[] = [
 		sourceUrl: 'https://github.com/nickesc/license-templates',
 		description: 'Better license templates for the Lice license generator.',
 		year: 2021,
-		category: 'code'
+		category: 'code',
+		archived: true
 	},
 
 	{
@@ -413,6 +422,7 @@ export const projects: Project[] = [
 		description:
 			'The final project from my COMP 131 class. An confusing first person dungeon crawler, written in Java. No links to this yet.',
 		year: 2019,
-		category: 'code'
+		category: 'code',
+		archived: true
 	}
 ];
