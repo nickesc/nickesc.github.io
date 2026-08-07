@@ -499,13 +499,14 @@
 	#terminal-window {
 		position: relative;
 		z-index: 1;
+		margin: 1rem;
 		height: calc(100vh - 2rem);
 		height: calc(100dvh - 2rem);
 		width: calc(100vw - 2rem);
+		width: calc(100dvw - 2rem);
 		overflow: hidden;
 		display: flex;
 		flex-direction: column;
-		margin: 1rem;
 		border: 1px solid rgba(from var(--brand-grey) r g b / 0.2);
 		border-right: 1px solid rgba(from var(--brand-grey) r g b / 0.1);
 		border-bottom: 1px solid rgba(from var(--brand-grey) r g b / 0.1);
@@ -515,11 +516,22 @@
 		background: rgba(from var(--brand-black) r g b / 0.8);
 		transition:
 			max-height 0.3s ease-in-out,
-			max-width 0.3s ease-in-out;
+			max-width 0.3s ease-in-out,
+			height 0.3s ease-in-out,
+			width 0.3s ease-in-out,
+			margin 0.3s ease-in-out;
 
 		&.dragging {
 			user-select: none;
 			cursor: row-resize;
+		}
+
+		@media (max-width: 600px) {
+			margin: 0.5rem;
+			height: calc(100vh - 1rem);
+			height: calc(100dvh - 1rem);
+			width: calc(100vw - 1rem);
+			width: calc(100dvw - 1rem);
 		}
 	}
 
