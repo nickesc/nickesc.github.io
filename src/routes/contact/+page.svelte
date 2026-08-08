@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
 	import AlertSymbol from '$lib/components/AlertSymbol.svelte';
+	import Badge from '$lib/components/Badge.svelte';
 
 	let name = $state('');
 	let email = $state('');
@@ -50,7 +51,109 @@
 	}
 </script>
 
-<h2>Contact</h2>
+<h2>Where to find me</h2>
+<ul class="badges">
+	<li>
+		<Badge
+			icon="github"
+			text="nickesc"
+			href="https://github.com/nickesc"
+			bgColor="rgb(245,245,243)"
+		/>
+	</li>
+	<li>
+		<Badge
+			icon="bluesky"
+			text="@nickesc.io"
+			href="https://bsky.app/profile/nickesc.io"
+			bgColor="rgb(17,133,254)"
+		/>
+	</li>
+	<li>
+		<Badge
+			icon="infosec-exchange"
+			text="@nickesc@infosec.exchange"
+			href="https://infosec.exchange/@nickesc"
+			bgColor="rgb(236,28,36)"
+		/>
+	</li>
+	<li>
+		<Badge
+			icon="linkedin"
+			text="nickesc"
+			href="https://www.linkedin.com/in/nickesc/"
+			bgColor="rgb(0, 119, 181)"
+		/>
+	</li>
+	<li>
+		<Badge
+			icon="youtube"
+			text="@nickesc_"
+			href="https://www.youtube.com/@nickesc_"
+			bgColor="rgb(255,0,0)"
+		/>
+	</li>
+	<li>
+		<Badge icon="kofi" text="Ko-fi" href="https://ko-fi.com/nickesc" bgColor="rgb(255,90,22)" />
+	</li>
+</ul>
+
+<h2>Where to find my work</h2>
+<ul class="badges">
+	<li>
+		<Badge
+			icon="github"
+			text="GitHub"
+			href="https://github.com/nickesc"
+			bgColor="rgb(245,245,243)"
+		/>
+	</li>
+	<li>
+		<Badge
+			icon="npm"
+			text="npm"
+			href="https://www.npmjs.com/org/nickesc"
+			bgColor="rgb(204, 51, 51)"
+		/>
+	</li>
+	<li>
+		<Badge
+			icon="vs-mp"
+			text="VS Marketplace"
+			href="https://marketplace.visualstudio.com/publishers/nickesc"
+			bgColor="rgb(0, 122, 204)"
+		/>
+	</li>
+	<li>
+		<Badge
+			icon="open-vsx"
+			text="Open VSX"
+			href="https://open-vsx.org/namespace/nickesc"
+			bgColor="rgb(165, 15, 230)"
+		/>
+	</li>
+	<li>
+		<Badge
+			icon="firefox"
+			text="Firefox Add-ons"
+			href="https://addons.mozilla.org/en-US/firefox/user/18835687/"
+			bgColor="rgb(255,113,57)"
+		/>
+	</li>
+	<li>
+		<Badge icon="itchio" text="itch.io" href="https://nickesc.itch.io/" bgColor="rgb(250,92,92)" />
+	</li>
+	<li>
+		<Badge
+			icon="modrinth"
+			text="Modrinth"
+			href="https://modrinth.com/user/nickesc"
+			bgColor="rgb(27, 218, 106)"
+		/>
+	</li>
+</ul>
+
+<h2>Contact me</h2>
 
 <div class="contact-container">
 	<p>
@@ -140,6 +243,19 @@
 </div>
 
 <style>
+	h2 {
+		margin-top: 0;
+	}
+
+	.badges {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		list-style: none;
+		padding: 0;
+		margin: 0 0 1.5rem;
+	}
+
 	.contact-container {
 		width: 100%;
 		margin: 0 auto;
