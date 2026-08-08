@@ -1,8 +1,9 @@
 <script lang="ts">
-	import { projects, type Category } from '$lib/projects';
+	import { projects, type Category, type Tech } from '$lib/projects';
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
 
 	let selectedCategory = $state<Category | 'all'>('all');
+	let selectedTech = $state<Tech | 'all'>('all');
 	let selectedYear: number | 'all' = $state<number | 'all'>('all');
 	let showArchived = $state(false);
 
@@ -14,20 +15,34 @@
 			return a.localeCompare(b);
 		})
 	);
+	const techOptions: Tech[] = $derived(
+		Array.from(new Set(projects.flatMap((project) => project.tech))).sort((a, b) => {
+			if (a === 'Other') return 1;
+			if (b === 'Other') return -1;
+			return a.localeCompare(b);
+		})
+	);
 
 	function longestLength(labels: string[]) {
 		return Math.max(0, ...labels.map((label) => label.length));
 	}
 
-	const widestCategory = $derived(longestLength(['All', ...categories]));
+	const widestCategory = $derived(
+		longestLength([
+			'All',
+			...categories.map((c) => c.charAt(0).toUpperCase() + c.slice(1).toLowerCase())
+		])
+	);
+	const widestTech = $derived(longestLength(['All', ...techOptions]));
 	const widestYear = $derived(longestLength(['All', ...years.map(String)]));
 
 	const displayedProjects = $derived(
-		selectedCategory === 'all' && selectedYear === 'all' && showArchived
+		selectedCategory === 'all' && selectedTech === 'all' && selectedYear === 'all' && showArchived
 			? projects
 			: projects.filter(
 					(project) =>
 						(selectedCategory === 'all' || project.categories.includes(selectedCategory)) &&
+						(selectedTech === 'all' || project.tech.includes(selectedTech)) &&
 						(selectedYear === 'all' || project.year === selectedYear) &&
 						(showArchived || !project.archived)
 				)
@@ -50,6 +65,18 @@
 						<option value={category}
 							>{category.charAt(0).toUpperCase() + category.slice(1).toLowerCase()}</option
 						>
+					{/each}
+				</select>
+			</span>
+		</label>
+
+		<label for="tech"
+			>Tech
+			<span class="select-container" data-widest={widestTech}>
+				<select bind:value={selectedTech}>
+					<option value="all">All</option>
+					{#each techOptions as tech}
+						<option value={tech}>{tech}</option>
 					{/each}
 				</select>
 			</span>
