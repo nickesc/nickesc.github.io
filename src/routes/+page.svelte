@@ -4,17 +4,6 @@
 	import Badge from '$lib/components/Badge.svelte';
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
 
-	import SiHtml5 from '@icons-pack/svelte-simple-icons/icons/SiHtml5';
-	import SiCss from '@icons-pack/svelte-simple-icons/icons/SiCss';
-	import SiJavascript from '@icons-pack/svelte-simple-icons/icons/SiJavascript';
-	import SiTypescript from '@icons-pack/svelte-simple-icons/icons/SiTypescript';
-	import SiReact from '@icons-pack/svelte-simple-icons/icons/SiReact';
-	import SiSvelte from '@icons-pack/svelte-simple-icons/icons/SiSvelte';
-	import SiNodedotjs from '@icons-pack/svelte-simple-icons/icons/SiNodedotjs';
-	import SiPython from '@icons-pack/svelte-simple-icons/icons/SiPython';
-	import SiZsh from '@icons-pack/svelte-simple-icons/icons/SiZsh';
-	import SiGodotengine from '@icons-pack/svelte-simple-icons/icons/SiGodotengine';
-
 	let displayedProjects = $state(projects);
 	displayedProjects = projects.filter((project) => project.featured === true);
 </script>
@@ -54,19 +43,18 @@
 <ul class="badges">
 	<li>
 		<Badge
-			icon={SiHtml5}
+			icon="html"
 			text="HTML"
 			href="https://html.spec.whatwg.org/multipage/"
 			bgColor="rgb(228,77,38)"
 		/>
 	</li>
 	<li>
-		<Badge icon={SiCss} text="CSS" href="https://www.w3.org/Style/CSS/" bgColor="rgb(21,114,182)" />
+		<Badge icon="css" text="CSS" href="https://www.w3.org/Style/CSS/" bgColor="rgb(21,114,182)" />
 	</li>
-
 	<li>
 		<Badge
-			icon={SiJavascript}
+			icon="javascript"
 			text="JavaScript"
 			href="https://262.ecma-international.org/"
 			bgColor="rgb(240,219,79)"
@@ -74,28 +62,30 @@
 	</li>
 	<li>
 		<Badge
-			icon={SiTypescript}
+			icon="typescript"
 			text="TypeScript"
 			href="https://www.typescriptlang.org/"
 			bgColor="rgb(49,120,198)"
 		/>
 	</li>
 	<li>
-		<Badge icon={SiNodedotjs} text="Node.js" href="https://nodejs.org/" bgColor="rgb(51,153,51)" />
-	</li>
-	<li><Badge icon={SiReact} text="React" href="https://react.dev/" bgColor="rgb(62,182,214)" /></li>
-	<li>
-		<Badge icon={SiSvelte} text="Svelte" href="https://svelte.dev/" bgColor="rgb(255,62,0)" />
+		<Badge icon="node" text="Node.js" href="https://nodejs.org/" bgColor="rgb(51,153,51)" />
 	</li>
 	<li>
-		<Badge icon={SiPython} text="Python" href="https://www.python.org/" bgColor="rgb(48,105,152)" />
+		<Badge icon="react" text="React" href="https://react.dev/" bgColor="rgb(62,182,214)" />
 	</li>
 	<li>
-		<Badge icon={SiZsh} text="Zsh" href="https://zsh.sourceforge.io/" bgColor="rgb(153,153,153)" />
+		<Badge icon="svelte" text="Svelte" href="https://svelte.dev/" bgColor="rgb(255,62,0)" />
+	</li>
+	<li>
+		<Badge icon="python" text="Python" href="https://www.python.org/" bgColor="rgb(48,105,152)" />
+	</li>
+	<li>
+		<Badge icon="zsh" text="Zsh" href="https://zsh.sourceforge.io/" bgColor="rgb(153,153,153)" />
 	</li>
 	<li>
 		<Badge
-			icon={SiGodotengine}
+			icon="godotengine"
 			text="Godot"
 			href="https://godotengine.org/"
 			bgColor="rgb(71,140,191)"

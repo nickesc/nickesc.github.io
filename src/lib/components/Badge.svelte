@@ -1,14 +1,38 @@
 <script lang="ts">
-	import type { SiComponentType } from '@icons-pack/svelte-simple-icons';
+	import SiHtml5 from '@icons-pack/svelte-simple-icons/icons/SiHtml5';
+	import SiCss from '@icons-pack/svelte-simple-icons/icons/SiCss';
+	import SiJavascript from '@icons-pack/svelte-simple-icons/icons/SiJavascript';
+	import SiTypescript from '@icons-pack/svelte-simple-icons/icons/SiTypescript';
+	import SiReact from '@icons-pack/svelte-simple-icons/icons/SiReact';
+	import SiSvelte from '@icons-pack/svelte-simple-icons/icons/SiSvelte';
+	import SiNodedotjs from '@icons-pack/svelte-simple-icons/icons/SiNodedotjs';
+	import SiPython from '@icons-pack/svelte-simple-icons/icons/SiPython';
+	import SiZsh from '@icons-pack/svelte-simple-icons/icons/SiZsh';
+	import SiGodotengine from '@icons-pack/svelte-simple-icons/icons/SiGodotengine';
+
+	const icons = {
+		html: SiHtml5,
+		css: SiCss,
+		javascript: SiJavascript,
+		typescript: SiTypescript,
+		react: SiReact,
+		svelte: SiSvelte,
+		node: SiNodedotjs,
+		python: SiPython,
+		zsh: SiZsh,
+		godotengine: SiGodotengine
+	} as const;
 
 	interface Props {
-		icon: SiComponentType;
+		icon: keyof typeof icons;
 		text: string;
 		href: string;
 		bgColor: string;
 	}
 
-	let { icon: Icon, text, href, bgColor }: Props = $props();
+	let { icon, text, href, bgColor }: Props = $props();
+
+	const Icon = $derived(icons[icon]);
 </script>
 
 <a {href} style:--logo-color={bgColor} style:color={bgColor} target="_blank">
