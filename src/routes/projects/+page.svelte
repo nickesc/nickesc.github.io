@@ -1,14 +1,10 @@
 <script lang="ts">
 	import { projects, type Category } from '$lib/projects';
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
-	import { onMount } from 'svelte';
 
-	let displayedProjects = $state(projects);
 	let selectedCategory = $state<Category | 'all'>('all');
 	let selectedYear: number | 'all' = $state<number | 'all'>('all');
 	let showArchived = $state(false);
-
-	let delay = 0;
 
 	const years: number[] = $derived(Array.from(new Set(projects.map((project) => project.year))));
 	const categories: Category[] = $derived(
@@ -26,22 +22,16 @@
 	const widestCategory = $derived(longestLength(['All', ...categories]));
 	const widestYear = $derived(longestLength(['All', ...years.map(String)]));
 
-	function filterProjects() {
-		if (selectedCategory === 'all' && selectedYear === 'all' && showArchived) {
-			displayedProjects = projects;
-		} else {
-			displayedProjects = projects.filter(
-				(project) =>
-					(selectedCategory === 'all' || project.categories.includes(selectedCategory)) &&
-					(selectedYear === 'all' || project.year === selectedYear) &&
-					(showArchived || !project.archived)
-			);
-		}
-	}
-
-	onMount(() => {
-		filterProjects();
-	});
+	const displayedProjects = $derived(
+		selectedCategory === 'all' && selectedYear === 'all' && showArchived
+			? projects
+			: projects.filter(
+					(project) =>
+						(selectedCategory === 'all' || project.categories.includes(selectedCategory)) &&
+						(selectedYear === 'all' || project.year === selectedYear) &&
+						(showArchived || !project.archived)
+				)
+	);
 </script>
 
 <span class="projects-title">
@@ -54,7 +44,7 @@
 		<label for="category"
 			>Category
 			<span class="select-container" data-widest={widestCategory}>
-				<select bind:value={selectedCategory} onchange={filterProjects}>
+				<select bind:value={selectedCategory}>
 					<option value="all">All</option>
 					{#each categories as category}
 						<option value={category}
@@ -68,7 +58,7 @@
 		<label for="year"
 			>Year
 			<span class="select-container" data-widest={widestYear}>
-				<select bind:value={selectedYear} onchange={filterProjects}>
+				<select bind:value={selectedYear}>
 					<option value="all">All</option>
 					{#each years as year}
 						<option value={year}>{year}</option>
@@ -80,7 +70,7 @@
 
 	<label for="archived">
 		Show Archived
-		<input type="checkbox" bind:checked={showArchived} onchange={filterProjects} />
+		<input type="checkbox" bind:checked={showArchived} />
 	</label>
 </div>
 
