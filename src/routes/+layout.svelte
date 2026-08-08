@@ -122,7 +122,7 @@
 					out:fade|global={{ duration: MAIN_PANEL_FADE_MS }}
 					class="powered-off-container"
 				>
-					<span>Powered off...</span>
+					<span>Powered off</span>
 				</div>
 			{/if}
 		{/key}
@@ -526,8 +526,8 @@
 		border-bottom: 1px solid rgba(from var(--brand-grey) r g b / 0.1);
 		border-radius: var(--window-corners);
 		box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.5);
-		backdrop-filter: blur(20px);
-		background: rgba(from var(--brand-black) r g b / 0.8);
+		backdrop-filter: blur(10px);
+		background: rgba(from var(--brand-black) r g b / 0.75);
 		transition:
 			max-height 0.3s ease-in-out,
 			max-width 0.3s ease-in-out,
@@ -581,7 +581,7 @@
 			user-select: none;
 			touch-action: none;
 			display: block;
-			opacity: 0.5;
+			opacity: 0.3;
 			transition: opacity 0.2s ease;
 
 			&::before {
@@ -593,7 +593,7 @@
 				height: 4px;
 				transform: translateY(-50%);
 				background-color: var(--brand-grey);
-				border-radius: 100px;
+				border-radius: 0;
 			}
 
 			&.horizontal {
@@ -604,11 +604,11 @@
 			}
 
 			&:hover {
-				opacity: 0.8;
+				opacity: 0.6;
 			}
 
 			&.dragging {
-				opacity: 1;
+				opacity: 0.8;
 			}
 		}
 	}
