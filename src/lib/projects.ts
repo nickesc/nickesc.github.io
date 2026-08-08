@@ -10,6 +10,26 @@ export type Category =
 	| 'hardware'
 	| 'other';
 
+export type Tech =
+	| 'HTML'
+	| 'CSS'
+	| 'JavaScript'
+	| 'TypeScript'
+	| 'Node.js'
+	| 'React'
+	| 'Svelte'
+	| 'Python'
+	| 'CircuitPython'
+	| 'Zsh'
+	| 'Godot'
+	| 'Unity'
+	| 'Java'
+	| 'C'
+	| 'Blender'
+	| 'Illustrator'
+	| 'Raspberry Pi'
+	| 'Other';
+
 export type Project = {
 	name: string;
 	imgUrl: string;
@@ -19,6 +39,7 @@ export type Project = {
 	description: string;
 	year: number;
 	categories: Category[];
+	tech: Tech[];
 	featured?: true;
 	archived?: true;
 };
@@ -38,6 +59,7 @@ export const projects: Project[] = [
 			'Creates a modpack lockfile for files hosted on Modrinth (mods, resource packs, shaders and datapacks).',
 		year: 2026,
 		categories: ['code', 'packages'],
+		tech: ['TypeScript', 'Node.js'],
 		featured: true
 	},
 
@@ -49,7 +71,8 @@ export const projects: Project[] = [
 		sourceUrl: 'https://github.com/nickesc/More-JourneyMap-Waypoints',
 		description: 'An addon resource pack for JourneyMap with more icons to use as waypoints.',
 		year: 2026,
-		categories: ['other', 'art']
+		categories: ['other', 'art'],
+		tech: ['Illustrator', 'Zsh']
 	},
 
 	{
@@ -60,7 +83,8 @@ export const projects: Project[] = [
 		sourceUrl: 'https://github.com/nickesc/gsc-clock-util',
 		description: 'Generates a password to reset the clock in Pokemon Gold, Silver and Crystal.',
 		year: 2025,
-		categories: ['code']
+		categories: ['code'],
+		tech: ['HTML', 'CSS', 'JavaScript']
 	},
 
 	{
@@ -68,9 +92,11 @@ export const projects: Project[] = [
 		imgUrl: logo('pokemonAnalysis.png'),
 		background: '#232323',
 		projectUrl: 'https://pokemon-analysis.batcomputer.xyz',
+		sourceUrl: 'https://github.com/nickesc/pokemon-analysis',
 		description: 'Analyze a Pokemon team and generate reports on coverage.',
 		year: 2025,
-		categories: ['code']
+		categories: ['code'],
+		tech: ['Svelte']
 	},
 
 	{
@@ -81,7 +107,8 @@ export const projects: Project[] = [
 		sourceUrl: 'https://github.com/nickesc/4ajs',
 		description: 'A game made with love for the greatest person in the world.',
 		year: 2025,
-		categories: ['gamedev', 'code', 'art']
+		categories: ['gamedev', 'code', 'art'],
+		tech: ['Godot', 'Blender']
 	},
 
 	{
@@ -92,7 +119,8 @@ export const projects: Project[] = [
 		sourceUrl: 'https://github.com/nickesc/animwebp',
 		description: 'Convert a sequence of images to an animated WebP.',
 		year: 2025,
-		categories: ['code', 'packages']
+		categories: ['code', 'packages'],
+		tech: ['TypeScript', 'Node.js']
 	},
 
 	{
@@ -104,6 +132,7 @@ export const projects: Project[] = [
 		description: 'Turn any HTMLInputElement into a terminal interface.',
 		year: 2025,
 		categories: ['code', 'packages'],
+		tech: ['TypeScript', 'JavaScript', 'HTML', 'Svelte'],
 		featured: true
 	},
 
@@ -116,6 +145,7 @@ export const projects: Project[] = [
 		description: 'A foundation for building loops that execute at a consistent, specified rate.',
 		year: 2025,
 		categories: ['code', 'packages'],
+		tech: ['TypeScript', 'Node.js'],
 		featured: true
 	},
 
@@ -127,7 +157,8 @@ export const projects: Project[] = [
 		sourceUrl: 'https://github.com/nickesc/no-more-ai-search',
 		description: 'Remove the AI Mode button and AI Overview from Google Search results.',
 		year: 2025,
-		categories: ['code', 'extensions']
+		categories: ['code', 'extensions'],
+		tech: ['JavaScript', 'HTML', 'CSS']
 	},
 
 	{
@@ -138,7 +169,8 @@ export const projects: Project[] = [
 		sourceUrl: 'https://github.com/nickesc/qr-baker',
 		description: 'Multi-platform QR code generator built with Godot 4.',
 		year: 2025,
-		categories: ['code', 'gamedev']
+		categories: ['code', 'gamedev'],
+		tech: ['Godot']
 	},
 
 	{
@@ -149,7 +181,8 @@ export const projects: Project[] = [
 		sourceUrl: 'https://github.com/nickesc/keyboardLayouts',
 		description: 'Various keyboard layouts in SVG and PNG formats, organized by category/size.',
 		year: 2025,
-		categories: ['art']
+		categories: ['art'],
+		tech: ['Illustrator']
 	},
 
 	{
@@ -161,7 +194,8 @@ export const projects: Project[] = [
 		description:
 			'A browser extension that sets a white background on pages where background-color is not explicitly set.',
 		year: 2025,
-		categories: ['code', 'extensions']
+		categories: ['code', 'extensions'],
+		tech: ['JavaScript', 'HTML', 'CSS']
 	},
 
 	{
@@ -172,7 +206,8 @@ export const projects: Project[] = [
 		sourceUrl: 'https://github.com/nickesc/controller-mapping-templates',
 		description: 'Simple templates to create controller mapping images for a number of gamepads.',
 		year: 2025,
-		categories: ['art', 'gamedev']
+		categories: ['art', 'gamedev'],
+		tech: ['Illustrator']
 	},
 
 	{
@@ -185,6 +220,7 @@ export const projects: Project[] = [
 			'A client-side Minecraft modpack that aims to overhaul and modernize the experience.',
 		year: 2024,
 		categories: ['other'],
+		tech: ['Other'],
 		featured: true
 	},
 
@@ -197,6 +233,7 @@ export const projects: Project[] = [
 		description: 'A template and build system for creating skins for the Delta emulator.',
 		year: 2024,
 		categories: ['other'],
+		tech: ['Zsh'],
 		archived: true
 	},
 
@@ -210,6 +247,7 @@ export const projects: Project[] = [
 			'A small project to track the temperature and other conditions in my bedroom and other rooms of my house.',
 		year: 2023,
 		categories: ['code', 'hardware'],
+		tech: ['CircuitPython'],
 		archived: true
 	},
 
@@ -222,7 +260,8 @@ export const projects: Project[] = [
 		description:
 			'A simple but flexible console logging library with common-sense builtin functions and defaults.',
 		year: 2023,
-		categories: ['code']
+		categories: ['code'],
+		tech: ['JavaScript', 'Node.js']
 	},
 
 	{
@@ -235,6 +274,7 @@ export const projects: Project[] = [
 			'A small, physics-based game with a simple premise: throw the Starfish as far as you can before the timer runs out! Built with Godot as a part of the Gamedev.js Jam 2023 game jam.',
 		year: 2023,
 		categories: ['gamedev', 'code', 'art'],
+		tech: ['Godot', 'Illustrator'],
 		featured: true
 	},
 
@@ -248,6 +288,7 @@ export const projects: Project[] = [
 			'A portable word game generator written in CircuitPython, based on The New York Times Spelling Bee.',
 		year: 2023,
 		categories: ['gamedev', 'code', 'hardware', 'writing'],
+		tech: ['CircuitPython', 'Python'],
 		featured: true
 	},
 
@@ -260,7 +301,8 @@ export const projects: Project[] = [
 		description:
 			'My .dotfile repository for automated MacOS setup, including custom scripts and themes.',
 		year: 2022,
-		categories: ['code']
+		categories: ['code'],
+		tech: ['Zsh']
 	},
 
 	{
@@ -273,6 +315,7 @@ export const projects: Project[] = [
 			"A ZSH script to manage 'notes' and 'notebooks' from the command line; creates git tracked directories of Markdown files for easy access to notes.",
 		year: 2022,
 		categories: ['code'],
+		tech: ['Zsh'],
 		archived: true
 	},
 
@@ -286,7 +329,8 @@ export const projects: Project[] = [
 		description:
 			'An alternate port of the Paradise theme by Manas140 to VSCode, released on the Visual Studio Code Marketplace.',
 		year: 2022,
-		categories: ['code', 'extensions']
+		categories: ['code', 'extensions'],
+		tech: ['CSS', 'Illustrator']
 	},
 
 	{
@@ -298,7 +342,8 @@ export const projects: Project[] = [
 		description:
 			'A robot that runs away from people, built using an iRobot Create2, the pyCreate2 library and a Raspberry Pi.',
 		year: 2022,
-		categories: ['code', 'hardware', 'writing']
+		categories: ['code', 'hardware', 'writing'],
+		tech: ['Python', 'Raspberry Pi']
 	},
 
 	{
@@ -311,6 +356,7 @@ export const projects: Project[] = [
 			"A series of Jupyter Notebooks that grab and visualize nearly every email I've ever received.",
 		year: 2022,
 		categories: ['code', 'writing', 'art'],
+		tech: ['Python'],
 		archived: true
 	},
 
@@ -323,7 +369,8 @@ export const projects: Project[] = [
 		description:
 			"My girlfriend wants to know what I’m listening to, and I don’t like Spotify displaying it on their app, so I wrote a small server and HTML tag using Spotify's API and thelinmichael/spotify-web-api-node that will return and display my current listening activity.",
 		year: 2022,
-		categories: ['code']
+		categories: ['code'],
+		tech: ['HTML', 'JavaScript', 'Node.js']
 	},
 
 	{
@@ -336,6 +383,7 @@ export const projects: Project[] = [
 			'A reference for my different logos. Provides image links, HTML tags and color codes useful when making other projects to keep branding consistent',
 		year: 2022,
 		categories: ['art', 'code'],
+		tech: ['HTML', 'CSS', 'Illustrator'],
 		archived: true
 	},
 
@@ -348,7 +396,8 @@ export const projects: Project[] = [
 		description:
 			'Branches: A Game of Choice and Agency is a game that aims to create a feeling of agency for the player through the use of choice and branching narrative.',
 		year: 2021,
-		categories: ['gamedev', 'code', 'writing', 'art']
+		categories: ['gamedev', 'code', 'writing', 'art'],
+		tech: ['Unity']
 	},
 
 	{
@@ -361,6 +410,7 @@ export const projects: Project[] = [
 			'The script page for Branches. Frontend and backend with a database for lines in the script. Used the webpage to keep voice actors updated on lines I needed recoded while making the game, and sent notifications to them when a new line is added. The database is currently broken.',
 		year: 2021,
 		categories: ['code', 'gamedev', 'writing'],
+		tech: ['HTML', 'CSS', 'JavaScript', 'Node.js'],
 		archived: true
 	},
 
@@ -372,7 +422,8 @@ export const projects: Project[] = [
 		sourceUrl: 'https://github.com/nickesc/HomebakedPiArithmetic',
 		description: 'Bare metal coding a Raspberry Pi into a calculator with a primitive GUI.',
 		year: 2021,
-		categories: ['code']
+		categories: ['code'],
+		tech: ['C', 'Raspberry Pi']
 	},
 
 	{
@@ -385,6 +436,7 @@ export const projects: Project[] = [
 			'A wrapper for the Steam Web API. Unfinished but semi-robust, allows users to explore the Steam Web API a little more easily.',
 		year: 2021,
 		categories: ['code'],
+		tech: ['JavaScript', 'Node.js'],
 		archived: true
 	},
 
@@ -397,7 +449,8 @@ export const projects: Project[] = [
 		description:
 			"A spoof of a Steam listing for the fake game, Wildlife: Speculative Explorations of Southern California's Animal Ecology. Wildlife is an exploration of a potential climate change future, made as a part of an experimental art class.",
 		year: 2021,
-		categories: ['art']
+		categories: ['art'],
+		tech: ['HTML', 'CSS']
 	},
 
 	{
@@ -408,7 +461,8 @@ export const projects: Project[] = [
 		sourceUrl: 'https://github.com/nickesc/license-templates',
 		description: 'Better license templates for the Lice license generator.',
 		year: 2021,
-		categories: ['code'],
+		categories: ['other'],
+		tech: ['Other'],
 		archived: true
 	},
 
@@ -421,7 +475,8 @@ export const projects: Project[] = [
 		description:
 			'A collaboration between my parents and me; a project containing an animation and guide, both based around point-cloud visualization.',
 		year: 2021,
-		categories: ['art', 'writing']
+		categories: ['art', 'writing'],
+		tech: ['Other']
 	},
 
 	{
@@ -433,6 +488,7 @@ export const projects: Project[] = [
 			'The final project from my COMP 131 class. An confusing first person dungeon crawler, written in Java. No links to this yet.',
 		year: 2019,
 		categories: ['gamedev', 'code'],
+		tech: ['Java'],
 		archived: true
 	}
 ];
