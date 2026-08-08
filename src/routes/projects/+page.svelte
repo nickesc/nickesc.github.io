@@ -57,7 +57,9 @@
 				<select bind:value={selectedCategory} onchange={filterProjects}>
 					<option value="all">All</option>
 					{#each categories as category}
-						<option value={category}>{category}</option>
+						<option value={category}
+							>{category.charAt(0).toUpperCase() + category.slice(1).toLowerCase()}</option
+						>
 					{/each}
 				</select>
 			</span>
@@ -137,10 +139,6 @@
 			&[for='archived'] {
 				align-items: flex-end;
 				text-align: right;
-			}
-
-			&[for='category'] :global(select) {
-				text-transform: capitalize;
 			}
 		}
 	}
