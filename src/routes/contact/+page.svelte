@@ -12,7 +12,6 @@
 
 	// not a secret link, just making it a little harder to detect
 	const x = atob('aHR0cHM6Ly9mb3Jtc3ByZWUuaW8vZi94ZGVua2Vidw==');
-	// const x = 'https://formspree.io/';
 
 	let emailEl = $state<HTMLInputElement | null>(null);
 	let messageEl = $state<HTMLTextAreaElement | null>(null);
@@ -168,23 +167,27 @@
 		}
 
 		button {
+			--btn: rgba(from var(--form-accent-color) r g b / 0.3);
+
 			padding: 0.5rem 1rem;
 			border-radius: var(--corners);
-			border: none;
+			border: 1.5px solid transparent;
 			font-size: 16px;
 			font-family: var(--mono-font);
 			font-weight: 500;
 			width: 100%;
 			box-sizing: border-box;
-			background-color: rgba(from var(--form-accent-color) r g b / 0.8);
-			color: rgba(from var(--brand-white) r g b / 0.9);
+			background-color: var(--btn);
+			color: var(--form-accent-color);
 			transition:
-				background-color 0.2s ease-in-out,
-				color 0.2s ease-in-out;
+				background-color 0.25s ease-in-out,
+				color 0.25s ease-in-out,
+				border-color 0.25s ease-in-out;
 
 			&:disabled {
-				background-color: rgba(from var(--form-accent-color) r g b / 0.2);
-				color: rgba(from var(--brand-white) r g b / 0.3);
+				--btn: rgba(from var(--form-accent-color) r g b / 0.08);
+				color: rgba(from var(--form-accent-color) r g b / 0.3);
+				cursor: not-allowed;
 			}
 
 			&:not(:disabled) {
@@ -192,13 +195,11 @@
 			}
 
 			&:hover:not(:disabled) {
-				background-color: rgba(from var(--form-accent-color) r g b / 1);
-				color: var(--brand-white);
+				--btn: rgba(from var(--form-accent-color) r g b / 0.5);
 			}
 
 			&:active:not(:disabled) {
-				background-color: rgba(from var(--form-accent-color) r g b / 0.7);
-				color: rgba(from var(--brand-white) r g b / 0.7);
+				--btn: rgba(from var(--form-accent-color) r g b / 0.7);
 			}
 		}
 	}
