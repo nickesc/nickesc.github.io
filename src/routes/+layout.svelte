@@ -122,7 +122,7 @@
 					out:fade|global={{ duration: MAIN_PANEL_FADE_MS }}
 					class="powered-off-container"
 				>
-					<span>Powered off</span>
+					<span class="uppercase">Powered off</span>
 				</div>
 			{/if}
 		{/key}
@@ -409,6 +409,10 @@
 		&:checked::before {
 			background-color: rgba(from var(--brand-grey) r g b / 0.8);
 		}
+	}
+
+	.uppercase {
+		text-transform: uppercase;
 	}
 
 	.site-bg-stack {
