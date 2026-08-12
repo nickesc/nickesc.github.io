@@ -20,7 +20,6 @@
 	import InfosecExchange from '$lib/components/icons/infosec-exchange.svelte';
 	import Linkedin from '$lib/components/icons/linkedin.svelte';
 	import OpenVsx from '$lib/components/icons/open-vsx.svelte';
-	import Sig from '$lib/components/icons/sig.svelte';
 	import VsMp from '$lib/components/icons/vs-mp.svelte';
 
 	const icons = {
@@ -40,7 +39,6 @@
 		kofi: SiKofi,
 		linkedin: Linkedin,
 		'open-vsx': OpenVsx,
-		sig: Sig,
 		'vs-mp': VsMp,
 		youtube: SiYoutube,
 		npm: SiNpm,
