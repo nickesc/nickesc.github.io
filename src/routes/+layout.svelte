@@ -101,8 +101,8 @@
 	id="terminal-window"
 	bind:this={windowElement}
 	class:dragging
-	style:max-height={maximized ? 'calc(100dvh - 2rem)' : `965px`}
-	style:max-width={maximized ? 'calc(100vw - 2rem)' : `1200px`}
+	style:max-height={maximized ? 'calc(100dvh - var(--window-margin))' : `965px`}
+	style:max-width={maximized ? 'calc(100vw - var(--window-margin))' : `1200px`}
 >
 	<TabBar bind:on bind:maximized fadeDuration={MAIN_PANEL_FADE_MS} />
 	<main class="scrollable" style:flex={`${mainHeight} 1 0`}>
@@ -515,13 +515,15 @@
 	}
 
 	#terminal-window {
+		--window-margin: 1rem;
+
 		position: relative;
 		z-index: 1;
-		margin: 1rem;
-		height: calc(100vh - 2rem);
-		height: calc(100dvh - 2rem);
-		width: calc(100vw - 2rem);
-		width: calc(100dvw - 2rem);
+		margin: var(--window-margin);
+		height: calc(100vh - 2 * var(--window-margin));
+		height: calc(100dvh - 2 * var(--window-margin));
+		width: calc(100vw - 2 * var(--window-margin));
+		width: calc(100dvw - 2 * var(--window-margin));
 		overflow: hidden;
 		display: flex;
 		flex-direction: column;
@@ -545,11 +547,7 @@
 		}
 
 		@media (max-width: 600px) {
-			margin: 0.5rem;
-			height: calc(100vh - 1rem);
-			height: calc(100dvh - 1rem);
-			width: calc(100vw - 1rem);
-			width: calc(100dvw - 1rem);
+			--window-margin: 0.5rem;
 		}
 	}
 
