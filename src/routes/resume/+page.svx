@@ -1,12 +1,26 @@
 <script lang="ts">
     import { Badge } from './badges';
+    import { DownloadSymbol } from './symbols';
 </script>
 
 <div class="container">
 
+<div class="resume-header">
+
+<div>
+
 # Nick Escobar
 
 <div class="subtitle">Web Developer</div>
+
+</div>
+
+<a href="/Nick-Escobar-Resume.pdf" download="Nick-Escobar-Resume.pdf" class="primary-button download-button">
+    <DownloadSymbol />
+    <span class="download-text">Download</span>
+</a>
+
+</div>
 
 <div class="grid">
 
@@ -138,7 +152,6 @@ Developer and creative with experience in full-stack web development, library de
 
 - Full stack web development
 - UI/UX design
-- Git, CI/CD
 - AI-assisted development
 - IT administration/support
 - Technical documentation
@@ -148,9 +161,32 @@ Developer and creative with experience in full-stack web development, library de
 
 </div>
 
+
+
 </div>
 
 <style>
+
+  .resume-header {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 670px) {
+    .download-text {
+      display: none;
+    }
+  }
+
+  .download-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
 
   .container {
     max-width: 1000px;
@@ -197,7 +233,7 @@ Developer and creative with experience in full-stack web development, library de
     margin: 0;
   }
 
-  a {
+  a:not(.primary-button) {
     color: var(--brand-accent);
     text-decoration: none;
     transition: color 0.2s ease-in-out;
@@ -225,7 +261,6 @@ Developer and creative with experience in full-stack web development, library de
     font-family: var(--font-mono);
     color: rgba(from var(--brand-grey) r g b / 0.7);
     margin-top: 0;
-    margin-bottom: 1rem;
   }
 
   .summary, .grid ul, .badges {
