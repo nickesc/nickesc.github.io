@@ -226,6 +226,43 @@
 		}
 	}
 
+	:global(.primary-button) {
+		--btn: rgba(from var(--form-accent-color) r g b / 0.3);
+
+		padding: 0.5rem 1rem;
+		border-radius: var(--corners);
+		border: 1.5px solid transparent;
+		font-size: 16px;
+		font-family: var(--mono-font);
+		font-weight: 500;
+		text-decoration: none;
+		box-sizing: border-box;
+		background-color: var(--btn);
+		color: var(--form-accent-color);
+		transition:
+			background-color 0.25s ease-in-out,
+			color 0.25s ease-in-out,
+			border-color 0.25s ease-in-out;
+
+		&:disabled {
+			--btn: rgba(from var(--form-accent-color) r g b / 0.08);
+			color: rgba(from var(--form-accent-color) r g b / 0.3);
+			cursor: not-allowed;
+		}
+
+		&:not(:disabled) {
+			cursor: pointer;
+		}
+
+		&:hover:not(:disabled) {
+			--btn: rgba(from var(--form-accent-color) r g b / 0.5);
+		}
+
+		&:active:not(:disabled) {
+			--btn: rgba(from var(--form-accent-color) r g b / 0.7);
+		}
+	}
+
 	:global(input[type='text']),
 	:global(input[type='name']),
 	:global(input[type='email']),
