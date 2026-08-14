@@ -17,6 +17,7 @@
 	import SiFirefox from '@icons-pack/svelte-simple-icons/icons/SiFirefox';
 	import SiItchdotio from '@icons-pack/svelte-simple-icons/icons/SiItchdotio';
 	import SiModrinth from '@icons-pack/svelte-simple-icons/icons/SiModrinth';
+	import SiGit from '@icons-pack/svelte-simple-icons/icons/SiGit';
 	import InfosecExchange from '$lib/components/icons/infosec-exchange.svelte';
 	import Linkedin from '$lib/components/icons/linkedin.svelte';
 	import OpenVsx from '$lib/components/icons/open-vsx.svelte';
@@ -44,7 +45,8 @@
 		npm: SiNpm,
 		firefox: SiFirefox,
 		itchio: SiItchdotio,
-		modrinth: SiModrinth
+		modrinth: SiModrinth,
+		git: SiGit
 	} as const;
 
 	interface Props {
