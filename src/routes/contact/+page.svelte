@@ -94,7 +94,7 @@
 		/>
 	</li>
 	<li>
-		<Badge icon="kofi" text="Ko-fi" href="https://ko-fi.com/nickesc" bgColor="rgb(255,90,22)" />
+		<Badge icon="kofi" text="nickesc" href="https://ko-fi.com/nickesc" bgColor="rgb(255,90,22)" />
 	</li>
 </ul>
 
