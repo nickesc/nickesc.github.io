@@ -61,7 +61,13 @@
 	const Icon = $derived(icons[icon]);
 </script>
 
-<a {href} style:--logo-color={bgColor} style:color={bgColor} target="_blank">
+<a
+	{href}
+	style:--logo-color={bgColor}
+	style:color={bgColor}
+	rel="noopener noreferrer"
+	target="_blank"
+>
 	<Icon class="icon" title={text} color={bgColor} />
 
 	{text}
