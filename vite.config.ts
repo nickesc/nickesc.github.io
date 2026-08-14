@@ -1,4 +1,5 @@
 import { mdsvex } from 'mdsvex';
+import rehypeExternalLinks from 'rehype-external-links';
 import adapter from '@sveltejs/adapter-static';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
@@ -20,7 +21,20 @@ export default defineConfig({
 				precompress: false,
 				strict: true
 			}),
-			preprocess: [mdsvex({ extensions: ['.svx', '.md'] })],
+			preprocess: [
+				mdsvex({
+					extensions: ['.svx', '.md'],
+					rehypePlugins: [
+						[
+							rehypeExternalLinks,
+							{
+								target: '_blank',
+								rel: ['noopener', 'noreferrer']
+							}
+						]
+					]
+				})
+			],
 			extensions: ['.svelte', '.svx', '.md']
 		})
 	],
