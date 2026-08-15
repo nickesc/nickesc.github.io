@@ -123,3 +123,24 @@ export function resolveDirectory(
 
 	return current;
 }
+
+/** Resolve an absolute or relative file path from `currentDirectory`. */
+export function resolveFile(pathString: string, currentDirectory: Directory): File | null {
+	if (!pathString || pathString === '/' || pathString === '~' || pathString.endsWith('/')) {
+		return null;
+	}
+
+	const slash = pathString.lastIndexOf('/');
+	if (slash === -1) {
+		return findChildFile(pathString, currentDirectory);
+	}
+
+	const dirPart = pathString.slice(0, slash) || '/';
+	const name = pathString.slice(slash + 1);
+	if (!name || name === '.' || name === '..') return null;
+
+	const directory = resolveDirectory(dirPart, currentDirectory);
+	if (!directory) return null;
+
+	return findChildFile(name, directory);
+}
