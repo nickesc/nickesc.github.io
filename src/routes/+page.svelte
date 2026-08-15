@@ -1,11 +1,17 @@
 <script lang="ts">
 	import { projects } from '$lib/projects';
+	import { badges } from '$lib/badges';
 
 	import Badge from '$lib/components/Badge.svelte';
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
 
 	let displayedProjects = $state(projects);
 	displayedProjects = projects.filter((project) => project.featured === true);
+
+	type BadgeKey = keyof typeof badges;
+	const featuredBadges = (Object.keys(badges) as BadgeKey[]).filter((key) =>
+		badges[key].categories.includes('featured')
+	);
 </script>
 
 <svelte:head>
@@ -69,24 +75,11 @@
 	<div class="tech">
 		<span class="tech-label">Go-to tech</span>
 		<ul class="badges">
-			<li>
-				<Badge icon="typescript" />
-			</li>
-			<li>
-				<Badge icon="node" />
-			</li>
-			<li>
-				<Badge icon="svelte" />
-			</li>
-			<li>
-				<Badge icon="python" />
-			</li>
-			<li>
-				<Badge icon="godotengine" />
-			</li>
-			<li>
-				<Badge icon="git" />
-			</li>
+			{#each featuredBadges as icon}
+				<li>
+					<Badge {icon} />
+				</li>
+			{/each}
 		</ul>
 	</div>
 </div>
