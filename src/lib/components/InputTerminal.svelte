@@ -8,6 +8,7 @@
 	import { submitForm } from '$lib/submitForm';
 	import { createProjectFiles } from '$lib/projects';
 	import { createContactFiles } from '$lib/contact';
+	import { createResumeFiles } from '$lib/resume';
 
 	import { tabTree } from '$lib/tabs';
 	import {
@@ -46,6 +47,11 @@
 	let contactDirectory: Directory | null = findChildDir('contact', terminalTree);
 	if (contactDirectory) {
 		contactDirectory.files = createContactFiles(contactDirectory);
+	}
+
+	let resumeDirectory: Directory | null = findChildDir('resume', terminalTree);
+	if (resumeDirectory) {
+		resumeDirectory.files = createResumeFiles(resumeDirectory);
 	}
 
 	let currentDirectory: Directory = $derived(
