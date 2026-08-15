@@ -7,6 +7,7 @@
 
 	import { submitForm } from '$lib/submitForm';
 	import { createProjectFiles } from '$lib/projects';
+	import { createContactFiles } from '$lib/contact';
 
 	import { tabTree } from '$lib/tabs';
 	import {
@@ -36,10 +37,15 @@
 	let user = $state('user');
 
 	let terminalTree: Directory = $state(tabTree);
-	let projectsDirectory: Directory | null = findChildDir('projects', terminalTree);
 
+	let projectsDirectory: Directory | null = findChildDir('projects', terminalTree);
 	if (projectsDirectory) {
 		projectsDirectory.files = createProjectFiles(projectsDirectory);
+	}
+
+	let contactDirectory: Directory | null = findChildDir('contact', terminalTree);
+	if (contactDirectory) {
+		contactDirectory.files = createContactFiles(contactDirectory);
 	}
 
 	let currentDirectory: Directory = $derived(
