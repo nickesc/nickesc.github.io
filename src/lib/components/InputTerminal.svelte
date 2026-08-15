@@ -6,6 +6,7 @@
 	import { goto } from '$app/navigation';
 
 	import { submitForm } from '$lib/submitForm';
+	import { createProjectFiles } from '$lib/projects';
 
 	import { tabTree } from '$lib/tabs';
 	import {
@@ -13,6 +14,7 @@
 		findDirectoryByPage,
 		resolveDirectory,
 		resolveFile,
+		findChildDir,
 		type Directory
 	} from '$lib/filetree';
 	import { backgrounds, type Background } from '$lib/themes';
@@ -33,8 +35,15 @@
 	let hostname = $state(page.url.hostname);
 	let user = $state('user');
 
+	let terminalTree: Directory = $state(tabTree);
+	let projectsDirectory: Directory | null = findChildDir('projects', terminalTree);
+
+	if (projectsDirectory) {
+		projectsDirectory.files = createProjectFiles(projectsDirectory);
+	}
+
 	let currentDirectory: Directory = $derived(
-		findDirectoryByPage(page.url.pathname, tabTree) ?? tabTree
+		findDirectoryByPage(page.url.pathname, terminalTree) ?? terminalTree
 	);
 	let path = $derived(dirToPathString(currentDirectory));
 
