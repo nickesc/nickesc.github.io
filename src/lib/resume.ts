@@ -1,3 +1,5 @@
+import { createFile, type Directory, type File } from './filetree';
+
 export const resumeLinks = [
 	{
 		label: 'Email',
@@ -30,3 +32,9 @@ export const resumeLinks = [
 		displayText: 'nickesc.com'
 	}
 ];
+
+export function createResumeFiles(parent: Directory): File[] {
+	return resumeLinks.map((link) =>
+		createFile(link.label, parent, link.href ? { href: link.href } : { content: link.displayText })
+	);
+}
