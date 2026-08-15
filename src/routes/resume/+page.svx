@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Badge } from './badges';
+    import { Badge, techBadges} from './badges';
     import { DownloadSymbol } from './symbols';
 </script>
 
@@ -115,39 +115,11 @@ Developer and creative with experience in frontend and full-stack web developmen
 ## TECH
 
 <ul class="badges">
-  <li>
-    <Badge icon="html" />
-  </li>
-  <li>
-    <Badge icon="css" />
-  </li>
-  <li>
-    <Badge icon="javascript" />
-  </li>
-  <li>
-    <Badge icon="typescript" />
-  </li>
-  <li>
-    <Badge icon="node" />
-  </li>
-  <li>
-    <Badge icon="react" />
-  </li>
-  <li>
-    <Badge icon="svelte" />
-  </li>
-  <li>
-    <Badge icon="python" />
-  </li>
-  <li>
-    <Badge icon="godotengine" />
-  </li>
-  <li>
-    <Badge icon="zsh" />
-  </li>
-  <li>
-    <Badge icon="git" />
-  </li>
+    {#each techBadges as icon}
+    <li>
+      <Badge {icon} />
+    </li>
+    {/each}
 </ul>
 
 ## SKILLS
