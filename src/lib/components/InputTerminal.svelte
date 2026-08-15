@@ -53,7 +53,8 @@
 	});
 	version.manual = `version
 
-Print the version of the application.`;
+Print the version of the application.
+`;
 
 	const theme = new Command('theme', (args, options, terminal) => {
 		if (args[0] === 'list') {
@@ -69,7 +70,6 @@ Print the version of the application.`;
 		}
 		return { theme: args[0] };
 	});
-
 	theme.manual = `theme [list | &lt;name&gt;]
 
 Change the page theme to a named theme. With no arguments, advances to the next theme. Print available themes with \`theme list\`.
@@ -90,6 +90,10 @@ Examples:
 		terminal.stdout(currentDirectory.files.map((file) => file.name).join('\n'));
 		return { directory: currentDirectory };
 	});
+	ls.manual = `ls
+
+List the contents of the current directory.
+`;
 
 	const cd = new Command('cd', (args, options, terminal) => {
 		const gotoOpts = { replaceState: true, noScroll: true, keepFocus: true };
@@ -111,11 +115,19 @@ Examples:
 		}
 		return { directory };
 	});
+	cd.manual = `cd &lt;directory&gt;
+
+Change the current directory.
+
+Examples:
+  cd /projects
+  cd ..
+`;
 
 	const open = new Command('open', (args, options, terminal) => {
 		const targetPath = String(args[0] ?? '');
 		if (!targetPath) {
-			terminal.stderr('Usage: open <file>');
+			terminal.stderr('Usage: open &lt;file&gt;');
 			return {};
 		}
 
