@@ -184,20 +184,20 @@ export const badges = {
 		text: 'npm',
 		categories: ['distribution']
 	},
-	'open-vsx': {
-		icon: OpenVsx,
-		color: 'rgb(165, 15, 230)',
-		url: 'https://open-vsx.org/namespace/nickesc',
-		title: 'Open VSX',
-		text: 'Open VSX',
-		categories: ['distribution']
-	},
 	'vs-mp': {
 		icon: VsMp,
 		color: 'rgb(0, 122, 204)',
 		url: 'https://marketplace.visualstudio.com/publishers/nickesc',
 		title: 'VS Marketplace',
 		text: 'VS Marketplace',
+		categories: ['distribution']
+	},
+	'open-vsx': {
+		icon: OpenVsx,
+		color: 'rgb(165, 15, 230)',
+		url: 'https://open-vsx.org/namespace/nickesc',
+		title: 'Open VSX',
+		text: 'Open VSX',
 		categories: ['distribution']
 	},
 	firefox: {
@@ -225,3 +225,21 @@ export const badges = {
 		categories: ['distribution']
 	}
 };
+
+type BadgeKey = keyof typeof badges;
+
+export const techBadges = (Object.keys(badges) as BadgeKey[]).filter((key) =>
+	badges[key].categories.includes('tech')
+);
+
+export const distributionBadges = (Object.keys(badges) as BadgeKey[]).filter((key) =>
+	badges[key].categories.includes('distribution')
+);
+
+export const socialBadges = (Object.keys(badges) as BadgeKey[]).filter((key) =>
+	badges[key].categories.includes('social')
+);
+
+export const featuredBadges = (Object.keys(badges) as BadgeKey[]).filter((key) =>
+	badges[key].categories.includes('featured')
+);
