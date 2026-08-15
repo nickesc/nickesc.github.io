@@ -51,6 +51,30 @@
 	}
 </script>
 
+<svelte:head>
+	<title>Contact | Nick Escobar</title>
+	<meta
+		name="description"
+		content="Contact Nick Escobar about web development, creative technology, technical support, collaborations, or other project inquiries."
+	/>
+	<link rel="canonical" href="https://nickesc.github.io/contact" />
+
+	<meta property="og:title" content="Contact | Nick Escobar" />
+	<meta
+		property="og:description"
+		content="Contact Nick Escobar about web development, creative technology, technical support, collaborations, or other project inquiries."
+	/>
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://nickesc.github.io/contact" />
+
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:title" content="Contact | Nick Escobar" />
+	<meta
+		name="twitter:description"
+		content="Contact Nick Escobar about web development, creative technology, technical support, collaborations, or other project inquiries."
+	/>
+</svelte:head>
+
 <h2>Where to find me</h2>
 <ul class="badges">
 	<li>

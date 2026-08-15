@@ -49,6 +49,30 @@
 	);
 </script>
 
+<svelte:head>
+	<title>Projects | Nick Escobar</title>
+	<meta
+		name="description"
+		content="Explore websites, developer tools, games, packages, and other creative projects built by Nick Escobar."
+	/>
+	<link rel="canonical" href="https://nickesc.github.io/projects" />
+
+	<meta property="og:title" content="Projects | Nick Escobar" />
+	<meta
+		property="og:description"
+		content="Explore websites, developer tools, games, packages, and other creative projects built by Nick Escobar."
+	/>
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://nickesc.github.io/projects" />
+
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:title" content="Projects | Nick Escobar" />
+	<meta
+		name="twitter:description"
+		content="Explore websites, developer tools, games, packages, and other creative projects built by Nick Escobar."
+	/>
+</svelte:head>
+
 <span class="projects-title">
 	<h2>Projects</h2>
 	<span class="projects-count">{displayedProjects.length} items</span>

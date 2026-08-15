@@ -8,6 +8,30 @@
 	displayedProjects = projects.filter((project) => project.featured === true);
 </script>
 
+<svelte:head>
+	<title>Nick Escobar</title>
+	<meta
+		name="description"
+		content="Nick Escobar is a software developer and artist creating websites, developer tools, games, and other open-source projects."
+	/>
+	<link rel="canonical" href="https://nickesc.github.io/" />
+
+	<meta property="og:title" content="Nick Escobar" />
+	<meta
+		property="og:description"
+		content="Nick Escobar is a software developer and artist creating websites, developer tools, games, and other open-source projects."
+	/>
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://nickesc.github.io/" />
+
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:title" content="Nick Escobar" />
+	<meta
+		name="twitter:description"
+		content="Nick Escobar is a software developer and artist creating websites, developer tools, games, and other open-source projects."
+	/>
+</svelte:head>
+
 <p style:margin-top="0">Hi, I'm</p>
 <div class="title-background">
 	<h1>Nick Escobar</h1>

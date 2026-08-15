@@ -3,6 +3,30 @@
     import { DownloadSymbol } from './symbols';
 </script>
 
+<svelte:head>
+    <title>Resume | Nick Escobar</title>
+    <meta
+        name="description"
+        content="Resume for Nick Escobar, a web developer specializing in TypeScript, Node.js, frontend development, developer tooling, and other creative work."
+    />
+    <link rel="canonical" href="https://nickesc.github.io/resume" />
+
+    <meta property="og:title" content="Resume | Nick Escobar" />
+    <meta
+        property="og:description"
+        content="Resume for Nick Escobar, a web developer specializing in TypeScript, Node.js, frontend development, developer tooling, and other creative work."
+    />
+    <meta property="og:type" content="profile" />
+    <meta property="og:url" content="https://nickesc.github.io/resume" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Resume | Nick Escobar" />
+    <meta
+        name="twitter:description"
+        content="Resume for Nick Escobar, a web developer specializing in TypeScript, Node.js, frontend development, developer tooling, and other creative work."
+    />
+</svelte:head>
+
 <div class="container">
 
 <div class="resume-header">
