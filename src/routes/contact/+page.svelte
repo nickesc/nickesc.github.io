@@ -63,51 +63,47 @@
 <h2>Where to find me</h2>
 <ul class="badges">
 	<li>
-		<Badge icon="github" text="nickesc" href="https://github.com/nickesc" />
+		<Badge icon="github" />
 	</li>
 	<li>
-		<Badge icon="bluesky" text="@nickesc.io" href="https://bsky.app/profile/nickesc.io" />
+		<Badge icon="bluesky" />
 	</li>
 	<li>
-		<Badge
-			icon="infosec-exchange"
-			text="@nickesc@infosec.exchange"
-			href="https://infosec.exchange/@nickesc"
-		/>
+		<Badge icon="infosec-exchange" />
 	</li>
 	<li>
-		<Badge icon="linkedin" text="nickesc" href="https://www.linkedin.com/in/nickesc/" />
+		<Badge icon="linkedin" />
 	</li>
 	<li>
-		<Badge icon="youtube" text="@nickesc_" href="https://www.youtube.com/@nickesc_" />
+		<Badge icon="youtube" />
 	</li>
 	<li>
-		<Badge icon="kofi" text="nickesc" href="https://ko-fi.com/nickesc" />
+		<Badge icon="kofi" />
 	</li>
 </ul>
 
 <h2>Where to find my work</h2>
 <ul class="badges">
 	<li>
-		<Badge icon="github" href="https://github.com/nickesc" />
+		<Badge icon="github" text="GitHub" />
 	</li>
 	<li>
-		<Badge icon="npm" href="https://www.npmjs.com/org/nickesc" />
+		<Badge icon="npm" />
 	</li>
 	<li>
-		<Badge icon="vs-mp" href="https://marketplace.visualstudio.com/publishers/nickesc" />
+		<Badge icon="vs-mp" />
 	</li>
 	<li>
-		<Badge icon="open-vsx" href="https://open-vsx.org/namespace/nickesc" />
+		<Badge icon="open-vsx" />
 	</li>
 	<li>
-		<Badge icon="firefox" href="https://addons.mozilla.org/en-US/firefox/user/18835687/" />
+		<Badge icon="firefox" />
 	</li>
 	<li>
-		<Badge icon="itchio" href="https://nickesc.itch.io/" />
+		<Badge icon="itchio" />
 	</li>
 	<li>
-		<Badge icon="modrinth" href="https://modrinth.com/user/nickesc" />
+		<Badge icon="modrinth" />
 	</li>
 </ul>
 

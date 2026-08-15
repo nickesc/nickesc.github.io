@@ -23,167 +23,199 @@
 	import OpenVsx from '$lib/components/icons/open-vsx.svelte';
 	import VsMp from '$lib/components/icons/vs-mp.svelte';
 
-	export const badges = {
+	type Badge = {
+		icon: typeof SiHtml5;
+		color: string;
+		url: string;
+		title: string;
+		text: string;
+		categories: ('tech' | 'distribution' | 'social')[];
+	};
+
+	export const badges: Record<string, Badge> = {
 		html: {
 			icon: SiHtml5,
 			color: 'rgb(228,77,38)',
 			url: 'https://html.spec.whatwg.org/multipage/',
 			title: 'HTML',
-			text: 'HTML'
+			text: 'HTML',
+			categories: ['tech']
 		},
 		css: {
 			icon: SiCss,
 			color: 'rgb(21,114,182)',
 			url: 'https://www.w3.org/Style/CSS/',
 			title: 'CSS',
-			text: 'CSS'
+			text: 'CSS',
+			categories: ['tech']
 		},
 		javascript: {
 			icon: SiJavascript,
 			color: 'rgb(240,219,79)',
 			url: 'https://262.ecma-international.org/',
 			title: 'JavaScript',
-			text: 'JavaScript'
+			text: 'JavaScript',
+			categories: ['tech']
 		},
 		typescript: {
 			icon: SiTypescript,
 			color: 'rgb(49,120,198)',
 			url: 'https://www.typescriptlang.org/',
 			title: 'TypeScript',
-			text: 'TypeScript'
+			text: 'TypeScript',
+			categories: ['tech']
 		},
 		react: {
 			icon: SiReact,
 			color: 'rgb(62,182,214)',
 			url: 'https://react.dev/',
 			title: 'React',
-			text: 'React'
+			text: 'React',
+			categories: ['tech']
 		},
 		svelte: {
 			icon: SiSvelte,
 			color: 'rgb(255,62,0)',
 			url: 'https://svelte.dev/',
 			title: 'Svelte',
-			text: 'Svelte'
+			text: 'Svelte',
+			categories: ['tech']
 		},
 		node: {
 			icon: SiNodedotjs,
 			color: 'rgb(51,153,51)',
 			url: 'https://nodejs.org/',
 			title: 'Node.js',
-			text: 'Node.js'
+			text: 'Node.js',
+			categories: ['tech']
 		},
 		python: {
 			icon: SiPython,
 			color: 'rgb(48,105,152)',
 			url: 'https://www.python.org/',
 			title: 'Python',
-			text: 'Python'
+			text: 'Python',
+			categories: ['tech']
 		},
 		zsh: {
 			icon: SiZsh,
 			color: 'rgb(153,153,153)',
 			url: 'https://zsh.sourceforge.io/',
 			title: 'Zsh',
-			text: 'Zsh'
+			text: 'Zsh',
+			categories: ['tech']
 		},
 		godotengine: {
 			icon: SiGodotengine,
 			color: 'rgb(71,140,191)',
 			url: 'https://godotengine.org/',
 			title: 'Godot',
-			text: 'Godot'
-		},
-		bluesky: {
-			icon: SiBluesky,
-			color: 'rgb(17,133,254)',
-			url: 'https://bsky.app/',
-			title: 'Bluesky',
-			text: 'Bluesky'
-		},
-		github: {
-			icon: SiGithub,
-			color: 'rgb(245,245,243)',
-			url: 'https://github.com/',
-			title: 'GitHub',
-			text: 'GitHub'
-		},
-		'infosec-exchange': {
-			icon: InfosecExchange,
-			color: 'rgb(236,28,36)',
-			url: 'https://infosec.exchange/',
-			title: 'Mastodon (Infosec.Exchange)',
-			text: 'Infosec.Exchange'
-		},
-		kofi: {
-			icon: SiKofi,
-			color: 'rgb(255,100,51)',
-			url: 'https://ko-fi.com/',
-			title: 'Ko-Fi',
-			text: 'Ko-Fi'
-		},
-		linkedin: {
-			icon: Linkedin,
-			color: 'rgb(0,119,181)',
-			url: 'https://linkedin.com/',
-			title: 'LinkedIn',
-			text: 'LinkedIn'
-		},
-		'open-vsx': {
-			icon: OpenVsx,
-			color: 'rgb(165, 15, 230)',
-			url: 'https://open-vsx.org/',
-			title: 'Open VSX',
-			text: 'Open VSX'
-		},
-		'vs-mp': {
-			icon: VsMp,
-			color: 'rgb(0, 122, 204)',
-			url: 'https://marketplace.visualstudio.com/',
-			title: 'VS Marketplace',
-			text: 'VS Marketplace'
-		},
-		youtube: {
-			icon: SiYoutube,
-			color: 'rgb(255,0,0)',
-			url: 'https://youtube.com/',
-			title: 'YouTube',
-			text: 'YouTube'
-		},
-		npm: {
-			icon: SiNpm,
-			color: 'rgb(204,51,51)',
-			url: 'https://npmjs.com/',
-			title: 'npm',
-			text: 'npm'
-		},
-		firefox: {
-			icon: SiFirefox,
-			color: 'rgb(255,113,57)',
-			url: 'https://addons.mozilla.org/',
-			title: 'Firefox Add-ons',
-			text: 'Firefox Add-ons'
-		},
-		itchio: {
-			icon: SiItchdotio,
-			color: 'rgb(250,92,92)',
-			url: 'https://itch.io/',
-			title: 'itch.io',
-			text: 'itch.io'
-		},
-		modrinth: {
-			icon: SiModrinth,
-			color: 'rgb(27, 218, 106)',
-			url: 'https://modrinth.com/',
-			title: 'Modrinth',
-			text: 'Modrinth'
+			text: 'Godot',
+			categories: ['tech']
 		},
 		git: {
 			icon: SiGit,
 			color: 'rgb(240, 60, 46)',
 			url: 'https://git-scm.com/',
 			title: 'Git',
-			text: 'Git'
+			text: 'Git',
+			categories: ['tech']
+		},
+		bluesky: {
+			icon: SiBluesky,
+			color: 'rgb(17,133,254)',
+			url: 'https://bsky.app/profile/nickesc.io',
+			title: 'Bluesky',
+			text: '@nickesc.io',
+			categories: ['social']
+		},
+		github: {
+			icon: SiGithub,
+			color: 'rgb(245,245,243)',
+			url: 'https://github.com/nickesc',
+			title: 'GitHub',
+			text: 'nickesc',
+			categories: ['social', 'distribution']
+		},
+		'infosec-exchange': {
+			icon: InfosecExchange,
+			color: 'rgb(236,28,36)',
+			url: 'https://infosec.exchange/@nickesc',
+			title: 'Mastodon (Infosec.Exchange)',
+			text: '@nickesc@infosec.exchange',
+			categories: ['social']
+		},
+		kofi: {
+			icon: SiKofi,
+			color: 'rgb(255,100,51)',
+			url: 'https://ko-fi.com/nickesc',
+			title: 'Ko-Fi',
+			text: 'nickesc',
+			categories: ['social']
+		},
+		linkedin: {
+			icon: Linkedin,
+			color: 'rgb(0,119,181)',
+			url: 'https://linkedin.com/in/nickesc/',
+			title: 'LinkedIn',
+			text: 'nickesc',
+			categories: ['social']
+		},
+		youtube: {
+			icon: SiYoutube,
+			color: 'rgb(255,0,0)',
+			url: 'https://youtube.com/@nickesc_',
+			title: 'YouTube',
+			text: '@nickesc_',
+			categories: ['social']
+		},
+		'open-vsx': {
+			icon: OpenVsx,
+			color: 'rgb(165, 15, 230)',
+			url: 'https://open-vsx.org/namespace/nickesc',
+			title: 'Open VSX',
+			text: 'Open VSX',
+			categories: ['distribution']
+		},
+		'vs-mp': {
+			icon: VsMp,
+			color: 'rgb(0, 122, 204)',
+			url: 'https://marketplace.visualstudio.com/publishers/nickesc',
+			title: 'VS Marketplace',
+			text: 'VS Marketplace',
+			categories: ['distribution']
+		},
+		npm: {
+			icon: SiNpm,
+			color: 'rgb(204,51,51)',
+			url: 'https://npmjs.com/org/nickesc',
+			title: 'npm',
+			text: 'npm',
+			categories: ['distribution']
+		},
+		firefox: {
+			icon: SiFirefox,
+			color: 'rgb(255,113,57)',
+			url: 'https://addons.mozilla.org/en-US/firefox/user/18835687/',
+			title: 'Firefox Add-ons',
+			text: 'Firefox Add-ons',
+			categories: ['distribution']
+		},
+		itchio: {
+			icon: SiItchdotio,
+			color: 'rgb(250,92,92)',
+			url: 'https://nickesc.itch.io/',
+			title: 'itch.io',
+			text: 'itch.io',
+			categories: ['distribution']
+		},
+		modrinth: {
+			icon: SiModrinth,
+			color: 'rgb(27, 218, 106)',
+			url: 'https://modrinth.com/user/nickesc',
+			title: 'Modrinth',
+			text: 'Modrinth',
+			categories: ['distribution']
 		}
 	} as const;
 
