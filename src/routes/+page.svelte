@@ -13,7 +13,8 @@
 	<h1>Nick Escobar</h1>
 </div>
 <p>I'm a software developer and artist. I mostly work on web stuff, developer tools, and games.</p>
-<h2>Check out some of my favorite projects:</h2>
+
+<h2>Some of my favorite projects:</h2>
 
 <div class="featured-projects-container">
 	{#each displayedProjects as project}
@@ -22,76 +23,64 @@
 </div>
 
 <h2>About me</h2>
-<p>2 things I love: open source software and learning new things</p>
 
-<p>School</p>
-<ul>
-	<li>
-		<span>Occidental College</span> <span>B.A. in Computer Science</span>
-		<span>Minor in Media studies</span> <span>Minor in Fine Art</span> <span>2018-2022</span>
-	</li>
-</ul>
-<p>Hobbies</p>
-<ul>
-	<li>video games</li>
-	<li>movies</li>
-	<li>collecting physical media</li>
-	<li>hiking</li>
-	<li>camping</li>
-</ul>
-<p>Tech</p>
-<ul class="badges">
-	<li>
-		<Badge
-			icon="html"
-			text="HTML"
-			href="https://html.spec.whatwg.org/multipage/"
-			bgColor="rgb(228,77,38)"
-		/>
-	</li>
-	<li>
-		<Badge icon="css" text="CSS" href="https://www.w3.org/Style/CSS/" bgColor="rgb(21,114,182)" />
-	</li>
-	<li>
-		<Badge
-			icon="javascript"
-			text="JavaScript"
-			href="https://262.ecma-international.org/"
-			bgColor="rgb(240,219,79)"
-		/>
-	</li>
-	<li>
-		<Badge
-			icon="typescript"
-			text="TypeScript"
-			href="https://www.typescriptlang.org/"
-			bgColor="rgb(49,120,198)"
-		/>
-	</li>
-	<li>
-		<Badge icon="node" text="Node.js" href="https://nodejs.org/" bgColor="rgb(51,153,51)" />
-	</li>
-	<li>
-		<Badge icon="react" text="React" href="https://react.dev/" bgColor="rgb(62,182,214)" />
-	</li>
-	<li>
-		<Badge icon="svelte" text="Svelte" href="https://svelte.dev/" bgColor="rgb(255,62,0)" />
-	</li>
-	<li>
-		<Badge icon="python" text="Python" href="https://www.python.org/" bgColor="rgb(48,105,152)" />
-	</li>
-	<li>
-		<Badge icon="zsh" text="Zsh" href="https://zsh.sourceforge.io/" bgColor="rgb(153,153,153)" />
-	</li>
-	<li>
-		<Badge
-			icon="godotengine"
-			text="Godot"
-			href="https://godotengine.org/"
-			bgColor="rgb(71,140,191)"
-		/>
-	</li>
-</ul>
+<div class="about">
+	<p class="lead">
+		I'm a passionate developer with a love for open source and learning new things. My background in
+		art informs my work, and I try to build things that are both functional and beautiful.
+	</p>
+	<p>
+		As a student, I studied computer science at Occidental College, with minors in studio art and
+		media studies. Today, I run a small, independent studio, <a
+			href="https://nescobar.media"
+			target="_blank"
+			rel="noopener noreferrer">N. Escobar Media</a
+		>, that provides web development services and technical support for small teams.
+	</p>
+	<p>
+		My hobbies include playing video games, watching movies, hiking, camping, and collecting
+		physical media.
+	</p>
+
+	<div class="tech">
+		<span class="tech-label">Go-to tech</span>
+		<ul class="badges">
+			<li>
+				<Badge
+					icon="typescript"
+					text="TypeScript"
+					href="https://www.typescriptlang.org/"
+					bgColor="rgb(49,120,198)"
+				/>
+			</li>
+			<li>
+				<Badge icon="node" text="Node.js" href="https://nodejs.org/" bgColor="rgb(51,153,51)" />
+			</li>
+			<li>
+				<Badge icon="svelte" text="Svelte" href="https://svelte.dev/" bgColor="rgb(255,62,0)" />
+			</li>
+			<li>
+				<Badge
+					icon="python"
+					text="Python"
+					href="https://www.python.org/"
+					bgColor="rgb(48,105,152)"
+				/>
+			</li>
+			<li>
+				<Badge
+					icon="godotengine"
+					text="Godot"
+					href="https://godotengine.org/"
+					bgColor="rgb(71,140,191)"
+				/>
+			</li>
+			<li>
+				<Badge icon="git" text="Git" href="https://git-scm.com/" bgColor="rgb(240, 60, 46)" />
+			</li>
+		</ul>
+	</div>
+</div>
 
 <style>
 	h1 {
@@ -117,6 +106,48 @@
 		grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 		gap: 1rem;
 		margin: 0 auto;
+	}
+
+	.about {
+		padding: 1.25rem 1.5rem;
+		margin-bottom: 1rem;
+		border-radius: var(--window-corners);
+		border: 1px solid rgba(from var(--brand-grey) r g b / 0.2);
+		border-right-color: rgba(from var(--brand-grey) r g b / 0.1);
+		border-bottom-color: rgba(from var(--brand-grey) r g b / 0.1);
+		background: rgba(from var(--brand-black) r g b / 0.5);
+
+		@media (max-width: 600px) {
+			padding: 1rem;
+		}
+
+		p {
+			margin: 0 0 1rem;
+			line-height: 1.6;
+			color: rgba(from var(--brand-white) r g b / 0.85);
+		}
+
+		.lead {
+			font-size: 1.125rem;
+			color: var(--brand-white);
+		}
+	}
+
+	.tech {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		margin-top: 1.5rem;
+		padding-top: 1.25rem;
+		border-top: 1px solid rgba(from var(--brand-grey) r g b / 0.15);
+	}
+
+	.tech-label {
+		font-family: var(--mono-font);
+		font-size: 10px;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		color: rgba(from var(--brand-grey) r g b / 0.7);
 	}
 
 	.badges {
