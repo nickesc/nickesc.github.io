@@ -70,37 +70,22 @@
 		<span class="tech-label">Go-to tech</span>
 		<ul class="badges">
 			<li>
-				<Badge
-					icon="typescript"
-					text="TypeScript"
-					href="https://www.typescriptlang.org/"
-					bgColor="rgb(49,120,198)"
-				/>
+				<Badge icon="typescript" />
 			</li>
 			<li>
-				<Badge icon="node" text="Node.js" href="https://nodejs.org/" bgColor="rgb(51,153,51)" />
+				<Badge icon="node" />
 			</li>
 			<li>
-				<Badge icon="svelte" text="Svelte" href="https://svelte.dev/" bgColor="rgb(255,62,0)" />
+				<Badge icon="svelte" />
 			</li>
 			<li>
-				<Badge
-					icon="python"
-					text="Python"
-					href="https://www.python.org/"
-					bgColor="rgb(48,105,152)"
-				/>
+				<Badge icon="python" />
 			</li>
 			<li>
-				<Badge
-					icon="godotengine"
-					text="Godot"
-					href="https://godotengine.org/"
-					bgColor="rgb(71,140,191)"
-				/>
+				<Badge icon="godotengine" />
 			</li>
 			<li>
-				<Badge icon="git" text="Git" href="https://git-scm.com/" bgColor="rgb(240, 60, 46)" />
+				<Badge icon="git" />
 			</li>
 		</ul>
 	</div>

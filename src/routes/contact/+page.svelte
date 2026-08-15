@@ -63,102 +63,51 @@
 <h2>Where to find me</h2>
 <ul class="badges">
 	<li>
-		<Badge
-			icon="github"
-			text="nickesc"
-			href="https://github.com/nickesc"
-			bgColor="rgb(245,245,243)"
-		/>
+		<Badge icon="github" text="nickesc" href="https://github.com/nickesc" />
 	</li>
 	<li>
-		<Badge
-			icon="bluesky"
-			text="@nickesc.io"
-			href="https://bsky.app/profile/nickesc.io"
-			bgColor="rgb(17,133,254)"
-		/>
+		<Badge icon="bluesky" text="@nickesc.io" href="https://bsky.app/profile/nickesc.io" />
 	</li>
 	<li>
 		<Badge
 			icon="infosec-exchange"
 			text="@nickesc@infosec.exchange"
 			href="https://infosec.exchange/@nickesc"
-			bgColor="rgb(236,28,36)"
 		/>
 	</li>
 	<li>
-		<Badge
-			icon="linkedin"
-			text="nickesc"
-			href="https://www.linkedin.com/in/nickesc/"
-			bgColor="rgb(0, 119, 181)"
-		/>
+		<Badge icon="linkedin" text="nickesc" href="https://www.linkedin.com/in/nickesc/" />
 	</li>
 	<li>
-		<Badge
-			icon="youtube"
-			text="@nickesc_"
-			href="https://www.youtube.com/@nickesc_"
-			bgColor="rgb(255,0,0)"
-		/>
+		<Badge icon="youtube" text="@nickesc_" href="https://www.youtube.com/@nickesc_" />
 	</li>
 	<li>
-		<Badge icon="kofi" text="nickesc" href="https://ko-fi.com/nickesc" bgColor="rgb(255,90,22)" />
+		<Badge icon="kofi" text="nickesc" href="https://ko-fi.com/nickesc" />
 	</li>
 </ul>
 
 <h2>Where to find my work</h2>
 <ul class="badges">
 	<li>
-		<Badge
-			icon="github"
-			text="GitHub"
-			href="https://github.com/nickesc"
-			bgColor="rgb(245,245,243)"
-		/>
+		<Badge icon="github" href="https://github.com/nickesc" />
 	</li>
 	<li>
-		<Badge
-			icon="npm"
-			text="npm"
-			href="https://www.npmjs.com/org/nickesc"
-			bgColor="rgb(204, 51, 51)"
-		/>
+		<Badge icon="npm" href="https://www.npmjs.com/org/nickesc" />
 	</li>
 	<li>
-		<Badge
-			icon="vs-mp"
-			text="VS Marketplace"
-			href="https://marketplace.visualstudio.com/publishers/nickesc"
-			bgColor="rgb(0, 122, 204)"
-		/>
+		<Badge icon="vs-mp" href="https://marketplace.visualstudio.com/publishers/nickesc" />
 	</li>
 	<li>
-		<Badge
-			icon="open-vsx"
-			text="Open VSX"
-			href="https://open-vsx.org/namespace/nickesc"
-			bgColor="rgb(165, 15, 230)"
-		/>
+		<Badge icon="open-vsx" href="https://open-vsx.org/namespace/nickesc" />
 	</li>
 	<li>
-		<Badge
-			icon="firefox"
-			text="Firefox Add-ons"
-			href="https://addons.mozilla.org/en-US/firefox/user/18835687/"
-			bgColor="rgb(255,113,57)"
-		/>
+		<Badge icon="firefox" href="https://addons.mozilla.org/en-US/firefox/user/18835687/" />
 	</li>
 	<li>
-		<Badge icon="itchio" text="itch.io" href="https://nickesc.itch.io/" bgColor="rgb(250,92,92)" />
+		<Badge icon="itchio" href="https://nickesc.itch.io/" />
 	</li>
 	<li>
-		<Badge
-			icon="modrinth"
-			text="Modrinth"
-			href="https://modrinth.com/user/nickesc"
-			bgColor="rgb(27, 218, 106)"
-		/>
+		<Badge icon="modrinth" href="https://modrinth.com/user/nickesc" />
 	</li>
 </ul>
 

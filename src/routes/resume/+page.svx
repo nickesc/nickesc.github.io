@@ -116,57 +116,37 @@ Developer and creative with experience in frontend and full-stack web developmen
 
 <ul class="badges">
   <li>
-    <Badge
-      icon="html"
-      text="HTML"
-      href="https://html.spec.whatwg.org/multipage/"
-      bgColor="rgb(228,77,38)"
-    />
+    <Badge icon="html" />
   </li>
   <li>
-    <Badge icon="css" text="CSS" href="https://www.w3.org/Style/CSS/" bgColor="rgb(21,114,182)" />
+    <Badge icon="css" />
   </li>
   <li>
-    <Badge
-      icon="javascript"
-      text="JavaScript"
-      href="https://262.ecma-international.org/"
-      bgColor="rgb(240,219,79)"
-    />
+    <Badge icon="javascript" />
   </li>
   <li>
-    <Badge
-      icon="typescript"
-      text="TypeScript"
-      href="https://www.typescriptlang.org/"
-      bgColor="rgb(49,120,198)"
-    />
+    <Badge icon="typescript" />
   </li>
   <li>
-    <Badge icon="node" text="Node.js" href="https://nodejs.org/" bgColor="rgb(51,153,51)" />
+    <Badge icon="node" />
   </li>
   <li>
-    <Badge icon="react" text="React" href="https://react.dev/" bgColor="rgb(62,182,214)" />
+    <Badge icon="react" />
   </li>
   <li>
-    <Badge icon="svelte" text="Svelte" href="https://svelte.dev/" bgColor="rgb(255,62,0)" />
+    <Badge icon="svelte" />
   </li>
   <li>
-    <Badge icon="python" text="Python" href="https://www.python.org/" bgColor="rgb(48,105,152)" />
+    <Badge icon="python" />
   </li>
   <li>
-    <Badge
-      icon="godotengine"
-      text="Godot"
-      href="https://godotengine.org/"
-      bgColor="rgb(71,140,191)"
-    />
+    <Badge icon="godotengine" />
   </li>
   <li>
-    <Badge icon="zsh" text="Zsh" href="https://zsh.sourceforge.io/" bgColor="rgb(153,153,153)" />
+    <Badge icon="zsh" />
   </li>
   <li>
-    <Badge icon="git" text="Git" href="https://git-scm.com/" bgColor="rgb(240, 60, 46)" />
+    <Badge icon="git" />
   </li>
 </ul>
 

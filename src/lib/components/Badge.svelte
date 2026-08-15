@@ -23,48 +23,192 @@
 	import OpenVsx from '$lib/components/icons/open-vsx.svelte';
 	import VsMp from '$lib/components/icons/vs-mp.svelte';
 
-	const icons = {
-		html: SiHtml5,
-		css: SiCss,
-		javascript: SiJavascript,
-		typescript: SiTypescript,
-		react: SiReact,
-		svelte: SiSvelte,
-		node: SiNodedotjs,
-		python: SiPython,
-		zsh: SiZsh,
-		godotengine: SiGodotengine,
-		bluesky: SiBluesky,
-		github: SiGithub,
-		'infosec-exchange': InfosecExchange,
-		kofi: SiKofi,
-		linkedin: Linkedin,
-		'open-vsx': OpenVsx,
-		'vs-mp': VsMp,
-		youtube: SiYoutube,
-		npm: SiNpm,
-		firefox: SiFirefox,
-		itchio: SiItchdotio,
-		modrinth: SiModrinth,
-		git: SiGit
+	export const icons = {
+		html: {
+			icon: SiHtml5,
+			color: 'rgb(228,77,38)',
+			url: 'https://html.spec.whatwg.org/multipage/',
+			title: 'HTML',
+			text: 'HTML'
+		},
+		css: {
+			icon: SiCss,
+			color: 'rgb(21,114,182)',
+			url: 'https://www.w3.org/Style/CSS/',
+			title: 'CSS',
+			text: 'CSS'
+		},
+		javascript: {
+			icon: SiJavascript,
+			color: 'rgb(240,219,79)',
+			url: 'https://262.ecma-international.org/',
+			title: 'JavaScript',
+			text: 'JavaScript'
+		},
+		typescript: {
+			icon: SiTypescript,
+			color: 'rgb(49,120,198)',
+			url: 'https://www.typescriptlang.org/',
+			title: 'TypeScript',
+			text: 'TypeScript'
+		},
+		react: {
+			icon: SiReact,
+			color: 'rgb(62,182,214)',
+			url: 'https://react.dev/',
+			title: 'React',
+			text: 'React'
+		},
+		svelte: {
+			icon: SiSvelte,
+			color: 'rgb(255,62,0)',
+			url: 'https://svelte.dev/',
+			title: 'Svelte',
+			text: 'Svelte'
+		},
+		node: {
+			icon: SiNodedotjs,
+			color: 'rgb(51,153,51)',
+			url: 'https://nodejs.org/',
+			title: 'Node.js',
+			text: 'Node.js'
+		},
+		python: {
+			icon: SiPython,
+			color: 'rgb(48,105,152)',
+			url: 'https://www.python.org/',
+			title: 'Python',
+			text: 'Python'
+		},
+		zsh: {
+			icon: SiZsh,
+			color: 'rgb(153,153,153)',
+			url: 'https://zsh.sourceforge.io/',
+			title: 'Zsh',
+			text: 'Zsh'
+		},
+		godotengine: {
+			icon: SiGodotengine,
+			color: 'rgb(71,140,191)',
+			url: 'https://godotengine.org/',
+			title: 'Godot',
+			text: 'Godot'
+		},
+		bluesky: {
+			icon: SiBluesky,
+			color: 'rgb(17,133,254)',
+			url: 'https://bsky.app/',
+			title: 'Bluesky',
+			text: 'Bluesky'
+		},
+		github: {
+			icon: SiGithub,
+			color: 'rgb(245,245,243)',
+			url: 'https://github.com/',
+			title: 'GitHub',
+			text: 'GitHub'
+		},
+		'infosec-exchange': {
+			icon: InfosecExchange,
+			color: 'rgb(236,28,36)',
+			url: 'https://infosec.exchange/',
+			title: 'Mastodon (Infosec.Exchange)',
+			text: 'Infosec.Exchange'
+		},
+		kofi: {
+			icon: SiKofi,
+			color: 'rgb(255,100,51)',
+			url: 'https://ko-fi.com/',
+			title: 'Ko-Fi',
+			text: 'Ko-Fi'
+		},
+		linkedin: {
+			icon: Linkedin,
+			color: 'rgb(0,119,181)',
+			url: 'https://linkedin.com/',
+			title: 'LinkedIn',
+			text: 'LinkedIn'
+		},
+		'open-vsx': {
+			icon: OpenVsx,
+			color: 'rgb(165, 15, 230)',
+			url: 'https://open-vsx.org/',
+			title: 'Open VSX',
+			text: 'Open VSX'
+		},
+		'vs-mp': {
+			icon: VsMp,
+			color: 'rgb(0, 122, 204)',
+			url: 'https://marketplace.visualstudio.com/',
+			title: 'VS Marketplace',
+			text: 'VS Marketplace'
+		},
+		youtube: {
+			icon: SiYoutube,
+			color: 'rgb(255,0,0)',
+			url: 'https://youtube.com/',
+			title: 'YouTube',
+			text: 'YouTube'
+		},
+		npm: {
+			icon: SiNpm,
+			color: 'rgb(204,51,51)',
+			url: 'https://npmjs.com/',
+			title: 'npm',
+			text: 'npm'
+		},
+		firefox: {
+			icon: SiFirefox,
+			color: 'rgb(255,113,57)',
+			url: 'https://addons.mozilla.org/',
+			title: 'Firefox Add-ons',
+			text: 'Firefox Add-ons'
+		},
+		itchio: {
+			icon: SiItchdotio,
+			color: 'rgb(250,92,92)',
+			url: 'https://itch.io/',
+			title: 'itch.io',
+			text: 'itch.io'
+		},
+		modrinth: {
+			icon: SiModrinth,
+			color: 'rgb(27, 218, 106)',
+			url: 'https://modrinth.com/',
+			title: 'Modrinth',
+			text: 'Modrinth'
+		},
+		git: {
+			icon: SiGit,
+			color: 'rgb(240, 60, 46)',
+			url: 'https://git-scm.com/',
+			title: 'Git',
+			text: 'Git'
+		}
 	} as const;
 
 	interface Props {
 		icon: keyof typeof icons;
-		text: string;
-		href: string;
-		bgColor: string;
+		text?: string;
+		href?: string;
+		bgColor?: string;
 	}
 
-	let { icon, text, href, bgColor }: Props = $props();
+	let {
+		icon,
+		text = icons[icon].text,
+		href = icons[icon].url,
+		bgColor = icons[icon].color
+	}: Props = $props();
 
-	const Icon = $derived(icons[icon]);
+	const Icon = $derived(icons[icon].icon);
 </script>
 
 <a
 	{href}
 	style:--logo-color={bgColor}
 	style:color={bgColor}
+	title={icons[icon].title}
 	rel="noopener noreferrer"
 	target="_blank"
 >
