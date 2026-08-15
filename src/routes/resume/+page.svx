@@ -1,0 +1,253 @@
+<script lang="ts">
+    import { Badge } from './badges';
+    import { DownloadSymbol } from './symbols';
+</script>
+
+<div class="container">
+
+<div class="resume-header">
+
+<div>
+
+# Nick Escobar
+
+<div class="subtitle">Web Developer</div>
+
+</div>
+
+<a href="/Nick-Escobar-Resume.pdf" download="Nick-Escobar-Resume.pdf" class="primary-button download-button">
+    <DownloadSymbol />
+    <span class="download-text">Download</span>
+</a>
+
+</div>
+
+<div class="grid">
+
+- Email: [nick@nickesc.io](mailto:nick@nickesc.io)
+- LinkedIn: [linkedin.com/in/nickesc](https://linkedin.com/in/nickesc/)
+- Bluesky: [@nickesc.io](https://bsky.app/profile/nickesc.io)
+- Portfolio: [nickesc.github.io](https://nickesc.github.io)
+- GitHub: [github.com/nickesc](https://github.com/nickesc)
+- Art: [nickesc.com](https://nickesc.com)
+
+</div>
+
+## SUMMARY
+
+<div class="summary">
+
+Developer and creative with experience in frontend and full-stack web development, library development, and developer tooling. Specializing in TypeScript and Node.js to craft exceptional experiences and support organizations' technical needs.
+
+</div>
+
+
+## EDUCATION
+
+**Occidental College** — August 2018-May 2022
+
+*Small Liberal Arts school in Los Angeles, CA*
+
+- Bachelor of Arts in Computer Science
+- Minors in Studio Art and Media Arts and Culture
+- Relevant Course Studies: *Full Stack Web Development, Mobile App Development, Game Design, Robotics, Data Science, Operating Systems, Data Structures, Animation, Screenwriting, Experimental Media*
+
+## EXPERIENCE
+
+### **IT/Website Coordinator**
+
+**Project Create** — Washington, DC | June 2023-Present
+
+*Non-profit providing art education for youth in the city*
+
+- Oversee Project Create digital infrastructure, including maintaining the [Project Create website](https://projectcreatedc.org), IT administration, software/hardware troubleshooting, and on-site event technical support.
+- Build and refine web pages by turning visual concepts, designs, and provided assets into responsive, polished layouts that support programs, fundraising, and community engagement.
+- Optimized website performance to achieve 5-10x faster loading speeds, significantly improving user experience.
+- Implemented a digital asset management system to serve as a central repository for the organization's assets, streamlining access and reducing retrieval times, making collaboration easier and more efficient.
+- Spearheaded NordPass password manager rollout, migrating organization credentials, performing platform administration, and training staff – strengthening organizational security and encouraging secure credential sharing.
+
+### **Creative Director & Developer**
+
+**N. Escobar Media** — Rockville, MD | November 2020-Present
+
+*Small independent production studio*
+
+- Founded [N. Escobar Media](https://nescobar.media), an independent production studio building innovative digital experiences and finding solutions to niche problems, using a wide variety of tools for both internal projects and external clients.
+- Actively releasing projects, including: a number of JavaScript & TypeScript packages – like [modpack-lock](https://npmjs.com/package/modpack-lock) and [steploop](https://npmjs.com/package/steploop), games built in Godot and on hardware – like [Starfish](https://nickesc.itch.io/starfish) and [the BumbleBee](https://github.com/nickesc/bumblebee), other media projects and animations – like [The Poets Are Coming](https://www.youtube.com/watch?v=Qajr-cAGY2Q), and more.
+- Design and develop visually appealing, user-friendly websites for individuals and organizations, manage clients' digital workspaces, execute end-to-end domain management (DNS configuration, domain registration, Google Workspace integration and website deployment).
+- Collaborate with clients to plan, design and build solutions to their needs, emphasizing clear communication with frequent updates, regular meetings and comprehensive plans outlining timelines, milestones and deliverables.
+
+### **Program Assistant Coordinator**
+
+**CCRC** — Waynesboro, PA | Summer 2021 and 2022
+
+*Overnight summer camp and retreat center*
+
+- Managed the Outdoor Adventure Program; supervised and trained 6-12 staff and multiple activity areas.
+- Worked with staff and children of all ages and abilities in a fast-paced, chaotic environment while maintaining effective communication and leadership.
+- Successfully planned and ran all campouts (8-10 per summer) and cookouts (1-2 per day) for all age groups.
+- Facilitated 20+ retreat groups on the ropes course and zip lines, emphasizing safety and fun for all participants.
+
+## TECH
+
+<ul class="badges">
+  <li>
+    <Badge
+      icon="html"
+      text="HTML"
+      href="https://html.spec.whatwg.org/multipage/"
+      bgColor="rgb(228,77,38)"
+    />
+  </li>
+  <li>
+    <Badge icon="css" text="CSS" href="https://www.w3.org/Style/CSS/" bgColor="rgb(21,114,182)" />
+  </li>
+  <li>
+    <Badge
+      icon="javascript"
+      text="JavaScript"
+      href="https://262.ecma-international.org/"
+      bgColor="rgb(240,219,79)"
+    />
+  </li>
+  <li>
+    <Badge
+      icon="typescript"
+      text="TypeScript"
+      href="https://www.typescriptlang.org/"
+      bgColor="rgb(49,120,198)"
+    />
+  </li>
+  <li>
+    <Badge icon="node" text="Node.js" href="https://nodejs.org/" bgColor="rgb(51,153,51)" />
+  </li>
+  <li>
+    <Badge icon="react" text="React" href="https://react.dev/" bgColor="rgb(62,182,214)" />
+  </li>
+  <li>
+    <Badge icon="svelte" text="Svelte" href="https://svelte.dev/" bgColor="rgb(255,62,0)" />
+  </li>
+  <li>
+    <Badge icon="python" text="Python" href="https://www.python.org/" bgColor="rgb(48,105,152)" />
+  </li>
+  <li>
+    <Badge
+      icon="godotengine"
+      text="Godot"
+      href="https://godotengine.org/"
+      bgColor="rgb(71,140,191)"
+    />
+  </li>
+  <li>
+    <Badge icon="zsh" text="Zsh" href="https://zsh.sourceforge.io/" bgColor="rgb(153,153,153)" />
+  </li>
+  <li>
+    <Badge icon="git" text="Git" href="https://git-scm.com/" bgColor="rgb(240, 60, 46)" />
+  </li>
+</ul>
+
+## SKILLS
+
+<div class="grid skills">
+
+- Full stack web development
+- UI/UX design
+- AI-assisted development
+- IT administration/support
+- Technical documentation
+- Adobe Creative Cloud
+- Project management
+- Staff training
+
+</div>
+
+
+
+</div>
+
+<style>
+
+  .resume-header {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 670px) {
+    .download-text {
+      display: none;
+    }
+  }
+
+  .download-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .grid {
+    ul {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.5rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      text-wrap: nowrap;
+      transition: padding-inline-start 0.2s ease-in-out;
+
+      @media (max-width: 970px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      @media (max-width: 670px) {
+        grid-template-columns: 1fr;
+        text-wrap: wrap;
+      }
+    }
+
+    &.skills ul {
+        @media (max-width: 666px) {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            column-gap: 1.25rem;
+        }
+    }
+  }
+
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  h1 {
+    margin: 0;
+  }
+
+  .subtitle {
+    font-size: 1.25rem;
+    font-weight: 500;
+    font-family: var(--font-mono);
+    color: rgba(from var(--brand-grey) r g b / 0.7);
+    margin-top: 0;
+  }
+
+  .summary, .grid ul, .badges {
+    @media (min-width: 319px) {
+        padding-inline-start: 1.5rem;
+      }
+  }
+</style>
