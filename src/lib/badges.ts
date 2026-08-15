@@ -120,13 +120,13 @@ export const badges = {
 		text: 'Git',
 		categories: ['tech', 'featured']
 	},
-	github: {
+	'github-social': {
 		icon: SiGithub,
 		color: 'rgb(245,245,243)',
 		url: 'https://github.com/nickesc',
 		title: 'GitHub',
 		text: 'nickesc',
-		categories: ['social', 'distribution']
+		categories: ['social']
 	},
 	bluesky: {
 		icon: SiBluesky,
@@ -167,6 +167,14 @@ export const badges = {
 		title: 'Ko-Fi',
 		text: 'nickesc',
 		categories: ['social']
+	},
+	'github-distribution': {
+		icon: SiGithub,
+		color: 'rgb(245,245,243)',
+		url: 'https://github.com/nickesc',
+		title: 'GitHub',
+		text: 'GitHub',
+		categories: ['distribution']
 	},
 	npm: {
 		icon: SiNpm,
