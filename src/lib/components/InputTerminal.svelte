@@ -10,6 +10,7 @@
 		dirToPathString,
 		findDirectoryByPage,
 		resolveDirectory,
+		resolveFile,
 		type Directory
 	} from '$lib/filetree';
 	import { backgrounds, type Background } from '$lib/themes';
@@ -100,12 +101,43 @@ Examples:
 		return { directory };
 	});
 
+	const open = new Command('open', (args, options, terminal) => {
+		const targetPath = String(args[0] ?? '');
+		if (!targetPath) {
+			terminal.stderr('Usage: open <file>');
+			return {};
+		}
+
+		const file = resolveFile(targetPath, currentDirectory);
+		if (!file) {
+			terminal.stderr(`File ${targetPath} not found`);
+			return {};
+		}
+
+		if (file.href) {
+			window.location.assign(file.href);
+			return { href: file.href };
+		}
+
+		terminal.stdout(file.content);
+		return { content: file.content };
+	});
+	open.manual = `open &lt;file&gt;
+
+Open a file from the file tree.
+
+Examples:
+  open GitHub
+  open Art
+  open /GitHub
+`;
+
 	onMount(() => {
 		terminal = new Terminal({
 			input,
 			output,
 			options: { preprompt: `${user}@${hostname}:${path}`, prompt: ' > ' },
-			commands: [ls, cd, theme, version]
+			commands: [ls, cd, open, theme, version]
 		});
 		terminal.init();
 
