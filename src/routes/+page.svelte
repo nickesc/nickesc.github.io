@@ -27,7 +27,7 @@
 <div class="about">
 	<p class="lead">
 		I'm a passionate developer with a love for open source and learning new things. My background in
-		art informs my work, and I try to build things that are both functional and beautiful.
+		art informs my work, and I build things that are both functional and beautiful.
 	</p>
 	<p>
 		As a student, I studied computer science at Occidental College, with minors in studio art and
