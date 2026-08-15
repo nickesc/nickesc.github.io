@@ -37,7 +37,7 @@
 
 <div class="summary">
 
-Developer and creative with experience in full-stack web development, library development, and developer tooling. Specializing in TypeScript and Node.js to craft exceptional experiences and support organizations' technical needs.
+Developer and creative with experience in frontend and full-stack web development, library development, and developer tooling. Specializing in TypeScript and Node.js to craft exceptional experiences and support organizations' technical needs.
 
 </div>
 
@@ -231,24 +231,6 @@ Developer and creative with experience in full-stack web development, library de
     list-style: none;
     padding: 0;
     margin: 0;
-  }
-
-  a:not(.primary-button) {
-    color: var(--brand-accent);
-    text-decoration: none;
-    transition: color 0.2s ease-in-out;
-
-    &:hover {
-      color: rgba(from var(--brand-accent) r g b / 0.8);
-    }
-
-    &:visited {
-      color: var(--brand-accent);
-    }
-
-    &:active {
-      color: rgba(from var(--brand-accent) r g b / 0.7);
-    }
   }
 
   h1 {

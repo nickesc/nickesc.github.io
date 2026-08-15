@@ -226,7 +226,8 @@
 		}
 	}
 
-	:global(.primary-button) {
+	:global(button.primary-button),
+	:global(a.primary-button) {
 		--btn: rgba(from var(--form-accent-color) r g b / 0.3);
 
 		padding: 0.5rem 1rem;
@@ -256,10 +257,12 @@
 
 		&:hover:not(:disabled) {
 			--btn: rgba(from var(--form-accent-color) r g b / 0.5);
+			color: var(--form-accent-color);
 		}
 
 		&:active:not(:disabled) {
 			--btn: rgba(from var(--form-accent-color) r g b / 0.7);
+			color: var(--form-accent-color);
 		}
 	}
 
@@ -445,6 +448,31 @@
 
 		&:checked::before {
 			background-color: rgba(from var(--brand-grey) r g b / 0.8);
+		}
+	}
+
+	:global(a) {
+		color: var(--brand-accent);
+		text-decoration: underline;
+		text-decoration-color: rgba(from var(--brand-accent) r g b / 0.6);
+		text-underline-offset: 0.2em;
+		text-wrap: nowrap;
+		transition:
+			color 0.2s ease-in-out,
+			text-decoration-color 0.2s ease-in-out;
+
+		&:visited {
+			color: var(--brand-accent);
+		}
+
+		&:hover {
+			color: rgba(from var(--brand-accent) r g b / 0.8);
+			text-decoration-color: rgba(from var(--brand-accent) r g b / 0.4);
+		}
+
+		&:active {
+			color: rgba(from var(--brand-accent) r g b / 0.6);
+			text-decoration-color: rgba(from var(--brand-accent) r g b / 0.2);
 		}
 	}
 

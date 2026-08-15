@@ -168,6 +168,8 @@
 					&:focus {
 						background-color: rgba(from var(--brand-grey) r g b / 0.25);
 						outline: none;
+						text-decoration: none;
+						color: var(--brand-white);
 					}
 
 					&:active {
