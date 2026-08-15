@@ -171,7 +171,7 @@
 		inset: 0;
 		width: 100%;
 		height: 100dvh;
-		background-color: #18181f;
+		background-color: #121218;
 		color: var(--brand-white);
 		overflow: hidden;
 		overscroll-behavior: none;
@@ -488,7 +488,7 @@
 		inset: 0;
 		z-index: 0;
 		pointer-events: none;
-		background-color: #18181f;
+		background-color: #121218;
 
 		.site-bg {
 			position: absolute;
@@ -496,15 +496,15 @@
 			background-attachment: fixed;
 
 			&[data-bg='chalk-slate'] {
-				background-color: #d0d8e0;
+				background-color: #c4ced8;
 				background-image:
-					linear-gradient(rgba(40, 50, 60, 0.06) 1px, transparent 1px),
-					linear-gradient(90deg, rgba(40, 50, 60, 0.06) 1px, transparent 1px),
-					radial-gradient(ellipse 140% 28% at 50% 12%, rgba(110, 170, 230, 0.55), transparent 70%),
-					radial-gradient(ellipse 160% 32% at 35% 38%, rgba(95, 155, 215, 0.46), transparent 68%),
-					radial-gradient(ellipse 150% 30% at 65% 62%, rgba(125, 185, 240, 0.5), transparent 70%),
-					radial-gradient(ellipse 170% 34% at 45% 88%, rgba(105, 165, 225, 0.48), transparent 72%),
-					linear-gradient(180deg, #e0e8f0 0%, #d0dae4 35%, #c4d0dc 65%, #b6c6d8 100%);
+					linear-gradient(rgba(40, 50, 60, 0.07) 1px, transparent 1px),
+					linear-gradient(90deg, rgba(40, 50, 60, 0.07) 1px, transparent 1px),
+					radial-gradient(ellipse 140% 28% at 50% 12%, rgba(100, 160, 220, 0.5), transparent 70%),
+					radial-gradient(ellipse 160% 32% at 35% 38%, rgba(85, 145, 205, 0.42), transparent 68%),
+					radial-gradient(ellipse 150% 30% at 65% 62%, rgba(115, 175, 230, 0.46), transparent 70%),
+					radial-gradient(ellipse 170% 34% at 45% 88%, rgba(95, 155, 215, 0.44), transparent 72%),
+					linear-gradient(180deg, #d6e0ea 0%, #c4d0dc 35%, #b8c6d4 65%, #aabccf 100%);
 				background-size:
 					28px 28px,
 					28px 28px,
@@ -532,32 +532,32 @@
 			}
 
 			&[data-bg='radar'] {
-				--bg-color: #253530;
-				--bg-dot-color: rgba(155, 245, 215, 0.65);
+				--bg-color: #1a2622;
+				--bg-dot-color: rgba(140, 235, 205, 0.6);
 				--bg-orbs: radial-gradient(
 					ellipse 70% 60% at 35% 40%,
-					rgba(70, 145, 125, 0.6),
+					rgba(55, 120, 105, 0.55),
 					transparent 70%
 				);
-				--bg-gradient: linear-gradient(165deg, #2e463c 0%, #253530 60%, #1c2a26 100%);
+				--bg-gradient: linear-gradient(165deg, #22352e 0%, #1a2622 60%, #141c1a 100%);
 			}
 
 			&[data-bg='lidar'] {
-				--bg-color: #3a2c22;
-				--bg-dot-color: rgba(250, 190, 120, 0.48);
+				--bg-color: #2a2018;
+				--bg-dot-color: rgba(240, 175, 105, 0.42);
 				--bg-orbs:
-					radial-gradient(ellipse 75% 60% at 30% 30%, rgba(235, 155, 90, 0.55), transparent 65%),
-					radial-gradient(ellipse 65% 55% at 80% 75%, rgba(170, 105, 60, 0.55), transparent 60%);
-				--bg-gradient: linear-gradient(150deg, #503828 0%, #3a2c22 55%, #403022 100%);
+					radial-gradient(ellipse 75% 60% at 30% 30%, rgba(220, 140, 75, 0.48), transparent 65%),
+					radial-gradient(ellipse 65% 55% at 80% 75%, rgba(150, 90, 50, 0.5), transparent 60%);
+				--bg-gradient: linear-gradient(150deg, #3d2a1c 0%, #2a2018 55%, #322418 100%);
 			}
 
 			&[data-bg='sonar'] {
-				--bg-color: #162830;
-				--bg-dot-color: rgba(125, 210, 235, 0.55);
+				--bg-color: #0f1c24;
+				--bg-dot-color: rgba(110, 195, 220, 0.48);
 				--bg-orbs:
-					radial-gradient(ellipse 45% 40% at 62% 42%, rgba(100, 190, 220, 0.34), transparent 65%),
-					radial-gradient(ellipse 70% 60% at 62% 42%, rgba(65, 135, 170, 0.38), transparent 70%);
-				--bg-gradient: linear-gradient(165deg, #223840 0%, #162830 60%, #101c24 100%);
+					radial-gradient(ellipse 45% 40% at 62% 42%, rgba(85, 175, 205, 0.28), transparent 65%),
+					radial-gradient(ellipse 70% 60% at 62% 42%, rgba(55, 115, 150, 0.32), transparent 70%);
+				--bg-gradient: linear-gradient(165deg, #182830 0%, #0f1c24 60%, #0a141a 100%);
 			}
 		}
 
