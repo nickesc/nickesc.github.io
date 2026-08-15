@@ -2,6 +2,7 @@
 	import { fade } from 'svelte/transition';
 	import AlertSymbol from '$lib/components/AlertSymbol.svelte';
 	import Badge from '$lib/components/Badge.svelte';
+	import { submitForm } from '$lib/submitForm';
 
 	let name = $state('');
 	let email = $state('');
@@ -11,36 +12,20 @@
 	let error: string | null = $state(null);
 	let success: boolean = $state(false);
 
-	// not a secret link, just making it a little harder to detect
-	const x = atob('aHR0cHM6Ly9mb3Jtc3ByZWUuaW8vZi94ZGVua2Vidw==');
-
 	let emailEl = $state<HTMLInputElement | null>(null);
 	let messageEl = $state<HTMLTextAreaElement | null>(null);
 
 	async function handleSubmit(e: Event) {
 		e.preventDefault();
 		sending = true;
-		error = null;
+		const result = await submitForm(name, email, message);
 
-		try {
-			const res = await fetch(x, {
-				method: 'POST',
-				headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
-				body: JSON.stringify({ name, email, message })
-			});
+		sending = false;
 
-			if (res.ok) {
-				sending = false;
-				success = true;
-			} else {
-				const data = await res.json();
-				error = data.error || 'Something went wrong.';
-			}
-		} catch (err) {
-			console.error(err);
-			error = 'Network error. Please try again.';
-		} finally {
-			sending = false;
+		if (result.success) {
+			success = result.success;
+		} else {
+			error = result.error || 'Something went wrong.';
 		}
 	}
 
