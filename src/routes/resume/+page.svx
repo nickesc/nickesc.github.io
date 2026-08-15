@@ -151,10 +151,14 @@ Developer and creative with experience in frontend and full-stack web developmen
 <div class="grid skills">
 
 - Full stack web development
+- Frontend development
 - UI/UX design
+- Responsive design
+- Version control
+- Technical documentation
+- CI/CD
 - AI-assisted development
 - IT administration/support
-- Technical documentation
 - Adobe Creative Cloud
 - Project management
 - Staff training
