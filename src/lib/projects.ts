@@ -1,3 +1,5 @@
+import { createFile, type File, type Directory } from '$lib/filetree';
+
 export type Category =
 	| 'code'
 	| 'art'
@@ -492,3 +494,13 @@ export const projects: Project[] = [
 		archived: true
 	}
 ];
+
+export function createProjectFiles(parent: Directory): File[] {
+	return projects.map((project) =>
+		createFile(
+			project.name,
+			parent,
+			project.sourceUrl ? { href: project.sourceUrl } : { content: project.description }
+		)
+	);
+}
