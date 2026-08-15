@@ -7,3 +7,7 @@ export type BadgeKey = keyof typeof badges;
 export const techBadges = (Object.keys(badges) as BadgeKey[]).filter((key) =>
 	badges[key].categories.includes('tech')
 );
+
+export { default as DownloadSymbol } from '$lib/components/DownloadSymbol.svelte';
+
+export { resumeLinks } from '$lib/resume';

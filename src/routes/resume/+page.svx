@@ -1,6 +1,5 @@
 <script lang="ts">
-    import { Badge, techBadges} from './badges';
-    import { DownloadSymbol } from './symbols';
+    import { Badge, techBadges, DownloadSymbol, resumeLinks } from './resume';
 </script>
 
 <svelte:head>
@@ -47,14 +46,13 @@
 </div>
 
 <div class="grid">
-
-- Email: [nick@nickesc.io](mailto:nick@nickesc.io)
-- LinkedIn: [linkedin.com/in/nickesc](https://linkedin.com/in/nickesc/)
-- Bluesky: [@nickesc.io](https://bsky.app/profile/nickesc.io)
-- Portfolio: [nickesc.github.io](https://nickesc.github.io)
-- GitHub: [github.com/nickesc](https://github.com/nickesc)
-- Art: [nickesc.com](https://nickesc.com)
-
+<ul>
+{#each resumeLinks as link}
+<li>
+    {link.label}: <a href={link.href} target="_blank" rel="noopener noreferrer">{link.displayText}</a>
+</li>
+{/each}
+</ul>
 </div>
 
 ## SUMMARY
@@ -140,8 +138,6 @@ Developer and creative with experience in frontend and full-stack web developmen
 - Staff training
 
 </div>
-
-
 
 </div>
 
