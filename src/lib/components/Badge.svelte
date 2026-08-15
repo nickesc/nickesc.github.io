@@ -23,7 +23,7 @@
 	import OpenVsx from '$lib/components/icons/open-vsx.svelte';
 	import VsMp from '$lib/components/icons/vs-mp.svelte';
 
-	export const icons = {
+	export const badges = {
 		html: {
 			icon: SiHtml5,
 			color: 'rgb(228,77,38)',
@@ -188,7 +188,7 @@
 	} as const;
 
 	interface Props {
-		icon: keyof typeof icons;
+		icon: keyof typeof badges;
 		text?: string;
 		href?: string;
 		bgColor?: string;
@@ -196,19 +196,19 @@
 
 	let {
 		icon,
-		text = icons[icon].text,
-		href = icons[icon].url,
-		bgColor = icons[icon].color
+		text = badges[icon].text,
+		href = badges[icon].url,
+		bgColor = badges[icon].color
 	}: Props = $props();
 
-	const Icon = $derived(icons[icon].icon);
+	const Icon = $derived(badges[icon].icon);
 </script>
 
 <a
 	{href}
 	style:--logo-color={bgColor}
 	style:color={bgColor}
-	title={icons[icon].title}
+	title={badges[icon].title}
 	rel="noopener noreferrer"
 	target="_blank"
 >
