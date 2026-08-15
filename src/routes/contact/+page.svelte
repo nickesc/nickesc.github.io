@@ -3,6 +3,7 @@
 	import AlertSymbol from '$lib/components/AlertSymbol.svelte';
 	import Badge from '$lib/components/Badge.svelte';
 	import { submitForm } from '$lib/submitForm';
+	import { socialBadges, distributionBadges } from '$lib/badges';
 
 	let name = $state('');
 	let email = $state('');
@@ -62,49 +63,20 @@
 
 <h2>Where to find me</h2>
 <ul class="badges">
-	<li>
-		<Badge icon="github" />
-	</li>
-	<li>
-		<Badge icon="bluesky" />
-	</li>
-	<li>
-		<Badge icon="infosec-exchange" />
-	</li>
-	<li>
-		<Badge icon="linkedin" />
-	</li>
-	<li>
-		<Badge icon="youtube" />
-	</li>
-	<li>
-		<Badge icon="kofi" />
-	</li>
+	{#each socialBadges as badge}
+		<li>
+			<Badge icon={badge} />
+		</li>
+	{/each}
 </ul>
 
 <h2>Where to find my work</h2>
 <ul class="badges">
-	<li>
-		<Badge icon="github" text="GitHub" />
-	</li>
-	<li>
-		<Badge icon="npm" />
-	</li>
-	<li>
-		<Badge icon="vs-mp" />
-	</li>
-	<li>
-		<Badge icon="open-vsx" />
-	</li>
-	<li>
-		<Badge icon="firefox" />
-	</li>
-	<li>
-		<Badge icon="itchio" />
-	</li>
-	<li>
-		<Badge icon="modrinth" />
-	</li>
+	{#each distributionBadges as badge}
+		<li>
+			<Badge icon={badge} />
+		</li>
+	{/each}
 </ul>
 
 <h2>Contact me</h2>

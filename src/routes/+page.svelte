@@ -1,17 +1,12 @@
 <script lang="ts">
 	import { projects } from '$lib/projects';
-	import { badges } from '$lib/badges';
+	import { featuredBadges } from '$lib/badges';
 
 	import Badge from '$lib/components/Badge.svelte';
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
 
 	let displayedProjects = $state(projects);
 	displayedProjects = projects.filter((project) => project.featured === true);
-
-	type BadgeKey = keyof typeof badges;
-	const featuredBadges = (Object.keys(badges) as BadgeKey[]).filter((key) =>
-		badges[key].categories.includes('featured')
-	);
 </script>
 
 <svelte:head>
