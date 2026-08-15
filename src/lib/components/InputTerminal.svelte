@@ -5,6 +5,8 @@
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
 
+	import { submitForm } from '$lib/submitForm';
+
 	import { tabTree } from '$lib/tabs';
 	import {
 		dirToPathString,
@@ -132,12 +134,44 @@ Examples:
   open /GitHub
 `;
 
+	const contactUsage =
+		'contact --name=&lt;name&gt; --email=&lt;email&gt; --message=&lt;message&gt;';
+	const contact = new Command('contact', (args, options, terminal) => {
+		const { name, email, message } = options;
+
+		if (!name || !email || !message) {
+			terminal.stderr(`Usage: ${contactUsage}`);
+			return { error: `Usage: ${contactUsage}` };
+		}
+
+		submitForm(name.value as string, email.value as string, message.value as string)
+			.then((result) => {
+				if (result.success) {
+					terminal.stdout('Message sent successfully');
+				} else {
+					terminal.stderr(result.error || 'Something went wrong.');
+				}
+				return result;
+			})
+			.catch((error) => {
+				terminal.stderr(error.message || 'Something went wrong.');
+				return { error: error.message || 'Something went wrong.' };
+			});
+	});
+	contact.manual = `${contactUsage}
+
+Submit a message to the contact form.
+
+Examples:
+  contact --name="Nick Escobar" --email="nick@nickesc.io" --message="Hello, world!"
+`;
+
 	onMount(() => {
 		terminal = new Terminal({
 			input,
 			output,
 			options: { preprompt: `${user}@${hostname}:${path}`, prompt: ' > ' },
-			commands: [ls, cd, open, theme, version]
+			commands: [ls, cd, open, theme, version, contact]
 		});
 		terminal.init();
 
