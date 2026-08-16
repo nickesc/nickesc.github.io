@@ -60,6 +60,8 @@
 		findDirectoryByPage(page.url.pathname, terminalTree) ?? terminalTree
 	);
 	let path = $derived(dirToPathString(currentDirectory));
+	let preprompt = $derived(`${user}@${hostname}:${path}`);
+	const prompt = ' > ';
 
 	const version = new Command('version', (args, options, terminal) => {
 		terminal.stdout(`${page.url.hostname}@${__APP_VERSION__}`);
@@ -211,7 +213,7 @@ Examples:
 		terminal = new Terminal({
 			input,
 			output,
-			options: { preprompt: `${user}@${hostname}:${path}`, prompt: ' > ', printCommand: true },
+			options: { preprompt, prompt, printCommand: true },
 			commands: [ls, cd, open, theme, version, contact]
 		});
 		terminal.init();
@@ -227,7 +229,7 @@ Examples:
 
 	$effect(() => {
 		if (terminal) {
-			terminal.updateOptions({ preprompt: `${user}@${hostname}:${path}`, prompt: ' > ' });
+			terminal.updateOptions({ preprompt, prompt });
 		}
 	});
 
