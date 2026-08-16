@@ -41,6 +41,7 @@
 	let terminalReady = $state(false);
 	let hasUserInput = $state(false);
 	let inputScrollLeft = $state(0);
+	let placeholderSuppressed = $state(false);
 
 	let terminalTree: Directory = $state(tabTree);
 
@@ -66,7 +67,9 @@
 	let preprompt = $derived(`${user}@${hostname}:${path}`);
 	const prompt = ' > ';
 	let fullPrompt = $derived(preprompt + prompt);
-	let showPlaceholder = $derived(terminalReady && on && !hasUserInput && placeholder.length > 0);
+	let showPlaceholder = $derived(
+		terminalReady && on && !hasUserInput && !placeholderSuppressed && placeholder.length > 0
+	);
 
 	function syncInputPresentation() {
 		if (!terminal?.started) return;
@@ -77,6 +80,16 @@
 
 	function syncAfterTerminalKey() {
 		queueMicrotask(syncInputPresentation);
+	}
+
+	function handleInput() {
+		placeholderSuppressed = true;
+		syncInputPresentation();
+	}
+
+	function handleBlur() {
+		placeholderSuppressed = false;
+		syncInputPresentation();
 	}
 
 	const version = new Command('version', (args, options, terminal) => {
@@ -280,9 +293,10 @@ Examples:
 			autocapitalize="off"
 			spellcheck="false"
 			enterkeyhint="send"
-			oninput={syncInputPresentation}
+			oninput={handleInput}
 			onkeydown={syncAfterTerminalKey}
 			onscroll={syncInputPresentation}
+			onblur={handleBlur}
 		/>
 		{#if showPlaceholder}
 			<div class="placeholder-viewport" aria-hidden="true">
