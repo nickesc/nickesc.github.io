@@ -24,7 +24,7 @@
 	let {
 		on = $bindable(),
 		onThemeChange,
-		placeholder = 'Type a command…'
+		placeholder = "Type 'help' for more information..."
 	}: {
 		on: boolean;
 		onThemeChange?: (id?: Background) => Background | false;
@@ -238,12 +238,65 @@ Examples:
   contact --name="Nick Escobar" --email="nick@nickesc.io" --message="Hello, world!"
 `;
 
+	const help = new Command('help', (args, options, terminal) => {
+		const commandName = args[0] === undefined ? undefined : String(args[0]);
+		if (commandName) {
+			const command = terminal.bin.find(commandName);
+			if (!command) {
+				terminal.stderr('Command not found. Run `help` to see the site commands.');
+				return {};
+			}
+
+			terminal.stdout(command.manual ?? command.key);
+			return { command: command.key };
+		}
+
+		terminal.stdout(`This terminal acts as a command line for the website. Pages are directories, links and content are files.
+
+Site commands:<span class="command-list">
+  ls                         List dirs and files here (dirs end with /)
+  cd &lt;directory&gt;             Move to a page (\`cd /projects\`, \`cd ..\`, \`cd ~\`)
+  open &lt;file&gt;                Open a listed file/link, or print its content
+  theme [list | &lt;name&gt;]      Cycle themes, list them, or set one by name
+  contact --name= --email= --message=
+                             Submit the contact form
+  version                    Print the site version
+  help [command]             Show this guide or details for one command</span>
+
+Useful Built-in commands:<span class="command-list">
+  clear                      Clear the terminal output
+  echo [text]                Print text to the terminal
+  history                    Show previously run commands
+  commands                   List every available command
+  man &lt;command&gt;              Show a command's manual
+</span>
+
+Keyboard:<span class="command-list">
+  Enter                      Run the command
+  Tab                        Autocomplete command names (press again to cycle)
+  Up / Down                  Step through command history</span>
+
+Try \`ls\`, then \`cd projects\`. Run \`help &lt;command&gt;\` or \`man &lt;command&gt;\` for examples.`);
+		return {
+			commands: terminal.bin.list.map((command: Command) => command.key)
+		};
+	});
+	help.manual = `help [command]
+
+Explain how to use the site terminal. Provide a command name to see its full usage.
+
+Examples:
+  help
+  help cd
+  help contact
+`;
+
 	onMount(() => {
 		terminal = new Terminal({
 			input,
 			output,
 			options: { preprompt, prompt, printCommand: true },
-			commands: [ls, cd, open, theme, version, contact]
+			commands: [ls, cd, open, theme, version, contact, help]
 		});
 		terminal.init();
 		terminalReady = true;
@@ -355,6 +408,10 @@ Examples:
 
 	.error {
 		color: #ff6b6b;
+	}
+
+	:global(.command-list) {
+		color: rgba(from var(--brand-grey) r g b / 0.6);
 	}
 
 	.input-line {
