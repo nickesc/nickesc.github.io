@@ -620,6 +620,7 @@
 		padding: 0 1rem;
 		min-height: 0;
 		overflow-y: scroll;
+		overflow-x: hidden;
 	}
 
 	.powered-off-container {
