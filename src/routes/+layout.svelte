@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { page } from '$app/state';
 
@@ -16,6 +17,7 @@
 	import InputTerminal from '$lib/components/InputTerminal.svelte';
 
 	import { backgrounds, type Background } from '$lib/themes';
+	import { foley } from '$lib/foley.svelte';
 
 	let { children } = $props();
 
@@ -30,6 +32,8 @@
 
 	const BG_FADE_MS = 700;
 	const MAIN_PANEL_FADE_MS = 200;
+
+	onMount(foley.init);
 
 	let currentBg = $state<Background>(backgrounds[0]);
 	let incomingBg = $state<Background | null>(null);
