@@ -23,10 +23,12 @@
 
 	let {
 		on = $bindable(),
-		onThemeChange
+		onThemeChange,
+		placeholder = 'Type a command…'
 	}: {
 		on: boolean;
 		onThemeChange?: (id?: Background) => Background | false;
+		placeholder?: string;
 	} = $props();
 
 	let input: HTMLInputElement;
