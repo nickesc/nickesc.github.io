@@ -96,10 +96,16 @@ Examples:
 
 	const ls = new Command('ls', (args, options, terminal) => {
 		if (currentDirectory.parent !== null) {
-			terminal.stdout('..');
+			terminal.stdout('<span class="directory-name">..</span>');
 		}
-		terminal.stdout(currentDirectory.children.map((child) => `${child.name}/`).join('\n'));
-		terminal.stdout(currentDirectory.files.map((file) => file.name).join('\n'));
+		terminal.stdout(
+			currentDirectory.children
+				.map((child) => `<span class="directory-name">${child.name}/</span>`)
+				.join('\n')
+		);
+		terminal.stdout(
+			currentDirectory.files.map((file) => `<span class="file-name">${file.name}</span>`).join('\n')
+		);
 		return { directory: currentDirectory };
 	});
 	ls.manual = `ls
@@ -281,6 +287,14 @@ Examples:
 		display: flex;
 		flex-direction: column;
 		white-space: pre-wrap;
+
+		:global(.directory-name) {
+			color: rgb(124, 124, 235);
+		}
+
+		:global(.file-name) {
+			color: rgb(123, 173, 156);
+		}
 	}
 
 	.output-entries {
