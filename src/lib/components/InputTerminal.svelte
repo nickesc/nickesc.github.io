@@ -11,6 +11,7 @@
 	import { createResumeFiles } from '$lib/resume';
 
 	import { tabTree } from '$lib/tabs';
+	import { completeTerminalInput } from '$lib/terminalCompletion';
 	import {
 		dirToPathString,
 		findDirectoryByPage,
@@ -273,7 +274,7 @@ Useful Built-in commands:<span class="command-list">
 
 Keyboard:<span class="command-list">
   Enter                      Run the command
-  Tab                        Autocomplete command names (press again to cycle)
+  Tab                        Autocomplete commands and paths (press again to cycle)
   Up / Down                  Step through command history</span>
 
 Try \`ls\`, then \`cd projects\`. Run \`help &lt;command&gt;\` or \`man &lt;command&gt;\` for examples.`);
@@ -296,7 +297,9 @@ Examples:
 			input,
 			output,
 			options: { preprompt, prompt, printCommand: true },
-			commands: [ls, cd, open, theme, version, contact, help]
+			commands: [ls, cd, open, theme, version, contact, help],
+			completionProvider: ({ input: value, cursor }) =>
+				completeTerminalInput(value, cursor, currentDirectory)
 		});
 		terminal.init();
 		terminalReady = true;
