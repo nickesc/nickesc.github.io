@@ -140,7 +140,7 @@ export const badges = {
 		icon: InfosecExchange,
 		color: 'rgb(236,28,36)',
 		url: 'https://infosec.exchange/@nickesc',
-		title: 'Mastodon (Infosec.Exchange)',
+		title: 'Mastodon',
 		text: '@nickesc@infosec.exchange',
 		categories: ['social']
 	},
