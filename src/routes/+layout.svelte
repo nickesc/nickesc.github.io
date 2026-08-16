@@ -201,7 +201,7 @@
 		scrollbar-width: thin;
 	}
 
-	@supports selector(::-webkit-scrollbar) {
+	@supports selector(::-webkit-scrollbar-thumb) {
 		:global(.scrollable) {
 			scrollbar-width: auto;
 			scrollbar-color: auto;
