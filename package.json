@@ -35,6 +35,7 @@
 		"vite": "^8.0.16"
 	},
 	"dependencies": {
+		"@foleyjs/core": "^2.8.0",
 		"@fontsource/ibm-plex-mono": "^5.3.0",
 		"@fontsource/ibm-plex-sans": "^5.3.0",
 		"@fontsource/unifontex": "^5.3.0",
