@@ -160,11 +160,15 @@
 		gap: 1rem;
 		margin-bottom: 1rem;
 		justify-content: space-between;
+		align-items: flex-end;
 
 		.filters-selects {
 			display: flex;
+			flex: 1 1 auto;
+			flex-wrap: wrap;
 			gap: 1rem;
 			align-items: end;
+			min-width: 0;
 		}
 
 		label {
