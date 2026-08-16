@@ -38,6 +38,9 @@
 
 	let hostname = $state(page.url.hostname);
 	let user = $state('user');
+	let terminalReady = $state(false);
+	let hasUserInput = $state(false);
+	let inputScrollLeft = $state(0);
 
 	let terminalTree: Directory = $state(tabTree);
 
@@ -62,6 +65,19 @@
 	let path = $derived(dirToPathString(currentDirectory));
 	let preprompt = $derived(`${user}@${hostname}:${path}`);
 	const prompt = ' > ';
+	let fullPrompt = $derived(preprompt + prompt);
+	let showPlaceholder = $derived(terminalReady && on && !hasUserInput && placeholder.length > 0);
+
+	function syncInputPresentation() {
+		if (!terminal?.started) return;
+
+		hasUserInput = terminal.getInputValue().length > 0;
+		inputScrollLeft = input.scrollLeft;
+	}
+
+	function syncAfterTerminalKey() {
+		queueMicrotask(syncInputPresentation);
+	}
 
 	const version = new Command('version', (args, options, terminal) => {
 		terminal.stdout(`${page.url.hostname}@${__APP_VERSION__}`);
@@ -217,6 +233,8 @@ Examples:
 			commands: [ls, cd, open, theme, version, contact]
 		});
 		terminal.init();
+		terminalReady = true;
+		syncInputPresentation();
 
 		const isDesktop = window.matchMedia('(pointer: fine)').matches;
 
@@ -228,8 +246,9 @@ Examples:
 	});
 
 	$effect(() => {
-		if (terminal) {
+		if (terminalReady) {
 			terminal.updateOptions({ preprompt, prompt });
+			syncInputPresentation();
 		}
 	});
 
@@ -250,16 +269,31 @@ Examples:
 		</div>
 	</div>
 
-	<input
-		bind:this={input}
-		disabled={!on}
-		aria-label="Terminal input"
-		autocomplete="off"
-		autocorrect="off"
-		autocapitalize="off"
-		spellcheck="false"
-		enterkeyhint="send"
-	/>
+	<div class="input-line">
+		<input
+			bind:this={input}
+			disabled={!on}
+			aria-label="Terminal input"
+			{placeholder}
+			autocomplete="off"
+			autocorrect="off"
+			autocapitalize="off"
+			spellcheck="false"
+			enterkeyhint="send"
+			oninput={syncInputPresentation}
+			onkeydown={syncAfterTerminalKey}
+			onscroll={syncInputPresentation}
+		/>
+		{#if showPlaceholder}
+			<div class="placeholder-viewport" aria-hidden="true">
+				<span class="placeholder-content" style:transform={`translateX(${-inputScrollLeft}px)`}>
+					<span class="prompt-spacer">{fullPrompt}</span><span class="placeholder-text"
+						>{placeholder}</span
+					>
+				</span>
+			</div>
+		{/if}
+	</div>
 </div>
 
 <style>
@@ -309,8 +343,17 @@ Examples:
 		color: #ff6b6b;
 	}
 
-	input {
+	.input-line {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
 		flex-shrink: 0;
+		min-width: 0;
+		overflow: hidden;
+	}
+
+	input {
+		grid-area: 1 / 1;
+		min-width: 0;
 		width: 100%;
 		padding: 0;
 		border: 0;
@@ -324,5 +367,29 @@ Examples:
 		&:disabled {
 			color: rgba(from var(--brand-grey) r g b / 0.5);
 		}
+
+		&::placeholder {
+			color: transparent;
+		}
+	}
+
+	.placeholder-viewport {
+		grid-area: 1 / 1;
+		min-width: 0;
+		overflow: hidden;
+		pointer-events: none;
+	}
+
+	.placeholder-content {
+		display: inline-block;
+		white-space: pre;
+	}
+
+	.prompt-spacer {
+		visibility: hidden;
+	}
+
+	.placeholder-text {
+		color: rgba(from var(--brand-grey) r g b / 0.5);
 	}
 </style>
