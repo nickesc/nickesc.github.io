@@ -209,7 +209,7 @@ Examples:
 		terminal = new Terminal({
 			input,
 			output,
-			options: { preprompt: `${user}@${hostname}:${path}`, prompt: ' > ' },
+			options: { preprompt: `${user}@${hostname}:${path}`, prompt: ' > ', printCommand: true },
 			commands: [ls, cd, open, theme, version, contact]
 		});
 		terminal.init();
