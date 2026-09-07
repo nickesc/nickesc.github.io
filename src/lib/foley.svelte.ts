@@ -10,6 +10,7 @@ import {
 //import { physicalSoundSet } from '$lib/foleySoundSet';
 
 const MUTED_STORAGE_KEY = 'nickesc:foley-muted';
+const TYPE_VOLUME = 0.4;
 
 let initialized = false;
 let muteTimer: ReturnType<typeof setTimeout> | undefined;
@@ -54,6 +55,13 @@ function play(name: CueName, options?: PlayOptions): PlayHandle | undefined {
 	}
 }
 
+function playType() {
+	return play('thock', {
+		volume: TYPE_VOLUME,
+		pitch: Math.random() * 2 - 1
+	});
+}
+
 function toggleMuted() {
 	if (!browser) return;
 
@@ -84,5 +92,6 @@ export const foley = {
 	},
 	init,
 	play,
+	playType,
 	toggleMuted
 };
