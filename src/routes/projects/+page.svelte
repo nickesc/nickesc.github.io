@@ -83,7 +83,7 @@
 		<label for="category"
 			>Category
 			<span class="select-container" data-widest={widestCategory}>
-				<select bind:value={selectedCategory}>
+				<select bind:value={selectedCategory} data-foley-click="press">
 					<option value="all">All</option>
 					{#each categories as category}
 						<option value={category}
@@ -97,7 +97,7 @@
 		<label for="tech"
 			>Tech
 			<span class="select-container" data-widest={widestTech}>
-				<select bind:value={selectedTech}>
+				<select bind:value={selectedTech} data-foley-click="press">
 					<option value="all">All</option>
 					{#each techOptions as tech}
 						<option value={tech}>{tech}</option>
@@ -109,7 +109,7 @@
 		<label for="year"
 			>Year
 			<span class="select-container" data-widest={widestYear}>
-				<select bind:value={selectedYear}>
+				<select bind:value={selectedYear} data-foley-click="press">
 					<option value="all">All</option>
 					{#each years as year}
 						<option value={year}>{year}</option>
@@ -121,7 +121,7 @@
 
 	<label for="archived">
 		Show Archived
-		<input type="checkbox" bind:checked={showArchived} />
+		<input type="checkbox" bind:checked={showArchived} data-foley-click="release" />
 	</label>
 </div>
 
