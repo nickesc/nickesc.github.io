@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { Terminal, Command } from 'input-terminal';
+	import { Terminal, Command, type ExitObject } from 'input-terminal';
 	import { SvelteOutputAdapter } from 'input-terminal/svelte';
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
@@ -11,6 +11,7 @@
 	import { createResumeFiles } from '$lib/resume';
 
 	import { tabTree } from '$lib/tabs';
+	import { foley } from '$lib/foley.svelte';
 	import { completeTerminalInput } from '$lib/terminalCompletion';
 	import {
 		dirToPathString,
@@ -79,7 +80,10 @@
 		inputScrollLeft = input.scrollLeft;
 	}
 
-	function syncAfterTerminalKey() {
+	function syncAfterTerminalKey(event: KeyboardEvent) {
+		if (event.key.length === 1 || event.key === 'Backspace') {
+			foley.playType();
+		}
 		queueMicrotask(syncInputPresentation);
 	}
 
@@ -91,6 +95,14 @@
 	function handleBlur() {
 		placeholderSuppressed = false;
 		syncInputPresentation();
+	}
+
+	function commandFailed(exit: ExitObject) {
+		return exit.exitCode !== 0 || exit.stderrLog.length > 0;
+	}
+
+	function playCommandResult(failed: boolean) {
+		foley.play(failed ? 'ping' : 'pop');
 	}
 
 	const version = new Command('version', (args, options, terminal) => {
@@ -233,13 +245,16 @@ Examples:
 			.then((result) => {
 				if (result.success) {
 					terminal.stdout('Message sent successfully');
+					playCommandResult(false);
 				} else {
 					terminal.stderr(result.error || 'Something went wrong.');
+					playCommandResult(true);
 				}
 				return result;
 			})
 			.catch((error) => {
 				terminal.stderr(error.message || 'Something went wrong.');
+				playCommandResult(true);
 				return { error: error.message || 'Something went wrong.' };
 			});
 	});
@@ -317,13 +332,32 @@ Examples:
 		terminalReady = true;
 		syncInputPresentation();
 
+		function onExecuted(event: CustomEvent<ExitObject>) {
+			const exit = event.detail;
+			if (!exit.rawInput.trim()) return;
+			// contact waits for the form request before playing a result cue
+			if (exit.command?.key === 'contact' && !commandFailed(exit)) return;
+			playCommandResult(commandFailed(exit));
+		}
+
+		function suppressEnterFoley(event: KeyboardEvent) {
+			if (event.key === 'Enter') event.stopPropagation();
+		}
+
+		terminal.addEventListener('executed', onExecuted);
+		input.addEventListener('keydown', suppressEnterFoley);
+
 		const isDesktop = window.matchMedia('(pointer: fine)').matches;
 
 		if (isDesktop && input) {
 			input.focus();
 		}
 
-		return () => terminal.destroy();
+		return () => {
+			terminal.removeEventListener('executed', onExecuted);
+			input.removeEventListener('keydown', suppressEnterFoley);
+			terminal.destroy();
+		};
 	});
 
 	$effect(() => {

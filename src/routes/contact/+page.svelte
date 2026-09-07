@@ -4,6 +4,7 @@
 	import Badge from '$lib/components/Badge.svelte';
 	import { submitForm } from '$lib/submitForm';
 	import { socialBadges, distributionBadges } from '$lib/badges';
+	import { foley } from '$lib/foley.svelte';
 
 	let name = $state('');
 	let email = $state('');
@@ -18,15 +19,21 @@
 
 	async function handleSubmit(e: Event) {
 		e.preventDefault();
+		if (sending) return;
+
+		error = null;
 		sending = true;
+		foley.play('press');
 		const result = await submitForm(name, email, message);
 
 		sending = false;
 
 		if (result.success) {
 			success = result.success;
+			foley.play('success');
 		} else {
 			error = result.error || 'Something went wrong.';
+			foley.play('error');
 		}
 	}
 

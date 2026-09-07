@@ -6,7 +6,11 @@
 	let { project, featured = false }: { project: Project; featured?: boolean } = $props();
 </script>
 
-<article class={[{ featured }, 'container']} style:--project-color={project.background}>
+<article
+	data-foley-click="pop"
+	class={[{ featured }, 'container']}
+	style:--project-color={project.background}
+>
 	<div class={[{ featured }, 'logo-container']} style="background-color: {project.background}">
 		<img class={[{ featured }, 'logo']} src={project.imgUrl} alt={project.name} />
 	</div>

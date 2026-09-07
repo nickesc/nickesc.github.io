@@ -20,6 +20,7 @@
 
 <a
 	{href}
+	data-foley-click="pop"
 	style:--logo-color={bgColor}
 	style:color={bgColor}
 	title={badges[icon].title}
