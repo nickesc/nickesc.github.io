@@ -85,6 +85,9 @@
 				onclick={handleMaximizedButtonClick}
 				aria-label="Maximize window"
 				aria-expanded={maximized}
+				role="switch"
+				aria-checked={maximized}
+				title={maximized ? 'Minimize window' : 'Maximize window'}
 				style:background-color={maximized
 					? 'rgba(from var(--base-blue) r g b / 0.1)'
 					: 'var(--blue)'}
@@ -102,6 +105,7 @@
 			aria-label="Toggle power"
 			role="switch"
 			aria-checked={on}
+			title={on ? 'Turn off power' : 'Turn on power'}
 			style:background-color={on ? 'var(--red)' : 'rgba(from var(--base-red) r g b / 0.1)'}
 			style:color={'var(--base-red)'}
 			style:border-color={on ? 'transparent' : 'rgba(from var(--base-red) r g b / 0.5)'}
