@@ -65,9 +65,9 @@ function toggleMuted() {
 	if (muted) {
 		muted = false;
 		set({ muted: false });
-		play('on');
+		play('switch');
 	} else {
-		play('off');
+		play('switch');
 		muted = true;
 		muteTimer = setTimeout(() => {
 			set({ muted: true });
