@@ -8,6 +8,8 @@
 	import ExternalArrow from '$lib/components/ExternalArrow.svelte';
 	import PowerSymbol from '$lib/components/PowerSymbol.svelte';
 	import MaximizeSymbol from '$lib/components/MaximizeSymbol.svelte';
+	import SoundSymbol from '$lib/components/SoundSymbol.svelte';
+	import { foley } from '$lib/foley.svelte';
 
 	let { on = $bindable(), maximized = $bindable(), fadeDuration = 300 } = $props();
 
@@ -56,6 +58,23 @@
 		style:justify-content="center"
 		style:gap=".35rem"
 	>
+		<button
+			id="sound-button"
+			class="window-button sound-button"
+			class:sound-muted={foley.muted}
+			onclick={foley.toggleMuted}
+			aria-label="Interface sounds"
+			role="switch"
+			aria-checked={!foley.muted}
+			title={foley.muted ? 'Enable interface sounds' : 'Mute interface sounds'}
+			style:background-color={foley.muted
+				? 'rgba(from var(--base-grey) r g b / 0.1)'
+				: 'var(--grey)'}
+			style:color={'var(--base-grey)'}
+			style:border-color={foley.muted ? 'rgba(from var(--base-grey) r g b / 0.5)' : 'transparent'}
+		>
+			<SoundSymbol width={buttonSize} height={buttonSize} muted={foley.muted} />
+		</button>
 		{#if windowWidth > 1250 || windowHeight > 1000}
 			<button
 				id="maximize-button"
@@ -102,9 +121,11 @@
 	.window-button {
 		--base-blue: rgb(82, 160, 239);
 		--base-red: var(--brand-accent);
+		--base-grey: var(--brand-grey);
 
 		--blue: rgba(from var(--base-blue) r g b / 0.2);
 		--red: rgba(from var(--base-red) r g b / 0.2);
+		--grey: rgba(from var(--base-grey) r g b / 0.2);
 
 		transition:
 			background-color 0.25s ease-in-out,
@@ -127,11 +148,18 @@
 		&:hover {
 			--blue: rgba(from var(--base-blue) r g b / 0.5);
 			--red: rgba(from var(--base-red) r g b / 0.5);
+			--grey: rgba(from var(--base-grey) r g b / 0.5);
 		}
 
 		&:active {
 			--blue: rgba(from var(--base-blue) r g b / 0.7);
 			--red: rgba(from var(--base-red) r g b / 0.7);
+			--grey: rgba(from var(--base-grey) r g b / 0.7);
+		}
+
+		&:focus-visible {
+			outline: 2px solid var(--brand-white);
+			outline-offset: 2px;
 		}
 	}
 

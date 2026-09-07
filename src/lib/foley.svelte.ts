@@ -67,7 +67,7 @@ function toggleMuted() {
 		set({ muted: false });
 		play('switch');
 	} else {
-		play('switch');
+		play('latch');
 		muted = true;
 		muteTimer = setTimeout(() => {
 			set({ muted: true });
