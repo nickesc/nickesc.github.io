@@ -19,10 +19,12 @@
 
 	function handlePowerButtonClick() {
 		on = !on;
+		foley.play(on ? 'ready' : 'drop');
 	}
 
 	function handleMaximizedButtonClick() {
 		maximized = !maximized;
+		foley.play(maximized ? 'bubble' : 'switch');
 	}
 </script>
 
@@ -36,6 +38,7 @@
 					<li in:fade={{ duration: fadeDuration }} out:fade={{ duration: fadeDuration }}>
 						<a
 							href={tab.href}
+							data-foley-click="tap"
 							class:active={tab.href === page.url.pathname}
 							aria-controls={tab.href}
 							role="tab"
