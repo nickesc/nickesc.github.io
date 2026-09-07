@@ -7,7 +7,7 @@
 </script>
 
 <article
-	data-foley-click="press"
+	data-foley-click="pop"
 	class={[{ featured }, 'container']}
 	style:--project-color={project.background}
 >
