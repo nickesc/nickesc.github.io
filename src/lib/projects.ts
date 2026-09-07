@@ -302,7 +302,7 @@ export const projects: Project[] = [
 			'A portable word game generator written in CircuitPython, based on The New York Times Spelling Bee.',
 		year: 2023,
 		categories: ['gamedev', 'code', 'hardware', 'writing'],
-		tech: ['CircuitPython', 'Python'],
+		tech: ['CircuitPython', 'Python', 'Blender', 'Illustrator'],
 		featured: true
 	},
 
@@ -412,7 +412,7 @@ export const projects: Project[] = [
 			'Branches: A Game of Choice and Agency is a game that aims to create a feeling of agency for the player through the use of choice and branching narrative.',
 		year: 2021,
 		categories: ['gamedev', 'code', 'writing', 'art'],
-		tech: ['Unity']
+		tech: ['Unity', 'Blender', 'Illustrator']
 	},
 
 	{
