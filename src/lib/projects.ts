@@ -52,6 +52,18 @@ function logo(filename: string): string {
 
 export const projects: Project[] = [
 	{
+		name: 'My Girlfriend is Curious 2.0',
+		imgUrl: logo('mgicLogo.png'),
+		background: '#191414',
+		projectUrl: 'https://nickesc.github.io/My-Girlfriend-is-Curious',
+		sourceUrl: 'https://github.com/nickesc/My-Girlfriend-is-Curious',
+		description:
+			'My girlfriend wanted to know what I was listening to, but I don’t like Spotify displaying it on their app, so I made a small server that returns my Spotify status for my own use. Rebuilt to run on Cloudflare Workers with an open source backend.',
+		year: 2026,
+		categories: ['code'],
+		tech: ['HTML', 'TypeScript', 'Node.js']
+	},
+	{
 		name: 'modpack-lock',
 		imgUrl: logo('modpackLock.png'),
 		background: '#363e3f',
@@ -372,7 +384,8 @@ export const projects: Project[] = [
 			"My girlfriend wants to know what I’m listening to, and I don’t like Spotify displaying it on their app, so I wrote a small server and HTML tag using Spotify's API and thelinmichael/spotify-web-api-node that will return and display my current listening activity.",
 		year: 2022,
 		categories: ['code'],
-		tech: ['HTML', 'JavaScript', 'Node.js']
+		tech: ['HTML', 'JavaScript', 'Node.js'],
+		archived: true
 	},
 
 	{
@@ -478,7 +491,8 @@ export const projects: Project[] = [
 			'A collaboration between my parents and me; a project containing an animation and guide, both based around point-cloud visualization.',
 		year: 2021,
 		categories: ['art', 'writing'],
-		tech: ['Other']
+		tech: ['Other'],
+		archived: true
 	},
 
 	{
