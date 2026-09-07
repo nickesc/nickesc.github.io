@@ -50,6 +50,7 @@
 		incomingBg = nextBg;
 
 		overlayOn = true;
+		foley.play('loading');
 
 		setTimeout(() => {
 			currentBg = nextBg;
