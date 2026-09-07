@@ -38,7 +38,7 @@
 
 </div>
 
-<a href="/Nick-Escobar-Resume.pdf" download="Nick-Escobar-Resume.pdf" class="primary-button download-button">
+<a href="/Nick-Escobar-Resume.pdf" download="Nick-Escobar-Resume.pdf" class="primary-button download-button" data-foley-click="loading">
     <DownloadSymbol />
     <span class="download-text">Download</span>
 </a>
@@ -49,7 +49,7 @@
 <ul>
 {#each resumeLinks as link}
 <li>
-    {link.label}: <a href={link.href} target="_blank" rel="noopener noreferrer">{link.displayText}</a>
+    {link.label}: <a href={link.href} target="_blank" rel="noopener noreferrer" data-foley-click="tap">{link.displayText}</a>
 </li>
 {/each}
 </ul>
