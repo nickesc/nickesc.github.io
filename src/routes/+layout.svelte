@@ -110,6 +110,8 @@
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
+	<link rel="canonical" href={`${SITE_ORIGIN}${page.url.pathname}`} />
+	<meta property="og:url" content={`${SITE_ORIGIN}${page.url.pathname}`} />
 	<meta property="og:image" content={ogImage} />
 	<meta name="twitter:image" content={ogImage} />
 </svelte:head>
