@@ -1,4 +1,5 @@
 import { createFile, type Directory, type File } from './filetree';
+import { SITE_ORIGIN, SITE_DOMAIN } from './info';
 
 export const resumeLinks = [
 	{
@@ -18,8 +19,8 @@ export const resumeLinks = [
 	},
 	{
 		label: 'Portfolio',
-		href: 'https://nickesc.github.io',
-		displayText: 'nickesc.github.io'
+		href: SITE_ORIGIN,
+		displayText: SITE_DOMAIN
 	},
 	{
 		label: 'GitHub',

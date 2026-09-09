@@ -50,7 +50,6 @@
 		name="description"
 		content="Contact Nick Escobar about web development, creative technology, technical support, collaborations, or other project inquiries."
 	/>
-	<link rel="canonical" href="https://nickesc.github.io/contact" />
 
 	<meta property="og:title" content="Contact | Nick Escobar" />
 	<meta
@@ -58,7 +57,6 @@
 		content="Contact Nick Escobar about web development, creative technology, technical support, collaborations, or other project inquiries."
 	/>
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://nickesc.github.io/contact" />
 
 	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:title" content="Contact | Nick Escobar" />
