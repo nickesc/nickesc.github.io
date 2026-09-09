@@ -15,7 +15,6 @@
 		name="description"
 		content="Nick Escobar is a software developer and artist creating websites, developer tools, games, and other open-source projects."
 	/>
-	<link rel="canonical" href="https://nickesc.github.io/" />
 
 	<meta property="og:title" content="Nick Escobar" />
 	<meta
@@ -23,7 +22,6 @@
 		content="Nick Escobar is a software developer and artist creating websites, developer tools, games, and other open-source projects."
 	/>
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://nickesc.github.io/" />
 
 	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:title" content="Nick Escobar" />

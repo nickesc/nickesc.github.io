@@ -15,9 +15,29 @@
 
 	import TabBar from '$lib/components/TabBar.svelte';
 	import InputTerminal from '$lib/components/InputTerminal.svelte';
+	import { SITE_ORIGIN } from '$lib/info';
 
 	import { backgrounds, type Background } from '$lib/themes';
 	import { foley } from '$lib/foley.svelte';
+
+	const ogImages = Object.fromEntries(
+		Object.entries(
+			import.meta.glob('$lib/assets/opengraph/*.png', {
+				eager: true,
+				import: 'default'
+			})
+		).map(([path, src]) => [
+			path.slice(path.lastIndexOf('/') + 1).replace(/\.png$/, ''),
+			src as string
+		])
+	);
+
+	const ogImage = $derived(
+		new URL(
+			ogImages[page.url.pathname.split('/').filter(Boolean)[0] ?? 'home'] ?? ogImages.home,
+			SITE_ORIGIN
+		).href
+	);
 
 	let { children } = $props();
 
@@ -90,6 +110,10 @@
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
+	<link rel="canonical" href={`${SITE_ORIGIN}${page.url.pathname}`} />
+	<meta property="og:url" content={`${SITE_ORIGIN}${page.url.pathname}`} />
+	<meta property="og:image" content={ogImage} />
+	<meta name="twitter:image" content={ogImage} />
 </svelte:head>
 
 <div class="site-bg-stack" aria-hidden="true">
