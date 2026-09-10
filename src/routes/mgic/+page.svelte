@@ -39,6 +39,28 @@
 	});
 </script>
 
+<svelte:head>
+	<title>mgic | Nick Escobar</title>
+	<meta
+		name="description"
+		content="mgic displays the current track playing on Nick Escobar's Spotify."
+	/>
+
+	<meta property="og:title" content="mgic | Nick Escobar" />
+	<meta
+		property="og:description"
+		content="mgic displays the current track playing on Nick Escobar's Spotify."
+	/>
+	<meta property="og:type" content="website" />
+
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:title" content="mgic | Nick Escobar" />
+	<meta
+		name="twitter:description"
+		content="mgic displays the current track playing on Nick Escobar's Spotify."
+	/>
+</svelte:head>
+
 <div class="spotify-container">
 	<div class="spotify-widget">
 		<p>
