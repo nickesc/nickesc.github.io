@@ -22,5 +22,6 @@ export type SpotifyResponse = {
 		image: string;
 		explicit: boolean;
 		url: string;
+		duration: number;
 	};
 };

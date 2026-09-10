@@ -195,6 +195,15 @@ Examples:
   cd ..
 `;
 
+	const mgic = new Command('mgic', (args, options, terminal) => {
+		goto('/mgic', { replaceState: true, noScroll: true, keepFocus: true });
+		return { content: 'mgic' };
+	});
+	mgic.manual = `mgic
+
+Open the Mgic page.
+`;
+
 	const open = new Command('open', (args, options, terminal) => {
 		const targetPath = String(args[0] ?? '');
 		if (!targetPath) {
@@ -324,7 +333,7 @@ Examples:
 			input,
 			output,
 			options: { preprompt, prompt, printCommand: true },
-			commands: [ls, cd, open, theme, version, contact, help],
+			commands: [ls, cd, open, theme, version, contact, mgic, help],
 			completionProvider: ({ input: value, cursor }) =>
 				completeTerminalInput(value, cursor, currentDirectory)
 		});
