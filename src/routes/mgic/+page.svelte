@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import type { SpotifyResponse } from '$lib/spotifyResponse';
+	import SpotifyIcon from '$lib/components/icons/spotify.svelte';
 
 	let current = $state<SpotifyResponse | null>(null);
 	let name = $state<string | undefined>(undefined);
@@ -39,75 +40,87 @@
 </script>
 
 <div class="spotify-container">
-	{#if current}
-		<div class="spotify-widget">
-			{#if current.track?.context}
-				<p>
-					<a class="secondary-link" href={current.track.context?.url ?? '#'} target="_blank">
-						{current.track.context?.name} ⋅ {capitalize(current.track.context?.type)}
-					</a>
-				</p>
-			{/if}
-
-			<div class="track-cover-container">
-				<img
-					src={current.track?.image ?? 'https://mgic.batcomputer.xyz/missingAlbum.svg'}
-					alt={current.track?.name ?? 'No track available'}
-				/>
-				{#if current.track?.explicit}
-					<span class="explicit">E</span>
-				{/if}
-			</div>
-			<div class="track-name-container" bind:clientWidth={containerWidth}>
-				<h2
-					class="track-name"
-					class:is-scrolling={overflow > 0}
-					bind:clientWidth={titleWidth}
-					style:--overflow={overflow}
-				>
-					{#if current.track?.url}
-						<a href={current.track.url} target="_blank">
-							{name}
-						</a>
-					{:else}
-						{name ?? 'Not online'}
-					{/if}
-				</h2>
-			</div>
-
-			{#if current.track?.artists.url}
-				<p>
-					<a class="secondary-link" href={current.track.artists.url} target="_blank">
-						{current.track.artists.names.join(', ')}
-					</a>
-				</p>
+	<div class="spotify-widget">
+		<p>
+			{#if current?.track?.context}
+				<a class="secondary-link" href={current.track.context?.url ?? '#'} target="_blank">
+					{current.track.context?.name} ⋅ {capitalize(current.track.context?.type)}
+				</a>
 			{:else}
-				<p>{current.track?.artists.names.join(', ') ?? '---'}</p>
+				<span>&nbsp;</span>
 			{/if}
+		</p>
 
-			<div class="progress">
-				<div class="progress-bar">
-					{#if current.player && current.track}
-						<span
-							class="current-progress"
-							style="width: {(current.player.progress / current.track.duration) * 100}%"
-						></span>
-					{/if}
-				</div>
-				{#if current.player && current.track}
-					<div class="progress-time">
-						<span class="progress-time-current">{msToMinSec(current.player.progress)}</span>
-						<span class="progress-time-duration">{msToMinSec(current.track.duration)}</span>
-					</div>
+		<div class="track-cover-container">
+			<img
+				src={current?.track?.image ?? 'https://mgic.batcomputer.xyz/missingAlbum.svg'}
+				alt={current?.track?.name ?? 'No track available'}
+			/>
+			{#if current?.track?.explicit}
+				<span class="explicit">E</span>
+			{/if}
+		</div>
+		<div class="track-name-container" bind:clientWidth={containerWidth}>
+			<h2
+				class="track-name"
+				class:is-scrolling={overflow > 0}
+				bind:clientWidth={titleWidth}
+				style:--overflow={overflow}
+			>
+				{#if current?.track?.url}
+					<a href={current.track.url} target="_blank">
+						{name}
+					</a>
+				{:else}
+					{name ?? 'No track'}
 				{/if}
+			</h2>
+		</div>
+
+		<p class="track-artists">
+			{#if current?.track?.artists.url}
+				<a class="secondary-link" href={current.track.artists.url} target="_blank">
+					{current.track.artists.names.join(', ')}
+				</a>
+			{:else}
+				{current?.track?.artists.names.join(', ') ?? '---'}
+			{/if}
+		</p>
+
+		<div class="progress">
+			<div class="progress-bar">
+				{#if current?.player && current?.track}
+					<span
+						class="current-progress"
+						style="width: {(current.player.progress / current.track.duration) * 100}%"
+					></span>
+				{/if}
+			</div>
+			<div class="progress-time">
+				<span class="progress-time-current"
+					>{current?.player?.progress ? msToMinSec(current.player.progress) : '-:--'}</span
+				>
+				<span class="progress-time-duration"
+					>{current?.track?.duration ? msToMinSec(current.track.duration) : '-:--'}</span
+				>
 			</div>
 		</div>
-	{/if}
+	</div>
+	<a
+		class="spotify-button"
+		class:disabled={!current?.track?.url}
+		href={current?.track?.url ?? ''}
+		target="_blank"
+	>
+		<span class="spotify-icon"><SpotifyIcon size={28} color="var(--spotify-green)" /></span>
+		{current?.track?.url ? 'Play on Spotify' : 'Not available'}
+	</a>
 </div>
 
 <style>
 	:root {
 		--spotify-art-corners: 4px;
+		--spotify-green: rgb(30, 215, 96);
 
 		@media (min-width: 769px) {
 			--spotify-art-corners: 8px;
@@ -119,6 +132,47 @@
 	h2 {
 		margin: 0;
 		padding: 0;
+	}
+
+	.spotify-button {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 20px;
+		padding: 15px 20px;
+		border-radius: var(--corners);
+		background: rgba(from var(--spotify-green) r g b / 0.3);
+		color: rgba(from var(--spotify-green) r g b / 1);
+		border: 1px solid transparent;
+		font-size: 1.1rem;
+		font-family: var(--mono-font);
+		text-decoration: none;
+		transition: background 0.2s ease-in-out;
+
+		.spotify-icon {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			transition: opacity 0.2s ease-in-out;
+			opacity: 0.9;
+		}
+
+		&:hover {
+			background: rgba(from var(--spotify-green) r g b / 0.5);
+		}
+
+		&:active {
+			background: rgba(from var(--spotify-green) r g b / 0.6);
+		}
+
+		&.disabled {
+			color: rgba(from var(--brand-grey) r g b / 0.5);
+			background: rgba(from var(--brand-black) r g b / 0.5);
+			cursor: not-allowed;
+			.spotify-icon {
+				opacity: 0.5;
+			}
+		}
 	}
 
 	:global(.tabpanel:has(.spotify-container)) {
@@ -133,7 +187,7 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		gap: 10px;
+		gap: 20px;
 	}
 
 	.track-cover-container {
@@ -210,6 +264,10 @@
 		}
 	}
 
+	.track-artists {
+		width: 100%;
+	}
+
 	.track-name-container {
 		--hold: 4;
 		--speed: 15;
@@ -245,11 +303,11 @@
 				transition: color 0.2s ease-in-out;
 
 				&:hover {
-					color: rgba(from var(--brand-white) r g b / 0.6);
+					color: rgba(from var(--brand-white) r g b / 0.7);
 				}
 
 				&:active {
-					color: rgba(from var(--brand-white) r g b / 1);
+					color: rgba(from var(--brand-white) r g b / 0.5);
 				}
 			}
 		}
