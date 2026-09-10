@@ -22,12 +22,12 @@
 
 	const ogImages = Object.fromEntries(
 		Object.entries(
-			import.meta.glob('$lib/assets/opengraph/*.png', {
+			import.meta.glob('$lib/assets/opengraph/*.jpeg', {
 				eager: true,
 				import: 'default'
 			})
 		).map(([path, src]) => [
-			path.slice(path.lastIndexOf('/') + 1).replace(/\.png$/, ''),
+			path.slice(path.lastIndexOf('/') + 1).replace(/\.jpeg$/, ''),
 			src as string
 		])
 	);
