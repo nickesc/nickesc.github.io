@@ -2,18 +2,29 @@
 	import { onMount } from 'svelte';
 	import type { SpotifyResponse } from '$lib/spotifyResponse';
 
-	let data = $state<SpotifyResponse | null>(null);
+	let current = $state<SpotifyResponse | null>(null);
+	let name = $state<string | undefined>(undefined);
+	let titleWidth = $state(0);
+	let containerWidth = $state(0);
+	const overflow = $derived(Math.max(0, titleWidth - containerWidth));
 
 	function capitalize(str: string | undefined) {
 		if (!str) return str;
 		return str.charAt(0).toUpperCase() + str.slice(1);
 	}
 
+	function msToMinSec(time: number) {
+		const minutes = Math.floor(time / 60000);
+		const seconds = Math.floor((time % 60000) / 1000);
+		return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+	}
+
 	onMount(() => {
 		async function pollApi() {
 			const res = await fetch('https://mgic.batcomputer.xyz/current');
 			const next = (await res.json()) as SpotifyResponse;
-			data = next;
+			current = next;
+			name = next.track?.name;
 		}
 
 		// Run immediately on mount
@@ -28,51 +39,66 @@
 </script>
 
 <div class="spotify-container">
-	{#if data}
+	{#if current}
 		<div class="spotify-widget">
-			{#if data.track?.context}
+			{#if current.track?.context}
 				<p>
-					<a class="secondary-link" href={data.track.context?.url ?? '#'} target="_blank">
-						{data.track.context?.name} - {capitalize(data.track.context?.type)}
+					<a class="secondary-link" href={current.track.context?.url ?? '#'} target="_blank">
+						{current.track.context?.name} ⋅ {capitalize(current.track.context?.type)}
 					</a>
 				</p>
 			{/if}
 
 			<div class="track-cover-container">
 				<img
-					src={data.track?.image ?? 'https://mgic.batcomputer.xyz/missingAlbum.svg'}
-					alt={data.track?.name ?? 'No track available'}
+					src={current.track?.image ?? 'https://mgic.batcomputer.xyz/missingAlbum.svg'}
+					alt={current.track?.name ?? 'No track available'}
 				/>
-				{#if data.track?.explicit}
+				{#if current.track?.explicit}
 					<span class="explicit">E</span>
 				{/if}
 			</div>
-			{#if data.track?.url}
-				<h2 class="track-name">
-					<a href={data.track.url} target="_blank">
-						{data.track.name}
-					</a>
+			<div class="track-name-container" bind:clientWidth={containerWidth}>
+				<h2
+					class="track-name"
+					class:is-scrolling={overflow > 0}
+					bind:clientWidth={titleWidth}
+					style:--overflow={overflow}
+				>
+					{#if current.track?.url}
+						<a href={current.track.url} target="_blank">
+							{name}
+						</a>
+					{:else}
+						{name ?? 'Not online'}
+					{/if}
 				</h2>
-			{:else}
-				<h2 class="track-name">{data.track?.name ?? 'Not online'}</h2>
-			{/if}
+			</div>
 
-			{#if data.track?.artists.url}
+			{#if current.track?.artists.url}
 				<p>
-					<a class="secondary-link" href={data.track.artists.url} target="_blank">
-						{data.track.artists.names.join(', ')}
+					<a class="secondary-link" href={current.track.artists.url} target="_blank">
+						{current.track.artists.names.join(', ')}
 					</a>
 				</p>
 			{:else}
-				<p>{data.track?.artists.names.join(', ') ?? '---'}</p>
+				<p>{current.track?.artists.names.join(', ') ?? '---'}</p>
 			{/if}
 
-			<div class="progress-bar">
-				{#if data.player && data.track}
-					<span
-						class="current-progress"
-						style="width: {(data.player.progress / data.track.duration) * 100}%"
-					></span>
+			<div class="progress">
+				<div class="progress-bar">
+					{#if current.player && current.track}
+						<span
+							class="current-progress"
+							style="width: {(current.player.progress / current.track.duration) * 100}%"
+						></span>
+					{/if}
+				</div>
+				{#if current.player && current.track}
+					<div class="progress-time">
+						<span class="progress-time-current">{msToMinSec(current.player.progress)}</span>
+						<span class="progress-time-duration">{msToMinSec(current.track.duration)}</span>
+					</div>
 				{/if}
 			</div>
 		</div>
@@ -157,31 +183,20 @@
 			font-family: var(--sans-font);
 			text-decoration: none;
 			color: rgba(from var(--brand-grey) r g b / 0.7);
-			transition: color 0.2s ease-in-out;
+			transition:
+				color 0.1s ease-in-out,
+				background 0.1s ease-in-out;
+			border-radius: var(--corners);
+			padding: 2px 6px;
 
 			&:hover {
-				color: rgba(from var(--brand-grey) r g b / 0.5);
-			}
-
-			&:active {
 				color: rgba(from var(--brand-grey) r g b / 0.9);
-			}
-		}
-
-		h2 a {
-			text-wrap: pretty;
-			text-decoration: none;
-			color: rgba(from var(--brand-white) r g b / 0.9);
-			font-size: 1.5rem;
-			font-weight: 600;
-			transition: color 0.2s ease-in-out;
-
-			&:hover {
-				color: rgba(from var(--brand-white) r g b / 0.6);
+				background: rgba(from var(--brand-grey) r g b / 0.2);
 			}
 
 			&:active {
-				color: rgba(from var(--brand-white) r g b / 1);
+				color: rgba(from var(--brand-grey) r g b / 0.5);
+				background: rgba(from var(--brand-grey) r g b / 0.1);
 			}
 		}
 
@@ -195,20 +210,95 @@
 		}
 	}
 
-	.progress-bar {
-		display: block;
-		width: 100%;
-		height: 10px;
-		background-color: rgba(from var(--brand-grey) r g b / 0.3);
-		border-radius: 100px;
+	.track-name-container {
+		--hold: 4;
+		--speed: 15;
 
-		.current-progress {
+		width: 100%;
+		overflow: hidden;
+
+		h2 {
+			width: max-content;
+			white-space: nowrap;
+
+			&.is-scrolling {
+				--scroll: calc(var(--overflow) / var(--speed));
+				--total: calc(var(--hold) * 2 + var(--scroll));
+
+				animation: scroll-overflow calc(var(--total) * 1s)
+					linear(
+						0,
+						0 calc(var(--hold) / var(--total) * 100%),
+						1 calc((var(--hold) + var(--scroll)) / var(--total) * 100%),
+						1
+					)
+					infinite;
+			}
+
+			a {
+				text-wrap: nowrap;
+				white-space: nowrap;
+				text-decoration: none;
+				color: rgba(from var(--brand-white) r g b / 0.9);
+				font-size: 1.5rem;
+				font-weight: 600;
+				transition: color 0.2s ease-in-out;
+
+				&:hover {
+					color: rgba(from var(--brand-white) r g b / 0.6);
+				}
+
+				&:active {
+					color: rgba(from var(--brand-white) r g b / 1);
+				}
+			}
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.track-name-container h2.is-scrolling {
+			animation: none;
+		}
+	}
+
+	.progress {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		width: 100%;
+
+		.progress-bar {
 			display: block;
-			height: 100%;
-			background-color: rgba(from var(--brand-grey) r g b / 0.9);
-			transition: width 0.5s ease-in-out;
+			width: 100%;
+			height: 10px;
+			background-color: rgba(from var(--brand-grey) r g b / 0.3);
 			border-radius: 100px;
-			min-width: 10px;
+
+			.current-progress {
+				display: block;
+				height: 100%;
+				background-color: rgba(from var(--brand-grey) r g b / 0.9);
+				transition: width 0.5s ease-in-out;
+				border-radius: 100px;
+				min-width: 10px;
+			}
+		}
+	}
+
+	.progress-time {
+		display: flex;
+		justify-content: space-between;
+		font-size: 0.8rem;
+		color: rgba(from var(--brand-grey) r g b / 0.7);
+	}
+
+	@keyframes scroll-overflow {
+		from {
+			transform: translateX(0);
+		}
+
+		to {
+			transform: translateX(calc(var(--overflow) * -1px));
 		}
 	}
 </style>
