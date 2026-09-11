@@ -63,16 +63,6 @@
 
 <div class="spotify-container">
 	<div class="spotify-widget">
-		<p>
-			{#if current?.track?.context}
-				<a class="secondary-link" href={current.track.context?.url ?? '#'} target="_blank">
-					{current.track.context?.name} ⋅ {capitalize(current.track.context?.type)}
-				</a>
-			{:else}
-				<span>&nbsp;</span>
-			{/if}
-		</p>
-
 		<div class="track-cover-container">
 			<img
 				src={current?.track?.image ?? 'https://mgic.batcomputer.xyz/missingAlbum.svg'}
@@ -82,78 +72,86 @@
 				<span class="explicit">E</span>
 			{/if}
 		</div>
-		<div class="track-name-container" bind:clientWidth={containerWidth}>
-			<h2
-				class="track-name"
-				class:is-scrolling={overflow > 0}
-				bind:clientWidth={titleWidth}
-				style:--overflow={overflow}
-			>
-				{#if current?.track?.url}
-					<a href={current.track.url} target="_blank">
-						{name}
+		<div class="track-details">
+			<p class="track-context">
+				{#if current?.track?.context}
+					<a class="secondary-link" href={current.track.context?.url ?? '#'} target="_blank">
+						{current.track.context?.name} ⋅ {capitalize(current.track.context?.type)}
 					</a>
 				{:else}
-					{name ?? 'No track'}
+					<span>&nbsp;</span>
 				{/if}
-			</h2>
-		</div>
+			</p>
 
-		<p class="track-artists">
-			{#if current?.track?.artists.url}
-				<a class="secondary-link" href={current.track.artists.url} target="_blank">
-					{current.track.artists.names.join(', ')}
-				</a>
-			{:else}
-				{current?.track?.artists.names.join(', ') ?? '---'}
-			{/if}
-		</p>
+			<div class="track-name-container" bind:clientWidth={containerWidth}>
+				<h2
+					class="track-name"
+					class:is-scrolling={overflow > 0}
+					bind:clientWidth={titleWidth}
+					style:--overflow={overflow}
+				>
+					{#if current?.track?.url}
+						<a href={current.track.url} target="_blank">
+							{name}
+						</a>
+					{:else}
+						{name ?? 'No track'}
+					{/if}
+				</h2>
+			</div>
 
-		<div class="progress">
-			<div class="progress-bar">
-				{#if current?.player && current?.track}
-					<span
-						class="current-progress"
-						style="width: {(current.player.progress / current.track.duration) * 100}%"
-					></span>
+			<p class="track-artists">
+				{#if current?.track?.artists.url}
+					<a class="secondary-link" href={current.track.artists.url} target="_blank">
+						{current.track.artists.names.join(', ')}
+					</a>
+				{:else}
+					{current?.track?.artists.names.join(', ') ?? '---'}
 				{/if}
+			</p>
+
+			<div class="progress">
+				<div class="progress-bar">
+					{#if current?.player && current?.track}
+						<span
+							class="current-progress"
+							style="width: {(current.player.progress / current.track.duration) * 100}%"
+						></span>
+					{/if}
+				</div>
+				<div class="progress-time">
+					<span class="progress-time-current"
+						>{current?.player?.progress ? msToMinSec(current.player.progress) : '-:--'}</span
+					>
+					<span class="progress-time-duration"
+						>{current?.track?.duration ? msToMinSec(current.track.duration) : '-:--'}</span
+					>
+				</div>
 			</div>
-			<div class="progress-time">
-				<span class="progress-time-current"
-					>{current?.player?.progress ? msToMinSec(current.player.progress) : '-:--'}</span
+
+			<a
+				class="spotify-button"
+				class:disabled={!current?.track?.url}
+				href={current?.track?.url ?? ''}
+				target="_blank"
+			>
+				<span class="spotify-icon"
+					><SpotifyIcon
+						size={28}
+						color={current?.track?.url
+							? 'var(--spotify-green)'
+							: 'rgba(from var(--brand-grey) r g b / 0.7)'}
+					/></span
 				>
-				<span class="progress-time-duration"
-					>{current?.track?.duration ? msToMinSec(current.track.duration) : '-:--'}</span
-				>
-			</div>
+				{current?.track?.url ? 'Play on Spotify' : 'Not available'}
+			</a>
 		</div>
 	</div>
-	<a
-		class="spotify-button"
-		class:disabled={!current?.track?.url}
-		href={current?.track?.url ?? ''}
-		target="_blank"
-	>
-		<span class="spotify-icon"
-			><SpotifyIcon
-				size={28}
-				color={current?.track?.url
-					? 'var(--spotify-green)'
-					: 'rgba(from var(--brand-grey) r g b / 0.7)'}
-			/></span
-		>
-		{current?.track?.url ? 'Play on Spotify' : 'Not available'}
-	</a>
 </div>
 
 <style>
 	:root {
-		--spotify-art-corners: 4px;
 		--spotify-green: rgb(30, 215, 96);
-
-		@media (min-width: 769px) {
-			--spotify-art-corners: 8px;
-		}
 	}
 
 	a,
@@ -166,9 +164,12 @@
 	:global(.tabpanel:has(.spotify-container)) {
 		height: 100%;
 		width: 100%;
+		container-type: size;
+		container-name: mgic-main;
 	}
 
 	.spotify-container {
+		--spotify-art-corners: 4px;
 		width: 100%;
 		height: 100%;
 		display: flex;
@@ -186,6 +187,7 @@
 			gap: 10px;
 			width: 100%;
 			max-width: 400px;
+			transition: gap 0.2s ease-in-out;
 
 			a,
 			h2,
@@ -220,7 +222,7 @@
 				width: 100%;
 				height: fit-content;
 				isolation: isolate;
-				transition: width 0.4s ease-in-out;
+				order: -1;
 
 				.explicit {
 					font-family: var(--mono-font);
@@ -249,6 +251,14 @@
 					height: auto;
 					aspect-ratio: 1;
 				}
+			}
+
+			.track-context {
+				order: -2;
+			}
+
+			.track-details {
+				display: contents;
 			}
 
 			.track-name-container {
@@ -298,30 +308,7 @@
 
 			.track-artists {
 				width: 100%;
-			}
-
-			@media (max-height: 910px) {
-				.track-cover-container {
-					width: 80%;
-				}
-			}
-
-			@media (max-height: 810px) {
-				.track-cover-container {
-					width: 60%;
-				}
-			}
-
-			@media (max-height: 710px) {
-				.track-cover-container {
-					width: 40%;
-				}
-			}
-
-			@media (max-height: 610px) {
-				.track-name-container h2 a {
-					font-size: 1.2rem;
-				}
+				transform: translateX(-6px);
 			}
 		}
 
@@ -330,6 +317,7 @@
 			align-items: center;
 			justify-content: center;
 			gap: 20px;
+			margin-top: 10px;
 			padding: 15px 20px;
 			border-radius: var(--corners);
 			background: rgba(from var(--spotify-green) r g b / 0.3);
@@ -362,6 +350,68 @@
 				cursor: not-allowed;
 				.spotify-icon {
 					opacity: 0.5;
+				}
+			}
+		}
+
+		@container mgic-main (aspect-ratio <= 1 / 1) {
+			@container mgic-main (max-height: 680px) {
+				.spotify-widget .track-cover-container {
+					width: 80%;
+				}
+			}
+
+			@container mgic-main (max-height: 580px) {
+				.spotify-widget .track-cover-container {
+					width: 60%;
+				}
+			}
+
+			@container mgic-main (max-height: 420px) {
+				.spotify-widget {
+					gap: 1px;
+
+					.track-name-container h2 a {
+						font-size: 1.2rem;
+					}
+				}
+
+				.spotify-button {
+					gap: 12px;
+					margin-top: 4px;
+					padding: 8px 14px;
+					font-size: 1rem;
+				}
+			}
+		}
+
+		@container mgic-main (aspect-ratio > 1 / 1) {
+			--spotify-art-corners: 8px;
+
+			.spotify-widget {
+				flex-direction: row;
+				align-items: center;
+				max-width: 100%;
+				gap: 24px;
+
+				.track-cover-container {
+					width: 50%;
+					max-width: min(100cqh, 480px);
+					flex: 0 0 auto;
+				}
+
+				.track-details {
+					display: flex;
+					flex-direction: column;
+					align-items: stretch;
+					justify-content: center;
+					gap: 10px;
+					flex: 1;
+					min-width: 0;
+				}
+
+				.spotify-button {
+					align-self: flex-start;
 				}
 			}
 		}
