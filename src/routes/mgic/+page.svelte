@@ -196,6 +196,8 @@
 			}
 
 			.secondary-link {
+				--link-pad-x: 6px;
+				--link-pad-y: 2px;
 				font-family: var(--sans-font);
 				text-decoration: none;
 				color: rgba(from var(--brand-grey) r g b / 0.7);
@@ -203,7 +205,8 @@
 					color 0.1s ease-in-out,
 					background 0.1s ease-in-out;
 				border-radius: var(--corners);
-				padding: 2px 6px;
+				padding: var(--link-pad-y) var(--link-pad-x);
+				margin-inline: calc(var(--link-pad-x) * -1);
 
 				&:hover {
 					color: rgba(from var(--brand-grey) r g b / 0.9);
@@ -308,7 +311,6 @@
 
 			.track-artists {
 				width: 100%;
-				transform: translateX(-6px);
 			}
 		}
 
