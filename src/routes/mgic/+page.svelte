@@ -72,7 +72,7 @@
 				<span class="explicit">E</span>
 			{/if}
 		</div>
-		<div class="track-details">
+		<div class="track-details scrollable">
 			<p class="track-context">
 				{#if current?.track?.context}
 					<a class="secondary-link" href={current.track.context?.url ?? '#'} target="_blank">
@@ -174,8 +174,8 @@
 		height: 100%;
 		display: flex;
 		flex-direction: column;
-		align-items: center;
-		justify-content: center;
+		align-items: safe center;
+		justify-content: safe center;
 		gap: 20px;
 
 		.spotify-widget {
@@ -394,22 +394,27 @@
 				flex-direction: row;
 				align-items: center;
 				max-width: 100%;
+				height: 100%;
+				min-height: 0;
 				gap: 24px;
 
 				.track-cover-container {
-					width: 50%;
-					max-width: min(100cqh, 480px);
-					flex: 0 0 auto;
+					width: min(50%, 100cqh, 480px);
+					flex: none;
 				}
 
 				.track-details {
-					display: flex;
-					flex-direction: column;
-					align-items: stretch;
-					justify-content: center;
+					display: grid;
+					grid-auto-rows: max-content;
+					align-content: safe center;
+					align-self: stretch;
 					gap: 10px;
 					flex: 1;
 					min-width: 0;
+					min-height: 0;
+					overflow-x: hidden;
+					overflow-y: auto;
+					overscroll-behavior: contain;
 				}
 
 				.spotify-button {
