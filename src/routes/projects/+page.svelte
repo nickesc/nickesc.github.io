@@ -72,7 +72,7 @@
 </svelte:head>
 
 <span class="projects-title">
-	<h2>Projects</h2>
+	<h1>Projects</h1>
 	<span class="projects-count">{displayedProjects.length} items</span>
 </span>
 
@@ -144,7 +144,7 @@
 		text-transform: uppercase;
 	}
 
-	h2 {
+	h1 {
 		margin: 0;
 		margin-bottom: 1rem;
 	}

@@ -84,7 +84,7 @@
 	{/each}
 </ul>
 
-<h2>Contact me</h2>
+<h1>Contact me</h1>
 
 <div class="contact-container">
 	<p>
@@ -174,7 +174,8 @@
 </div>
 
 <style>
-	h2 {
+	h2,
+	h1 {
 		margin-top: 0;
 	}
 
