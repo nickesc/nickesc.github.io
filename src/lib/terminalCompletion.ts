@@ -38,12 +38,14 @@ function completePath(
 	if (!searchDirectory) return [];
 
 	const directories = searchDirectory.children
+		.filter((directory) => !directory.hidden)
 		.filter((directory) => directory.name.startsWith(partialName))
 		.map((directory) => `${directoryPrefix}${directory.name}/`);
 
 	if (mode === 'directories') return directories;
 
 	const files = searchDirectory.files
+		.filter((file) => !file.hidden)
 		.filter((file) => file.name.startsWith(partialName))
 		.map((file) => `${directoryPrefix}${file.name}`);
 

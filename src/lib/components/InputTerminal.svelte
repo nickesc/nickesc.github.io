@@ -105,6 +105,11 @@
 		foley.play(failed ? 'ping' : 'pop');
 	}
 
+	function gotoPage(route: string): Record<'page', string> {
+		goto(route, { replaceState: true, noScroll: true, keepFocus: true });
+		return { page: route };
+	}
+
 	const version = new Command('version', (args, options, terminal) => {
 		terminal.stdout(`${page.url.hostname}@${__APP_VERSION__}`);
 		return { version: __APP_VERSION__ };
@@ -141,22 +146,36 @@ Examples:
 `;
 
 	const ls = new Command('ls', (args, options, terminal) => {
+		const showHidden = 'a' in options || 'all' in options;
+		const visibleChildren = currentDirectory.children.filter(
+			(child) => showHidden || !child.hidden
+		);
+		const visibleFiles = currentDirectory.files.filter((file) => showHidden || !file.hidden);
+
 		if (currentDirectory.parent !== null) {
 			terminal.stdout('<span class="directory-name">..</span>');
 		}
 		terminal.stdout(
-			currentDirectory.children
-				.map((child) => `<span class="directory-name">${child.name}/</span>`)
+			visibleChildren
+				.map(
+					(child) =>
+						`<span class="directory-name${child.hidden ? ' hidden-item' : ''}">${child.name}/</span>`
+				)
 				.join('\n')
 		);
 		terminal.stdout(
-			currentDirectory.files.map((file) => `<span class="file-name">${file.name}</span>`).join('\n')
+			visibleFiles
+				.map(
+					(file) =>
+						`<span class="file-name${file.hidden ? ' hidden-item' : ''}">${file.name}</span>`
+				)
+				.join('\n')
 		);
 		return { directory: currentDirectory };
 	});
-	ls.manual = `ls
+	ls.manual = `ls [-a | --all]
 
-List the contents of the current directory.
+List the contents of the current directory. Use \`-a\` or \`--all\` to include hidden entries.
 `;
 
 	function navigateToDirectory(targetPath: string, terminal: Terminal): Directory | null {
@@ -196,8 +215,7 @@ Examples:
 `;
 
 	const mgic = new Command('mgic', (args, options, terminal) => {
-		goto('/mgic', { replaceState: true, noScroll: true, keepFocus: true });
-		return { content: 'mgic' };
+		return gotoPage('/mgic');
 	});
 	mgic.manual = `mgic
 
@@ -228,7 +246,7 @@ Open my Spotify status page.
 		}
 
 		terminal.stdout(file.content);
-		return { content: file.content };
+		return { page: file.content };
 	});
 	open.manual = `open &lt;path&gt;
 
@@ -291,7 +309,7 @@ Examples:
 		terminal.stdout(`This terminal acts as a command line for the website. Pages are directories, links and content are files.
 
 Site commands:<span class="command-list">
-  ls                         List dirs and files here (dirs end with /)
+  ls [-a | --all]            List dirs and files here (dirs end with /)
   cd &lt;directory&gt;             Move to a page (\`cd /projects\`, \`cd ..\`, \`cd ~\`)
   open &lt;path&gt;                Move to a directory, open a link, or print file content
   theme [list | &lt;name&gt;]      Cycle themes, list them, or set one by name
@@ -457,6 +475,10 @@ Examples:
 
 		:global(.file-name) {
 			color: rgb(123, 173, 156);
+		}
+
+		:global(.hidden-item) {
+			color: rgba(from var(--brand-grey) r g b / 0.6);
 		}
 	}
 

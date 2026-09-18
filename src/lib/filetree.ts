@@ -1,6 +1,7 @@
 export type File = {
 	type: 'file';
 	name: string;
+	hidden: boolean;
 	parent: Directory | null;
 	content: string;
 	href?: string;
@@ -9,6 +10,7 @@ export type File = {
 export type Directory = {
 	type: 'directory';
 	name: string;
+	hidden: boolean;
 	page?: string;
 	parent: Directory | null;
 	children: Directory[];
@@ -18,11 +20,12 @@ export type Directory = {
 export function createFile(
 	name: string,
 	parent: Directory,
-	{ content = '', href }: { content?: string; href?: string } = {}
+	{ content = '', href, hidden = false }: { content?: string; href?: string; hidden?: boolean } = {}
 ): File {
 	return {
 		type: 'file',
 		name,
+		hidden,
 		parent,
 		content,
 		href
@@ -32,11 +35,13 @@ export function createFile(
 export function createDirectory(
 	name: string,
 	parent: Directory | null,
-	page?: string
+	page?: string,
+	{ hidden = false }: { hidden?: boolean } = {}
 ): Directory {
 	return {
 		type: 'directory',
 		name,
+		hidden,
 		page,
 		parent,
 		children: [],

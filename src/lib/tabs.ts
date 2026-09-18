@@ -48,4 +48,6 @@ for (const tab of tabs) {
 	}
 }
 
+root.children.push(createDirectory('mgic', root, '/mgic', { hidden: true }));
+
 export const tabTree: Directory = root;
