@@ -74,17 +74,17 @@ Developer and creative with experience in frontend and full-stack web developmen
 
 ## EXPERIENCE
 
-### **IT/Website Coordinator**
+### **Frontend & CRM Engineer**
 
-**Project Create** — Washington, DC | June 2023-Present
+**Waybetter Marketing** — Columbia, MD | September 2026-Present
 
-*Non-profit providing art education for youth in the city*
+*Enrollment marketing and Slate services for higher education*
 
-- Oversee Project Create digital infrastructure, including maintaining the [Project Create website](https://projectcreatedc.org), IT administration, software/hardware troubleshooting, and on-site event technical support.
-- Build and refine web pages by turning visual concepts, designs, and provided assets into responsive, polished layouts that support programs, fundraising, and community engagement.
+- Developing engaging, student-facing webpages with a mobile-first approach.
+- Optimizing webpages for maximum speed, scalability, and maintainability.
 - Optimized website performance to achieve 5-10x faster loading speeds, significantly improving user experience.
-- Implemented a digital asset management system to serve as a central repository for the organization's assets, streamlining access and reducing retrieval times, making collaboration easier and more efficient.
-- Spearheaded NordPass password manager rollout, migrating organization credentials, performing platform administration, and training staff – strengthening organizational security and encouraging secure credential sharing.
+- Troubleshooting, building, and maintaining highly reusable, modular code libraries to accelerate future projects.
+- Conducting thorough QA testing to ensure accuracy, usability, and visual fidelity across devices and browsers.
 
 ### **Creative Director & Developer**
 
@@ -94,8 +94,20 @@ Developer and creative with experience in frontend and full-stack web developmen
 
 - Founded [N. Escobar Media](https://nescobar.media), an independent production studio building innovative digital experiences and finding solutions to niche problems, using a wide variety of tools for both internal projects and external clients.
 - Actively releasing projects, including: a number of JavaScript & TypeScript packages – like [modpack-lock](https://npmjs.com/package/modpack-lock) and [steploop](https://npmjs.com/package/steploop), games built in Godot and on hardware – like [Starfish](https://nickesc.itch.io/starfish) and [the BumbleBee](https://github.com/nickesc/bumblebee), other media projects and animations – like [The Poets Are Coming](https://www.youtube.com/watch?v=Qajr-cAGY2Q), and more.
-- Design and develop visually appealing, user-friendly websites for individuals and organizations, manage clients' digital workspaces, execute end-to-end domain management (DNS configuration, domain registration, Google Workspace integration and website deployment).
 - Collaborate with clients to plan, design and build solutions to their needs, emphasizing clear communication with frequent updates, regular meetings and comprehensive plans outlining timelines, milestones and deliverables.
+
+### **IT/Website Coordinator**
+
+**Project Create** — Washington, DC | June 2023-September 2026
+
+*Non-profit providing art education for youth in the city*
+
+- Oversaw Project Create digital infrastructure, including maintaining the Project Create website, IT administration, software/hardware troubleshooting, and on-site event technical support.
+- Built and refined web pages by turning visual concepts, designs, and provided assets into responsive, polished layouts that support programs, fundraising, and community engagement.
+- Optimized website performance to achieve 5-10x faster loading speeds, significantly improving user experience.
+- Implemented a digital asset management system to serve as a central repository for the organization's assets, streamlining access and reducing retrieval times, making collaboration easier and more efficient.
+- Spearheaded NordPass password manager rollout, migrated organization credentials, performed platform administration, and trained staff – strengthening organizational security and encouraging secure credential sharing.
+
 
 ### **Program Assistant Coordinator**
 

@@ -54,11 +54,13 @@
 	</p>
 	<p>
 		As a student, I studied computer science at Occidental College, with minors in studio art and
-		media studies. Today, I run a small, independent studio, <a
-			href="https://nescobar.media"
+		media studies. Today, I work as a frontend developer at <a
+			href="https://www.waybettermarketing.com/"
 			target="_blank"
-			rel="noopener noreferrer">N. Escobar Media</a
-		>, that provides web development services and technical support for small teams.
+			rel="noopener noreferrer">Waybetter Marketing</a
+		>. I also release my own projects through
+		<a href="https://nescobar.media" target="_blank" rel="noopener noreferrer">N. Escobar Media</a>,
+		a small, independent studio I founded.
 	</p>
 	<p>
 		My hobbies include playing video games, watching movies, hiking, camping, and collecting

@@ -88,7 +88,7 @@
 
 <div class="contact-container">
 	<p>
-		I'm always happy to connect, and I'm currently open to new opportunities. You can use the form
+		I'm always happy to connect and talk about projects or collaborations. You can use the form
 		below to get in touch.
 	</p>
 	{#if success}
