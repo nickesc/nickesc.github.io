@@ -669,6 +669,10 @@
 		overflow-x: hidden;
 	}
 
+	.tabpanel {
+		height: 100%;
+	}
+
 	.powered-off-container {
 		text-align: center;
 		display: flex;
