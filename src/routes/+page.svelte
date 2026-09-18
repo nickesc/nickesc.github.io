@@ -65,6 +65,19 @@
 		physical media.
 	</p>
 
+	<div class="work">
+		<h3>My work</h3>
+		<a class="secondary-button" href="/projects">Projects</a>
+		<a class="secondary-button" href="/games">Games</a>
+		<a
+			class="secondary-button"
+			href="https://nickesc.com/"
+			target="_blank"
+			rel="noopener noreferrer"
+			>Art
+		</a>
+	</div>
+
 	<div class="tech">
 		<span class="tech-label">Go-to tech</span>
 		<ul class="badges">
