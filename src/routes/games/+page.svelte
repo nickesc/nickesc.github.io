@@ -28,10 +28,6 @@
 			isFullscreen = !isFullscreen;
 		}
 	}
-
-	$effect(() => {
-		if (gameUrl) loading = true;
-	});
 </script>
 
 <svelte:head>
