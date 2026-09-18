@@ -18,14 +18,32 @@
 	let gameFrame: HTMLDivElement | undefined = $state(undefined);
 	let isFullscreen = $state(false);
 
+	function fullscreenChangeListener(event: Event) {
+		if (document.fullscreenElement) {
+			isFullscreen = true;
+		} else {
+			isFullscreen = false;
+			document.removeEventListener('fullscreenchange', fullscreenChangeListener);
+		}
+	}
+
 	function fullscreen() {
+		if (!game) return;
+		let success = true;
 		if (gameFrame) {
 			if (isFullscreen) {
 				document.exitFullscreen();
 			} else {
-				gameFrame.requestFullscreen();
+				try {
+					gameFrame.requestFullscreen();
+					document.addEventListener('fullscreenchange', fullscreenChangeListener);
+				} catch (error) {
+					console.error(error);
+					success = false;
+					window.location.href = game.fallbackUrl;
+				}
 			}
-			isFullscreen = !isFullscreen;
+			isFullscreen = success ? !isFullscreen : isFullscreen;
 		}
 	}
 </script>
