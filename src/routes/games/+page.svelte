@@ -8,7 +8,7 @@
 	const game = $derived(
 		browser
 			? games.find(
-					(game) => game.id.toLowerCase() === page.url.searchParams.get('game')?.toLowerCase()
+					(game) => game.id.toLowerCase() === page.url.searchParams.get('id')?.toLowerCase()
 				)
 			: undefined
 	);
