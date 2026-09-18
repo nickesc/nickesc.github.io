@@ -4,6 +4,13 @@
 	import LoadingSpinner from '$lib/components/LoadingSpinner.svelte';
 	import { games } from '$lib/games';
 	import MaximizeSymbol from '$lib/components/MaximizeSymbol.svelte';
+	import { foley } from '$lib/foley.svelte';
+
+	type GodotWindow = Window & {
+		GodotAudio?: {
+			ctx?: AudioContext | null;
+		};
+	};
 
 	const game = $derived(
 		browser
@@ -16,6 +23,7 @@
 	const gameAspectRatio = $derived(game?.aspectRatio ?? 16 / 9);
 	let loading = $state(true);
 	let gameFrame: HTMLDivElement | undefined = $state(undefined);
+	let gameIframe: HTMLIFrameElement | undefined = $state(undefined);
 	let isFullscreen = $state(false);
 
 	function fullscreen() {
@@ -28,6 +36,37 @@
 			isFullscreen = !isFullscreen;
 		}
 	}
+
+	function syncGameMuted(muted: boolean) {
+		try {
+			const audioContext = (gameIframe?.contentWindow as GodotWindow | null)?.GodotAudio?.ctx;
+			if (!audioContext) return false;
+
+			if (muted && audioContext.state === 'running') {
+				void audioContext.suspend();
+			} else if (!muted && audioContext.state === 'suspended') {
+				void audioContext.resume();
+			}
+
+			return true;
+		} catch {
+			// The game may be cross-origin in local development.
+			return false;
+		}
+	}
+
+	$effect(() => {
+		const muted = foley.muted;
+		const currentGameUrl = gameUrl;
+
+		if (!currentGameUrl || !gameIframe || syncGameMuted(muted) || !muted) return;
+
+		const syncTimer = setInterval(() => {
+			if (syncGameMuted(muted)) clearInterval(syncTimer);
+		}, 100);
+
+		return () => clearInterval(syncTimer);
+	});
 </script>
 
 <svelte:head>
@@ -47,6 +86,7 @@
 					<LoadingSpinner label={`Loading ${game.id}`} />
 				{/if}
 				<iframe
+					bind:this={gameIframe}
 					class:loaded={!loading}
 					src={gameUrl}
 					title={game.id}
