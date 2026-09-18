@@ -313,6 +313,10 @@
 			--btn: rgba(from var(--btn-color) r g b / 0.7);
 			color: var(--btn-color);
 		}
+
+		&:visited {
+			color: var(--btn-color);
+		}
 	}
 
 	:global(button.secondary-button),
