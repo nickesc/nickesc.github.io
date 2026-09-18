@@ -40,10 +40,13 @@
 			}),
 			createFile('duration', directory, { content: msToMinSec(track.track.duration) }),
 			createFile('progress', directory, { content: msToMinSec(track.player?.progress ?? 0) }),
-			createFile('volume', directory, { content: `${track.player?.vol ?? 0}` }),
 			createFile('explicit', directory, { content: track.track.explicit ? 'Yes' : 'No' }),
-			createFile('shuffle', directory, { content: track.player?.shuffle ? 'On' : 'Off' }),
-			createFile('repeat', directory, { content: track.player?.repeat ?? 'Off' })
+			createFile('volume', directory, { content: `${track.player?.vol ?? 0}`, hidden: true }),
+			createFile('shuffle', directory, {
+				content: track.player?.shuffle ? 'On' : 'Off',
+				hidden: true
+			}),
+			createFile('repeat', directory, { content: track.player?.repeat ?? 'Off', hidden: true })
 		];
 	}
 
