@@ -1,42 +1,28 @@
-# sv
+# [nickesc.io](https://nickesc.io)
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+My personal developer portfolio. It collects my projects, links to the places where I release my work, and provides a way to contact me.
 
-## Creating a project
+[![The nickesc.io home page](src/lib/assets/opengraph/home.jpeg)](https://nickesc.io)
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Overview
 
-```sh
-# create a new project
-npx sv create my-app
-```
+The site is a static SvelteKit app with a terminal-inspired interface. GitHub Actions builds the site from the `main` branch and deploys it to GitHub Pages.
 
-To recreate this project with the same configuration:
+## Features
 
-```sh
-# recreate this project
-npx sv@0.16.2 create --template minimal --types ts --add prettier eslint --install npm nickesc.github.io
-```
+- An interactive command prompt
+- A filterable project archive
+- A resume with downloadable PDF
+- Links to my profiles and published work
+- A contact form
+- Switchable backgrounds
+- Interface sounds
 
-## Developing
+## Tech stack
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```sh
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+- Svelte 5 and SvelteKit
+- TypeScript
+- Vite
+- mdsvex
+- SvelteKit's static adapter
+- GitHub Actions and GitHub Pages
