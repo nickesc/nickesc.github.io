@@ -76,6 +76,14 @@
 			rel="noopener noreferrer"
 			>Art
 		</a>
+		<a
+			class="secondary-button"
+			href="https://infosec.exchange/@nickesc?rel='me'"
+			target="_blank"
+			rel="noopener noreferrer"
+			hidden
+			>Social
+		</a>
 	</div>
 
 	<div class="tech">
