@@ -345,6 +345,7 @@ Site commands:<span class="command-list">
   contact --name= --email= --message=
                              Submit the contact form
   mgic                       Open my Spotify status page
+  games [--list | &lt;game&gt;]    Play games on the site. Use \`--list\` to list all available games.
   version                    Print the site version
   help [command]             Show this guide or details for one command</span>
 
