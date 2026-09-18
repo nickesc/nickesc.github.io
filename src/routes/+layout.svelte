@@ -183,6 +183,22 @@
 
 		--form-accent-color: rgb(64, 99, 203);
 
+		--terminal-darkblack: #111111;
+		--terminal-black: #151515;
+		--terminal-brightblack: #424242;
+		--terminal-grey: #6d6d6d;
+		--terminal-brightgrey: #aaaaaa;
+		--terminal-white: #c7c7c7;
+		--terminal-brightwhite: #e8e3e3;
+		--terminal-red: #b66467;
+		--terminal-green: #8c977d;
+		--terminal-yellow: #d9bc8c;
+		--terminal-blue: #8da3b9;
+		--terminal-darkblue: #6483a3;
+		--terminal-magenta: #a988b0;
+		--terminal-cyan: #8aa6a2;
+		--terminal-orange: #dd9670;
+
 		--corners: 2px;
 		--window-corners: 5px;
 

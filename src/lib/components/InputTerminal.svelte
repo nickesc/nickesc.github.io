@@ -444,7 +444,7 @@ Examples:
 		padding: 0.5rem 0.75rem;
 		box-sizing: border-box;
 		font: 1rem/1.5 monospace;
-		color: var(--brand-grey);
+		color: var(--terminal-white);
 		font-family: var(--terminal-font);
 		display: flex;
 		flex-direction: column;
@@ -468,17 +468,18 @@ Examples:
 		display: flex;
 		flex-direction: column;
 		white-space: pre-wrap;
+		color: var(--terminal-white);
 
 		:global(.directory-name) {
-			color: rgb(124, 124, 235);
+			color: var(--terminal-blue);
 		}
 
 		:global(.file-name) {
-			color: rgb(123, 173, 156);
+			color: var(--terminal-green);
 		}
 
 		:global(.hidden-item) {
-			color: rgba(from var(--brand-grey) r g b / 0.6);
+			color: var(--terminal-grey);
 		}
 	}
 
@@ -487,11 +488,11 @@ Examples:
 	}
 
 	.error {
-		color: #ff6b6b;
+		color: var(--terminal-red);
 	}
 
 	:global(.command-list) {
-		color: rgba(from var(--brand-grey) r g b / 0.6);
+		color: var(--terminal-grey);
 	}
 
 	.input-line {
