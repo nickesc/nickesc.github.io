@@ -4,11 +4,14 @@
 	import { SvelteOutputAdapter } from 'input-terminal/svelte';
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
+	import type { PathnameWithSearchOrHash } from '$app/types';
 
 	import { submitForm } from '$lib/submitForm';
 	import { createProjectFiles } from '$lib/projects';
 	import { createContactFiles } from '$lib/contact';
 	import { createResumeFiles } from '$lib/resume';
+	import { games as gameList } from '$lib/games';
 
 	import { tabTree } from '$lib/tabs.svelte';
 	import { foley } from '$lib/foley.svelte';
@@ -222,6 +225,26 @@ Examples:
 Open my Spotify status page.
 `;
 
+	const games = new Command('games', (args, options, terminal) => {
+		if (options.list) {
+			terminal.stdout(gameList.map((game) => game.id).join('\n'));
+			return { games: games };
+		}
+
+		if (args[0]) {
+			return gotoPage(`/games?id=${args[0]}`);
+		}
+		return gotoPage('/games');
+	});
+	games.manual = `games [--list | &lt;game&gt;]
+
+    Play games on the site. Use \`--list\` to list all available games.
+
+Examples:
+  games    --list      # list all available games
+  games    starfish    # open the Starfish game
+`;
+
 	const open = new Command('open', (args, options, terminal) => {
 		const targetPath = String(args[0] ?? '');
 		if (!targetPath) {
@@ -241,8 +264,14 @@ Open my Spotify status page.
 		}
 
 		if (file.href) {
-			window.location.assign(file.href);
-			return { href: file.href };
+			const url = new URL(file.href, page.url);
+			if (url.origin === page.url.origin) {
+				const route = `${url.pathname}${url.search}${url.hash}` as PathnameWithSearchOrHash;
+				goto(resolve(route), { replaceState: true, noScroll: true, keepFocus: true });
+			} else {
+				window.location.assign(url);
+			}
+			return { page: file.href };
 		}
 
 		terminal.stdout(file.content);
@@ -351,7 +380,7 @@ Examples:
 			input,
 			output,
 			options: { preprompt, prompt, printCommand: true },
-			commands: [ls, cd, open, theme, version, contact, mgic, help],
+			commands: [ls, cd, open, theme, version, contact, mgic, games, help],
 			completionProvider: ({ input: value, cursor }) =>
 				completeTerminalInput(value, cursor, currentDirectory)
 		});

@@ -1,14 +1,19 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
 	import { page } from '$app/state';
+	import { onMount } from 'svelte';
 	import LoadingSpinner from '$lib/components/LoadingSpinner.svelte';
 	import { games } from '$lib/games';
 	import MaximizeSymbol from '$lib/components/MaximizeSymbol.svelte';
 
+	import type { Directory, File } from '$lib/filetree';
+	import { createFile, resolveDirectory } from '$lib/filetree';
+	import { tabTree } from '$lib/tabs.svelte';
+
 	const game = $derived(
 		browser
 			? games.find(
-					(game) => game.id.toLowerCase() === page.url.searchParams.get('game')?.toLowerCase()
+					(game) => game.id.toLowerCase() === page.url.searchParams.get('id')?.toLowerCase()
 				)
 			: undefined
 	);
@@ -18,14 +23,47 @@
 	let gameFrame: HTMLDivElement | undefined = $state(undefined);
 	let isFullscreen = $state(false);
 
+	function createGameFiles(directory: Directory): File[] {
+		return games.map((game) =>
+			createFile(game.id, directory, {
+				href: `/games?id=${encodeURIComponent(game.id)}`
+			})
+		);
+	}
+
+	onMount(() => {
+		const directory = resolveDirectory('/games', tabTree);
+		if (directory) {
+			directory.files = createGameFiles(directory);
+		}
+	});
+
+	function fullscreenChangeListener() {
+		if (document.fullscreenElement) {
+			isFullscreen = true;
+		} else {
+			isFullscreen = false;
+			document.removeEventListener('fullscreenchange', fullscreenChangeListener);
+		}
+	}
+
 	function fullscreen() {
+		if (!game) return;
+		let success = true;
 		if (gameFrame) {
 			if (isFullscreen) {
 				document.exitFullscreen();
 			} else {
-				gameFrame.requestFullscreen();
+				try {
+					gameFrame.requestFullscreen();
+					document.addEventListener('fullscreenchange', fullscreenChangeListener);
+				} catch (error) {
+					console.error(error);
+					success = false;
+					window.location.href = game.fallbackUrl;
+				}
 			}
-			isFullscreen = !isFullscreen;
+			isFullscreen = success ? !isFullscreen : isFullscreen;
 		}
 	}
 </script>
