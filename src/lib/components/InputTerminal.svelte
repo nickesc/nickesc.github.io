@@ -201,7 +201,7 @@ Examples:
 	});
 	mgic.manual = `mgic
 
-Open the Mgic page.
+Open my Spotify status page.
 `;
 
 	const open = new Command('open', (args, options, terminal) => {
@@ -297,6 +297,7 @@ Site commands:<span class="command-list">
   theme [list | &lt;name&gt;]      Cycle themes, list them, or set one by name
   contact --name= --email= --message=
                              Submit the contact form
+  mgic                       Open my Spotify status page
   version                    Print the site version
   help [command]             Show this guide or details for one command</span>
 
@@ -305,15 +306,14 @@ Useful Built-in commands:<span class="command-list">
   echo [text]                Print text to the terminal
   history                    Show previously run commands
   commands                   List every available command
-  man &lt;command&gt;              Show a command's manual
-</span>
+  man &lt;command&gt;              Show a command's manual</span>
 
 Keyboard:<span class="command-list">
   Enter                      Run the command
   Tab                        Autocomplete commands and paths (press again to cycle)
   Up / Down                  Step through command history</span>
 
-Try \`ls\`, then \`cd projects\`. Run \`help &lt;command&gt;\` or \`man &lt;command&gt;\` for examples.`);
+Try <span class="command-list">\`ls\`</span>, then <span class="command-list">\`cd projects\`</span>. Run <span class="command-list">\`help &lt;command&gt;\`</span> or <span class="command-list">\`man &lt;command&gt;\`</span> for examples.`);
 		return {
 			commands: terminal.bin.list.map((command: Command) => command.key)
 		};
