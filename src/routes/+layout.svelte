@@ -273,8 +273,11 @@
 	}
 
 	:global(button.primary-button),
-	:global(a.primary-button) {
-		--btn: rgba(from var(--form-accent-color) r g b / 0.3);
+	:global(a.primary-button),
+	:global(button.secondary-button),
+	:global(a.secondary-button) {
+		--btn-color: var(--form-accent-color);
+		--btn: rgba(from var(--btn-color) r g b / 0.3);
 
 		padding: 0.5rem 1rem;
 		border-radius: var(--corners);
@@ -285,15 +288,15 @@
 		text-decoration: none;
 		box-sizing: border-box;
 		background-color: var(--btn);
-		color: var(--form-accent-color);
+		color: var(--btn-color);
 		transition:
 			background-color 0.25s ease-in-out,
 			color 0.25s ease-in-out,
 			border-color 0.25s ease-in-out;
 
 		&:disabled {
-			--btn: rgba(from var(--form-accent-color) r g b / 0.08);
-			color: rgba(from var(--form-accent-color) r g b / 0.3);
+			--btn: rgba(from var(--btn-color) r g b / 0.08);
+			color: rgba(from var(--btn-color) r g b / 0.3);
 			cursor: not-allowed;
 		}
 
@@ -302,14 +305,19 @@
 		}
 
 		&:hover:not(:disabled) {
-			--btn: rgba(from var(--form-accent-color) r g b / 0.5);
-			color: var(--form-accent-color);
+			--btn: rgba(from var(--btn-color) r g b / 0.5);
+			color: var(--btn-color);
 		}
 
 		&:active:not(:disabled) {
-			--btn: rgba(from var(--form-accent-color) r g b / 0.7);
-			color: var(--form-accent-color);
+			--btn: rgba(from var(--btn-color) r g b / 0.7);
+			color: var(--btn-color);
 		}
+	}
+
+	:global(button.secondary-button),
+	:global(a.secondary-button) {
+		--btn-color: var(--brand-grey);
 	}
 
 	:global(input[type='text']),
