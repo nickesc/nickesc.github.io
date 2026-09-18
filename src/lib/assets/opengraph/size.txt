@@ -1,0 +1,3 @@
+screenshot: 2160x1050
+window: 2187x1110
+final: 4800x2520
