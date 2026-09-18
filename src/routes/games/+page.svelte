@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
 	import { page } from '$app/state';
+	import LoadingSpinner from '$lib/components/LoadingSpinner.svelte';
 	import { games } from '$lib/games';
+	import MaximizeSymbol from '$lib/components/MaximizeSymbol.svelte';
 
 	const game = $derived(
 		browser
@@ -12,6 +14,24 @@
 	);
 	const gameUrl = $derived(game?.url ?? '');
 	const gameAspectRatio = $derived(game?.aspectRatio ?? 16 / 9);
+	let loading = $state(true);
+	let gameFrame: HTMLDivElement | undefined = $state(undefined);
+	let isFullscreen = $state(false);
+
+	function fullscreen() {
+		if (gameFrame) {
+			if (isFullscreen) {
+				document.exitFullscreen();
+			} else {
+				gameFrame.requestFullscreen();
+			}
+			isFullscreen = !isFullscreen;
+		}
+	}
+
+	$effect(() => {
+		if (gameUrl) loading = true;
+	});
 </script>
 
 <svelte:head>
@@ -23,15 +43,25 @@
 		class="game-container"
 		style:--frame-width-from-height={`${gameAspectRatio * 100}cqh`}
 		style:--frame-height-from-width={`${100 / gameAspectRatio}cqw`}
+		style:--aspect-ratio={gameAspectRatio}
 	>
 		{#if game.type === 'godot'}
-			<iframe
-				src={gameUrl}
-				title={`${game.name}`}
-				allow="autoplay; fullscreen; gamepad"
-				allowfullscreen
-				style="aspect-ratio: {gameAspectRatio}"
-			></iframe>
+			<div class="game-frame" bind:this={gameFrame} aria-busy={loading}>
+				{#if loading}
+					<LoadingSpinner label={`Loading ${game.name}`} />
+				{/if}
+				<iframe
+					class:loaded={!loading}
+					src={gameUrl}
+					title={game.name}
+					allow="autoplay; fullscreen; gamepad"
+					allowfullscreen
+					onload={() => (loading = false)}
+				></iframe>
+				<button class="game-frame-fullscreen primary-button" onclick={() => fullscreen()}>
+					<MaximizeSymbol maximized={isFullscreen} />
+				</button>
+			</div>
 		{/if}
 	</div>
 {/if}
@@ -43,18 +73,61 @@
 		height: 100%;
 		min-width: 0;
 		min-height: 0;
-		border-radius: 8px;
+		border-radius: var(--window-corners);
 		overflow: hidden;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 	}
 
-	iframe {
+	.game-frame {
+		position: relative;
 		display: block;
 		width: min(100cqw, var(--frame-width-from-height));
 		height: min(100cqh, var(--frame-height-from-width));
 		flex: none;
+		border-radius: var(--window-corners);
+		aspect-ratio: var(--aspect-ratio);
+		overflow: hidden;
+
+		button {
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 24px;
+			height: 24px;
+			padding: 0;
+			margin: 5px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+	}
+
+	.game-frame :global(.loading-spinner),
+	iframe {
+		position: absolute;
+		inset: 0;
+	}
+
+	iframe {
+		display: block;
+		width: 100%;
+		height: 100%;
 		border: 0;
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity 180ms ease;
+	}
+
+	iframe.loaded {
+		opacity: 1;
+		pointer-events: auto;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		iframe {
+			transition: none;
+		}
 	}
 </style>
