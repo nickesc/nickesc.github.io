@@ -4,6 +4,8 @@
 	import { SvelteOutputAdapter } from 'input-terminal/svelte';
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
+	import type { PathnameWithSearchOrHash } from '$app/types';
 
 	import { submitForm } from '$lib/submitForm';
 	import { createProjectFiles } from '$lib/projects';
@@ -262,8 +264,14 @@ Examples:
 		}
 
 		if (file.href) {
-			window.location.assign(file.href);
-			return { href: file.href };
+			const url = new URL(file.href, page.url);
+			if (url.origin === page.url.origin) {
+				const route = `${url.pathname}${url.search}${url.hash}` as PathnameWithSearchOrHash;
+				goto(resolve(route), { replaceState: true, noScroll: true, keepFocus: true });
+			} else {
+				window.location.assign(url);
+			}
+			return { page: file.href };
 		}
 
 		terminal.stdout(file.content);
