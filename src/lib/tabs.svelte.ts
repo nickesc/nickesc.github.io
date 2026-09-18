@@ -49,5 +49,6 @@ for (const tab of tabs) {
 }
 
 root.children.push(createDirectory('mgic', root, '/mgic', { hidden: true }));
+root.children.push(createDirectory('games', root, '/games', { hidden: true }));
 
 export const tabTree: Directory = $state(root);
