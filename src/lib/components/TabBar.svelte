@@ -3,7 +3,7 @@
 	import { fade, scale } from 'svelte/transition';
 
 	import { page } from '$app/state';
-	import { tabs } from '$lib/tabs';
+	import { tabs } from '$lib/tabs.svelte';
 
 	import ExternalArrow from '$lib/components/ExternalArrow.svelte';
 	import PowerSymbol from '$lib/components/PowerSymbol.svelte';

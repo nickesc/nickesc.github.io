@@ -2,13 +2,15 @@
 	import { onMount } from 'svelte';
 	import type { SpotifyResponse } from '$lib/spotifyResponse';
 	import SpotifyIcon from '$lib/components/icons/spotify.svelte';
+	import { tabTree } from '$lib/tabs.svelte';
+	import type { Directory, File } from '$lib/filetree';
+	import { createFile, resolveDirectory } from '$lib/filetree';
 
 	let current = $state<SpotifyResponse | null>(null);
 	let name = $state<string | undefined>(undefined);
 	let titleWidth = $state(0);
 	let containerWidth = $state(0);
 	const overflow = $derived(Math.max(0, titleWidth - containerWidth));
-
 	function capitalize(str: string | undefined) {
 		if (!str) return str;
 		return str.charAt(0).toUpperCase() + str.slice(1);
@@ -20,12 +22,42 @@
 		return `${minutes}:${seconds.toString().padStart(2, '0')}`;
 	}
 
+	function createTrackFiles(track: SpotifyResponse, directory: Directory): File[] {
+		if (!track.playing || !track.track) return [];
+
+		return [
+			createFile('track', directory, {
+				content: track.track.name,
+				href: track.track.url
+			}),
+			createFile('artist', directory, {
+				content: track.track.artists.names.join(', '),
+				href: track.track.artists.url
+			}),
+			createFile('context', directory, {
+				content: track.track.context?.name ?? '',
+				href: track.track.context?.url
+			}),
+			createFile('duration', directory, { content: msToMinSec(track.track.duration) }),
+			createFile('progress', directory, { content: msToMinSec(track.player?.progress ?? 0) }),
+			createFile('volume', directory, { content: `${track.player?.vol ?? 0}` }),
+			createFile('explicit', directory, { content: track.track.explicit ? 'Yes' : 'No' }),
+			createFile('shuffle', directory, { content: track.player?.shuffle ? 'On' : 'Off' }),
+			createFile('repeat', directory, { content: track.player?.repeat ?? 'Off' })
+		];
+	}
+
 	onMount(() => {
 		async function pollApi() {
 			const res = await fetch('https://mgic.batcomputer.xyz/current');
 			const next = (await res.json()) as SpotifyResponse;
 			current = next;
 			name = next.track?.name;
+
+			const directory = resolveDirectory('/mgic', tabTree);
+			if (directory) {
+				directory.files = createTrackFiles(next, directory);
+			}
 		}
 
 		// Run immediately on mount

@@ -10,7 +10,7 @@
 	import { createContactFiles } from '$lib/contact';
 	import { createResumeFiles } from '$lib/resume';
 
-	import { tabTree } from '$lib/tabs';
+	import { tabTree } from '$lib/tabs.svelte';
 	import { foley } from '$lib/foley.svelte';
 	import { completeTerminalInput } from '$lib/terminalCompletion';
 	import {
@@ -45,7 +45,7 @@
 	let inputScrollLeft = $state(0);
 	let placeholderSuppressed = $state(false);
 
-	let terminalTree: Directory = $state(tabTree);
+	let terminalTree: Directory = tabTree;
 
 	let projectsDirectory: Directory | null = findChildDir('projects', terminalTree);
 	if (projectsDirectory) {
