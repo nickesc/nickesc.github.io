@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { Terminal, Command, type ExitObject } from 'input-terminal';
+	import { Terminal, Command, ExitObject } from 'input-terminal';
 	import { SvelteOutputAdapter } from 'input-terminal/svelte';
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
@@ -41,6 +41,16 @@
 	const output = new SvelteOutputAdapter();
 	let terminal: Terminal;
 
+	type PersistedTerminalState = {
+		history: string[];
+		output: { operation: 'command' | 'stdout' | 'stderr'; data: string }[];
+		user: string;
+	};
+	// The route stays URL-owned so the working directory always matches the page being viewed.
+
+	const TERMINAL_STORAGE_KEY = 'nickesc:terminal-state';
+	const OUTPUT_EVENTS = ['command', 'stdout', 'stderr', 'clear'] as const;
+
 	let hostname = $state(page.url.hostname);
 	let user = $state('user');
 	let terminalReady = $state(false);
@@ -75,6 +85,35 @@
 	let showPlaceholder = $derived(
 		terminalReady && on && !hasUserInput && !placeholderSuppressed && placeholder.length > 0
 	);
+
+	function saveTerminalState() {
+		try {
+			const state: PersistedTerminalState = {
+				history: terminal.history.items.map((item) => item.rawInput),
+				output: output.entries.map(({ operation, data }) => ({
+					operation,
+					data: String(data)
+				})),
+				user
+			};
+
+			localStorage.setItem(TERMINAL_STORAGE_KEY, JSON.stringify(state));
+		} catch {
+			// The terminal remains usable when storage is full or unavailable.
+		}
+	}
+
+	function loadTerminalState(): PersistedTerminalState {
+		try {
+			const state = JSON.parse(
+				localStorage.getItem(TERMINAL_STORAGE_KEY) ?? 'null'
+			) as PersistedTerminalState | null;
+			if (state && Array.isArray(state.history) && Array.isArray(state.output)) return state;
+		} catch {
+			// Start with a fresh terminal when saved state cannot be read.
+		}
+		return { history: [], output: [], user: 'user' };
+	}
 
 	function syncInputPresentation() {
 		if (!terminal?.started) return;
@@ -402,10 +441,22 @@ Examples:
 `;
 
 	onMount(() => {
+		const restoredState = loadTerminalState();
+		user = restoredState.user || 'user';
+		restoredState.output.forEach((entry, index) => {
+			output[entry.operation](entry.data, {
+				sequence: index - restoredState.output.length,
+				timestamp: Date.now()
+			});
+		});
+
 		terminal = new Terminal({
 			input,
 			output,
 			options: { preprompt, prompt, printCommand: true },
+			history: restoredState.history.map(
+				(rawInput) => new ExitObject([], rawInput, undefined, 0, {})
+			),
 			commands: [ls, cd, open, theme, version, contact, mgic, games, help, userCommand],
 			completionProvider: ({ input: value, cursor }) =>
 				completeTerminalInput(value, cursor, currentDirectory)
@@ -417,6 +468,7 @@ Examples:
 		function onExecuted(event: CustomEvent<ExitObject>) {
 			const exit = event.detail;
 			if (!exit.rawInput.trim()) return;
+			saveTerminalState();
 			// contact waits for the form request before playing a result cue
 			if (exit.command?.key === 'contact' && !commandFailed(exit)) return;
 			playCommandResult(commandFailed(exit));
@@ -426,6 +478,7 @@ Examples:
 			if (event.key === 'Enter') event.stopPropagation();
 		}
 
+		OUTPUT_EVENTS.forEach((event) => terminal.addEventListener(event, saveTerminalState));
 		terminal.addEventListener('executed', onExecuted);
 		input.addEventListener('keydown', suppressEnterFoley);
 
@@ -436,6 +489,7 @@ Examples:
 		}
 
 		return () => {
+			OUTPUT_EVENTS.forEach((event) => terminal.removeEventListener(event, saveTerminalState));
 			terminal.removeEventListener('executed', onExecuted);
 			input.removeEventListener('keydown', suppressEnterFoley);
 			terminal.destroy();
