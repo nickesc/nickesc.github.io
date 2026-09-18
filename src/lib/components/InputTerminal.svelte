@@ -44,11 +44,13 @@
 	type PersistedTerminalState = {
 		history: string[];
 		output: { operation: 'command' | 'stdout' | 'stderr'; data: string }[];
+		historyUpdatedAt: number;
 		user: string;
 	};
 	// The route stays URL-owned so the working directory always matches the page being viewed.
 
 	const TERMINAL_STORAGE_KEY = 'nickesc:terminal-state';
+	const HISTORY_TTL_MS = 24 * 60 * 60 * 1000;
 	const OUTPUT_EVENTS = ['command', 'stdout', 'stderr', 'clear'] as const;
 
 	let hostname = $state(page.url.hostname);
@@ -94,6 +96,7 @@
 					operation,
 					data: String(data)
 				})),
+				historyUpdatedAt: Date.now(),
 				user
 			};
 
@@ -108,11 +111,22 @@
 			const state = JSON.parse(
 				localStorage.getItem(TERMINAL_STORAGE_KEY) ?? 'null'
 			) as PersistedTerminalState | null;
-			if (state && Array.isArray(state.history) && Array.isArray(state.output)) return state;
+			if (state && Array.isArray(state.history) && Array.isArray(state.output)) {
+				if (
+					!Number.isFinite(state.historyUpdatedAt) ||
+					Date.now() - state.historyUpdatedAt >= HISTORY_TTL_MS
+				) {
+					state.history = [];
+					state.output = [];
+					state.historyUpdatedAt = Date.now();
+					localStorage.setItem(TERMINAL_STORAGE_KEY, JSON.stringify(state));
+				}
+				return state;
+			}
 		} catch {
 			// Start with a fresh terminal when saved state cannot be read.
 		}
-		return { history: [], output: [], user: 'user' };
+		return { history: [], output: [], historyUpdatedAt: Date.now(), user: 'user' };
 	}
 
 	function syncInputPresentation() {
