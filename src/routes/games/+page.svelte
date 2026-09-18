@@ -8,7 +8,7 @@
 	const game = $derived(
 		browser
 			? games.find(
-					(game) => game.name.toLowerCase() === page.url.searchParams.get('game')?.toLowerCase()
+					(game) => game.id.toLowerCase() === page.url.searchParams.get('game')?.toLowerCase()
 				)
 			: undefined
 	);
@@ -31,7 +31,7 @@
 </script>
 
 <svelte:head>
-	<title>{game?.name ?? 'Invalid Game'} | Nick Escobar</title>
+	<title>{game?.id ?? 'Invalid Game'} | Nick Escobar</title>
 </svelte:head>
 
 {#if game}
@@ -44,12 +44,12 @@
 		{#if game.type === 'godot'}
 			<div class="game-frame" bind:this={gameFrame} aria-busy={loading}>
 				{#if loading}
-					<LoadingSpinner label={`Loading ${game.name}`} />
+					<LoadingSpinner label={`Loading ${game.id}`} />
 				{/if}
 				<iframe
 					class:loaded={!loading}
 					src={gameUrl}
-					title={game.name}
+					title={game.id}
 					allow="autoplay; fullscreen; gamepad"
 					allowfullscreen
 					onload={() => (loading = false)}

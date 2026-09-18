@@ -1,5 +1,5 @@
 export type Game = {
-	name: string;
+	id: string;
 	url: string;
 	aspectRatio: number;
 	type: 'godot';
@@ -7,7 +7,7 @@ export type Game = {
 
 export const games: Game[] = [
 	{
-		name: 'Starfish',
+		id: 'Starfish',
 		url: 'https://nickesc.io/projectStarfish/index.html',
 		aspectRatio: 2 / 1,
 		type: 'godot'
