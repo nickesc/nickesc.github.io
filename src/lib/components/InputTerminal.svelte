@@ -322,6 +322,30 @@ Examples:
   contact --name="Nick Escobar" --email="nick@nickesc.io" --message="Hello, world!"
 `;
 
+	const userCommand = new Command('user', (args, options, terminal) => {
+		if (options.set) {
+			let error: boolean = options.set?.value ? false : true;
+			if (error) {
+				terminal.stderr('Error: user name is required.\nUsage: user --set=&lt;user&gt;');
+				return {
+					error: 'Error: user name is required.\nUsage: user --set=&lt;user&gt;',
+					user: user
+				};
+			}
+			user = options.set.value as string;
+		}
+		terminal.stdout(user);
+		return { user: user };
+	});
+	userCommand.manual = `user [--set=&lt;user&gt;]
+
+Print or set the current user.
+
+Examples:
+  user                 # print the current user
+  user --set=nickesc   # set the current user to nick
+`;
+
 	const help = new Command('help', (args, options, terminal) => {
 		const commandName = args[0] === undefined ? undefined : String(args[0]);
 		if (commandName) {
@@ -341,6 +365,7 @@ Site commands:<span class="command-list">
   ls [-a | --all]            List dirs and files here (dirs end with /)
   cd &lt;directory&gt;             Move to a page (\`cd /projects\`, \`cd ..\`, \`cd ~\`)
   open &lt;path&gt;                Move to a directory, open a link, or print file content
+  user [--set=&lt;user&gt;]        Print or set the current user
   theme [list | &lt;name&gt;]      Cycle themes, list them, or set one by name
   contact --name= --email= --message=
                              Submit the contact form
@@ -381,7 +406,7 @@ Examples:
 			input,
 			output,
 			options: { preprompt, prompt, printCommand: true },
-			commands: [ls, cd, open, theme, version, contact, mgic, games, help],
+			commands: [ls, cd, open, theme, version, contact, mgic, games, help, userCommand],
 			completionProvider: ({ input: value, cursor }) =>
 				completeTerminalInput(value, cursor, currentDirectory)
 		});
