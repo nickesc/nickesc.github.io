@@ -517,7 +517,7 @@ Examples:
 		transition: color 0.3s ease;
 
 		&:disabled {
-			color: rgba(from var(--brand-grey) r g b / 0.5);
+			color: rgba(from var(--terminal-grey) r g b / 0.5);
 		}
 
 		&::placeholder {
@@ -542,6 +542,6 @@ Examples:
 	}
 
 	.placeholder-text {
-		color: rgba(from var(--brand-grey) r g b / 0.5);
+		color: var(--terminal-grey);
 	}
 </style>
