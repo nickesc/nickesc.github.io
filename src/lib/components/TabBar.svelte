@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { cubicInOut } from 'svelte/easing';
 	import { fade, scale } from 'svelte/transition';
 
@@ -16,6 +17,24 @@
 	let buttonSize = '.8rem';
 	let windowHeight = $state(0);
 	let windowWidth = $state(0);
+	let nav: HTMLElement;
+	let tabList: HTMLOListElement;
+	let scrollStart = $state(0);
+	let scrollEnd = $state(0);
+
+	function updateScrollEdges() {
+		const maxScroll = nav.scrollWidth - nav.clientWidth;
+		scrollStart = Math.max(0, Math.min(nav.scrollLeft, maxScroll));
+		scrollEnd = Math.max(0, maxScroll - nav.scrollLeft);
+	}
+
+	onMount(() => {
+		const observer = new ResizeObserver(updateScrollEdges);
+		observer.observe(nav);
+		observer.observe(tabList);
+		updateScrollEdges();
+		return () => observer.disconnect();
+	});
 
 	function handlePowerButtonClick() {
 		on = !on;
@@ -31,8 +50,14 @@
 <svelte:window bind:innerHeight={windowHeight} bind:innerWidth={windowWidth} />
 
 <header>
-	<nav class="scrollable">
-		<ol role="tablist">
+	<nav
+		bind:this={nav}
+		class="scrollable"
+		onscroll={updateScrollEdges}
+		style:--nav-scroll-start={`${scrollStart}px`}
+		style:--nav-scroll-end={`${scrollEnd}px`}
+	>
+		<ol bind:this={tabList} role="tablist">
 			{#each tabs as tab}
 				{#if on}
 					<li in:fade={{ duration: fadeDuration }} out:fade={{ duration: fadeDuration }}>
@@ -171,9 +196,22 @@
 	}
 
 	nav {
-		overflow-x: scroll;
+		--nav-fade-start: min(4rem, var(--nav-scroll-start));
+		--nav-fade-end: min(4rem, var(--nav-scroll-end));
+		flex: 1;
+		min-inline-size: 0;
+		overflow-x: auto;
+		padding-block-end: 4px;
+		mask-image: linear-gradient(
+			to right,
+			transparent,
+			oklch(0% 0 none) var(--nav-fade-start),
+			oklch(0% 0 none) calc(100% - var(--nav-fade-end)),
+			transparent
+		);
 
 		ol {
+			inline-size: max-content;
 			list-style: none;
 			display: flex;
 			flex-direction: row;

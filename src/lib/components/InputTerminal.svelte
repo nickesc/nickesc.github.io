@@ -619,6 +619,7 @@ Examples:
 	}
 
 	.input-line {
+		-webkit-text-size-adjust: 100%;
 		display: grid;
 		grid-template-columns: minmax(0, 1fr);
 		flex-shrink: 0;

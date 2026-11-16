@@ -60,6 +60,10 @@
 	let selectedBg = $derived(incomingBg ?? currentBg);
 	let overlayOn = $state(false);
 
+	$effect(() => {
+		document.documentElement.dataset.bg = selectedBg;
+	});
+
 	export function setBackground(id?: string): Background | false {
 		const nextBg =
 			id === undefined
@@ -213,11 +217,10 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		position: fixed;
-		inset: 0;
+		position: relative;
 		width: 100%;
 		height: 100dvh;
-		background-color: #121218;
+		background-color: var(--bg-color, #121218);
 		color: var(--brand-white);
 		overflow: hidden;
 		overscroll-behavior: none;
@@ -225,6 +228,7 @@
 
 	:global(html) {
 		box-sizing: border-box;
+		background-color: var(--bg-color, #121218);
 	}
 
 	:global(*),
@@ -538,40 +542,51 @@
 		text-transform: uppercase;
 	}
 
+	:global(html[data-bg='radar']),
+	.site-bg[data-bg='radar'] {
+		--bg-color: #1a2622;
+		--bg-dot-color: rgba(140, 235, 205, 0.6);
+		--bg-orbs: radial-gradient(
+			ellipse 70% 60% at 35% 40%,
+			rgba(55, 120, 105, 0.55),
+			transparent 70%
+		);
+		--bg-gradient: linear-gradient(165deg, #22352e 0%, #1a2622 60%, #141c1a 100%);
+	}
+
+	:global(html[data-bg='lidar']),
+	.site-bg[data-bg='lidar'] {
+		--bg-color: #2a2018;
+		--bg-dot-color: rgba(240, 175, 105, 0.42);
+		--bg-orbs:
+			radial-gradient(ellipse 75% 60% at 30% 30%, rgba(220, 140, 75, 0.48), transparent 65%),
+			radial-gradient(ellipse 65% 55% at 80% 75%, rgba(150, 90, 50, 0.5), transparent 60%);
+		--bg-gradient: linear-gradient(150deg, #3d2a1c 0%, #2a2018 55%, #322418 100%);
+	}
+
+	:global(html[data-bg='sonar']),
+	.site-bg[data-bg='sonar'] {
+		--bg-color: #0f1c24;
+		--bg-dot-color: rgba(110, 195, 220, 0.48);
+		--bg-orbs:
+			radial-gradient(ellipse 45% 40% at 62% 42%, rgba(85, 175, 205, 0.28), transparent 65%),
+			radial-gradient(ellipse 70% 60% at 62% 42%, rgba(55, 115, 150, 0.32), transparent 70%);
+		--bg-gradient: linear-gradient(165deg, #182830 0%, #0f1c24 60%, #0a141a 100%);
+	}
+
 	.site-bg-stack {
 		--bg-dot-core: 1.6px;
 		--bg-dot-edge: 2px;
 		--bg-dot-grid: 44px;
-		position: fixed;
+		position: absolute;
 		inset: 0;
 		z-index: 0;
 		pointer-events: none;
-		background-color: #121218;
+		background-color: var(--bg-color, #121218);
 
 		.site-bg {
 			position: absolute;
 			inset: 0;
-			background-attachment: fixed;
-
-			&[data-bg='chalk-slate'] {
-				background-color: #c4ced8;
-				background-image:
-					linear-gradient(rgba(40, 50, 60, 0.07) 1px, transparent 1px),
-					linear-gradient(90deg, rgba(40, 50, 60, 0.07) 1px, transparent 1px),
-					radial-gradient(ellipse 140% 28% at 50% 12%, rgba(100, 160, 220, 0.5), transparent 70%),
-					radial-gradient(ellipse 160% 32% at 35% 38%, rgba(85, 145, 205, 0.42), transparent 68%),
-					radial-gradient(ellipse 150% 30% at 65% 62%, rgba(115, 175, 230, 0.46), transparent 70%),
-					radial-gradient(ellipse 170% 34% at 45% 88%, rgba(95, 155, 215, 0.44), transparent 72%),
-					linear-gradient(180deg, #d6e0ea 0%, #c4d0dc 35%, #b8c6d4 65%, #aabccf 100%);
-				background-size:
-					28px 28px,
-					28px 28px,
-					auto,
-					auto,
-					auto,
-					auto,
-					auto;
-			}
 
 			&:is([data-bg='radar'], [data-bg='lidar'], [data-bg='sonar']) {
 				background-color: var(--bg-color);
@@ -587,35 +602,6 @@
 					auto,
 					auto,
 					auto;
-			}
-
-			&[data-bg='radar'] {
-				--bg-color: #1a2622;
-				--bg-dot-color: rgba(140, 235, 205, 0.6);
-				--bg-orbs: radial-gradient(
-					ellipse 70% 60% at 35% 40%,
-					rgba(55, 120, 105, 0.55),
-					transparent 70%
-				);
-				--bg-gradient: linear-gradient(165deg, #22352e 0%, #1a2622 60%, #141c1a 100%);
-			}
-
-			&[data-bg='lidar'] {
-				--bg-color: #2a2018;
-				--bg-dot-color: rgba(240, 175, 105, 0.42);
-				--bg-orbs:
-					radial-gradient(ellipse 75% 60% at 30% 30%, rgba(220, 140, 75, 0.48), transparent 65%),
-					radial-gradient(ellipse 65% 55% at 80% 75%, rgba(150, 90, 50, 0.5), transparent 60%);
-				--bg-gradient: linear-gradient(150deg, #3d2a1c 0%, #2a2018 55%, #322418 100%);
-			}
-
-			&[data-bg='sonar'] {
-				--bg-color: #0f1c24;
-				--bg-dot-color: rgba(110, 195, 220, 0.48);
-				--bg-orbs:
-					radial-gradient(ellipse 45% 40% at 62% 42%, rgba(85, 175, 205, 0.28), transparent 65%),
-					radial-gradient(ellipse 70% 60% at 62% 42%, rgba(55, 115, 150, 0.32), transparent 70%);
-				--bg-gradient: linear-gradient(165deg, #182830 0%, #0f1c24 60%, #0a141a 100%);
 			}
 		}
 
