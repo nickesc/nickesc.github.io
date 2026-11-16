@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import { projects } from '$lib/projects';
 	import { featuredBadges } from '$lib/badges';
 
@@ -69,8 +70,8 @@
 
 	<div class="work">
 		<h3>My work</h3>
-		<a class="secondary-button" href="/projects">Projects</a>
-		<a class="secondary-button" href="/games">Games</a>
+		<a class="secondary-button" href={resolve('/projects')}>Projects</a>
+		<a class="secondary-button" href={resolve('/games')}>Games</a>
 		<a
 			class="secondary-button"
 			href="https://nickesc.com/"

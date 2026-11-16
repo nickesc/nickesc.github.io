@@ -17,14 +17,24 @@
 	<div class="info-container">
 		{#if featured}
 			<h3 class={[featured, 'name']}>
-				<a class="card-link" href={project.projectUrl} target="_blank" rel="noopener noreferrer">
+				<a
+					class="card-link"
+					href={project.projectUrl}
+					target="_blank"
+					rel="external noopener noreferrer"
+				>
 					{project.name}
 				</a>
 			</h3>
 		{:else}
 			<div class="title-row">
 				<h3 class="name">
-					<a class="card-link" href={project.projectUrl} target="_blank" rel="noopener noreferrer">
+					<a
+						class="card-link"
+						href={project.projectUrl}
+						target="_blank"
+						rel="external noopener noreferrer"
+					>
 						{project.name}
 					</a>
 				</h3>
@@ -38,7 +48,7 @@
 							class="source-url"
 							href={project.sourceUrl}
 							target="_blank"
-							rel="noopener noreferrer"
+							rel="external noopener noreferrer"
 						>
 							{#if project.sourceUrl.includes('github.com')}
 								<SiGithub height="1em" width="1em" style="color: var(--brand-grey)" />

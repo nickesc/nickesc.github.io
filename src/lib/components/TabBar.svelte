@@ -4,6 +4,7 @@
 	import { fade, scale } from 'svelte/transition';
 
 	import { page } from '$app/state';
+	import { resolve } from '$app/paths';
 	import { tabs } from '$lib/tabs.svelte';
 
 	import ExternalArrow from '$lib/components/ExternalArrow.svelte';
@@ -61,19 +62,31 @@
 			{#each tabs as tab}
 				{#if on}
 					<li in:fade={{ duration: fadeDuration }} out:fade={{ duration: fadeDuration }}>
-						<a
-							href={tab.href}
-							data-foley-click="tap"
-							class:active={tab.href === page.url.pathname}
-							aria-controls={tab.href}
-							role="tab"
-							aria-selected={tab.href === page.url.pathname}
-						>
-							{tab.name.charAt(0).toUpperCase() + tab.name.slice(1)}
-							{#if tab.external}
+						{#if tab.external}
+							<a
+								href={tab.href}
+								rel="external"
+								data-foley-click="tap"
+								class:active={tab.href === page.url.pathname}
+								aria-controls={tab.href}
+								role="tab"
+								aria-selected={tab.href === page.url.pathname}
+							>
+								{tab.name.charAt(0).toUpperCase() + tab.name.slice(1)}
 								<ExternalArrow width=".75rem" height=".75rem" />
-							{/if}
-						</a>
+							</a>
+						{:else}
+							<a
+								href={resolve(tab.href)}
+								data-foley-click="tap"
+								class:active={tab.href === page.route.id}
+								aria-controls={tab.href}
+								role="tab"
+								aria-selected={tab.href === page.route.id}
+							>
+								{tab.name.charAt(0).toUpperCase() + tab.name.slice(1)}
+							</a>
+						{/if}
 					</li>
 				{/if}
 			{/each}

@@ -161,8 +161,8 @@
 		foley.play(failed ? 'ping' : 'pop');
 	}
 
-	function gotoPage(route: string): Record<'page', string> {
-		goto(route, { replaceState: true, noScroll: true, keepFocus: true });
+	function gotoPage(route: PathnameWithSearchOrHash): Record<'page', string> {
+		goto(resolve(route), { replaceState: true, noScroll: true, keepFocus: true });
 		return { page: route };
 	}
 
@@ -244,7 +244,7 @@ List the contents of the current directory. Use \`-a\` or \`--all\` to include h
 		}
 
 		if (directory.page) {
-			goto(directory.page, { replaceState: true, noScroll: true, keepFocus: true });
+			gotoPage(directory.page as PathnameWithSearchOrHash);
 		}
 
 		return directory;

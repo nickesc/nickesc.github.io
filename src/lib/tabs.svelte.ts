@@ -1,11 +1,10 @@
 import type { Directory } from '$lib/filetree';
 import { createDirectory, createFile } from '$lib/filetree';
+import type { Pathname } from '$app/types';
 
 type Tab = {
 	name: string;
-	href: string;
-	external?: boolean;
-};
+} & ({ href: Pathname; external?: false } | { href: string; external: true });
 
 export const tabs: Tab[] = [
 	{
