@@ -41,7 +41,7 @@
 <h2>Some of my favorite projects:</h2>
 
 <div class="featured-projects-container">
-	{#each displayedProjects as project}
+	{#each displayedProjects as project (project.name)}
 		<ProjectCard {project} featured={true} />
 	{/each}
 </div>
@@ -92,7 +92,7 @@
 	<div class="tech">
 		<span class="tech-label">Go-to tech</span>
 		<ul class="badges">
-			{#each featuredBadges as icon}
+			{#each featuredBadges as icon (icon)}
 				<li>
 					<Badge {icon} />
 				</li>

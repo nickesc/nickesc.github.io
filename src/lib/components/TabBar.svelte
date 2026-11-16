@@ -59,7 +59,7 @@
 		style:--nav-scroll-end={`${scrollEnd}px`}
 	>
 		<ol bind:this={tabList} role="tablist">
-			{#each tabs as tab}
+			{#each tabs as tab (tab.href)}
 				{#if on}
 					<li in:fade={{ duration: fadeDuration }} out:fade={{ duration: fadeDuration }}>
 						{#if tab.external}

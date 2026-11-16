@@ -68,7 +68,7 @@
 
 <h2>Where to find me</h2>
 <ul class="badges">
-	{#each socialBadges as badge}
+	{#each socialBadges as badge (badge)}
 		<li>
 			<Badge icon={badge} />
 		</li>
@@ -77,7 +77,7 @@
 
 <h2>Where to find my work</h2>
 <ul class="badges">
-	{#each distributionBadges as badge}
+	{#each distributionBadges as badge (badge)}
 		<li>
 			<Badge icon={badge} />
 		</li>

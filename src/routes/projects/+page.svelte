@@ -83,7 +83,7 @@
 			<span class="select-container" data-widest={widestCategory}>
 				<select bind:value={selectedCategory} data-foley-click="press">
 					<option value="all">All</option>
-					{#each categories as category}
+					{#each categories as category (category)}
 						<option value={category}
 							>{category.charAt(0).toUpperCase() + category.slice(1).toLowerCase()}</option
 						>
@@ -97,7 +97,7 @@
 			<span class="select-container" data-widest={widestTech}>
 				<select bind:value={selectedTech} data-foley-click="press">
 					<option value="all">All</option>
-					{#each techOptions as tech}
+					{#each techOptions as tech (tech)}
 						<option value={tech}>{tech}</option>
 					{/each}
 				</select>
@@ -109,7 +109,7 @@
 			<span class="select-container" data-widest={widestYear}>
 				<select bind:value={selectedYear} data-foley-click="press">
 					<option value="all">All</option>
-					{#each years as year}
+					{#each years as year (year)}
 						<option value={year}>{year}</option>
 					{/each}
 				</select>
@@ -124,7 +124,7 @@
 </div>
 
 <div class="projects-container">
-	{#each displayedProjects as project}
+	{#each displayedProjects as project (project.name)}
 		<ProjectCard {project} />
 	{/each}
 </div>
