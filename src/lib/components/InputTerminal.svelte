@@ -161,8 +161,8 @@
 		foley.play(failed ? 'ping' : 'pop');
 	}
 
-	function gotoPage(route: string): Record<'page', string> {
-		goto(route, { replaceState: true, noScroll: true, keepFocus: true });
+	function gotoPage(route: PathnameWithSearchOrHash): Record<'page', string> {
+		goto(resolve(route), { replaceState: true, noScroll: true, keepFocus: true });
 		return { page: route };
 	}
 
@@ -244,7 +244,7 @@ List the contents of the current directory. Use \`-a\` or \`--all\` to include h
 		}
 
 		if (directory.page) {
-			goto(directory.page, { replaceState: true, noScroll: true, keepFocus: true });
+			gotoPage(directory.page as PathnameWithSearchOrHash);
 		}
 
 		return directory;
@@ -270,7 +270,7 @@ Examples:
   cd ..
 `;
 
-	const mgic = new Command('mgic', (args, options, terminal) => {
+	const mgic = new Command('mgic', () => {
 		return gotoPage('/mgic');
 	});
 	mgic.manual = `mgic
@@ -518,7 +518,7 @@ Examples:
 	});
 
 	$effect(() => {
-		output.entries;
+		void output.entries;
 		if (outputElement) {
 			outputElement.scrollTop = outputElement.scrollHeight;
 		}
@@ -529,6 +529,7 @@ Examples:
 	<div class="output scrollable" bind:this={outputElement} aria-live="polite">
 		<div class="output-entries">
 			{#each output.entries as entry (entry.metadata.sequence)}
+				<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 				<div class:error={entry.operation === 'stderr'}>{@html String(entry.data)}</div>
 			{/each}
 		</div>

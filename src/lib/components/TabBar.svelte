@@ -4,6 +4,7 @@
 	import { fade, scale } from 'svelte/transition';
 
 	import { page } from '$app/state';
+	import { resolve } from '$app/paths';
 	import { tabs } from '$lib/tabs.svelte';
 
 	import ExternalArrow from '$lib/components/ExternalArrow.svelte';
@@ -58,22 +59,34 @@
 		style:--nav-scroll-end={`${scrollEnd}px`}
 	>
 		<ol bind:this={tabList} role="tablist">
-			{#each tabs as tab}
+			{#each tabs as tab (tab.href)}
 				{#if on}
 					<li in:fade={{ duration: fadeDuration }} out:fade={{ duration: fadeDuration }}>
-						<a
-							href={tab.href}
-							data-foley-click="tap"
-							class:active={tab.href === page.url.pathname}
-							aria-controls={tab.href}
-							role="tab"
-							aria-selected={tab.href === page.url.pathname}
-						>
-							{tab.name.charAt(0).toUpperCase() + tab.name.slice(1)}
-							{#if tab.external}
+						{#if tab.external}
+							<a
+								href={tab.href}
+								rel="external"
+								data-foley-click="tap"
+								class:active={tab.href === page.url.pathname}
+								aria-controls={tab.href}
+								role="tab"
+								aria-selected={tab.href === page.url.pathname}
+							>
+								{tab.name.charAt(0).toUpperCase() + tab.name.slice(1)}
 								<ExternalArrow width=".75rem" height=".75rem" />
-							{/if}
-						</a>
+							</a>
+						{:else}
+							<a
+								href={resolve(tab.href)}
+								data-foley-click="tap"
+								class:active={tab.href === page.route.id}
+								aria-controls={tab.href}
+								role="tab"
+								aria-selected={tab.href === page.route.id}
+							>
+								{tab.name.charAt(0).toUpperCase() + tab.name.slice(1)}
+							</a>
+						{/if}
 					</li>
 				{/if}
 			{/each}
@@ -98,7 +111,7 @@
 			style:background-color={foley.muted
 				? 'rgba(from var(--base-grey) r g b / 0.1)'
 				: 'var(--grey)'}
-			style:color={'var(--base-grey)'}
+			style:color="var(--base-grey)"
 			style:border-color={foley.muted ? 'rgba(from var(--base-grey) r g b / 0.5)' : 'transparent'}
 		>
 			<SoundSymbol width={buttonSize} height={buttonSize} muted={foley.muted} />
@@ -116,7 +129,7 @@
 				style:background-color={maximized
 					? 'rgba(from var(--base-blue) r g b / 0.1)'
 					: 'var(--blue)'}
-				style:color={'var(--base-blue)'}
+				style:color="var(--base-blue)"
 				style:border-color={maximized ? 'rgba(from var(--base-blue) r g b / 0.5)' : 'transparent'}
 				transition:scale={{ duration: 200, easing: cubicInOut }}
 			>
@@ -132,7 +145,7 @@
 			aria-checked={on}
 			title={on ? 'Turn off power' : 'Turn on power'}
 			style:background-color={on ? 'var(--red)' : 'rgba(from var(--base-red) r g b / 0.1)'}
-			style:color={'var(--base-red)'}
+			style:color="var(--base-red)"
 			style:border-color={on ? 'transparent' : 'rgba(from var(--base-red) r g b / 0.5)'}
 		>
 			<PowerSymbol width={buttonSize} height={buttonSize} />

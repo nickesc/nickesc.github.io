@@ -1,5 +1,5 @@
 <script lang="ts">
-	let { color = 'rgb(30, 215, 96)', size = 24, title = 'spotify', ...rest } = $props();
+	let { color = 'rgb(30, 215, 96)', size = 24, title = 'Spotify', ...rest } = $props();
 </script>
 
 <svg
@@ -11,6 +11,7 @@
 	fill={color}
 	{...rest}
 >
+	<title>{title}</title>
 	<defs
 		><style>
 			.cls-1 {

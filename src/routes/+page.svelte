@@ -1,12 +1,12 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import { projects } from '$lib/projects';
 	import { featuredBadges } from '$lib/badges';
 
 	import Badge from '$lib/components/Badge.svelte';
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
 
-	let displayedProjects = $state(projects);
-	displayedProjects = projects.filter((project) => project.featured === true);
+	const displayedProjects = projects.filter((project) => project.featured);
 </script>
 
 <svelte:head>
@@ -40,7 +40,7 @@
 <h2>Some of my favorite projects:</h2>
 
 <div class="featured-projects-container">
-	{#each displayedProjects as project}
+	{#each displayedProjects as project (project.name)}
 		<ProjectCard {project} featured={true} />
 	{/each}
 </div>
@@ -58,9 +58,8 @@
 			href="https://www.waybettermarketing.com/"
 			target="_blank"
 			rel="noopener noreferrer">Waybetter Marketing</a
-		>. I also release my own projects through
-		<a href="https://nescobar.media" target="_blank" rel="noopener noreferrer">N. Escobar Media</a>,
-		a small, independent studio I founded.
+		>. I also release my own projects through my independent studio,
+		<a href="https://nescobar.media" target="_blank" rel="noopener noreferrer">N. Escobar Media</a>.
 	</p>
 	<p>
 		My hobbies include playing video games, watching movies, hiking, camping, and collecting
@@ -68,9 +67,9 @@
 	</p>
 
 	<div class="work">
-		<h3>My work</h3>
-		<a class="secondary-button" href="/projects">Projects</a>
-		<a class="secondary-button" href="/games">Games</a>
+		<h3>Links</h3>
+		<a class="secondary-button" href={resolve('/projects')}>Projects</a>
+		<a class="secondary-button" href={resolve('/games')}>Games</a>
 		<a
 			class="secondary-button"
 			href="https://nickesc.com/"
@@ -80,10 +79,16 @@
 		</a>
 		<a
 			class="secondary-button"
+			href="https://batcomputer.xyz/"
+			target="_blank"
+			rel="noopener noreferrer"
+			>batcomputer.xyz
+		</a>
+		<a
+			class="secondary-button"
 			href="https://infosec.exchange/@nickesc?rel='me'"
 			target="_blank"
 			rel="noopener noreferrer"
-			hidden
 			>Social
 		</a>
 	</div>
@@ -91,7 +96,7 @@
 	<div class="tech">
 		<span class="tech-label">Go-to tech</span>
 		<ul class="badges">
-			{#each featuredBadges as icon}
+			{#each featuredBadges as icon (icon)}
 				<li>
 					<Badge {icon} />
 				</li>

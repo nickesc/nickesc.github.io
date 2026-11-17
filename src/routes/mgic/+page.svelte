@@ -110,7 +110,12 @@
 		<div class="track-details scrollable">
 			<p class="track-context">
 				{#if current?.track?.context}
-					<a class="secondary-link" href={current.track.context?.url ?? '#'} target="_blank">
+					<a
+						class="secondary-link"
+						href={current.track.context?.url ?? '#'}
+						target="_blank"
+						rel="external"
+					>
 						{current.track.context?.name} ⋅ {capitalize(current.track.context?.type)}
 					</a>
 				{:else}
@@ -126,7 +131,7 @@
 					style:--overflow={overflow}
 				>
 					{#if current?.track?.url}
-						<a href={current.track.url} target="_blank">
+						<a href={current.track.url} target="_blank" rel="external">
 							{name}
 						</a>
 					{:else}
@@ -137,7 +142,7 @@
 
 			<p class="track-artists">
 				{#if current?.track?.artists.url}
-					<a class="secondary-link" href={current.track.artists.url} target="_blank">
+					<a class="secondary-link" href={current.track.artists.url} target="_blank" rel="external">
 						{current.track.artists.names.join(', ')}
 					</a>
 				{:else}
@@ -169,6 +174,7 @@
 				class:disabled={!current?.track?.url}
 				href={current?.track?.url ?? ''}
 				target="_blank"
+				rel="external"
 			>
 				<span class="spotify-icon"
 					><SpotifyIcon

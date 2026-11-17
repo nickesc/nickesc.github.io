@@ -24,7 +24,7 @@
 	style:--logo-color={bgColor}
 	style:color={bgColor}
 	title={badges[icon].title}
-	rel="noopener noreferrer"
+	rel="external noopener noreferrer"
 	target="_blank"
 >
 	<Icon class="icon" title={text} color={bgColor} />
