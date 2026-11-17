@@ -58,9 +58,8 @@
 			href="https://www.waybettermarketing.com/"
 			target="_blank"
 			rel="noopener noreferrer">Waybetter Marketing</a
-		>. I also release my own projects through
-		<a href="https://nescobar.media" target="_blank" rel="noopener noreferrer">N. Escobar Media</a>,
-		a small, independent studio I founded.
+		>. I also release my own projects through my independent studio,
+		<a href="https://nescobar.media" target="_blank" rel="noopener noreferrer">N. Escobar Media</a>.
 	</p>
 	<p>
 		My hobbies include playing video games, watching movies, hiking, camping, and collecting
@@ -68,7 +67,7 @@
 	</p>
 
 	<div class="work">
-		<h3>My work</h3>
+		<h3>Links</h3>
 		<a class="secondary-button" href={resolve('/projects')}>Projects</a>
 		<a class="secondary-button" href={resolve('/games')}>Games</a>
 		<a
@@ -80,10 +79,16 @@
 		</a>
 		<a
 			class="secondary-button"
+			href="https://batcomputer.xyz/"
+			target="_blank"
+			rel="noopener noreferrer"
+			>batcomputer.xyz
+		</a>
+		<a
+			class="secondary-button"
 			href="https://infosec.exchange/@nickesc?rel='me'"
 			target="_blank"
 			rel="noopener noreferrer"
-			hidden
 			>Social
 		</a>
 	</div>
