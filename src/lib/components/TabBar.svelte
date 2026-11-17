@@ -111,7 +111,7 @@
 			style:background-color={foley.muted
 				? 'rgba(from var(--base-grey) r g b / 0.1)'
 				: 'var(--grey)'}
-			style:color={'var(--base-grey)'}
+			style:color="var(--base-grey)"
 			style:border-color={foley.muted ? 'rgba(from var(--base-grey) r g b / 0.5)' : 'transparent'}
 		>
 			<SoundSymbol width={buttonSize} height={buttonSize} muted={foley.muted} />
@@ -129,7 +129,7 @@
 				style:background-color={maximized
 					? 'rgba(from var(--base-blue) r g b / 0.1)'
 					: 'var(--blue)'}
-				style:color={'var(--base-blue)'}
+				style:color="var(--base-blue)"
 				style:border-color={maximized ? 'rgba(from var(--base-blue) r g b / 0.5)' : 'transparent'}
 				transition:scale={{ duration: 200, easing: cubicInOut }}
 			>
@@ -145,7 +145,7 @@
 			aria-checked={on}
 			title={on ? 'Turn off power' : 'Turn on power'}
 			style:background-color={on ? 'var(--red)' : 'rgba(from var(--base-red) r g b / 0.1)'}
-			style:color={'var(--base-red)'}
+			style:color="var(--base-red)"
 			style:border-color={on ? 'transparent' : 'rgba(from var(--base-red) r g b / 0.5)'}
 		>
 			<PowerSymbol width={buttonSize} height={buttonSize} />

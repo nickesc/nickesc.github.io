@@ -6,8 +6,7 @@
 	import Badge from '$lib/components/Badge.svelte';
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
 
-	let displayedProjects = $state(projects);
-	displayedProjects = projects.filter((project) => project.featured === true);
+	const displayedProjects = projects.filter((project) => project.featured);
 </script>
 
 <svelte:head>
