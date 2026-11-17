@@ -1,11 +1,11 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
+	import { goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
+	import { page } from '$app/state';
+	import type { PathnameWithSearchOrHash } from '$app/types';
 	import { projects, type Category, type Tech } from '$lib/projects';
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
-
-	let selectedCategory = $state<Category | 'all'>('all');
-	let selectedTech = $state<Tech | 'all'>('all');
-	let selectedYear: number | 'all' = $state<number | 'all'>('all');
-	let showArchived = $state(false);
 
 	const years: number[] = $derived(Array.from(new Set(projects.map((project) => project.year))));
 	const categories: Category[] = $derived(
@@ -22,6 +22,30 @@
 			return a.localeCompare(b);
 		})
 	);
+
+	// Query parameters are only available in the browser on this prerendered page.
+	const params = $derived(browser ? page.url.searchParams : null);
+	const selectedCategory = $derived(
+		categories.find((category) => category === params?.get('category')) ?? 'all'
+	);
+	const selectedTech = $derived(techOptions.find((tech) => tech === params?.get('tech')) ?? 'all');
+	const selectedYear = $derived(
+		years.find((year) => String(year) === params?.get('year')) ?? 'all'
+	);
+	const showArchived = $derived(params?.get('archived') === 'true');
+
+	function updateFilter(name: 'category' | 'tech' | 'year' | 'archived', value: string | null) {
+		const url = new URL(page.url);
+		if (value === null || value === 'all') {
+			url.searchParams.delete(name);
+		} else {
+			url.searchParams.set(name, value);
+		}
+		return goto(resolve(`/projects${url.search}${url.hash}` as PathnameWithSearchOrHash), {
+			noScroll: true,
+			keepFocus: true
+		});
+	}
 
 	function longestLength(labels: string[]) {
 		return Math.max(0, ...labels.map((label) => label.length));
@@ -81,7 +105,11 @@
 		<label for="category"
 			>Category
 			<span class="select-container" data-widest={widestCategory}>
-				<select bind:value={selectedCategory} data-foley-click="press">
+				<select
+					value={selectedCategory}
+					onchange={(event) => updateFilter('category', event.currentTarget.value)}
+					data-foley-click="press"
+				>
 					<option value="all">All</option>
 					{#each categories as category (category)}
 						<option value={category}
@@ -95,7 +123,11 @@
 		<label for="tech"
 			>Tech
 			<span class="select-container" data-widest={widestTech}>
-				<select bind:value={selectedTech} data-foley-click="press">
+				<select
+					value={selectedTech}
+					onchange={(event) => updateFilter('tech', event.currentTarget.value)}
+					data-foley-click="press"
+				>
 					<option value="all">All</option>
 					{#each techOptions as tech (tech)}
 						<option value={tech}>{tech}</option>
@@ -107,7 +139,11 @@
 		<label for="year"
 			>Year
 			<span class="select-container" data-widest={widestYear}>
-				<select bind:value={selectedYear} data-foley-click="press">
+				<select
+					value={selectedYear}
+					onchange={(event) => updateFilter('year', event.currentTarget.value)}
+					data-foley-click="press"
+				>
 					<option value="all">All</option>
 					{#each years as year (year)}
 						<option value={year}>{year}</option>
@@ -119,7 +155,12 @@
 
 	<label for="archived">
 		Show Archived
-		<input type="checkbox" bind:checked={showArchived} data-foley-click="release" />
+		<input
+			type="checkbox"
+			checked={showArchived}
+			onchange={(event) => updateFilter('archived', event.currentTarget.checked ? 'true' : null)}
+			data-foley-click="release"
+		/>
 	</label>
 </div>
 
