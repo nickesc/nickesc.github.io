@@ -20,6 +20,7 @@ export type Tech =
 	| 'Node.js'
 	| 'React'
 	| 'Svelte'
+	| 'Swift'
 	| 'Python'
 	| 'CircuitPython'
 	| 'Zsh'
@@ -51,6 +52,30 @@ function logo(filename: string): string {
 }
 
 export const projects: Project[] = [
+	{
+		name: 'CIA Decrypter for iOS',
+		imgUrl: logo('ciaDecrypter.svg'),
+		background: '#b8c4d8',
+		projectUrl: 'https://nickesc.io/cia-decrypter-ios/',
+		sourceUrl: 'https://github.com/nickesc/cia-decrypter-ios',
+		description: 'Decrypt and convert Nintendo 3DS CIA files on an iPhone or iPad.',
+		year: 2026,
+		categories: ['code'],
+		tech: ['Swift']
+	},
+
+	{
+		name: 'TTRPG Profile Creator',
+		imgUrl: logo('ttrpgProfileCreator.svg'),
+		background: '#3b4f4c',
+		projectUrl: 'https://dnd.batcomputer.xyz',
+		sourceUrl: 'https://github.com/nickesc/dnd-interactive-sheet',
+		description: 'A character sheet builder for tabletop RPGs.',
+		year: 2026,
+		categories: ['code'],
+		tech: ['HTML', 'CSS', 'JavaScript']
+	},
+
 	{
 		name: 'My Girlfriend is Curious 2.0',
 		imgUrl: logo('mgicLogo.png'),
