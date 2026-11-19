@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Badge, techBadges, DownloadSymbol, resumeLinks } from './resume';
+    import { Badge, badges, techBadges, DownloadSymbol, resumeLinks } from './resume';
 </script>
 
 <svelte:head>
@@ -125,7 +125,7 @@ Developer and creative with experience in frontend and full-stack web developmen
 <ul class="badges">
     {#each techBadges as icon}
     <li>
-      <Badge {icon} />
+      <Badge {icon} href={`/projects?tech=${encodeURIComponent(badges[icon].text)}`} />
     </li>
     {/each}
 </ul>
