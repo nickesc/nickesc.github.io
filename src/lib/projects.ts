@@ -56,12 +56,13 @@ export const projects: Project[] = [
 		name: 'CIA Decrypter for iOS',
 		imgUrl: logo('ciaDecrypter.svg'),
 		background: '#b8c4d8',
-		projectUrl: 'https://nickesc.io/cia-decrypter-ios/',
+		projectUrl: 'https://cia-decrypter.batcomputer.xyz',
 		sourceUrl: 'https://github.com/nickesc/cia-decrypter-ios',
 		description: 'Decrypt and convert Nintendo 3DS CIA files on an iPhone or iPad.',
 		year: 2026,
 		categories: ['code'],
-		tech: ['Swift']
+		tech: ['Swift'],
+		featured: true
 	},
 
 	{
@@ -166,7 +167,7 @@ export const projects: Project[] = [
 		name: 'input-terminal',
 		imgUrl: logo('inputTerminal.png'),
 		background: '#0c0c0c',
-		projectUrl: 'https://nickesc.github.io/input-terminal/',
+		projectUrl: 'https://www.npmjs.com/package/input-terminal',
 		sourceUrl: 'https://github.com/nickesc/input-terminal',
 		description: 'Turn any HTMLInputElement into a terminal interface.',
 		year: 2025,
@@ -259,8 +260,7 @@ export const projects: Project[] = [
 			'A client-side Minecraft modpack that aims to overhaul and modernize the experience.',
 		year: 2024,
 		categories: ['other'],
-		tech: ['Other'],
-		featured: true
+		tech: ['Other']
 	},
 
 	{
