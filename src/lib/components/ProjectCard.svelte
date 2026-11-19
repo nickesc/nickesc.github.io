@@ -151,7 +151,9 @@
 		}
 
 		.logo {
-			height: 100%;
+			/* ViewBox-only SVGs need a definite size in Safari's flex layout. */
+			block-size: 188px;
+			max-inline-size: 100%;
 			aspect-ratio: 1 / 1;
 			object-fit: scale-down;
 		}
@@ -189,6 +191,8 @@
 		.card-link {
 			color: inherit;
 			text-decoration: none;
+			text-wrap: wrap;
+			overflow-wrap: anywhere;
 
 			&::after {
 				position: absolute;
