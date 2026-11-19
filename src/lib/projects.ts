@@ -190,7 +190,7 @@ export const projects: Project[] = [
 
 	{
 		name: 'No More AI Search',
-		imgUrl: logo('noMoreAiSearch.png'),
+		imgUrl: logo('noMoreAiSearch.svg'),
 		background: '#0f0f0f',
 		projectUrl: 'https://github.com/nickesc/no-more-ai-search',
 		sourceUrl: 'https://github.com/nickesc/no-more-ai-search',
