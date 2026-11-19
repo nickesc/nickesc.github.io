@@ -28,7 +28,7 @@ export type BadgeType = {
 	url: string;
 	title: string;
 	text: string;
-	categories: ('tech' | 'distribution' | 'social' | 'featured')[];
+	categories: ('tech' | 'distribution' | 'social' | 'featured' | 'none')[];
 };
 
 export const badges = {
@@ -78,7 +78,7 @@ export const badges = {
 		url: 'https://react.dev/',
 		title: 'React',
 		text: 'React',
-		categories: ['tech']
+		categories: ['none']
 	},
 	svelte: {
 		icon: SiSvelte,

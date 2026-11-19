@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { page } from '$app/state';
+	import { afterNavigate } from '$app/navigation';
 
 	import favicon from '$lib/assets/favicon.svg';
 
@@ -46,6 +47,7 @@
 	let mainHeight = $state(80);
 	let footerHeight = $derived(100 - mainHeight);
 	let windowElement: HTMLElement | undefined = $state();
+	let mainElement: HTMLElement | undefined = $state();
 
 	let on = $state(true);
 	let maximized = $state(false);
@@ -104,6 +106,14 @@
 	function handlePointerUp() {
 		dragging = false;
 	}
+
+	afterNavigate(({ from, to }) => {
+		if (from && from.url.pathname !== to?.url.pathname) {
+			mainElement?.scrollTo({ top: 0, behavior: 'instant' });
+		} else {
+			mainElement?.scrollTo({ top: 0, behavior: 'smooth' });
+		}
+	});
 </script>
 
 <svelte:window
@@ -138,7 +148,7 @@
 	style:max-width={maximized ? 'calc(100vw - var(--window-margin))' : `1200px`}
 >
 	<TabBar bind:on bind:maximized fadeDuration={MAIN_PANEL_FADE_MS} />
-	<main class="scrollable" style:flex={`${mainHeight} 1 0`}>
+	<main bind:this={mainElement} class="scrollable" style:flex={`${mainHeight} 1 0`}>
 		{#key page.url.pathname}
 			{#if on}
 				<div

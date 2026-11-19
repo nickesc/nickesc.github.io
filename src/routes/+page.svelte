@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import { projects } from '$lib/projects';
-	import { featuredBadges } from '$lib/badges';
+	import { badges, featuredBadges } from '$lib/badges';
 
 	import Badge from '$lib/components/Badge.svelte';
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
@@ -68,29 +68,41 @@
 
 	<div class="work">
 		<h3>Links</h3>
-		<a class="secondary-button" href={resolve('/projects')}>Projects</a>
-		<a class="secondary-button" href={resolve('/games')}>Games</a>
-		<a
-			class="secondary-button"
-			href="https://nickesc.com/"
-			target="_blank"
-			rel="noopener noreferrer"
-			>Art
-		</a>
-		<a
-			class="secondary-button"
-			href="https://batcomputer.xyz/"
-			target="_blank"
-			rel="noopener noreferrer"
-			>batcomputer.xyz
-		</a>
-		<a
-			class="secondary-button"
-			href="https://infosec.exchange/@nickesc?rel='me'"
-			target="_blank"
-			rel="noopener noreferrer"
-			>Social
-		</a>
+		<ul class="links">
+			<li>
+				<a class="secondary-button" href={resolve('/projects')}>Projects</a>
+			</li>
+			<li>
+				<a class="secondary-button" href={resolve('/games')}>Games</a>
+			</li>
+			<li>
+				<a
+					class="secondary-button"
+					href="https://nickesc.com/"
+					target="_blank"
+					rel="noopener noreferrer"
+					>Art
+				</a>
+			</li>
+			<li>
+				<a
+					class="secondary-button"
+					href="https://batcomputer.xyz/"
+					target="_blank"
+					rel="noopener noreferrer"
+					>batcomputer.xyz
+				</a>
+			</li>
+			<li>
+				<a
+					class="secondary-button"
+					href="https://infosec.exchange/@nickesc?rel='me'"
+					target="_blank"
+					rel="noopener noreferrer"
+					>Social
+				</a>
+			</li>
+		</ul>
 	</div>
 
 	<div class="tech">
@@ -98,7 +110,7 @@
 		<ul class="badges">
 			{#each featuredBadges as icon (icon)}
 				<li>
-					<Badge {icon} />
+					<Badge {icon} href={`/projects?tech=${encodeURIComponent(badges[icon].text)}`} />
 				</li>
 			{/each}
 		</ul>
@@ -154,6 +166,17 @@
 			font-size: 1.125rem;
 			color: var(--brand-white);
 		}
+	}
+
+	.work .links {
+		display: flex;
+		flex-direction: row;
+		row-gap: 1.75rem;
+		column-gap: 0.5rem;
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		flex-wrap: wrap;
 	}
 
 	.tech {

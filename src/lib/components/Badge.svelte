@@ -1,5 +1,8 @@
 <script lang="ts">
 	import { badges } from '$lib/badges';
+	import { resolve } from '$app/paths';
+	import { page } from '$app/state';
+	import type { PathnameWithSearchOrHash } from '$app/types';
 
 	interface Props {
 		icon: keyof typeof badges;
@@ -16,16 +19,18 @@
 	}: Props = $props();
 
 	const Icon = $derived(badges[icon].icon);
+	const external = $derived(new URL(href, page.url).origin !== page.url.origin);
 </script>
 
+<!-- eslint-disable svelte/no-navigation-without-resolve -- Resolve local paths; pass other URLs through. -->
 <a
-	{href}
+	href={external ? href : resolve(href as PathnameWithSearchOrHash)}
 	data-foley-click="pop"
 	style:--logo-color={bgColor}
 	style:color={bgColor}
 	title={badges[icon].title}
-	rel="external noopener noreferrer"
-	target="_blank"
+	rel={external ? 'external noopener noreferrer' : undefined}
+	target={external ? '_blank' : undefined}
 >
 	<Icon class="icon" title={text} color={bgColor} />
 
